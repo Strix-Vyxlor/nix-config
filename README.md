@@ -16,5 +16,7 @@ nix-on-droid switch --flake $DIR_TO_NIX_CONFIG
 
 # Thanks to
 [Librephoenix](github.com/librephoenix), I based my config on his.
+
 [Vimjoyer](github.com/vimjoyer), for all his [youtube tutorials](youtube.com/@vimjoyer).
-[IogaMaster](github.com/IogaMaster), for yet moure [youtube Tutorials](youtube.com/@IogaMaster).
+
+[IogaMaster](github.com/IogaMaster), for yet more [youtube Tutorials](youtube.com/@IogaMaster).
