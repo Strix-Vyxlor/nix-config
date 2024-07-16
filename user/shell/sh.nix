@@ -29,6 +29,7 @@ in {
   };
 
   home.packages = with pkgs; [
+    awk  
     fastfetch
     gnugrep
     gnused
