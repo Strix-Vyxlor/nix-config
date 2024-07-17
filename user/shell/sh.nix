@@ -1,18 +1,9 @@
 { pkgs, userSettings, ... }:
-let
-  aliases = {
-    
-    zsh = {
-      ls = "eza --icons";
-      ll = "eza --icons -l";
-      lla = "eza --icons -la";
-      tree = "eza --icons --tree";
-      plaincat = "${pkgs.coreutils}/bin/cat";
-      cat = "bat --plain";
-      neofetch = "fastfetch";
-    };
-  };
-in {
+{
+
+  imports = [
+    (./. + ("/" + userSettings.shell) + ".nix")
+  ];
   # default system prompt
   programs.bash = {
     enable = true;
@@ -29,9 +20,10 @@ in {
   };
 
   home.packages = with pkgs; [
-    awk  
+    gawk  
     fastfetch
     gnugrep
     gnused
+    htop
   ];
 }
