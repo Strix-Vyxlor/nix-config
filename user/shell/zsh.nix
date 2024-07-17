@@ -24,7 +24,8 @@ in {
     enable = true;
     autosuggestion.enable = false;
     syntaxHighlighting.enable = false;
-    initExtra = ''
+    shellAliases = aliases;
+    initExtraBeforeCompInit = ''
       ZINIT_HOME="''${XDG_DATA_HOME:-''${HOME}/.local/share/}/zinit/zinit.git"
 
       if [ ! -d ''$ZINIT_HOME ]; then
@@ -38,9 +39,9 @@ in {
       zinit light zsh-users/zsh-completions
       zinit light zsh-users/zsh-autosuggestions
       zinit light Aloxaf/fzf-tab
-      
-      autoload -Uz compinit && compinit
-
+    '';
+    
+    initExtra = ''
       setopt appendhistory
       setopt sharehistory
       setopt hist_ignore_space
