@@ -40,25 +40,10 @@
       font = "Inter Regular";
       fontPkg = pkgs.inter;
       shell = "zsh";
-      prompt = "starship";
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      editor = "helix";
-      editorCmd = "hx"; # please select manualy, i dont want to make a masive if else tree
+      prompt = "starship"; 
       zix = "prebuild";
-=======
       editor = "nvim";
       editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
->>>>>>> Stashed changes
-=======
-      editor = "nvim";
-      editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
->>>>>>> Stashed changes
-=======
-      editor = "nvim";
-      editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
->>>>>>> Stashed changes
     };
 
     pkgs = import inputs.nixpkgs {
