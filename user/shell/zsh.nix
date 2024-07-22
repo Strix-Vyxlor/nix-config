@@ -15,7 +15,8 @@ let
       eval "''$(starship init zsh)"
     '';
   };
-in {
+in
+{
   imports = [
     (./. + "/prompt/" + ("/" + userSettings.prompt) + ".nix")
   ];
@@ -40,7 +41,7 @@ in {
       zinit light zsh-users/zsh-autosuggestions
       zinit light Aloxaf/fzf-tab
     '';
-    
+
     initExtra = ''
       setopt appendhistory
       setopt sharehistory
@@ -55,7 +56,7 @@ in {
     '' + prompt.${userSettings.prompt};
   };
 
-  home.packages = with pkgs; [    
+  home.packages = with pkgs; [
     eza
     bat
     zoxide

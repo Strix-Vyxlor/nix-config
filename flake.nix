@@ -7,7 +7,7 @@
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -21,56 +21,87 @@
   };
 
   outputs = inputs@{ self, ... }:
-  let
-    systemSettings = {
-      system = "x86_64-linux";
-      profile = "desktop";
-      timeZone = "Europe/Brussels";
-      locale = "en_US.UTF-8";
-    };
-
-    userSettings = {
-      username = "strix";
-      name = "Strix-Vyxlor";
-      email = "strix.vyxlor@gmail.com";
-      configDir = "~/.nix-config";
-      wm = "gnome";
-      browser = "brave";
-      term = "alacritty";
-      font = "Inter Regular";
-      fontPkg = pkgs.inter;
-      shell = "zsh";
-      prompt = "starship"; 
-      zix = "prebuild";
-      editor = "nvim";
-      editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
-    };
-
-    pkgs = import inputs.nixpkgs {
-      system = systemSettings.system;
-      config = {
-        allowUnFree = true;
+    let
+      systemSettings = {
+        system = "x86_64-linux";
+        profile = "desktop";
+        timeZone = "Europe/Brussels";
+        locale = "en_US.UTF-8";
       };
-    };
-    
-    lib = inputs.nixpkgs.lib;
-    home-manager = inputs.home-manager-unstable;
 
-    zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
-  in {
+      userSettings = {
+        username = "strix";
+        name = "Strix-Vyxlor";
+        email = "strix.vyxlor@gmail.com";
+        configDir = "~/.nix-config";
+        wm = "gnome";
+        browser = "brave";
+        term = "alacritty";
+        font = "Inter Regular";
+        fontPkg = pkgs.inter;
+        shell = "zsh";
+        prompt = "starship";
+        zix = "default";
+        editor = "nvim";
+        editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
+      };
 
-    nixOnDroidConfigurations = {
-      inherit pkgs;
-      default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+      pkgs = import inputs.nixpkgs {
+        system = systemSettings.system;
+        config = {
+          allowUnFree = true;
+        };
+      };
+
+      lib = inputs.nixpkgs.lib;
+      home-manager = inputs.home-manager-unstable;
+
+      zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
+    in
+    {
+
+      homeConfigurations = {
+        default = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [
+            (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
+          ];
+          specialArgs = {
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
+        };
+      };
+
+      nixosConfigurations = {
+        default = lib.NixosSystem {
+          system = systemSettings.system;
+          modules = [
+            (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+            ./system/bin/zix.nix
+          ];
+          specialArgs = {
+            inherit zix-pkg;
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
+        };
+      };
+
+      nixOnDroidConfigurations = {
         inherit pkgs;
-        modules = [ ./profiles/nix-on-droid/configuration.nix ];
-        extraSpecialArgs = {
-          inherit zix-pkg;
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+        default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+          inherit pkgs;
+          modules = [ ./profiles/nix-on-droid/configuration.nix ];
+          extraSpecialArgs = {
+            inherit zix-pkg;
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
         };
       };
     };
-  };
 }

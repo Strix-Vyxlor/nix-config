@@ -5,7 +5,7 @@
   imports = [
     ../../user/shell/sh.nix
     ../../user/app/git/git.nix
-    ../../user/app/git/gh.nix    
+    ../../user/app/git/gh.nix
   ];
 
   home.packages = with pkgs; [
@@ -34,7 +34,7 @@
   home.sessionVariables = {
     EDITOR = userSettings.editor;
   };
-  
+
   news.display = "silent";
 
   home.file.".config/zix/zix.conf" = {
@@ -45,7 +45,7 @@
       }
     '';
     executable = false;
-  }; 
+  };
 
   home.stateVersion = "24.05";
 }

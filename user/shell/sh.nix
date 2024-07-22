@@ -8,7 +8,7 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
-    shellAliases  = {
+    shellAliases = {
       ll = "ls -l";
       lla = "ls -la";
       neofetch = "fastfetch";
@@ -20,7 +20,7 @@
   };
 
   home.packages = with pkgs; [
-    gawk  
+    gawk
     fastfetch
     gnugrep
     gnused

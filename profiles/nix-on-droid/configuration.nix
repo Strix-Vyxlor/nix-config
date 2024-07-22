@@ -5,7 +5,7 @@
     # User-facing stuff that you really really want to have
     helix # or some other editor, e.g. nano or neovim
     zix-pkg
-        
+
     # Some common stuff that people expect to have
     procps
     killall
