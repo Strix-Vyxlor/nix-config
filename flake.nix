@@ -1,5 +1,5 @@
 {
-  description = "Basic example of Nix-on-Droid system config.";
+  description = "Strix Vyxlor nix config.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -23,8 +23,8 @@
   outputs = inputs@{ self, ... }:
   let
     systemSettings = {
-      system = "aarch64-linux";
-      profile = "nix-on-droid";
+      system = "x86_64-linux";
+      profile = "desktop";
       timeZone = "Europe/Brussels";
       locale = "en_US.UTF-8";
     };
@@ -33,11 +33,32 @@
       username = "strix";
       name = "Strix-Vyxlor";
       email = "strix.vyxlor@gmail.com";
+      configDir = "~/.nix-config";
+      wm = "gnome";
+      browser = "brave";
+      term = "alacritty";
+      font = "Inter Regular";
+      fontPkg = pkgs.inter;
       shell = "zsh";
       prompt = "starship";
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
       editor = "helix";
       editorCmd = "hx"; # please select manualy, i dont want to make a masive if else tree
       zix = "prebuild";
+=======
+      editor = "nvim";
+      editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
+>>>>>>> Stashed changes
+=======
+      editor = "nvim";
+      editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
+>>>>>>> Stashed changes
+=======
+      editor = "nvim";
+      editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
+>>>>>>> Stashed changes
     };
 
     pkgs = import inputs.nixpkgs {
