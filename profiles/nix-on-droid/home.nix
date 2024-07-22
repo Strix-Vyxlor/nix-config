@@ -37,5 +37,15 @@
   
   news.display = "silent";
 
+  home.file.".config/zix/zix.conf" = {
+    text = ''
+      {
+        "flake": true,
+        "path": ".nix-config"
+      }
+    '';
+    executable = false;
+  }; 
+
   home.stateVersion = "24.05";
 }

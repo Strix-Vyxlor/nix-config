@@ -13,6 +13,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager-unstable";
     };
+
+    zix = {
+      url = "github:Strix-Vyxlor/zix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, ... }:
@@ -32,6 +37,7 @@
       prompt = "starship";
       editor = "helix";
       editorCmd = "hx"; # please select manualy, i dont want to make a masive if else tree
+      zix = "prebuild";
     };
 
     pkgs = import inputs.nixpkgs {
@@ -43,6 +49,8 @@
     
     lib = inputs.nixpkgs.lib;
     home-manager = inputs.home-manager-unstable;
+
+    zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
   in {
 
     nixOnDroidConfigurations = {
@@ -51,6 +59,7 @@
         inherit pkgs;
         modules = [ ./profiles/nix-on-droid/configuration.nix ];
         extraSpecialArgs = {
+          inherit zix-pkg;
           inherit systemSettings;
           inherit userSettings;
           inherit inputs;
