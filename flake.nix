@@ -27,6 +27,7 @@
         profile = "desktop";
         timeZone = "Europe/Brussels";
         locale = "en_US.UTF-8";
+        hostname = "nixos";
       };
 
       userSettings = {
@@ -79,7 +80,6 @@
           system = systemSettings.system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
-            ./system/bin/zix.nix
           ];
           specialArgs = {
             inherit zix-pkg;

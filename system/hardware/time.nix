@@ -1,0 +1,4 @@
+ { ... }:
+ {
+   services.timesyncd.enable = true;
+ }
