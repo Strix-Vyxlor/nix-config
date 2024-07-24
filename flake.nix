@@ -85,7 +85,7 @@
       };
 
       nixosConfigurations = {
-        default = lib.NixosSystem {
+        default = lib.nixosSystem {
           system = systemSettings.system;
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
