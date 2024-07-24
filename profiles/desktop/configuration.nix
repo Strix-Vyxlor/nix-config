@@ -53,7 +53,7 @@
     uid = 1000;
   };
 
-  enviroment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; [
     zix-pkg
     helix
     wget
