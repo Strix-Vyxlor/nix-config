@@ -27,7 +27,7 @@ in
 
   stylix.targets.console.enable = true;
 
-  environments.sessionVariables = {
+  environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 }
