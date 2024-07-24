@@ -15,7 +15,7 @@
     ../../system/style/stylix.nix
   ];
 
-  nix.package = pkgs.nixFlake;
+  nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
