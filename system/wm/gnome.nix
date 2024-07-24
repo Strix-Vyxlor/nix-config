@@ -3,7 +3,6 @@
   imports = [
     ./pipewire.nix
     ./dbus.nix
-    ./fonts.nix
   ];
  
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon gnome2.GConf ];
