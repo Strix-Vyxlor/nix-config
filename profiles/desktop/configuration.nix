@@ -20,7 +20,7 @@
     experimental-features = nix-command flakes
   '';
 
-  nixpkgs.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi = {
