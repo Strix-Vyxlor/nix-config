@@ -24,6 +24,17 @@
     nerdfonts
   ];
 
+  home.file.".config/zix/zix.conf" = {
+    text = ''
+      {
+        "flake": true,
+        "path": ".nix-config"
+      }
+    '';
+    executable = false;
+  };
+
+
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
