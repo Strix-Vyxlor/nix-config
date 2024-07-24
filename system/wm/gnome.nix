@@ -22,14 +22,13 @@
     gnome-tour
     gedit
     epiphany
-  ]) ++ (with pkgs.gnome; [
-    cheese # webcam tool
+    cheese
+    geary
+    evince
+    totem
+  ]) ++ (with pkgs.gnome; 
     gnome-music
-    gnome-terminal
-    geary # email reader
-    evince # document viewer
     gnome-characters
-    totem # video player
     tali # poker game
     iagno # go game
     hitori # sudoku game

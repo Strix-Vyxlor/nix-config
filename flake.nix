@@ -28,7 +28,7 @@
       systemSettings = {
         system = "x86_64-linux";
         profile = "desktop";
-        timeZone = "Europe/Brussels";
+        timezone = "Europe/Brussels";
         locale = "en_US.UTF-8";
         hostname = "nixos";
       };

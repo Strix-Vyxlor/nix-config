@@ -54,5 +54,5 @@
   '';
 
   # Set your time zone
-  time.timeZone = systemSettings.timeZone;
+  time.timeZone = systemSettings.timezone;
 }
