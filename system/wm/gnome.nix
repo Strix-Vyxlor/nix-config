@@ -26,7 +26,7 @@
     geary
     evince
     totem
-  ]) ++ (with pkgs.gnome; 
+  ]) ++ (with pkgs.gnome; [ 
     gnome-music
     gnome-characters
     tali # poker game
