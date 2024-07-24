@@ -5,7 +5,6 @@
     ../../system/hardware/kernel.nix
     ../../system/hardware/mesa.nix
     ../../system/hardware/time.nix
-    ../../system/hardware/power.nix
     ../../system/hardware/bluetooth.nix
 
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
