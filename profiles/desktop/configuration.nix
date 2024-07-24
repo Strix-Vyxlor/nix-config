@@ -8,7 +8,7 @@
     ../../system/hardware/power.nix
     ../../system/hardware/bluetooth.nix
 
-    (./. + "../../../system/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
+    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
