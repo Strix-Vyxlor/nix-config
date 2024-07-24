@@ -18,6 +18,9 @@
       url = "github:Strix-Vyxlor/zix/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    stylix.url = "github:danth/stylix";
+    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = inputs@{ self, ... }:
@@ -35,16 +38,21 @@
         name = "Strix-Vyxlor";
         email = "strix.vyxlor@gmail.com";
         configDir = "~/.nix-config";
+
+        # theming
         wm = "gnome";
         browser = "brave";
         term = "alacritty";
         font = "Inter Regular";
         fontPkg = pkgs.inter;
+        theme = "catppuccin";
+        icons = "papirus";
+
+        # terminal
         shell = "zsh";
         prompt = "starship";
         zix = "default";
         editor = "nvim";
-        editorCmd = "nvim"; # please select manualy, i dont want to make a masive if else tree
       };
 
       pkgs = import inputs.nixpkgs {
@@ -52,6 +60,7 @@
         config = {
           allowUnFree = true;
         };
+        overlays = [ (import inputs.rust-overlay) ];
       };
 
       lib = inputs.nixpkgs.lib;
