@@ -12,7 +12,7 @@
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
-    ../../sytem/style/stylix.nix
+    ../../system/style/stylix.nix
   ];
 
   nix.package = pkgs.nixFlake;
