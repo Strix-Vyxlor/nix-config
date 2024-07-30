@@ -1,9 +1,11 @@
 { config, pkgs, userSettings, ... }:
 {
+
   home.username = userSettings.username;
   home.homeDirectory = "/home/" + userSettings.username;
 
   programs.home-manager.enable = true;
+  programs.home-manager.backupFileExtension = "hbk";
 
   imports = [
     ../../user/shell/sh.nix
