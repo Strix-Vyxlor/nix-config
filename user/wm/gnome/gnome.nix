@@ -26,11 +26,17 @@
     name = "Vimix-Black-dark";
   };
 
-  home.packages = with pkgs; [
+  home.packages = (with pkgs; [
     vimix-icon-theme
     vimix-cursors
     xdg-utils
     adwaita-icon-theme
-  ];
+  ]) ++ (with pkgs.gnomeExtensions; [
+        blur-my-shell
+        caffeine
+        hide-keyboard-layout
+        quick-settings-tweaker
+        vitals
+    ]);
 }
 
