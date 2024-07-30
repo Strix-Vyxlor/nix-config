@@ -19,12 +19,12 @@
   gtk.cursorTheme = {
     package = pkgs.vimix-cursors;
     name = "Vimix-cursors";
-    size = 36;
+    size = 24;
   };
 
   gtk.iconTheme = {
     package = pkgs.vimix-icon-theme;
-    name = "Vimix-black-dark";
+    name = "Vimix-Black-dark";
   };
 
   home.packages = with pkgs; [
