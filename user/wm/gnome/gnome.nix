@@ -11,18 +11,24 @@
       caffeine
       hide-keyboard-layout
       quick-settings-tweaker
-      vitals
+      vitalsquick settings
     ];
   };
 
   gtk.cursorTheme = {
-    package = pkgs.volantes-cursors;
-    name = "volantes-cursors";
+    package = pkgs.vimix-cursors;
+    name = "Vimix-cursors";
     size = 36;
   };
 
+  gtk.iconTheme = {
+    package = pkgs.vimix-icon-theme;
+    name = "Vimix-black-dark";
+  };
+
   home.packages = with pkgs; [
-    papirus-icon-theme
+    vimix-icon-theme
+    vimix-cursors
     xdg-utils
     adwaita-icon-theme
   ];
