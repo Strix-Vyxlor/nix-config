@@ -73,6 +73,7 @@
       homeConfigurations = {
         default = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
+          backupFileExtension = "hbk";
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
           ];
@@ -87,7 +88,6 @@
       nixosConfigurations = {
         default = lib.nixosSystem {
           system = systemSettings.system;
-          backupFileExtension = "hbk";
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
           ];
