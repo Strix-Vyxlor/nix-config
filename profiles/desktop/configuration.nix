@@ -52,6 +52,8 @@
     uid = 1000;
   };
 
+  inputs.home-manager.backupFileExtension = "hkb";
+
   environment.systemPackages = with pkgs; [
     zix-pkg
     helix
