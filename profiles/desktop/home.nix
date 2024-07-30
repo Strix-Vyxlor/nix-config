@@ -1,7 +1,7 @@
 { config, pkgs, userSettings, ... }:
 {
 
-  home-manager.backupFileExtension
+  home-manager.backupFileExtension = "hkb";
 
   home.username = userSettings.username;
   home.homeDirectory = "/home/" + userSettings.username;
