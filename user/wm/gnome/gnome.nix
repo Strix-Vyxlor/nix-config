@@ -12,7 +12,7 @@
       #caffeine
       #hide-keyboard-layout
       #quick-settings-tweaker
-      #vitals
+      vitals
     ];
   };
 
