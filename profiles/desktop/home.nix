@@ -28,7 +28,9 @@
     text = ''
       {
         "flake": true,
-        "path": ".nix-config"
+        "path": ".nix-config",
+        "hostname": "default",
+        "nix-on-droid": false
       }
     '';
     executable = false;
