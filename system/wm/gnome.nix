@@ -52,8 +52,7 @@
       gnome-clocks
       gnome-contacts
       gnome-maps
-      gnome-logs 
-      gedit
+      gnome-logs
       gnome-calendar
   ]);
 
