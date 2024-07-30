@@ -8,11 +8,11 @@
   programs.gnome-shell = {
     enable = true;
     extensions = with pkgs.gnomeExtensions; [
-      #blur-my-shell
-      #caffeine
-      #hide-keyboard-layout
-      #quick-settings-tweaker
-      vitals
+      blur-my-shell.extensionUuid
+      caffeine.extensionUuid
+      hide-keyboard-layout.extensionUuid
+      quick-settings-tweaker.extensionUuid
+      vitals.extensionUuid
     ];
   };
 
