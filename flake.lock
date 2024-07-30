@@ -456,11 +456,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1722328267,
-        "narHash": "sha256-zv1Pci1UWrjOEomv92mJcmASmqLVgY7fR0Ts5Yl4A4E=",
+        "lastModified": 1722344386,
+        "narHash": "sha256-VHL+y8pL80LYss/mYOvjMtaDrBspPhoQ5P7XmXkfe3Q=",
         "owner": "Strix-Vyxlor",
         "repo": "zix",
-        "rev": "afca38439bc414ad8af9588dbeb9b1c37ae026a8",
+        "rev": "dc7f435a7d5b7f9fe70259f847a56992d18da604",
         "type": "github"
       },
       "original": {

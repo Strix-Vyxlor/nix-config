@@ -40,6 +40,7 @@
     totem
     gnome-tour
     gnome-connections
+    gnome-calendar
   ]) ++ (with pkgs.gnome; [ 
       gnome-music
       gnome-characters
@@ -51,7 +52,8 @@
       gnome-clocks
       gnome-contacts
       gnome-maps
-      gnome-logs
+      gnome-logs 
+      gedit
       gnome-calendar
   ]);
 
