@@ -8,7 +8,7 @@
   programs.gnome-shell = {
     enable = true;
     extensions = with pkgs.gnomeExtensions; [
-      blur-my-shell
+      
       caffeine
       hide-keyboard-layout
       quick-settings-tweaker
