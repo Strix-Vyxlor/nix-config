@@ -76,7 +76,7 @@
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
           ];
-          specialArgs = {
+          extraSpecialArgs = {
             inherit systemSettings;
             inherit userSettings;
             inherit inputs;
