@@ -27,7 +27,7 @@
     let
       systemSettings = {
         system = "x86_64-linux";
-        profile = "desktop";
+        profile = "laptop";
         timezone = "Europe/Brussels";
         locale = "en_US.UTF-8";
         hostname = "nixos";
@@ -35,7 +35,7 @@
 
       userSettings = {
         username = "strix";
-        name = "Strix-Vyxlor";
+        name = "Strix Vyxlor";
         email = "strix.vyxlor@gmail.com";
         configDir = "~/.nix-config";
 
