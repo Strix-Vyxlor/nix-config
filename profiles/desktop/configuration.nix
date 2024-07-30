@@ -1,4 +1,4 @@
-{ pkgs, lib, zix-pkg, systemSettings, userSettings, ... }:
+{ pkgs, lib, zix-pkg, home-manager, systemSettings, userSettings, ... }:
 {
   imports = [
     ../../system/hardware-configuration.nix
@@ -13,6 +13,8 @@
     ../../system/security/gpg.nix
     ../../system/style/stylix.nix
   ];
+
+  home-manager.backupFileExtension = "hbk";
 
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''

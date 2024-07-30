@@ -72,8 +72,7 @@
 
       homeConfigurations = {
         default = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          backupFileExtension = "hbk";
+          inherit pkgs; 
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
           ];
@@ -93,6 +92,7 @@
           ];
           specialArgs = {
             inherit zix-pkg;
+            inherit home-manager;
             inherit systemSettings;
             inherit userSettings;
             inherit inputs;
