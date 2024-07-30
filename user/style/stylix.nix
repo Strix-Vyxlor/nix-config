@@ -1,6 +1,6 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 let
-  themePath = "../../../themes" + userSettings.theme + "/" + userSettings.theme + ".yaml";
+  themePath = "../../../themes" + ("/" + userSettings.theme + "/" + userSettings.theme) + ".yaml";
   themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes" + ("/" + userSettings.theme) + "/polarity.txt"));
 in {
   imports = [ inputs.stylix.homeManagerModules.stylix ];
@@ -53,7 +53,7 @@ in {
     enable = true;
     style.package = pkgs.libsForQt5.breeze-qt5;
     style.name = "breeze-dark";
-    platformTheme = "kde";
+    platformTheme.name = "kde";
   };
   fonts.fontconfig.defaultFonts = {
     monospace = [ userSettings.font ];

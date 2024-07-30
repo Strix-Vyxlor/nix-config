@@ -53,7 +53,6 @@
       gnome-contacts
       gnome-maps
       gnome-logs
-      gnome-calendar
   ]);
 
 }
