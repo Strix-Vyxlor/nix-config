@@ -3,17 +3,16 @@
 
   dconf = { 
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
-
-  programs.gnome-shell = {
-    enable = true;
-    extensions = with pkgs.gnomeExtensions; [
-      blur-my-shell.extensionUuid
-      caffeine.extensionUuid
-      hide-keyboard-layout.extensionUuid
-      quick-settings-tweaker.extensionUuid
-      vitals.extensionUuid
-    ];
+    settings."org/gnome/shell" = {
+      disable-user-extensions = false;
+      enabled-extensions = with pkgs.gnomeExtensions; [
+        blur-my-shell.extensionUuid
+        caffeine.extensionUuid
+        hide-keyboard-layout.extensionUuid
+        quick-settings-tweaker.extensionUuid
+        vitals.extensionUuid
+      ];
+    };
   };
 
   gtk.cursorTheme = {
