@@ -87,6 +87,7 @@
       nixosConfigurations = {
         default = lib.nixosSystem {
           system = systemSettings.system;
+          backupFileExtension = "hbk";
           modules = [
             (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
           ];
