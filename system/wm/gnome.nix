@@ -24,6 +24,11 @@
     ];
   };
 
+  services.xserver.excludePackages = [ pkgs.xterm ];
+  services.xserver.desktopManager.xterm.enable = false;
+
+  documentation.nixos.enable = false;
+
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
     gnome-tour
@@ -33,13 +38,21 @@
     geary
     evince
     totem
+    gnome-tour
+    gnome-connections
   ]) ++ (with pkgs.gnome; [ 
-    gnome-music
-    gnome-characters
-    tali # poker game
-    iagno # go game
-    hitori # sudoku game
-    atomix # puzzle game
+      gnome-music
+      gnome-characters
+      tali # poker game
+      iagno # go game
+      hitori # sudoku game
+      atomix # puzzle game
+      gnome-weather
+      gnome-clocks
+      gnome-contacts
+      gnome-maps
+      gnome-logs
+      gnome-calendar
   ]);
 
 }
