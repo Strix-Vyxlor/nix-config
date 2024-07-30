@@ -28,6 +28,7 @@
       systemSettings = {
         system = "x86_64-linux";
         profile = "laptop";
+        kernel = pkgs.linuxPackages_6_9;
         timezone = "Europe/Brussels";
         locale = "en_US.UTF-8";
         hostname = "nixos";
@@ -46,7 +47,6 @@
         font = "Inter Regular";
         fontPkg = pkgs.inter;
         theme = "catppuccin";
-        icons = "papirus";
 
         # terminal
         shell = "zsh";

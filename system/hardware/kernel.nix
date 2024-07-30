@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgs, systemSettings, ... }:
 {
-  boot.kernelPackages = pkgs.linuxPackages_6_9;
+  boot.kernelPackages = systemSettings.kernel;
   boot.consoleLogLevel = 0;
 }
