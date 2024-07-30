@@ -31,7 +31,8 @@
         "flake": true,
         "path": ".nix-config",
         "hostname": "default",
-        "nix-on-droid": false
+        "nix-on-droid": false,
+        "root-command": "doas",
       }
     '';
     executable = false;
