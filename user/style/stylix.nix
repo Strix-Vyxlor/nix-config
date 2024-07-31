@@ -14,10 +14,10 @@ in {
   stylix.polarity = themePolarity;
   stylix.image = ./. + background;
 
-  home.file."Pictures/background.png" = {
+  home.file."Media/Pictures/background.png" = {
     source = ./. + background;
   };
-  home.file."Pictures/logo" = {
+  home.file."Media/Pictures/logo" = {
     source = ../../themes/logo;
     recursive = true;
   };
