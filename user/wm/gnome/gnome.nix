@@ -1,5 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 {
+  
+  imports = [ inputs.stylix.homeManagerModules.stylix ];
 
   dconf = {
     enable = true;
@@ -14,18 +16,9 @@
         vitals.extensionUuid
       ];
     };
-  };
+  }; 
 
-  gtk.cursorTheme = {
-    package = pkgs.vimix-cursors;
-    name = "Vimix-cursors";
-    size = 24;
-  };
-
-  gtk.iconTheme = {
-    package = pkgs.vimix-icon-theme;
-    name = "Vimix-Black-dark";
-  };
+  stylix.targets.gnome.enable = true;
 
   home.packages = (with pkgs; [
     vimix-icon-theme
