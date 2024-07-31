@@ -1,5 +1,10 @@
 { config, lib, pkgs, inputs, ... }:
 {
+
+  imports = [ inputs.stylix.homeManagerModules.stylix ];
+
+  stylix.targets.gnome.enable = true;
+
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";

@@ -3,7 +3,7 @@
   imports = [
     ./pipewire.nix
     ./dbus.nix
-    inputs.stylix.homeManagerModules.stylix
+    inputs.stylix.nixosModules.stylix
   ];
  
   stylix.targets.gnome.enable = true;
