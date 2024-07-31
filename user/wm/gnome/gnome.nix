@@ -1,9 +1,7 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, stylix, ... }:
 {
 
-  imports = [ inputs.stylix.homeManagerModules.stylix ];
-
-  # stylix.targets.gnome.enable = true;
+  stylix.targets.gnome.enable = true;
 
   dconf = {
     enable = true;
