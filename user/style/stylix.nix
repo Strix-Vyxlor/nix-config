@@ -33,6 +33,7 @@ in {
   stylix.targets = {
     kde.enable = true;
     gtk.enable = true;
+    helix.enable = true;
   };
 
   home.file = {
