@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }:
 {
-  imports = [ inputs.stylix.nixosModules.stylix ];
+  imports = [ inputs.stylix.homeManagerModules.stylix ];
 
   stylix.targets.vim.enable = true;
 
