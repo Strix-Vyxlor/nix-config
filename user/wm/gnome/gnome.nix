@@ -2,7 +2,7 @@
 {
 
   stylix.targets.gnome.enable = true;
-
+  stylix.targets.gedit.enable = true;
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";

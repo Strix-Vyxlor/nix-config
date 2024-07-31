@@ -1,6 +1,6 @@
 { lib, pkgs, inputs, userSettings, ... }:
 let
-  themePath = "../../../themes" + ("/" + userSettings.theme + "/" + userSettings.theme) + ".yaml";
+  themePath = "../../../themes" + ("/" + userSettings.theme ) + "/theme.yaml";
   themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes" + ("/" + userSettings.theme) + "/polarity.txt"));
   background = "../../../themes" + ("/" + userSettings.theme) + "/background.png";
 in 
@@ -27,7 +27,11 @@ in
     };
   };
 
-  stylix.targets.console.enable = true;
+  stylix.targets = {
+    console.enable = true;
+    plymouth.enable = true;
+    nixos-icons.enable = true;
+  };
 
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
