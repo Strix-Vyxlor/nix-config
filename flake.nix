@@ -21,6 +21,11 @@
 
     stylix.url = "github:danth/stylix";
     rust-overlay.url = "github:oxalica/rust-overlay";
+
+    neovim = {
+      url = "github:Strix-Vyxlor/nvim_config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, ... }:
@@ -60,7 +65,10 @@
         config = {
           allowUnFree = true;
         };
-        overlays = [ (import inputs.rust-overlay) ];
+        overlays = [ 
+          (import inputs.rust-overlay)
+          inputs.neovim.overlays.${systemSettings.system}.neovim
+        ];
       };
 
       lib = inputs.nixpkgs.lib;
