@@ -18,7 +18,7 @@ in {
     source = ./. + background;
   };
   home.file."Pictures/logo" = {
-    source = "../../themes/logo";
+    source = ../../themes/logo;
     recursive = true;
   };
 
