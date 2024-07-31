@@ -1,10 +1,13 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 {
   imports = [
     ./pipewire.nix
     ./dbus.nix
+    inputs.stylix.homeManagerModules.stylix
   ];
  
+  stylix.targets.gnome.enable = true;
+
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon gnome2.GConf ];
 
   services.printing.enable = true;

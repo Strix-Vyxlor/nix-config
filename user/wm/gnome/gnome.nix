@@ -1,8 +1,5 @@
 { config, lib, pkgs, inputs, ... }:
 {
-  
-  imports = [ inputs.stylix.homeManagerModules.stylix ];
-
   dconf = {
     enable = true;
     settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
@@ -17,8 +14,6 @@
       ];
     };
   }; 
-
-  stylix.targets.gnome.enable = true;
 
   home.packages = (with pkgs; [
     vimix-icon-theme
