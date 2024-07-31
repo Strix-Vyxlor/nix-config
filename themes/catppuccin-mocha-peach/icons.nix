@@ -1,6 +1,5 @@
-{ pkgs, inputs, ... }:
+{ pkgs, stylix, ... }:
 {
-  imports = [ inputs.stylix.homeManagerModules.stylix ]; 
 
   stylix.cursor = {
     package = pkgs.vimix-cursors;
