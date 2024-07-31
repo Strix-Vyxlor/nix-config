@@ -6,5 +6,5 @@
     neovim
   ];
 
-    # TODO: add my neovim config
+    # NOTE: im overiding neovim package with my config
 }
