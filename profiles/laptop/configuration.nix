@@ -1,4 +1,4 @@
-{ pkgs, lib, zix-pkg, home-manager, systemSettings, userSettings, ... }:
+{ pkgs, lib, zix-pkg, systemSettings, userSettings, ... }:
 {
   imports = [
     ../../system/hardware-configuration.nix

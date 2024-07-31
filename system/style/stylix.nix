@@ -9,7 +9,7 @@ in
 
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;
-  stylix.image = ./. + background;
+  # stylix.image = ./. + background;
   
   stylix.base16Scheme = ./. + themePath;
   stylix.fonts = {

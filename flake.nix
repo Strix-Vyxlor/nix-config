@@ -92,7 +92,6 @@
           ];
           specialArgs = {
             inherit zix-pkg;
-            inherit home-manager;
             inherit systemSettings;
             inherit userSettings;
             inherit inputs;
