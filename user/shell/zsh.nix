@@ -56,12 +56,23 @@ in
     '' + prompt.${userSettings.prompt};
   };
 
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+    nix-direnv.enable = true;
+  };
+
   home.packages = with pkgs; [
+    direnv
+    nix-direnv
     eza
     bat
     zoxide
     btop
     zinit
     fzf
+    unzip
+    gzip
+    gnutar
   ];
 }
