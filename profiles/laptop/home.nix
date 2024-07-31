@@ -15,7 +15,6 @@
     ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
     ../../user/style/stylix.nix
     ../../user/lang/cc/cc.nix
-    ../../user/lang/rust/rust.nix
   ];
 
   home.packages = with pkgs; [
