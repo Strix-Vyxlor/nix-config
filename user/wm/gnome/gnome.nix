@@ -3,7 +3,7 @@
 
   imports = [ inputs.stylix.homeManagerModules.stylix ];
 
-  stylix.targets.gnome.enable = true;
+  # stylix.targets.gnome.enable = true;
 
   dconf = {
     enable = true;
@@ -20,9 +20,7 @@
     };
   }; 
 
-  home.packages = (with pkgs; [
-    vimix-icon-theme
-    vimix-cursors
+  home.packages = (with pkgs; [ 
     xdg-utils
     adwaita-icon-theme
   ]) ++ (with pkgs.gnomeExtensions; [
