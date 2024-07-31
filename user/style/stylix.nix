@@ -14,6 +14,14 @@ in {
   stylix.polarity = themePolarity;
   stylix.image = ./. + background;
 
+  home.file."Pictures/background.png" = {
+    source = ./. + background;
+  };
+  home.file."Pictures/logo" = {
+    source = "../../themes/logo";
+    recursive = true;
+  };
+
   stylix.base16Scheme = ./. + themePath;
   stylix.fonts = {
     monospace = {
