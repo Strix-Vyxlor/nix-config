@@ -6,7 +6,7 @@
     # inputs.stylix.nixosModules.stylix
   ];
  
-  # stylix.targets.gnome.enable = true;
+  stylix.targets.gnome.enable = true;
 
   services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon gnome2.GConf ];
 
