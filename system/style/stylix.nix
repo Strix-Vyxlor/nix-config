@@ -28,7 +28,6 @@ in
   };
 
   stylix.targets.console.enable = true;
-  stylix.targets.helix.enable = true;
 
   environment.sessionVariables = {
     QT_QPA_PLATFORMTHEME = "qt5ct";
