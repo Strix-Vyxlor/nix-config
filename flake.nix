@@ -46,7 +46,7 @@
         term = "alacritty";
         font = "Inter Regular";
         fontPkg = pkgs.inter;
-        theme = "catppuccin";
+        theme = "catppuccin-mocha-peach";
 
         # terminal
         shell = "zsh";

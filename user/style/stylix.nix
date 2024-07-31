@@ -1,14 +1,16 @@
 { config, lib, pkgs, inputs, userSettings, ... }:
 let
-  themePath = "../../../themes" + ("/" + userSettings.theme + "/" + userSettings.theme) + ".yaml";
+  themePath = "../../../themes" + ("/" + userSettings.theme) + "/theme.yaml";
   themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes" + ("/" + userSettings.theme) + "/polarity.txt"));
+  background = "../../../themes" + ("/" + userSettings.theme) + "/background.png"; 
 in {
   imports = [ inputs.stylix.homeManagerModules.stylix ];
 
   home.file.".currenttheme".text = userSettings.theme;
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;
-  
+  stylix.image = ./. + background;
+
   stylix.base16Scheme = ./. + themePath;
   stylix.fonts = {
     monospace = {
