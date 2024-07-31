@@ -20,6 +20,8 @@
 
   home.packages = (with pkgs; [ 
     xdg-utils
+    blackbox-terminal
+    dconf-editor
     adwaita-icon-theme
   ]) ++ (with pkgs.gnomeExtensions; [
         blur-my-shell
