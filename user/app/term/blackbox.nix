@@ -29,7 +29,7 @@
           "#${config.lib.stylix.colors.base09}",
           "#${config.lib.stylix.colors.base0E}",
           "#${config.lib.stylix.colors.base0C}",
-          "#${config.lib.stylix.colors.base07}",
+          "#${config.lib.stylix.colors.base07}"
         ] 
       }
     '';
