@@ -15,6 +15,7 @@
     ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
     ../../user/app/spotify/spicetify.nix
     ../../user/app/office/onlyoffice.nix
+    ../../user/app/comms/discord.nix
     ../../user/style/stylix.nix
     ../../user/lang/cc/cc.nix
   ];
