@@ -22,7 +22,7 @@
 
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       binding = "<Super>r";
-      command = "wofi";
+      command = "wofi --allow-images";
       name = "launcher";
     };
 
