@@ -18,10 +18,10 @@ in {
       customColorScheme = {
         text = "${config.lib.stylix.colors.base05}";
         subtext = "${config.lib.stylix.colors.base05}";
-        sidebar-text = "${config.lib.stylix.colors.base05}";
-        main = "${config.lib.stylix.colors.base00}";
+        sidebar-text = "${config.lib.stylix.colors.base07}";
+        main = "${config.lib.stylix.colors.base02}";
         sidebar = "${config.lib.stylix.colors.base00}";
-        player = "${config.lib.stylix.colors.base02}";
+        player = "${config.lib.stylix.colors.base0D}";
         card = "${config.lib.stylix.colors.base02}";
         shadow = "${config.lib.stylix.colors.base01}";
         selected-row = "${config.lib.stylix.colors.base02}";
