@@ -25,5 +25,16 @@
       command = "wofi";
       name = "launcher";
     };
+
+    # settings
+    "org/gnome/desktop/wm/preferences" = {
+      focus-mode = "mouse";
+    };
+
+    # Mutter
+    "org/gnome/mutter" = {
+      center-new-windows = true;
+      workspaces-only-on-primary = false;
+    };
   };
 }

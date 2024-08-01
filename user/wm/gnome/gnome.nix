@@ -28,6 +28,7 @@
     dconf-editor
     wl-clipboard
     adwaita-icon-theme
+    gnome.gnome-tweaks
   ]) ++ (with pkgs.gnomeExtensions; [
         blur-my-shell
         caffeine
