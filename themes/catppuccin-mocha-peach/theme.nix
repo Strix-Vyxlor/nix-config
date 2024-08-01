@@ -1,6 +1,12 @@
 { pkgs, ... }:
 {
 
+  home.file.".config/Vencord/themes/cattpuccin.css".source = pkgs.fetchurl {
+    url = "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css";
+    hash = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=";
+    dontUnpack = true;
+  };
+
   gtk.cursorTheme = {
     package = pkgs.vimix-cursors;
     name = "Vimix-cursors";
