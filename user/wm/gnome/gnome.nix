@@ -2,6 +2,7 @@
 {
   imports = [
     ../../app/term/blackbox.nix
+    ./wofi.nix
   ];
 
   stylix.targets.gnome.enable = true;
