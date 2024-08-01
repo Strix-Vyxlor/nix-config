@@ -13,6 +13,7 @@
     ../../user/app/git/gh.nix
     ( ./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
     ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
+    ../../user/app/spotify/spicetify.nix
     ../../user/style/stylix.nix
     ../../user/lang/cc/cc.nix
   ];
