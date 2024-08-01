@@ -22,7 +22,7 @@
           "#${config.lib.stylix.colors.base0C}",
           "#${config.lib.stylix.colors.base07}",
 
-          "#${config.lib.stylix.colors.base00}", 
+          "#${config.lib.stylix.colors.base03}", 
           "#${config.lib.stylix.colors.base08}",
           "#${config.lib.stylix.colors.base0B}",
           "#${config.lib.stylix.colors.base0A}",
