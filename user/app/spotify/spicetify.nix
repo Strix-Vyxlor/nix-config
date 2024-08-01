@@ -12,7 +12,7 @@ in {
     {
       enable = true;
 
-      theme = spicePkgs.themes.Sleek;
+      theme = spicePkgs.themes.Ziro;
       colorScheme = "custom";
 
       customColorScheme = {
