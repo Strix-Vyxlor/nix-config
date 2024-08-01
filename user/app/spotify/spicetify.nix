@@ -27,7 +27,7 @@ in {
         selected-row = "${config.lib.stylix.colors.base02}";
         button = "${config.lib.stylix.colors.base0D}";
         button-active = "${config.lib.stylix.colors.base0D}";
-        button-disabled = "${config.lib.stylix.colors.base03}";
+        button-disabled = "${config.lib.stylix.colors.base02}";
         tab-active = "${config.lib.stylix.colors.base0D}";
         notification = "${config.lib.stylix.colors.base0B}";
         notification-error = "${config.lib.stylix.colors.base08}";
