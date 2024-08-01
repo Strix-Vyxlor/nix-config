@@ -6,7 +6,7 @@ let
 in {
   imports = [ 
     inputs.stylix.homeManagerModules.stylix
-    ( ./. "../../../themes" + ("/" + userSettings.theme) + /theme.nix)
+    ( ./. + "../../../themes" + ("/" + userSettings.theme) + /theme.nix)
   ];
 
   home.file.".currenttheme".text = userSettings.theme;
