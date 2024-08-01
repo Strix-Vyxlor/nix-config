@@ -10,8 +10,8 @@
         "name": "Stylix",
         "comment": "System style for blackbox",
         "use-theme-colors": false,
-        "foreground": #${config.lib.stylix.colors.base05},
-        "background": #${config.lib.stylix.colors.base00},
+        "foreground-color": #${config.lib.stylix.colors.base05},
+        "background-color": #${config.lib.stylix.colors.base00},
         "palette": [
           #${config.lib.stylix.colors.base00}, 
           #${config.lib.stylix.colors.base08},
