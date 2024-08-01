@@ -26,6 +26,11 @@
       url = "github:Strix-Vyxlor/nvim_config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    inputs.spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, ... }:
