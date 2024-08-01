@@ -14,9 +14,9 @@
       allow-images = true;  
     };
     style = ''
-      @define-color	mauve  #${config.lib.stylix.colors.base0C};
+      @define-color	mauve  #${config.lib.stylix.colors.base0E};
       @define-color	red  #${config.lib.stylix.colors.base08};
-      @define-color	peach  #${config.lib.stylix.colors.base0E};
+      @define-color	peach  #${config.lib.stylix.colors.base0D};
       @define-color	lavender  #${config.lib.stylix.colors.base07};
       @define-color	text  #${config.lib.stylix.colors.base05};
       @define-color	base  #${config.lib.stylix.colors.base00};
