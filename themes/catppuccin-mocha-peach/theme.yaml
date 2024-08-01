@@ -1,4 +1,4 @@
-scheme: "Catppuccin Mocha"
+scheme: "Catppuccin Mocha Peach"
 author: "https://github.com/catppuccin/catppuccin"
 base00: "1e1e2e" # base
 base01: "181825" # mantle
@@ -8,6 +8,7 @@ base04: "585b70" # surface2
 base05: "cdd6f4" # text
 base06: "f5e0dc" # rosewater
 base07: "b4befe" # lavender
+# accents
 base08: "f38ba8" # red
 base09: "89b4fa" # blue
 base0A: "f9e2af" # yellow

@@ -1,5 +1,8 @@
-{ config, lib, pkgs, stylix, ... }:
+{ config, lib, pkgs, ... }:
 {
+  imports = [
+    ../../app/term/blackbox.nix
+  ];
 
   stylix.targets.gnome.enable = true;
   stylix.targets.gedit.enable = true;
@@ -19,9 +22,9 @@
   }; 
 
   home.packages = (with pkgs; [ 
-    xdg-utils
-    blackbox-terminal
+    xdg-utils 
     dconf-editor
+    wl-clipboard
     adwaita-icon-theme
   ]) ++ (with pkgs.gnomeExtensions; [
         blur-my-shell
