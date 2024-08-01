@@ -25,7 +25,7 @@ in {
         card = "${config.lib.stylix.colors.base02}";
         shadow = "${config.lib.stylix.colors.base01}";
         selected-row = "${config.lib.stylix.colors.base02}";
-        button = "${config.lib.stylix.colors.base09}";
+        button = "${config.lib.stylix.colors.base0D}";
         button-active = "${config.lib.stylix.colors.base0D}";
         button-disabled = "${config.lib.stylix.colors.base03}";
         tab-active = "${config.lib.stylix.colors.base0D}";
