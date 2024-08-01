@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, systemSettings, ... }:
+{ config, lib, pkgs, inputs, systemSettings, ... }:
 let
   spicePkgs = inputs.spicetify-nix.packages.${systemSettings.system}.default;
 in {
@@ -7,6 +7,9 @@ in {
   programs.spicetify =
     {
       enable = true;
+
+      spotifyPackage = pkgs.spotify;
+
       theme = spicePkgs.themes.Sleek;
       colorScheme = "custom";
 
