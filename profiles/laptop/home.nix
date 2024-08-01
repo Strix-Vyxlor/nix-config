@@ -14,6 +14,7 @@
     ( ./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
     ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
     ../../user/app/spotify/spicetify.nix
+    ../../user/app/office/onlyoffice.nix
     ../../user/style/stylix.nix
     ../../user/lang/cc/cc.nix
   ];
