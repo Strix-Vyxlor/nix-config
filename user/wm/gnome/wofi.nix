@@ -11,6 +11,7 @@
       term = "blackbox";
       prompt = "";
       columns = 1;
+      allow-images = true;  
     };
     style = ''
       @define-color	mauve  #${config.lib.stylix.colors.base0C};
