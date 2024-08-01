@@ -5,6 +5,7 @@
   home.homeDirectory = "/home/" + userSettings.username;
 
   programs.home-manager.enable = true;
+  nixpkgs.config.allowUnfree = true;
 
   imports = [
     ../../user/shell/sh.nix
