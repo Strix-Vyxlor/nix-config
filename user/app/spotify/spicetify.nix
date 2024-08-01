@@ -35,8 +35,8 @@ in {
       };
 
       enabledCustomApps = with spicePkgs.apps; [
-        new-releases
-        lyrics-plus
+        newReleases
+        lyricsPlus
       ];
 
       enabledExtensions = with spicePkgs.extensions; [
