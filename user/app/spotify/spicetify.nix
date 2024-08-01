@@ -19,8 +19,8 @@ in {
         text = "${config.lib.stylix.colors.base04}";
         subtext = "${config.lib.stylix.colors.base03}";
         sidebar-text = "${config.lib.stylix.colors.base07}";
-        main = "${config.lib.stylix.colors.base02}";
-        sidebar = "${config.lib.stylix.colors.base00}";
+        main = "${config.lib.stylix.colors.base00}";
+        sidebar = "${config.lib.stylix.colors.base02}";
         player = "${config.lib.stylix.colors.base0D}";
         card = "${config.lib.stylix.colors.base02}";
         shadow = "${config.lib.stylix.colors.base01}";
