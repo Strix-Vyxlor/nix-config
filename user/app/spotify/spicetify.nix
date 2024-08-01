@@ -16,8 +16,8 @@ in {
       colorScheme = "custom";
 
       customColorScheme = {
-        text = "${config.lib.stylix.colors.base05}";
-        subtext = "${config.lib.stylix.colors.base04}";
+        text = "${config.lib.stylix.colors.base04}";
+        subtext = "${config.lib.stylix.colors.base05}";
         sidebar-text = "${config.lib.stylix.colors.base07}";
         main = "${config.lib.stylix.colors.base00}";
         sidebar = "${config.lib.stylix.colors.base02}";
