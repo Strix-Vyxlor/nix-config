@@ -1,8 +1,8 @@
-{ ... }:
+{ lib, ... }:
 {
-  dconf.settings = {
+  dconf.settings = with lib.hm.gvariant; {
     "org/gnome/desktop/wm/keybindings" = {
-      close = "['<Super>'q]";
+      close = ["<Super>q"];
     };
   };
 }
