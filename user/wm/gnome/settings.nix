@@ -51,6 +51,12 @@
       name = "launcher";
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3" = {
+      binding = "<Super>b";
+      command = "brave";
+      name = "browser";
+    };
+
     # settings
     "org/gnome/desktop/wm/preferences" = {
       focus-mode = "mouse";
