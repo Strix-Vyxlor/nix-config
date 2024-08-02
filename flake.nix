@@ -63,7 +63,7 @@
 
         # terminal
         shell = "zsh";
-        prompt = "starship";
+        prompt = "oh-my-posh";
         zix = "default";
         editor = "nvim";
       };
