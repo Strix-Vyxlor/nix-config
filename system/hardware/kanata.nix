@@ -80,5 +80,5 @@
     };
   };
 
-  environment.packages = [ pkgs.kanata ];
+  environment.systemPackages = [ pkgs.kanata ];
 }
