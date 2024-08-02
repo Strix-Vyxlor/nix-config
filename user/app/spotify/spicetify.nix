@@ -2,17 +2,13 @@
 let
   spicePkgs = inputs.spicetify-nix.legacyPackages.${systemSettings.system};
 in {
-  imports = [ inputs.spicetify-nix.homeManagerModules.default ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "spotify"
-  ];
+  imports = [ inputs.spicetify-nix.homeManagerModules.default ]; 
 
   programs.spicetify =
     {
       enable = true;
 
-      theme = spicePkgs.themes.sleek;
+      theme = spicePkgs.themes.blossom;
       colorScheme = "custom";
 
       customColorScheme = {
@@ -31,7 +27,7 @@ in {
         tab-active = "${config.lib.stylix.colors.base0D}";
         notification = "${config.lib.stylix.colors.base0B}";
         notification-error = "${config.lib.stylix.colors.base08}";
-        misc = "${config.lib.stylix.colors.base0A}";
+        misc = "${config.lib.stylix.colors.base02}";
       };
 
       enabledCustomApps = with spicePkgs.apps; [
