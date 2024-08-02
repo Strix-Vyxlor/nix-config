@@ -116,8 +116,9 @@
 
     # quick settings
     "org/gnome/shell/extensions/quick-settings-tweaks" = {
-      add-dnd-quick-toggle-enable = false;
+      add-dnd-quick-toggle-enabled = false;
       notifications-enabled = false;
+      volume-mixer-enabled = false;
       user-removed-buttons = [
         "PowerProfilesToggle" 
         "KeyboardBrightnessToggle" 
