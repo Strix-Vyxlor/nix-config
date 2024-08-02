@@ -8,7 +8,7 @@ in {
     {
       enable = true;
 
-      theme = spicePkgs.themes.blossom;
+      theme = spicePkgs.themes.dribbblish;
       colorScheme = "custom";
 
       customColorScheme = {
