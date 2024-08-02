@@ -8,6 +8,7 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
+    ../../user/style/stylix.nix
     ../../user/shell/sh.nix
     ( ./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
     ../../user/app/git/git.nix
@@ -16,8 +17,7 @@
     ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
     ../../user/app/spotify/spicetify.nix
     ../../user/app/office/onlyoffice.nix
-    ../../user/app/comms/discord.nix
-    ../../user/style/stylix.nix
+    ../../user/app/comms/discord.nix 
     ../../user/lang/cc/cc.nix
   ];
 

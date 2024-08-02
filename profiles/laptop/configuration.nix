@@ -7,11 +7,11 @@
     ../../system/hardware/time.nix
     ../../system/hardware/bluetooth.nix
 
+    ../../system/style/stylix.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
-    ../../system/style/stylix.nix
   ];
  
   nix.package = pkgs.nixFlakes;
