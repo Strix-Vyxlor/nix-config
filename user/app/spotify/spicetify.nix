@@ -18,7 +18,7 @@ in {
         main = "${config.lib.stylix.colors.base00}";
         sidebar = "${config.lib.stylix.colors.base00}";
         player = "${config.lib.stylix.colors.base0D}";
-        card = "${config.lib.stylix.colors.base0A}";
+        card = "${config.lib.stylix.colors.base03}";
         shadow = "${config.lib.stylix.colors.base01}";
         selected-row = "${config.lib.stylix.colors.base02}";
         button = "${config.lib.stylix.colors.base0D}";
