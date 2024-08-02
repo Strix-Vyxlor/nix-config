@@ -37,6 +37,9 @@ in
     '';
 
     initExtra = ''
+
+      bindkey -e
+
       setopt appendhistory
       setopt sharehistory
       setopt hist_ignore_space
