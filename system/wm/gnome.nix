@@ -55,6 +55,7 @@
       gnome-contacts
       gnome-maps
       gnome-logs
+      gnome-backgrounds
   ]);
 
 }

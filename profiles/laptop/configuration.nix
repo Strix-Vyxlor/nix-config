@@ -26,6 +26,7 @@
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot";
   };
+  boot.plymouth.enable = true;
 
   networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
