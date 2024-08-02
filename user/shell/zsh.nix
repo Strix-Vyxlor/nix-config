@@ -8,13 +8,7 @@ let
     plaincat = "command cat";
     cat = "bat --plain";
     neofetch = "fastfetch";
-  };
-
-  prompt = {
-    starship = ''
-      eval "''$(starship init zsh)"
-    '';
-  };
+  }; 
 in
 {
   imports = [
@@ -53,7 +47,7 @@ in
       
       eval "''$(fzf --zsh)"
       eval "''$(zoxide init --cmd cd zsh)"
-    '' + prompt.${userSettings.prompt};
+    '';
   };
 
   programs.direnv = {
