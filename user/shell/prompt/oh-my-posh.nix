@@ -4,7 +4,7 @@
   programs.oh-my-posh = {
     enable = true;
     enableBashIntegration = false;
-    settings = pkgs.builtings.fromJSON ''
+    settings = pkgs.builtins.fromJSON ''
       {
         "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
         "palette": {
