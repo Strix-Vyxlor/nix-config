@@ -44,7 +44,7 @@
         kernel = pkgs.linuxPackages_6_9;
         timezone = "Europe/Brussels";
         locale = "en_US.UTF-8";
-        hostname = "strix-x13";
+        hostname = "nixos";
       };
 
       userSettings = {
