@@ -31,6 +31,7 @@ in
     console.enable = true;
     plymouth.enable = true;
     nixos-icons.enable = true;
+    gtk.enable = true;
   };
 
   environment.sessionVariables = {
