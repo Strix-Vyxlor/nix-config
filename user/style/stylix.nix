@@ -9,6 +9,8 @@ in {
     ( ./. + "../../../themes" + ("/" + userSettings.theme) + /theme.nix)
   ];
 
+  stylix.enable = true;
+
   home.file.".currenttheme".text = userSettings.theme;
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;

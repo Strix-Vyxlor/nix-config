@@ -7,6 +7,8 @@ in
 {
   imports = [ inputs.stylix.nixosModules.stylix ];
 
+  stylix.enable = true;
+
   stylix.autoEnable = false;
   stylix.polarity = themePolarity;
   stylix.image = ./. + background;
