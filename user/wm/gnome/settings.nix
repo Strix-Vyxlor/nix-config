@@ -125,5 +125,16 @@
         "NightLightToggle"
       ];
     };
+
+    # blackbox
+    "com/raggesilver/BlackBox" = {
+      command-as-login-shell = false;
+      use-custom-command = true;
+      custom-shell-command = "/home/strix/.nix-profile/bin/zsh";
+      font = "ZedMono Nerd Font 14";
+      theme-dark = "Stylix";
+      scrollback-mode = mkInt32 1;
+      style-preference = mkInt32 2;
+    };
   };
 }
