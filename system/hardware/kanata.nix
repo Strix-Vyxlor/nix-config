@@ -79,4 +79,6 @@
       '';
     };
   };
+
+  environment.packages = [ pkgs.kanata ];
 }
