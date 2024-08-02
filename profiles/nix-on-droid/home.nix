@@ -6,6 +6,7 @@
     ../../user/shell/sh.nix
     ../../user/app/git/git.nix
     ../../user/app/git/gh.nix
+    ../../user/style/stylix.nix
   ];
 
   home.packages = with pkgs; [
