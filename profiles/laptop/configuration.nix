@@ -7,6 +7,8 @@
     ../../system/hardware/time.nix
     ../../system/hardware/bluetooth.nix
 
+    ../../system/hardware/kanata.nix
+
     ../../system/style/stylix.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
