@@ -135,6 +135,10 @@
       theme-dark = "Stylix";
       scrollback-mode = mkInt32 1;
       style-preference = mkInt32 2;
+      working-directory-mode = mkInt32 1;
+      terminal-bell = false;
+      show-headerbar = false;
+      floating-controls = true;
     };
   };
 }
