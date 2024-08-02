@@ -66,7 +66,7 @@
     # blur my shell
     "org/gnome/shell/blur-my-shell/panel" = {
       static-blur = false;
-      unblur-in-overview = true;
+      unblur-in-overview = false;
       sigma = mkInt32 20;
       brightness = mkDouble 0.9;
     };
