@@ -9,13 +9,14 @@
         "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
         "palette": {
           "main-bg": "#${config.lib.stylix.colors.base01}",
-          "peach": "#${config.lib.stylix.colors.base0D}",
+          "orange": "#${config.lib.stylix.colors.base0D}",
           "green": "#${config.lib.stylix.colors.base0B}",
           "red": "#${config.lib.stylix.colors.base08}",
           "teal": "#${config.lib.stylix.colors.base0C}",
           "blue": "#${config.lib.stylix.colors.base08}",
           "maroon": "#${config.lib.stylix.colors.base0E}",
           "yellow": "#${config.lib.stylix.colors.base0A}",
+          "purple": "#${config.lib.stylix.colors.base0A}",
           "sky": "#89dceb"
         },
         "blocks": [
@@ -24,7 +25,7 @@
            "segments": [
               {
                 "background": "p:main-bg",
-                "foreground": "p:peach",
+                "foreground": "p:orange",
                 "leading_diamond": "\ue0b6",
                 "properties": {
                   "style": "mixed"
@@ -36,12 +37,12 @@
               },
               {
                 "background": "p:main-bg",
-                "foreground": "#43CCEA",
+                "foreground": "p:teal",
                 "foreground_templates": [
-                  "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
-                  "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
-                  "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
-                  "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+                  "{{ if or (.Working.Changed) (.Staging.Changed) }}p:orange{{ end }}",
+                  "{{ if and (gt .Ahead 0) (gt .Behind 0) }}p:red{{ end }}",
+                  "{{ if gt .Ahead 0 }}p:purple{{ end }}",
+                  "{{ if gt .Behind 0 }}p:purple{{ end }}"
                 ],
                 "leading_diamond": " \ue0b6",
                 "properties": {
