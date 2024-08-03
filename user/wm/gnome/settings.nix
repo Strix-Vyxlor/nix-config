@@ -32,6 +32,12 @@
       move-to-workspace-10 = ["<Shift><Super>0"];
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      next = [ "Cancel" ];
+      play = [ "Go" ];
+      previous = [ "Messenger" ];
+    };
+
     # custom keymaps
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>t";
