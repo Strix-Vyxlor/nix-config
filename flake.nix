@@ -92,37 +92,7 @@
             inherit inputs;
           };
         };
-      };
-
-      nixosModules = {
-        system = {
-          disabledModules = [
-            "profiles/base.nix"
-          ];
-
-          system.stateVersion = "24.05";
-        };
-        user = {
-          users.users.strix = {
-            password = "strix";
-            isNormalUser = true;
-            extraGroups = [ "wheel" ];
-            openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwPfwOPVhGrXXPmJ+3eurdQfezuCuCdJauZv1yJpM5W" ];
-          };
-        };
-      };
-
-      packages.aarch64-linux = {
-        rpi5-sd = inputs.nixos-generators.nixosGenerate {
-          system = "aarch64-linux";
-          format = "sd-aarch64";
-          modules = [
-            ./modules/rpi/rpi5-sd.nix
-            self.nixosModules.system
-            self.nixosModules.user
-          ];
-        };
-      };
+      }; 
     };
 
   inputs = {
