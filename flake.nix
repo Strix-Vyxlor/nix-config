@@ -1,40 +1,5 @@
 {
-  description = "Strix Vyxlor nix config.";
-
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager-unstable = {
-      url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nix-on-droid = {
-      url = "github:nix-community/nix-on-droid/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager-unstable";
-    };
-
-    zix = {
-      url = "github:Strix-Vyxlor/zix/master";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    stylix = {
-      url = "github:danth/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    rust-overlay.url = "github:oxalica/rust-overlay";
-
-    neovim = {
-      url = "github:Strix-Vyxlor/nvim_config";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-  };
+  description = "Strix Vyxlor nix config."; 
 
   outputs = inputs@{ self, ... }:
     let
@@ -114,7 +79,7 @@
           };
         };
       };
-
+    
       nixOnDroidConfigurations = {
         inherit pkgs;
         default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
@@ -128,5 +93,75 @@
           };
         };
       };
+
+      nixosModules = {
+        system = {
+          disabledModules = [
+            "profiles/base.nix"
+          ];
+
+          system.stateVersion = "24.05";
+        };
+        user = {
+          users.users.strix = {
+            password = "strix";
+            isNormalUser = true;
+            extraGroups = [ "wheel" ];
+            openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICwPfwOPVhGrXXPmJ+3eurdQfezuCuCdJauZv1yJpM5W" ];
+          };
+        };
+      };
+
+      packages.aarch64-linux = {
+        rpi5-sd = inputs.nixos-generators.nixosGenerate {
+          system = "aarch64-linux";
+          format = "sd-aarch64";
+          modules = [
+            ./modules/rpi/rpi5-sd.nix
+            self.nixosModules.system
+            self.nixosModules.user
+          ];
+        };
+      };
     };
+
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager-unstable = {
+      url = "github:nix-community/home-manager/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager-unstable";
+    };
+
+    zix = {
+      url = "github:Strix-Vyxlor/zix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    stylix = {
+      url = "github:danth/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    rust-overlay.url = "github:oxalica/rust-overlay";
+
+    neovim = {
+      url = "github:Strix-Vyxlor/nvim_config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
 }
