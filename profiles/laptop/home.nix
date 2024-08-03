@@ -15,6 +15,8 @@
     ../../user/app/git/gh.nix
     ( ./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
     ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
+
+    ../../user/app/graphics/aseprite.nix
     ../../user/app/spotify/spicetify.nix
     ../../user/app/office/onlyoffice.nix
     ../../user/app/comms/discord.nix 
