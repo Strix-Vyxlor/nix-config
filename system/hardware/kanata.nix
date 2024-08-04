@@ -33,36 +33,36 @@
           OEM_PERIOD 51
           OEM_COMMA 50
           OEM_3 40
+          OEM_102 86
         )
 
         ;; souce map
         (defsrc
           tab         a z e r t y u i o p
-          caps         q s d f g h j k l m OEM_3
-          lshift OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 rshift ralt rctrl
+          caps OEM_102 q s d f g h j k l m
+          lsft OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
+          lctrl lalt                                             ralt rctrl
         )
 
         (defalias
           esc-ctrl (tap-hold 100 100 esc lctrl)
-          base-layerswitch (tap-dance 200 (
-            (layer-switch num)
-            (layer-switch symbol)
-            (layer-switch default)
-          ))
-          to-base (layer-switch base)
-          repeat-ralt (tap-hold 150 100 rpt-any ralt)
+
+          home (layer-switch base)
+          num (layer-switch number)
         )
 
         (deflayer base
-          tab         a z e r t y u i o p
-          @esc-ctrl    q s d f g h j k l m OEM_3
-          lshift OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 rshift @base-layerswitch caps
+          tab              a z e r t y u i o p
+          @esc-ctrl OEM_102 q s d f g h j k l m
+          lsft OEM_10      w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
+          lctrl _                                                  @number caps
         )
 
-        (deflayer num
-          tab         1 2 3 4 5 6 7 8 9 0
-          @esc-ctrl     S-1 S-2 S-3 S-4 S-5 S-6 S-7 S-8 S-9 S-0 S-OEM_3
-          lshift RA-OEM_10 RA-1 RA-2 RA-3 RA-9 b RA-0 S-OEM_COMMA S-OEM_PERIOD S-OEM_2 rshift @to-base caps
+        (deflayer number
+          tab         a z e r t y u S-7 S-8 S-9
+          @esc-ctrl OEM_102 q s d f g h S-4 S-5 S-6 S-0
+          lsft OEM_10 w x c v b n S-1 S-2 S-3 OEM_PLUS rsft
+          lctrl @base                                 ralt caps
         )
 
         (deflayer symbol
@@ -71,10 +71,11 @@
           lshift OEM_10 w x c S-OEM_1 b OEM_PLUS OEM_COMMA OEM_PERIOD OEM_2 @to-base @to-base caps
         )
 
-        (deflayer default
+        (defsrc
           tab         a z e r t y u i o p
-          caps         q s d f g h j k l m OEM_3
-          lshift OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 rshift ralt @to-base
+          caps OEM_102 q s d f g h j k l m
+          lsft OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
+          lctrl lalt                                             ralt @base
         )
       '';
     };
