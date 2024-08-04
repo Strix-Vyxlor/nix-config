@@ -64,12 +64,6 @@
           lctrl @base                             ralt caps
         )
 
-        (deflayer symbol
-          tab         a S-OEM_2 OEM_COMMA S-OEM_PERIOD S-OEM_PLUS S-OEM_3 OEM_PERIOD OEM_2 S-OEM_COMMA p
-          @esc-ctrl    OEM_1 RA-OEM_6 RA-9 5 S-OEM_MINUS OEM_MINUS OEM_4 RA-0 RA-OEM_1 RA-OEM_PLUS OEM_3
-          lshift OEM_10 w x c S-OEM_1 b OEM_PLUS OEM_COMMA OEM_PERIOD OEM_2 @to-base @to-base caps
-        )
-
         (deflayer default
           tab         a z e r t y u i o p
           caps OEM_102 q s d f g h j k l m
