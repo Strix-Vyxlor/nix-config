@@ -44,18 +44,31 @@
         )
 
         (defalias
-          esc-ctrl (tap-hold 100 100 esc lctrl)
+          esc-ctrl (tap-hold 100 120 esc lctrl)
 
           home (layer-switch base)
           num (layer-switch number)
           sym (layer-switch symbol)
           nav (layer-switch navigation)
           def (layer-switch default)
+
+          ;; home row mods
+          hlctrl (tap-hold 100 170 f lctrl)
+          hrctrl (tap-hold 100 170 j lctrl)
+
+          hlsft (tap-hold 100 170 f lsft)
+          hrsft (tap-hold 100 170 j rsft)
+
+          hlalt (tap-hold 100 170 s lalt)
+          hralt (tap-hold 100 170 l lalt)
+
+          hlmet (tap-hold 100 170 q lmet)
+          hrmet (tap-hold 100 170 m lmet)
         )
 
         (deflayer base
           tab       a z e r t y u i o p
-          @esc-ctrl  q s d f g h j k l m
+          @esc-ctrl  @hlmet @hlalt @hlsft @hlctrl g h @hrctrl @hrsft @hralt @hrmet 
           lsft OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
           lctrl @sym                                              @num caps
         )
