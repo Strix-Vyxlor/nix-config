@@ -56,8 +56,8 @@
           hlctrl (tap-hold 100 170 f lctrl)
           hrctrl (tap-hold 100 170 j lctrl)
 
-          hlsft (tap-hold 100 170 f lsft)
-          hrsft (tap-hold 100 170 j rsft)
+          hlsft (tap-hold 100 170 d lsft)
+          hrsft (tap-hold 100 170 k rsft)
 
           hlalt (tap-hold 100 170 s lalt)
           hralt (tap-hold 100 170 l lalt)
