@@ -77,7 +77,7 @@
         (deflayer navigation
           tab       a z e volu bru y pgup i o p
           @esc-ctrl  q prev pp next brdn lft down up rght m
-          lsft OEM_10 w x c vold b pgdn OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
+          lsft OEM_10 w x vold v b pgdn OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
           lctrl @home                                               _ caps
         )
 
