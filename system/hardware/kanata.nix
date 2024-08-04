@@ -33,13 +33,12 @@
           OEM_PERIOD 51
           OEM_COMMA 50
           OEM_3 40
-          OEM_102 86
         )
 
         ;; souce map
         (defsrc
-          tab         a z e r t y u i o p
-          caps OEM_102 q s d f g h j k l m
+          tab       a z e r t y u i o p
+          caps       q s d f g h j k l m
           lsft OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
           lctrl lalt                                             ralt rctrl
         )
@@ -52,17 +51,17 @@
         )
 
         (deflayer base
-          tab              a z e r t y u i o p
-          @esc-ctrl OEM_102 q s d f g h j k l m
-          lsft OEM_10      w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
-          lctrl _                                                  @number caps
+          tab       a z e r t y u i o p
+          @esc-ctrl  q s d f g h j k l m
+          lsft OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
+          lctrl _                                             @number caps
         )
 
         (deflayer number
-          tab         a z e r t y u S-7 S-8 S-9
-          @esc-ctrl OEM_102 q s d f g h S-4 S-5 S-6 S-0
+          tab       a z e r t y u S-7 S-8 S-9
+          @esc-ctrl  q s d f g h S-4 S-5 S-6 S-0
           lsft OEM_10 w x c v b n S-1 S-2 S-3 OEM_PLUS rsft
-          lctrl @base                                 ralt caps
+          lctrl @base                             ralt caps
         )
 
         (deflayer symbol
