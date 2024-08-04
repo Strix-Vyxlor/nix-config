@@ -68,7 +68,7 @@
           tab       a z e r t y u i o p
           caps       q s d f g h j k l m
           lsft OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
-          lctrl lalt                                             ralt @base
+          lctrl lalt                                             ralt @home
         )
       '';
     };
