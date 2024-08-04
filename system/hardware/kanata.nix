@@ -61,7 +61,7 @@
           tab       a z e r t y u S-7 S-8 S-9
           @esc-ctrl  q s d f g h S-4 S-5 S-6 S-0
           lsft OEM_10 w x c v b n S-1 S-2 S-3 OEM_PLUS rsft
-          lctrl @base                             ralt caps
+          lctrl @home                             ralt caps
         )
 
         (deflayer default
