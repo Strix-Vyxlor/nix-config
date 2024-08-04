@@ -48,6 +48,7 @@
 
           home (layer-switch base)
           num (layer-switch number)
+          sym (layer-switch symbol)
         )
 
         (deflayer base
@@ -58,10 +59,17 @@
         )
 
         (deflayer number
-          tab       a z e r t y u S-7 S-8 S-9
-          @esc-ctrl  q s d f g h S-4 S-5 S-6 S-0
+          tab       a z S-OEM_2 S-OEM_1 t y S-7 S-8 S-9 p
+          @esc-ctrl  q s OEM_MINUS S-OEM_PLUS g h S-4 S-5 S-6 S-0
           lsft OEM_10 w x c v b n S-1 S-2 S-3 OEM_PLUS rsft
           lctrl @home                             ralt caps
+        )
+
+        (deflayer symbol
+          tab       OEM_10 RA-OEM_6 RA-4 5 RA-3 RA-OEM_PLUS OEM_4 RA-0 RA-OEM_1 S-OEM_10
+          @esc-ctrl S-OEM_PLUS S-OEM_MINUS OEM_PERIOD OEM_COMMA RA-OEM_10 S-OEM_2 S-OEM_PERIOD OEM_2 OEM_MINUS OEM_PLUS
+          lsft RA-1 2 7 1 4 9 3 8 S-OEM_1 RA-2 OEM_1 rsft
+          lctrl @home                                            ralt rctrl
         )
 
         (deflayer default
