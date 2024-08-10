@@ -7,7 +7,7 @@
     ../../system/hardware/time.nix
     ../../system/hardware/bluetooth.nix
 
-    ../../system/hardware/fingerprint.nix
+    # ../../system/hardware/fingerprint.nix
     ../../system/hardware/kanata.nix
 
     ../../system/style/stylix.nix
