@@ -81,7 +81,7 @@
         )
 
         (deflayer symbol
-          tab       OEM_10 RA-OEM_6 RA-4 5 RA-3 RA-OEM_PLUS OEM_4 RA-0 RA-OEM_1 S-OEM_10
+          tab       OEM_10 RA-OEM_6 RA-9 5 RA-3 RA-OEM_PLUS OEM_4 RA-0 RA-OEM_1 S-OEM_10
           @esc-ctrl S-OEM_PLUS S-OEM_MINUS OEM_PERIOD OEM_COMMA RA-OEM_10 S-OEM_2 S-OEM_PERIOD OEM_2 OEM_MINUS OEM_PLUS
           lsft RA-1 2 7 1 4 9 3 8 S-OEM_1 RA-2 OEM_1 rsft
           lctrl @home                             @def rctrl
