@@ -2,7 +2,7 @@
 {
   imports = [
     ../../app/term/blackbox.nix
-    ./wofi.nix
+    ../../app/launcher/wofi.nix
     ./settings.nix
   ];
 
