@@ -21,8 +21,6 @@
     ../../user/app/office/onlyoffice.nix
     ../../user/app/comms/discord.nix 
     ../../user/lang/cc/cc.nix
-
-    ../../user/app/virt/virt.nix
   ];
 
   home.packages = with pkgs; [

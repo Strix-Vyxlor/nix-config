@@ -15,6 +15,8 @@
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
+
+    ../../system/virt/virt.nix
   ];
  
   nix.package = pkgs.nixFlakes;
