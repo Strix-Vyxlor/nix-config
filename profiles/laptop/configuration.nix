@@ -51,7 +51,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
     packages = [];
     uid = 1000;
   };
