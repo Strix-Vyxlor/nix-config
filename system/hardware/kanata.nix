@@ -101,6 +101,10 @@
           lctrl lalt                                             ralt @home
         )
       '';
+
+      devices = [
+        "/dev/input/by-id/usb-Sharkoon_Technologies_Sharkoon_SKILLER_SGK60-event-kbd"
+      ];
     };
   };
 
