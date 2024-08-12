@@ -8,7 +8,7 @@
     ../../system/hardware/bluetooth.nix
 
     # ../../system/hardware/fingerprint.nix
-    ../../system/hardware/kanata.nix
+    # ../../system/hardware/kanata.nix
 
     ../../system/style/stylix.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
