@@ -24,12 +24,12 @@
       env = CLUTTER_BACKEND,wayland
       env = GDK_PIXBUF_MODULE_FILE,${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
-      exec-once nm-applet
-      exec-once blueman-applet
+      exec-once = nm-applet
+      exec-once = blueman-applet
 
-      exec-once hyprpaper
-      exec-once hypridle
-      exec-once waybar
+      exec-once = hyprpaper
+      exec-once = hypridle
+      exec-once = waybar
 
       bezier = wind, 0.05, 0.9, 0.1, 1.05
       bezier = winIn, 0.1, 1.1, 0.1, 1.0
