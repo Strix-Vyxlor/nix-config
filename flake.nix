@@ -19,7 +19,7 @@
         configDir = "~/.nix-config";
 
         # theming
-        wm = "gnome";
+        wm = "hyprland";
         browser = "brave";
         term = "alacritty";
         font = "Inter Regular";
