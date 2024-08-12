@@ -28,9 +28,10 @@
   };
   services.xserver.excludePackages = [ pkgs.xterm ];
 
-  environment.systemPackages = with pkgs; [
-    ly
-  ];
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+  };
 
   services.xserver = {
     enable = true;
