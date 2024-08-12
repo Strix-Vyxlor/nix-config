@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
 
-  home.file.".config/Vencord/themes/cattpuccin.css".source = pkgs.fetchurl {
+  home.file.".config/Vencord/themes/stylix.css".source = pkgs.fetchurl {
     url = "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css";
-    hash = "sha256-bhHJOsHcZIZ6NzJzdrmeQ0aG6nbYV6Sa92EXdLzgf1s=";
+    hash = "sha256-/DuTnReHp/aCQeVVYtwRgaOLHq1oBcEjqd6gRcSLGmA=";
   };
 
   gtk.cursorTheme = {
