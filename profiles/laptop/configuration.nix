@@ -71,5 +71,7 @@
 
   fonts.fontDir.enable = true;
 
+  console.keyMap = "be-latin1";
+
   system.stateVersion = "24.05";
 }
