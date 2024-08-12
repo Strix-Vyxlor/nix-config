@@ -8,6 +8,7 @@
     userEmail = userSettings.email;
     extraConfig = {
       init.defaultBranch = "master";
+      safe.directory = "*";
     };
   };
 }
