@@ -28,17 +28,16 @@
   };
   services.xserver.excludePackages = [ pkgs.xterm ];
 
+  environment.systemPackages = with pkgs; [
+    ly
+  ];
+
   services.xserver = {
     enable = true;
     xkb = {
       layout = "be";
       variant = "";
       options = "";
-    };
-    displayManager.lightdm = {
-      enable = true;
-      greeters.gtk.enable = true;
-      greeters.gtk.clock-format = "%H:%M";
     };
   };
 
