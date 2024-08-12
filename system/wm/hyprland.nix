@@ -40,6 +40,4 @@
       options = "";
     };
   };
-
-  stylix.targets.lightdm.enable = true;
 }
