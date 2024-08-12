@@ -86,6 +86,9 @@
       layerrule = xray,alacritty
       blurls = alacritty
 
+      monitor=eDP-1,1920x1200,0x0x,1
+      monitor=HDMI-A-1,1920x1080,-1920x0,1
+
       input {
         kb_layout = be
         repeat_delay = 350
