@@ -13,9 +13,9 @@
       opacity = lib.mkForce 0.75;
     };
     font = {
-      normal = "ZedMono Nerd Font";
-      bold = "ZedMono Nerd Font";
-      italic = "ZedMono Nerd Font";
+      normal = lib.mkForce "ZedMono Nerd Font";
+      bold = lib.mkForce "ZedMono Nerd Font";
+      italic = lib.mkForce "ZedMono Nerd Font";
       size = 12;
     };
     cursor = {
