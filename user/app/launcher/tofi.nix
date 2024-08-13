@@ -33,7 +33,7 @@
       alternate-result-background-corner-radius = 15;
 
       border-color = "#${config.lib.stylix.colors.base0D}";
-      ouline-color = "#${config.lib.stylix.colors.base0C}";
+      outline-width = 0;
       background-color = "#${config.lib.stylix.colors.base00}";
 
     };
