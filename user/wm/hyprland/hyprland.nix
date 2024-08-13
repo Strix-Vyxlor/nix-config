@@ -84,12 +84,36 @@
       bind = SUPERSHIFT, K, movewindow, u
       bind = SUPERSHIFT, L, movewindow, r
 
-      bindm=SUPER,mouse:272,movewindow
-      bindm=SUPER,mouse:273,resizewindow
+      bindm = SUPER, mouse:272, movewindow
+      bindm = SUPER, mouse:273, resizewindow
+
+      bind = XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
+      bind = XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle
+      bind = XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
+      bind = XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
+
+      bind = XF86MonBrightnessUp, exec, swayosd-client --brightness raise 
+      bind = XF86MonBrightnessDown, exec, swayosd-client --brightness lower
+
+      $pavucontrol = class:^(org.pulseaudio.pavucontrol)$
+      windowrulev2 = float,$pavucontrol
+      windowrulev2 = size 86% 40%,$pavucontrol
+      windowrulev2 = move 50% 6%,$pavucontrol
+      windowrulev2 = workspace special silent,$pavucontrol
+      windowrulev2 = opacity 0.80,$pavucontrol
+
+      windowrulev2 = opacity 0.85,class:^(org.gnome.Nautilus)$
 
       layerrule = blur,alacritty
-      layerrule = xray,alacritty
       blurls = alacritty
+
+      layerrule = blur,waybar
+      layerrule = xray,waybar
+      blurls = waybar
+
+      layerrule = blur,gtk-layer-shell
+      layerrule = xray,gtk-layer-shell
+      blurls = gtk-layer-shell
 
       monitor = eDP-1, 1920x1200, 0x0x, 1
       monitor = HDMI-A-1, 1920x1080, -1920x0, 1
@@ -100,7 +124,12 @@
         repeat_rate = 50
         accel_profile = adaptive
         follow_mouse = 2
-        float_switch_override_focus = 0
+        numlock_by_default = true
+
+        touchpad {
+          natural_scroll = yes
+          disable_while_typing = false
+        }
       }
 
       decoration {
