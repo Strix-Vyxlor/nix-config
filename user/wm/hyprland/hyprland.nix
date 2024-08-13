@@ -87,10 +87,10 @@
       bindm = SUPER, mouse:272, movewindow
       bindm = SUPER, mouse:273, resizewindow
 
-      bind = XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
-      bind = XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle
-      bind = XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
-      bind = XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
+      bind = ,XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
+      bind = ,XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle
+      bind = ,XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
+      bind = ,XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
 
       bind = XF86MonBrightnessUp, exec, swayosd-client --brightness raise 
       bind = XF86MonBrightnessDown, exec, swayosd-client --brightness lower
