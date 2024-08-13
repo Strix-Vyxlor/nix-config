@@ -10,10 +10,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = { };
-    plugins = [
-      inputs.hyprgrass.packages.${pkgs.system}.default
+    plugins = with pkgs.hyprlandPlugins; [
+      hyprgrass
+      hyprexpo
     ];
-    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     extraConfig = ''
       exec-once = dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
       exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " " + builtins.toString config.gtk.cursorTheme.size + ''
@@ -163,6 +163,38 @@
       monitor = eDP-1, 1920x1200, 0x0x, 1
       monitor = HDMI-A-1, 1920x1080, -1920x0, 1
 
+      plugin = {
+        hyprexpo = {
+          columns = 3
+          gap_size = 5
+          bg_col = rgb(''+config.lib.stylix.colors.base00+'')
+          workspace_method = first 1 # [center/first] [workspace] e.g. first 1 or center m+1
+          enable_gesture = false # laptop touchpad
+        }
+        touch_gestures {
+          sensitivity = 4.0
+          long_press_delay = 260
+          hyprgrass-bind = , edge:r:l, exec, hyprnome
+          hyprgrass-bind = , edge:l:r, exec, hyprnome --previous
+
+          hyprgrass-bind = , swipe:3:u, hyprexpo:expo, toggleoverview
+
+          hyprgrass-bind = , swipe:3:l, exec, hyprnome --previous
+          hyprgrass-bind = , swipe:3:r, exec, hyprnome
+
+          hyprgrass-bind = , swipe:4:u, movewindow,u
+          hyprgrass-bind = , swipe:4:d, movewindow,d
+          hyprgrass-bind = , swipe:4:l, movewindow,l
+          hyprgrass-bind = , swipe:4:r, movewindow,r
+
+          hyprgrass-bind = , tap:3, fullscreen,1
+          hyprgrass-bind = , tap:4, fullscreen,0
+
+          hyprgrass-bindm = , longpress:2, movewindow
+          hyprgrass-bindm = , longpress:3, resizewindow
+        }
+      }
+
       input {
         kb_layout = be
         repeat_delay = 350
@@ -209,6 +241,7 @@
     hyprpicker
     hypridle
     hyprpaper
+    hyprnome
     hyprlock
     fnott
     playerctl
