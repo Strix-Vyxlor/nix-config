@@ -12,11 +12,12 @@
 
       prompt-color = "#${config.lib.stylix.colors.base05}";
       prompt-background = "#${config.lib.stylix.colors.base00}";
-      prompt-background-padding = "2, 7";
+      prompt-background-padding = "5, 7";
       prompt-background-corner-radius = 15;
 
       input-color = "#${config.lib.stylix.colors.base05}";
       input-background = "#${config.lib.stylix.colors.base00}";
+      input-background-padding = "5, 0";
 
       selection-color = "#${config.lib.stylix.colors.base0E}";
       selection-background = "#${config.lib.stylix.colors.base02}"; 
