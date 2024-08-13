@@ -246,6 +246,9 @@
     fnott
     playerctl
 
+    hyprlandPlugins.hyprgrass
+    hyprlandPlugins.hyprexpo
+
     networkmanagerapplet
     blueman
 
