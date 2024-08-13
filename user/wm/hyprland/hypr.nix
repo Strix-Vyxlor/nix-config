@@ -8,12 +8,12 @@
     }
 
     listener {
-      timeout = 150 # in seconds
+      timeout = 270 # in seconds
       on-timeout = hyprctl dispatch dpms off
       on-resume = hyprctl dispatch dpms on
     }
     listener {
-      timeout = 160 # in seconds
+      timeout = 300 # in seconds
       on-timeout = loginctl lock-session
     }
     listener {
