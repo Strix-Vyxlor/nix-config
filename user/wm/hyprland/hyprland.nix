@@ -136,16 +136,21 @@
     hyprpicker
     hypridle
     hyprpaper
+    hyprlock
+    fnott
 
     pavucontrol
     pamixer
     xdg-utils
-  ]; 
+  ];
+
+  services.swayosd.enable = true;
+  services.swayosd.topMargin = 0.5;
 
   services.fnott.enable = true;
   services.fnott.settings = {
     main = {
-      anchor = "bottom-right";
+      anchor = "top-right";
       stacking-order = "top-down";
       min-width = 400;
       title-font = userSettings.font + ":size=14";

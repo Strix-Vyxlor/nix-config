@@ -18,8 +18,8 @@
         margin = "7 7 3 7";
         spacing = 2;
 
-        modules-left = [ "group/power" "group/battery" "group/backlight" "group/cpu" "group/memory" "group/pulseaudio" "keyboard-state" ];
-        modules-center = [ "custom/hyprprofile" "hyprland/workspaces" ];
+        modules-left = [ "group/power" "group/battery" "group/backlight" "group/cpu" "group/memory" "group/pulseaudio" ];
+        modules-center = [ "hyprland/workspaces" ];
         modules-right = [ "group/time" "idle_inhibitor" "tray" ];
 
         "custom/os" = {
@@ -38,7 +38,6 @@
             };
             "modules" = [
                 "custom/os"
-                "custom/hyprprofileicon"
                 "custom/lock"
                 "custom/quit"
                 "custom/power"
@@ -64,25 +63,6 @@
             "format" = "󰐥";
             "tooltip" = false;
             "on-click" = "shutdown now";
-        };
-        "custom/hyprprofileicon" = {
-          "format" = "󱙋";
-          "on-click" = "hyprprofile-dmenu";
-          "tooltip" = false;
-        };
-        "custom/hyprprofile" = {
-          "format" = " {}";
-          "exec" = ''cat ~/.hyprprofile'';
-          "interval" = 3;
-          "on-click" = "hyprprofile-dmenu";
-        };
-        "keyboard-state" = {
-          "numlock" = true;
-          "format" = "{icon}";
-          "format-icons" = {
-            "locked" = "󰎠 ";
-            "unlocked" = "󱧓 ";
-          };
         };
         "hyprland/workspaces" = {
           "format" = "{icon}";
@@ -125,7 +105,7 @@
         "clock#time" = {
           "interval" = 1;
           "format" = "{:%I:%M:%S %p}";
-          "timezone" = "America/Chicago";
+          "timezone" = "Europe/Brussels";
           "tooltip-format" = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
@@ -133,7 +113,7 @@
         "clock#date" = {
           "interval" = 1;
           "format" = "{:%a %Y-%m-%d}";
-          "timezone" = "America/Chicago";
+          "timezone" = "Europe/Brussels";
           "tooltip-format" = ''
             <big>{:%Y %B}</big>
             <tt><small>{calendar}</small></tt>'';
