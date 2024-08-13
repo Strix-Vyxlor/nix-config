@@ -95,6 +95,16 @@
       bind = ,XF86MonBrightnessUp, exec, swayosd-client --brightness raise 
       bind = ,XF86MonBrightnessDown, exec, swayosd-client --brightness lower
 
+      bind = ,XF86AudioNext, exec, playerctl next
+      bind = ,XF86AudioPrev, exec, playerctl previous
+      bind = ,XF86AudioPlay, exec, playerctl play-pause
+      bind = ,XF86AudioPause, exec, playerctl play-pause
+
+      bind = ,XF86Favorites, exec, playerctl next
+      bind = ,XF86Messenger, exec, playerctl previous
+      bind = ,Cancel, exec, playerctl play-pause
+      bind = ,XF86Favorites, exec, spotify
+
       $pavucontrol = class:^(org.pulseaudio.pavucontrol)$
       windowrulev2 = float,$pavucontrol
       windowrulev2 = size 86% 40%,$pavucontrol
@@ -166,6 +176,7 @@
     hyprpaper
     hyprlock
     fnott
+    playerctl
 
     networkmanagerapplet
     blueman
@@ -175,6 +186,7 @@
     xdg-utils
   ];
 
+  services.playerctld.enable = true;
   services.swayosd.enable = true;
   services.swayosd.topMargin = 0.5;
 

@@ -6,6 +6,8 @@
       font = "${userSettings.font}";
       font-size = 16;
 
+      terminal = "alacritty";
+
       corner-radius = 30;
       width = 500;
       height = 300;
