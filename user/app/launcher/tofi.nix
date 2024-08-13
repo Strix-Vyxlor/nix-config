@@ -4,7 +4,9 @@
     enable = true;
     settings = {
       font = "${userSettings.font}";
-      border-radius = 10;
+      font-size = 16;
+
+      border-radius = 50;
       width = 600;
       height = 400;
 
