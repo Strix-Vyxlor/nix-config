@@ -123,7 +123,6 @@
         repeat_delay = 350
         repeat_rate = 50
         accel_profile = adaptive
-        follow_mouse = 2
         numlock_by_default = true
 
         touchpad {
