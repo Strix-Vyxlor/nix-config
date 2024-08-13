@@ -6,7 +6,7 @@
       font = "${userSettings.font}";
       font-size = 16;
 
-      border-radius = 100;
+      corner-radius = 30;
       width = 500;
       height = 300;
 
@@ -23,14 +23,12 @@
       selection-background-padding = "2, 5";
       selection-background-corner-radius = 15;
 
-      default-result-color = "#${config.lib.stylix.colors.base06}";
-      default-result-background = "#${config.lib.stylix.colors.base00}";
-      default-result-background-padding = "2, 5";
+      default-result-color = "#${config.lib.stylix.colors.base05}";
       default-result-background-corner-radius = 15;
 
       alternate-result-color = "#${config.lib.stylix.colors.base07}";
       alternate-result-background = "#${config.lib.stylix.colors.base01}";
-      alternate-result-background-padding = "1, 5";
+      alternate-result-background-padding = "0, 5";
       alternate-result-background-corner-radius = 15;
 
       border-color = "#${config.lib.stylix.colors.base0D}";
