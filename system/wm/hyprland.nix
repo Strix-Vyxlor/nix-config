@@ -7,8 +7,9 @@
             ];
 
   # Security
-  security = {
-    pam.services.login.enableGnomeKeyring = true;
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    sddm.enableGnomeKeyring = true;
   };
 
   services.gnome.gnome-keyring.enable = true;
