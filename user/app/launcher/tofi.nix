@@ -28,9 +28,9 @@
       default-result-background-padding = "2, 5";
       default-result-background-corner-radius = 15;
 
-      alternate-result-color = "#${config.lib.stylix.colors.base06}";
-      alternate-result-background = "#${config.lib.stylix.colors.base00}";
-      alternate-result-background-padding = "2, 5";
+      alternate-result-color = "#${config.lib.stylix.colors.base07}";
+      alternate-result-background = "#${config.lib.stylix.colors.base01}";
+      alternate-result-background-padding = "1, 5";
       alternate-result-background-corner-radius = 15;
 
       border-color = "#${config.lib.stylix.colors.base0D}";
