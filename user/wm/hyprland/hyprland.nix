@@ -105,6 +105,26 @@
       bind = ,XF86Go, exec, playerctl play-pause
       bind = ,XF86Favorites, exec, spotify
 
+      bind = SUPER, ampersand, focusworkspaceoncurrentmonitor, 1
+      bind = SUPER, eacute, focusworkspaceoncurrentmonitor, 2
+      bind = SUPER, quotedbl, focusworkspaceoncurrentmonitor, 3
+      bind = SUPER, apostrophe, focusworkspaceoncurrentmonitor, 4
+      bind = SUPER, parenleft, focusworkspaceoncurrentmonitor, 5
+      bind = SUPER, section, focusworkspaceoncurrentmonitor, 6
+      bind = SUPER, egrave, focusworkspaceoncurrentmonitor, 7
+      bind = SUPER, exclam, focusworkspaceoncurrentmonitor, 8
+      bind = SUPER, ccedilla, focusworkspaceoncurrentmonitor, 9
+
+      bind = SUPERSHIFT, ampersand, movetoworkspace, 1
+      bind = SUPERSHIFT, eacute, movetoworkspace, 2
+      bind = SUPERSHIFT, quotedbl, movetoworkspace, 3
+      bind = SUPERSHIFT, apostrophe, movetoworkspace, 4
+      bind = SUPERSHIFT, parenleft, movetoworkspace, 5
+      bind = SUPERSHIFT, section, movetoworkspace, 6
+      bind = SUPERSHIFT, egrave, movetoworkspace, 7
+      bind = SUPERSHIFT, exclam, movetoworkspace, 8
+      bind = SUPERSHIFT, ccedilla, movetoworkspace, 9
+
       $pavucontrol = class:^(org.pulseaudio.pavucontrol)$
       windowrulev2 = float,$pavucontrol
       windowrulev2 = size 86% 40%,$pavucontrol
