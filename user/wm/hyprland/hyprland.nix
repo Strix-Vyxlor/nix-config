@@ -304,4 +304,5 @@
 
   services.hyprpaper.enable = true;
   stylix.targets.hyprpaper.enable = true;
+  stylix.targets.gnome.enable = true;
 }
