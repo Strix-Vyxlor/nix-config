@@ -139,6 +139,9 @@
     hyprlock
     fnott
 
+    networkmanagerapplet
+    blueman
+
     pavucontrol
     pamixer
     xdg-utils

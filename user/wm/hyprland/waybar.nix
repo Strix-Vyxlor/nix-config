@@ -211,7 +211,7 @@
             "car" = "";
             "default" = [ "" "" "" ];
           };
-          "on-click" = "pypr toggle pavucontrol && hyprctl dispatch bringactivetotop";
+          "on-click" = "hyprctl dispatch togglespecialworkspace scratch_pavucontrol; if hyprctl clients | grep pavucontrol; then echo 'scratch_ranger respawn not needed'; else pavucontrol; fi";
         };
         "pulseaudio#text" = {
           "scroll-step" = 1;
@@ -221,7 +221,7 @@
           "format-muted" = "";
           "format-source" = "{volume}%";
           "format-source-muted" = "";
-          "on-click" = "pypr toggle pavucontrol && hyprctl dispatch bringactivetotop";
+          "on-click" = "hyprctl dispatch togglespecialworkspace scratch_pavucontrol; if hyprctl clients | grep pavucontrol; then echo 'scratch_ranger respawn not needed'; else pavucontrol; fi";
         };
         "group/pulseaudio" = {
           "orientation" = "horizontal";
