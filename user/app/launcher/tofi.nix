@@ -18,7 +18,8 @@
 
       selection-color = "#${config.lib.stylix.colors.base0E}";
       selection-background = "#${config.lib.stylix.colors.base02}"; 
-      selection-background-padding = "5, 2";
+      selection-background-padding = "2, 5";
+      selection-background-corner-radius = 10;
 
       border-color = "#${config.lib.stylix.colors.base0D}";
       ouline-color = "#${config.lib.stylix.colors.base0C}";
