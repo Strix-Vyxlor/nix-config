@@ -92,8 +92,8 @@
       bind = ,XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
       bind = ,XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
 
-      bind = XF86MonBrightnessUp, exec, swayosd-client --brightness raise 
-      bind = XF86MonBrightnessDown, exec, swayosd-client --brightness lower
+      bind = ,XF86MonBrightnessUp, exec, swayosd-client --brightness raise 
+      bind = ,XF86MonBrightnessDown, exec, swayosd-client --brightness lower
 
       $pavucontrol = class:^(org.pulseaudio.pavucontrol)$
       windowrulev2 = float,$pavucontrol
