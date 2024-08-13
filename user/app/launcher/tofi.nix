@@ -8,6 +8,8 @@
       prompt-color = "#${config.lib.stylix.colors.base05}";
       prompt-background = "#${config.lib.stylix.colors.base02}";
 
+      input-color = "#${config.lib.stylix.colors.base05}";
+      input-background = "#${config.lib.stylix.colors.base02}";
     };
   };
 }

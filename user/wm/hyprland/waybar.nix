@@ -203,9 +203,9 @@
           "format-source" = "";
           "format-source-muted" = "";
           "format-icons" = {
-            "headphone" = "";
+            "headphone" = "󰋋";
             "hands-free" = "󰋎";
-            "headset" = "";
+            "headset" = "󰋋";
             "phone" = "";
             "portable" = "";
             "car" = "";
