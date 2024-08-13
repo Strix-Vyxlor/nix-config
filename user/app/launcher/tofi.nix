@@ -12,6 +12,8 @@
 
       prompt-color = "#${config.lib.stylix.colors.base05}";
       prompt-background = "#${config.lib.stylix.colors.base01}";
+      prompt-background-padding = "2, 7";
+      prompt-background-corner-radius = 15;
 
       input-color = "#${config.lib.stylix.colors.base05}";
       input-background = "#${config.lib.stylix.colors.base01}";
@@ -19,7 +21,7 @@
       selection-color = "#${config.lib.stylix.colors.base0E}";
       selection-background = "#${config.lib.stylix.colors.base02}"; 
       selection-background-padding = "2, 5";
-      selection-background-corner-radius = 10;
+      selection-background-corner-radius = 20;
 
       border-color = "#${config.lib.stylix.colors.base0D}";
       ouline-color = "#${config.lib.stylix.colors.base0C}";
