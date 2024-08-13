@@ -74,22 +74,25 @@
       bind = SUPER, B, exec, ${userSettings.browser}
       bind = SUPER, T, exec, alacritty
 
-      bind=SUPER,H,movefocus,l
-      bind=SUPER,J,movefocus,d
-      bind=SUPER,K,movefocus,u
-      bind=SUPER,L,movefocus,r
+      bind = SUPER, H, movefocus, l
+      bind = SUPER, J, movefocus, d
+      bind = SUPER, K, movefocus, u
+      bind = SUPER, L, movefocus, r
 
-      bind=SUPERSHIFT,H,movewindow,l
-      bind=SUPERSHIFT,J,movewindow,d
-      bind=SUPERSHIFT,K,movewindow,u
-      bind=SUPERSHIFT,L,movewindow,r
+      bind = SUPERSHIFT, H, movewindow, l
+      bind = SUPERSHIFT, J, movewindow, d
+      bind = SUPERSHIFT, K, movewindow, u
+      bind = SUPERSHIFT, L, movewindow, r
+
+      bindm=SUPER,mouse:272,movewindow
+      bindm=SUPER,mouse:273,resizewindow
 
       layerrule = blur,alacritty
       layerrule = xray,alacritty
       blurls = alacritty
 
-      monitor=eDP-1,1920x1200,0x0x,1
-      monitor=HDMI-A-1,1920x1080,-1920x0,1
+      monitor = eDP-1, 1920x1200, 0x0x, 1
+      monitor = HDMI-A-1, 1920x1080, -1920x0, 1
 
       input {
         kb_layout = be

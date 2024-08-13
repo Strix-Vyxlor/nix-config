@@ -26,7 +26,7 @@
           "format" = " {} ";
           "exec" = ''echo "" '';
           "interval" = "once";
-          "on-click" = "nwggrid-wrapper";
+          "on-click" = "";
           "tooltip" = false;
         };
         "group/power" = {
