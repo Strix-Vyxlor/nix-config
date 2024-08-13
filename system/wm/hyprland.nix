@@ -18,7 +18,7 @@
 
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
 
-  services.gnome.gnome-keyring.enable = true;
+  services.gnome3.gnome-keyring.enable = true;
 
   programs = {
     hyprland = {
