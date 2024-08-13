@@ -234,6 +234,7 @@
   home.packages = with pkgs; [
     killall
     nautilus
+    kdePackages.ark
     libva-utils
     libinput-gestures
     gsettings-desktop-schemas
