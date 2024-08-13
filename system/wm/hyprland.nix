@@ -10,7 +10,12 @@
   security.pam.services = {
     login.enableGnomeKeyring = true;
     sddm.enableGnomeKeyring = true;
+    greetd.enableGnomeKeyring = true;
+    gdm.enableGnomeKeyring = true;
+    gdm-password.enableGnomeKeyring = true;
   };
+
+  environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
 
   services.gnome.gnome-keyring.enable = true;
 
