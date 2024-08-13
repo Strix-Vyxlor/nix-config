@@ -14,11 +14,12 @@
     gdm.enableGnomeKeyring = true;
     gdm-password.enableGnomeKeyring = true;
     ly.enableGnomeKeyring = true;
+    gnome_keyring.enableGnomeKeyring = true;
   };
 
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
 
-  services.gnome3.gnome-keyring.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   programs = {
     hyprland = {
