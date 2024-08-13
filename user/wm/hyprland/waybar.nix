@@ -112,7 +112,7 @@
         };
         "clock#date" = {
           "interval" = 1;
-          "format" = "{:%a %Y-%m-%d}";
+          "format" = "{:%a %d %b}";
           "timezone" = "Europe/Brussels";
           "tooltip-format" = ''
             <big>{:%Y %B}</big>

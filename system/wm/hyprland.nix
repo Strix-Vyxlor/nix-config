@@ -39,8 +39,8 @@
     settings = {
       clock = "%I:%M:%S %p\n%A %d %B";
       clear_password = true;
-      animation = "matrix";
-      cmatrix_fg = "0x0005";
+      cmatrix_fg = "0x05";
+      animation = "matrix"; 
     };
   };
 
