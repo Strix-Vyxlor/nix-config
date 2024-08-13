@@ -68,7 +68,7 @@
         inactive_timeout = 30
       }
 
-      bind = SUPER, R, exec, tofi
+      bind = SUPER, R, exec, tofi-drun | xargs hyprctl dispatch exec --
       bind = SUPER, Q, killactive
       bind = SUPER, F, exec, nautilus
       bind = SUPER, B, exec, ${userSettings.browser}
