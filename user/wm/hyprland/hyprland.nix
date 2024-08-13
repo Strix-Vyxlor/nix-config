@@ -100,9 +100,9 @@
       bind = ,XF86AudioPlay, exec, playerctl play-pause
       bind = ,XF86AudioPause, exec, playerctl play-pause
 
-      bind = ,XF86Favorites, exec, playerctl next
+      bind = ,Cancel, exec, playerctl next
       bind = ,XF86Messenger, exec, playerctl previous
-      bind = ,Cancel, exec, playerctl play-pause
+      bind = ,XF86Go, exec, playerctl play-pause
       bind = ,XF86Favorites, exec, spotify
 
       $pavucontrol = class:^(org.pulseaudio.pavucontrol)$
