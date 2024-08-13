@@ -208,6 +208,11 @@
         }
       }
 
+      gestures {
+        workspace_swipe = true
+        workspace_swipe_cancel_ratio = 0.15
+      }
+
       decoration {
         rounding = 8
         blur {
