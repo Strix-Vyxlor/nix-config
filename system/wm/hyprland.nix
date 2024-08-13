@@ -34,12 +34,15 @@
   };
   services.xserver.excludePackages = [ pkgs.xterm ];
 
-  services.xserver.displayManager.gdm = {
+  services.displayManager.ly = {
     enable = true;
-    wayland = true;
+    settings = {
+      clock = "%I:%M:%S %p\n%A %d %B";
+      clear_password = true;
+      animation = "matrix";
+      cmatrix_fg = "0x0005";
+    };
   };
-
-  stylix.targets.gnome.enable = true;
 
   services.xserver = {
     enable = true;
