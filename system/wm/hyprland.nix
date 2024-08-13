@@ -13,6 +13,7 @@
     greetd.enableGnomeKeyring = true;
     gdm.enableGnomeKeyring = true;
     gdm-password.enableGnomeKeyring = true;
+    ly.enableGnomeKeyring = true;
   };
 
   environment.variables.XDG_RUNTIME_DIR = "/run/user/$UID";
