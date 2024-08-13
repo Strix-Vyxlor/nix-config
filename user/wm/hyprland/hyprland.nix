@@ -1,4 +1,4 @@
-{ pkgs, config, lib, userSettings, ... }:
+{ pkgs, config, inputs, userSettings, ... }:
 {
   imports = [
     ../../app/term/alacritty.nix
@@ -10,6 +10,10 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = { };
+    plugins = [
+      inputs.hyprgrass.packages.${pkgs.system}.default
+    ];
+    package = inputs.hyprland.packages.${pkgs.system}.hyprland;
     extraConfig = ''
       exec-once = dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
       exec-once = hyprctl setcursor '' + config.gtk.cursorTheme.name + " " + builtins.toString config.gtk.cursorTheme.size + ''
