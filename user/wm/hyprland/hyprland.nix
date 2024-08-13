@@ -125,6 +125,15 @@
       bind = SUPERSHIFT, exclam, movetoworkspace, 8
       bind = SUPERSHIFT, ccedilla, movetoworkspace, 9
 
+      bind=SUPER,Z,exec,if hyprctl clients | grep scratch_term; then echo "scratch_term respawn not needed"; else alacritty --class scratch_term; fi
+      bind=SUPER,Z,togglespecialworkspace,scratch_term
+
+      $scratch_term = class:^(scratch_term)$
+      windowrulev2 = float,$scratch_term
+      windowrulev2 = $scratchpadsize,$scratch_term
+      windowrulev2 = workspace special:scratch_term ,$scratch_term
+      windowrulev2 = center,$scratch_term
+
       $pavucontrol = class:^(org.pulseaudio.pavucontrol)$
       windowrulev2 = float,$pavucontrol
       windowrulev2 = size 86% 40%,$pavucontrol
