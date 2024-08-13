@@ -163,8 +163,8 @@
       monitor = eDP-1, 1920x1200, 0x0x, 1
       monitor = HDMI-A-1, 1920x1080, -1920x0, 1
 
-      plugin = {
-        hyprexpo = {
+      plugin {
+        hyprexpo {
           columns = 3
           gap_size = 5
           bg_col = rgb(''+config.lib.stylix.colors.base00+'')
