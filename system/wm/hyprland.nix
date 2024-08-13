@@ -29,10 +29,12 @@
   };
   services.xserver.excludePackages = [ pkgs.xterm ];
 
-  services.displayManager.sddm = {
+  services.displayManager.gdm = {
     enable = true;
-    wayland.enable = true;
+    wayland = true;
   };
+
+  stylix.targets.gnome.enable = true;
 
   services.xserver = {
     enable = true;
