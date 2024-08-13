@@ -128,6 +128,8 @@
       bind=SUPER,Z,exec,if hyprctl clients | grep scratch_term; then echo "scratch_term respawn not needed"; else alacritty --class scratch_term; fi
       bind=SUPER,Z,togglespecialworkspace,scratch_term
 
+      $scratchpadsize = size 80% 85%
+
       $scratch_term = class:^(scratch_term)$
       windowrulev2 = float,$scratch_term
       windowrulev2 = $scratchpadsize,$scratch_term
