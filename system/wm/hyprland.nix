@@ -21,6 +21,9 @@
 
   services.gnome.gnome-keyring.enable = true;
 
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   programs = {
     hyprland = {
       enable = true;
