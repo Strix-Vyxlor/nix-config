@@ -234,7 +234,7 @@
 
   home.packages = with pkgs; [
     killall
-    nautilus
+    nautilus usbutils udiskie udisks
     xarchiver
     libva-utils
     libinput-gestures
@@ -263,6 +263,9 @@
     pamixer
     xdg-utils
   ];
+
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
 
   services.playerctld.enable = true;
   services.swayosd.enable = true;
