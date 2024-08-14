@@ -200,7 +200,7 @@
         kb_layout = be
         repeat_delay = 350
         repeat_rate = 50
-        accel_profile = adaptive
+        accel_profile = linear
         numlock_by_default = true
 
         touchpad {
