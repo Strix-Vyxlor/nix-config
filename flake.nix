@@ -128,5 +128,7 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     }; 
+
+    nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
   };
 }
