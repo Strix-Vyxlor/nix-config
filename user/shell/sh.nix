@@ -25,5 +25,7 @@
     gnugrep
     gnused
     htop
+
+    cava
   ];
 }

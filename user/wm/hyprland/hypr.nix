@@ -15,12 +15,7 @@
     listener {
       timeout = 300 # in seconds
       on-timeout = loginctl lock-session
-    }
-    listener {
-      timeout = 5400 # in seconds
-      on-timeout = systemctl suspend
-      on-resume = hyprctl dispatch dpms on
-    }
+    } 
   '';
 
   home.file.".config/hypr/hyprlock.conf".text = ''
