@@ -16,7 +16,7 @@ in {
   programs.cava = {
     enable = true;
     settings = {
-      colors ={
+      color ={
         gradient = 1;
         gradient_color_1 = "'${(builtins.elemAt gradient 0)}'"; 
         gradient_color_2 = "'${(builtins.elemAt gradient 1)}'";
