@@ -3,7 +3,14 @@
   lower = nc.darken (nc.hexToOklch "#${config.lib.stylix.colors.base0D}") 20;
   raise = nc.lighten (nc.hexToOklch "#${config.lib.stylix.colors.base0D}") 20;
 
-  gradient = nc.gradient lower raise 6;
+  oklck_gradient = nc.gradient lower raise 6;
+  gradient = builtins.concatLists (
+    builtins.genList (
+      x: [
+        (nc.oklchToHex (builtins.elemAt oklck_gradient x))
+      ]
+    ) 8
+  );
 
 in {
   programs.cava = {
