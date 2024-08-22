@@ -267,6 +267,7 @@
   services.playerctld.enable = true;
   services.swayosd.enable = true;
   services.swayosd.topMargin = 0.5;
+  services.gnome-keyring.enable = true;
 
   services.fnott.enable = true;
   services.fnott.settings = {
