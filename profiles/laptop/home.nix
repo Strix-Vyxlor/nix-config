@@ -23,6 +23,7 @@
     ../../user/lang/cc/cc.nix
 
     ../../user/app/term/cava.nix
+    ../../user/app/games/minecraft.nix
   ];
 
   home.packages = with pkgs; [
