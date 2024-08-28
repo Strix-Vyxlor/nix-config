@@ -22,7 +22,8 @@
     ../../user/app/comms/discord.nix 
     ../../user/lang/cc/cc.nix
 
-    ../../user/app/term/cava.nix
+    ../../user/app/console/cava.nix
+
     ../../user/app/games/minecraft.nix
   ];
 
