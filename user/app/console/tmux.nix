@@ -1,4 +1,4 @@
-{ pkgs, userSettings, ... }:
+{ pkgs, userSettings, config, ... }:
 let
   shell_pkg = pkgs."${userSettings.shell}";
 in {
@@ -15,23 +15,21 @@ in {
     newSession = true;
    mouse = true;
 
-    plugins = with pkgs; [
-      tmuxPlugins.sensible
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      tmux-nova
     ];
 
     extraConfig = ''
      set-option -ga terminal-overrides ",xterm*:Tc"
-     set -g default-terminal "alacritty"
-
-     set -s extended-keys on
-     set -as terminal-features 'xterm*:extkeys'
+     set -g default-terminal "alacritty" 
 
      unbind C-b
      set -g prefix C-Space
      bind C-Space send-prefix
 
      set -g base-index 1
-     set -g pane-base-index 1
+     setw -g pane-base-index 1
      set-window-option -g pane-base-index 1
      set-option -g renumber-windows on
 
@@ -55,8 +53,37 @@ in {
       bind-key -T copy-mode-vi 'C-Right' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
 
-      bind -n M-N previous-window
-      bind -n M-E next-window
+      bind -n M-Down previous-window
+      bind -n M-Up next-window
+
+      unbind '"'
+      unbind %
+      bind v split-window -v -c "#{pane_current_path}"
+      bind h split-window -h -c "#{pane_current_path}"
+
+      set -g @nova-nerdfonts true
+      set -g @nova-nerdfonts-left 
+      set -g @nova-nerdfonts-right 
+
+      set -g @nova-pane-active-border-style "#${config.lib.stylix.colors.base02}"
+      set -g @nova-pane-border-style "#${config.lib.stylix.colors.base01}"
+      set -g @nova-status-style-bg "#${config.lib.stylix.colors.base00}"
+      set -g @nova-status-style-fg "#${config.lib.stylix.colors.base05}"
+      set -g @nova-status-style-active-bg "#${config.lib.stylix.colors.base0D}"
+      set -g @nova-status-style-active-fg "#${config.lib.stylix.colors.base05}"
+      set -g @nova-status-style-double-bg "#${config.lib.stylix.colors.base05}"
+
+      set -g @nova-pane "#I#{?pane_in_mode,  #{pane_mode},}  #W"
+
+      set -g @nova-segment-mode "#{?client_prefix,Ω,ω}"
+      set -g @nova-segment-mode-colors "#${config.lib.stylix.colors.base0C} #${config.lib.stylix.colors.base05}"
+
+      set -g @nova-segment-whoami "#(whoami)@#h"
+      set -g @nova-segment-whoami-colors "#${config.lib.stylix.colors.base0C} #${config.lib.stylix.colors.base05}"
+
+      set -g @nova-rows 0
+      set -g @nova-segments-0-left "mode"
+      set -g @nova-segments-0-right "whoami"
     '';
   };
 }
