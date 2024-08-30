@@ -11,11 +11,41 @@ in {
     
     shell = "${shell_pkg}/bin/${userSettings.shell}";
     newSession = true;
-   mouse = true;
+    mouse = true;
+    baseIndex = 1;
+    keyMode = "vi";
 
     plugins = with pkgs.tmuxPlugins; [
       sensible
-      tmux-nova
+      {
+        plugin = power-theme;
+        extraConfig = ''
+          set -g @tmux_power_theme '#${config.lib.stylix.colors.base0D}'
+          set -g @tmux_power_date_icon " "
+          set -g @tmux_power_time_icon ''
+          set -g @tmux_power_user_icon ''
+          set -g @tmux_power_session_icon " "
+          set -g @tmux_power_show_upload_speed    false
+          set -g @tmux_power_show_download_speed  false
+          set -g @tmux_power_show_web_reachable   false
+          set -g @tmux_power_right_arrow_icon     ''
+          set -g @tmux_power_left_arrow_icon      ''
+          set -g @tmux_power_upload_speed_icon    '󰕒'
+          set -g @tmux_power_download_speed_icon  '󰇚'
+          set -g @tmux_power_prefix_highlight_pos 'R' 
+        '';
+      }
+      {
+        plugin = yank;
+        extraConfig = ''
+          unbind c
+          bind c copy-mode
+
+          bind-key -T copy-mode-vi v send-keys -X begin-selection
+          bind-key -T copy-mode-vi C-v send-keys -X rectangle-toggle
+          bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+        '';
+      }
     ];
 
     extraConfig = ''
@@ -24,12 +54,7 @@ in {
 
      unbind C-b
      set -g prefix C-Space
-     bind C-Space send-prefix
-
-     set -g base-index 1
-     setw -g pane-base-index 1
-     set-window-option -g pane-base-index 1
-     set-option -g renumber-windows on
+     bind C-Space send-prefix 
 
       # Smart pane switching with awareness of Vim splits.
       # See: https://github.com/christoomey/vim-tmux-navigator
@@ -57,31 +82,17 @@ in {
       unbind '"'
       unbind %
       bind v split-window -v -c "#{pane_current_path}"
-      bind h split-window -h -c "#{pane_current_path}"
+      bind h split-window -h -c "#{pane_current_path}" 
+      
+      unbind n
+      unbind p
+      bind n new-window
 
-      set -g @nova-nerdfonts true
-      set -g @nova-nerdfonts-left 
-      set -g @nova-nerdfonts-right 
+      unbind q
+      bind q confirm-before -p "kill tmux? (y/n)" "kill-session"
 
-      set -g @nova-pane-active-border-style "#${config.lib.stylix.colors.base02}"
-      set -g @nova-pane-border-style "#${config.lib.stylix.colors.base01}"
-      set -g @nova-status-style-bg "#${config.lib.stylix.colors.base00}"
-      set -g @nova-status-style-fg "#${config.lib.stylix.colors.base05}"
-      set -g @nova-status-style-active-bg "#${config.lib.stylix.colors.base0D}"
-      set -g @nova-status-style-active-fg "#${config.lib.stylix.colors.base05}"
-      set -g @nova-status-style-double-bg "#${config.lib.stylix.colors.base05}"
-
-      set -g @nova-pane "#I#{?pane_in_mode,  #{pane_mode},}  #W"
-
-      set -g @nova-segment-mode "#{?client_prefix,Ω,ω}"
-      set -g @nova-segment-mode-colors "#${config.lib.stylix.colors.base0C} #${config.lib.stylix.colors.base05}"
-
-      set -g @nova-segment-whoami "#(whoami)@#h"
-      set -g @nova-segment-whoami-colors "#${config.lib.stylix.colors.base0C} #${config.lib.stylix.colors.base05}"
-
-      set -g @nova-rows 0
-      set -g @nova-segments-0-left "mode"
-      set -g @nova-segments-0-right "whoami"
+      bind R command-prompt -p "New session name: " "rename-session '%1'"
+      bind r command-prompt -p "New window name: " "rename-window '%1'"
     '';
   };
 }
