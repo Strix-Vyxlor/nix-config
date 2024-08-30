@@ -19,4 +19,6 @@
   home.packages = with pkgs; [
     git
   ];
+
+  home.stateVersion = "24.05";
 }
