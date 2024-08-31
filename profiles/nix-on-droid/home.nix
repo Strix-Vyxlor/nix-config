@@ -6,6 +6,8 @@
     ../../user/shell/sh.nix
     ../../user/app/git/git.nix
     ../../user/app/git/gh.nix
+    ( ./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
+    ../../user/app/console/tmux.nix
     ../../user/style/stylix.nix
   ];
 

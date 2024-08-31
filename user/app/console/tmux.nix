@@ -81,8 +81,8 @@ in {
 
       unbind '"'
       unbind %
-      bind v split-window -v -c "#{pane_current_path}"
-      bind h split-window -h -c "#{pane_current_path}" 
+      bind h split-window -v -c "#{pane_current_path}"
+      bind v split-window -h -c "#{pane_current_path}" 
       
       unbind n
       unbind p
