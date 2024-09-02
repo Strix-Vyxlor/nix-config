@@ -8,6 +8,7 @@
     ../../system/hardware/bluetooth.nix
     
     ../../system/hardware/udev.nix
+    ../../system/hardware/tailscale.nix
 
     # ../../system/hardware/fingerprint.nix
     #../../system/hardware/kanata.nix
