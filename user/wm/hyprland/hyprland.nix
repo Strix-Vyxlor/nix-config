@@ -77,7 +77,8 @@
       bind = SUPER, Q, killactive
       bind = SUPER, F, exec, nautilus
       bind = SUPER, B, exec, ${userSettings.browser}
-      bind = SUPER, T, exec, alacritty
+      bind = SUPER, T, exec, ${userSettings.term}
+      bind = SUPER, N, exec, ${userSettings.term} -e ${userSettings.editor} ~/Documents/notes.md
 
       bind = SUPER, H, movefocus, l
       bind = SUPER, J, movefocus, d
