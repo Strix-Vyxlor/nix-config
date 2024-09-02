@@ -76,8 +76,8 @@ in {
       bind-key -T copy-mode-vi 'C-Right' select-pane -R
       bind-key -T copy-mode-vi 'C-\' select-pane -l
 
-      bind -n M-Down previous-window
-      bind -n M-Up next-window
+      bind -n C-PageDown previous-window
+      bind -n C-PageUp next-window
 
       unbind '"'
       unbind %
@@ -86,7 +86,7 @@ in {
       
       unbind n
       unbind p
-      bind n new-window
+      bind n new-window -c "#{pane_current_path}" 
 
       unbind q
       bind q confirm-before -p "kill tmux? (y/n)" "kill-session"
