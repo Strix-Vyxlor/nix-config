@@ -26,6 +26,7 @@
     ../../user/app/console/tmux.nix
 
     ../../user/app/games/minecraft.nix
+    ../../user/app/graphics/blockbench.nix
   ];
 
   home.packages = with pkgs; [
