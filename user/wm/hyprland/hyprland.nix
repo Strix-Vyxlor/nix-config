@@ -21,7 +21,7 @@
       env = XDG_CURRENT_DESKTOP,Hyprland
       env = XDG_SESSION_TYPE,wayland
       env = XDG_SESSION_DESKTOP,Hyprland
-      env = WLR_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1
+      # env = WLR_DRM_DEVICES,/dev/dri/card2:/dev/dri/card1
       env = GDK_BACKEND,wayland,x11,*
       env = QT_QPA_PLATFORM,wayland;xcb
       env = QT_QPA_PLATFORMTHEME,qt5ct
@@ -78,7 +78,7 @@
       bind = SUPER, F, exec, nautilus
       bind = SUPER, B, exec, ${userSettings.browser}
       bind = SUPER, T, exec, ${userSettings.term}
-      bind = SUPER, N, exec, ${userSettings.term} -e ${userSettings.editor}
+      bind = SUPER, N, exec, ${userSettings.term} -e tmux new-session ${userSettings.editor}
 
       bind = SUPER, H, movefocus, l
       bind = SUPER, J, movefocus, d
