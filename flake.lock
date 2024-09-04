@@ -269,11 +269,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1725460577,
-        "narHash": "sha256-s7kat1SVA6oc/yDkLhG3UXaIBAIGsqElUa4EwkGUuX4=",
+        "lastModified": 1725469251,
+        "narHash": "sha256-DjQ7JFGgaG+KJhPsthdQcwCvUeBPdkBcubll2gdM5UI=",
         "owner": "Strix-Vyxlor",
         "repo": "nvim_config",
-        "rev": "26eec885adffec222a8447d585fa392da87e3f9c",
+        "rev": "f8d8ec38b6fe4a37afea22e09701175eab24efba",
         "type": "github"
       },
       "original": {
