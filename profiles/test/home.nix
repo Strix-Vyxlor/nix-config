@@ -18,7 +18,7 @@
 
     # ../../user/app/graphics/aseprite.nix
     # ../../user/app/spotify/spicetify.nix
-    ../../user/app/office/onlyoffice.nix
+    # ../../user/app/office/onlyoffice.nix
     # ../../user/app/comms/discord.nix 
     ../../user/lang/cc/cc.nix
   ];
