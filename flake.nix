@@ -79,7 +79,7 @@
           };
         };
 
-        rpi-example = lib.nixosSystem {
+        rpi = lib.nixosSystem {
           system = "aarch64-linux";
           modules = [ ./profiles/rpi/sd-image.nix ];
           specialArgs = {
