@@ -4,6 +4,7 @@
   imports = [
               ./pipewire.nix
               ./dbus.nix
+              ../hardware/power.nix
             ];
 
   # Security
