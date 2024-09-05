@@ -78,6 +78,17 @@
             inherit inputs;
           };
         };
+
+        rpi-example = lib.nixosSystem {
+          system = "aarch64-linux";
+          modules = [ ./profiles/rpi/sd-image.nix ];
+          specialArgs = {
+            inherit zix-pkg;
+            inherit systemSettings;
+            inherit userSettings;
+            inherit inputs;
+          };
+        };
       };
     
       nixOnDroidConfigurations = {
@@ -130,5 +141,6 @@
     }; 
 
     nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
+    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
   };
 }
