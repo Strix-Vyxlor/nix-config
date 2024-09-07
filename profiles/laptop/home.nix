@@ -27,6 +27,8 @@
 
     ../../user/app/games/minecraft.nix
     ../../user/app/graphics/blockbench.nix
+
+    ../../user/app/etc/reaper.nix
   ];
 
   home.packages = with pkgs; [
