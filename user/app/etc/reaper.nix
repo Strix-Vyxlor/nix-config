@@ -1,4 +1,4 @@
 { pkgs, ...}:
 {
-  home.packager = [ pkgs.reaper ];
+  home.packages = [ pkgs.reaper ];
 }
