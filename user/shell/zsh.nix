@@ -59,6 +59,8 @@ in
     nix-direnv.enable = true;
   };
 
+  stylix.targets.btop.enable = true;
+
   home.packages = with pkgs; [
     direnv
     nix-direnv

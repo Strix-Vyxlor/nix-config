@@ -32,7 +32,7 @@
 
       exec-once = nm-applet
       exec-once = blueman-applet
-      exec-once = swayosd-server
+      exec-once = swayosd-server 
 
       exec-once = hyprpaper
       exec-once = hypridle
@@ -264,6 +264,8 @@
     pamixer
     xdg-utils
   ]; 
+
+  
 
   services.playerctld.enable = true;
   services.swayosd.enable = true;
