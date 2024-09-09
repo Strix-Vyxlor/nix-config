@@ -27,6 +27,7 @@
 
     ../../user/app/games/minecraft.nix
     ../../user/app/games/heroic.nix
+    ../../user/app/games/utils.nix
     ../../user/app/graphics/blockbench.nix
 
     ../../user/app/etc/reaper.nix

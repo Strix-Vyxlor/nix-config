@@ -21,6 +21,7 @@
 
     ../../system/virt/virt.nix
     ../../system/games/steam.nix
+    ../../system/games/utils.nix
   ];
  
   nix.package = pkgs.nixFlakes;
