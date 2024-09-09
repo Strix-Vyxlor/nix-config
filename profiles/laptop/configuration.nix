@@ -20,6 +20,7 @@
     ../../system/security/gpg.nix
 
     ../../system/virt/virt.nix
+    ../../system/games/steam.nix
   ];
  
   nix.package = pkgs.nixFlakes;
