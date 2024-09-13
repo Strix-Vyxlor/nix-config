@@ -1,4 +1,4 @@
 { pkgs, ...}:
 {
-  home.packages = [ pkgs.heroic-unwrapped ];
+  home.packages = [ pkgs.heroic ];
 }

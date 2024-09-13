@@ -142,12 +142,12 @@
       windowrulev2 = workspace special:scratch_term ,$scratch_term
       windowrulev2 = center,$scratch_term
 
-      $pavucontrol = class:^(org.pulseaudio.pavucontrol)$
-      windowrulev2 = float,$pavucontrol
-      windowrulev2 = size 86% 40%,$pavucontrol
-      windowrulev2 = move 50% 6%,$pavucontrol
-      windowrulev2 = workspace special silent,$pavucontrol
-      windowrulev2 = opacity 0.80,$pavucontrol
+      $pwvucontrol = class:^(com.saivert.pwvucontrol)$
+      windowrulev2 = float,$pwvucontrol
+      windowrulev2 = size 86% 40%,$pwvucontrol
+      windowrulev2 = move 50% 6%,$pwvucontrol
+      # windowrulev2 = workspace special silent,$pwvucontrol
+      windowrulev2 = opacity 0.80,$pwvucontrol
 
       windowrulev2 = opacity 0.85,class:^(org.gnome.Nautilus)$
 
@@ -261,8 +261,7 @@
     networkmanagerapplet
     blueman
 
-    pavucontrol
-    pamixer
+    pwvucontrol
     xdg-utils
   ]; 
 

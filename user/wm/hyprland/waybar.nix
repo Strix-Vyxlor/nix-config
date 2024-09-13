@@ -211,7 +211,7 @@
             "car" = "";
             "default" = [ "" "" "" ];
           };
-          "on-click" = "hyprctl dispatch togglespecialworkspace scratch_pavucontrol; if hyprctl clients | grep pavucontrol; then echo 'scratch_ranger respawn not needed'; else pavucontrol; fi";
+          "on-click" = "hyprctl dispatch togglespecialworkspace scratch_pwvucontrol; if hyprctl clients | grep pwvucontrol; then echo 'scratch_ranger respawn not needed'; else pwvucontrol; fi";
         };
         "pulseaudio#text" = {
           "scroll-step" = 1;
@@ -221,7 +221,7 @@
           "format-muted" = "";
           "format-source" = "{volume}%";
           "format-source-muted" = "";
-          "on-click" = "hyprctl dispatch togglespecialworkspace scratch_pavucontrol; if hyprctl clients | grep pavucontrol; then echo 'scratch_ranger respawn not needed'; else pavucontrol; fi";
+          "on-click" = "hyprctl dispatch togglespecialworkspace scratch_pwvucontrol; if hyprctl clients | grep pwvucontrol; then echo 'scratch_ranger respawn not needed'; else pwvucontrol; fi";
         };
         "group/pulseaudio" = {
           "orientation" = "horizontal";
