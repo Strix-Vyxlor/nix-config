@@ -144,12 +144,13 @@
 
       $pwvucontrol = class:^(com.saivert.pwvucontrol)$
       windowrulev2 = float,$pwvucontrol
-      windowrulev2 = size 86% 40%,$pwvucontrol
+      windowrulev2 = $scratchpadsize,$pwvucontrol
       windowrulev2 = move 50% 6%,$pwvucontrol
-      # windowrulev2 = workspace special silent,$pwvucontrol
+      windowrulev2 = workspace special silent,$pwvucontrol
       windowrulev2 = opacity 0.80,$pwvucontrol
 
       windowrulev2 = opacity 0.85,class:^(org.gnome.Nautilus)$
+      windowrulev2 = tile,class:(REAPER)
 
       layerrule = blur,alacritty
       blurls = alacritty
