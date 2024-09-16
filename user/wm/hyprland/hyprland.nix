@@ -263,6 +263,7 @@
     blueman
 
     pwvucontrol
+    qpwgraph
     xdg-utils
   ]; 
 
