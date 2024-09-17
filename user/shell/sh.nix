@@ -107,5 +107,8 @@
     ripgrep
     gnused
     htop
+    unzip
+    gzip
+    gnutar
   ];
 }

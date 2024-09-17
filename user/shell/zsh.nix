@@ -69,9 +69,6 @@ in
     zoxide
     btop
     zinit
-    fzf
-    unzip
-    gzip
-    gnutar
+    fzf 
   ];
 }
