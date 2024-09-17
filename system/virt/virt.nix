@@ -10,7 +10,7 @@
     # Virtual Machines and wine
     libvirt
     virt-manager
-    qemu
+    qemu_full
     uefi-run
 
     # Filesystems
