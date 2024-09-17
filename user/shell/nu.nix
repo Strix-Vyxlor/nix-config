@@ -17,7 +17,7 @@ in
 
   programs.nushell = {
     enable = true; 
-    shellAllias = aliases;
+    shellAliases = aliases;
     extraConfig = ''
       zoxide init nushell | save -f ~/.config/nu/zoxide.nu
     '';
