@@ -1,6 +1,6 @@
 { pkgs, userSettings, config, ... }:
 let
-  shell_pkg = pkgs."${userSettings.shell}";
+  shell_pkg = if (userSettings.shell == "nu") then pkgs.nushell else  pkgs."${userSettings.shell}";
 in {
   home.packages = with pkgs; [
     tmux
