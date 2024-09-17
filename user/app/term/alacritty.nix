@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, userSettings, ... }:
 
 {
   home.packages = with pkgs; [
@@ -6,7 +6,7 @@
   ];
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
-    shell = "zsh";
+    shell = "${userSettings.shell}";
     window = {
       decorations = "None";
       blur = true;

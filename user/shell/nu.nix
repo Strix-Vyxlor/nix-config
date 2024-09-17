@@ -19,7 +19,10 @@ in
     enable = true; 
     shellAliases = aliases;
     extraConfig = ''
-      zoxide init nushell | save -f ~/.config/nu/zoxide.nu
+      $env.config = {
+        show_banner: false,
+      }
+      zoxide init --cmd cd nushell | save -f ~/.config/nushell/zoxide.nu
     '';
   };
 
