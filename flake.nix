@@ -27,7 +27,7 @@
         theme = "catppuccin-mocha-peach";
 
         # terminal
-        shell = "nu";
+        shell = "zsh";
         prompt = "oh-my-posh";
         zix = "default";
         editor = "nvim";
