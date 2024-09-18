@@ -257,6 +257,7 @@
     hyprlock
     hyprshot
     fnott
+    libnotify
     playerctl
 
     hyprlandPlugins.hyprgrass
