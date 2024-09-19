@@ -17,6 +17,7 @@
     ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
 
     ../../user/app/graphics/aseprite.nix
+    ../../user/app/graphics/rawtherepee.nix
     ../../user/app/spotify/spicetify.nix
     ../../user/app/office/onlyoffice.nix
     ../../user/app/comms/discord.nix 

@@ -48,6 +48,10 @@
     efiSysMountPoint = "/boot";
   };
   boot.plymouth.enable = true;
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    # ....
+  ];
 
   networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
