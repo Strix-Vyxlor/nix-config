@@ -2,6 +2,8 @@
 {
   imports = [
     inputs.raspberry-pi-nix.nixosModules.raspberry-pi 
+    ../../system/security/doas.nix
+    ../../system/security/gpg.nix
   ];
   users.users.root.initialPassword = "root";
 
