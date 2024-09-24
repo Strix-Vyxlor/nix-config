@@ -5,6 +5,7 @@
     ../../app/launcher/tofi.nix
     ./waybar.nix
     ./hypr.nix
+    ./mime.nix
   ];
 
   wayland.windowManager.hyprland = {
