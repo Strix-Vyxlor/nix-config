@@ -20,7 +20,7 @@
 
         # theming
         wm = "hyprland";
-        browser = "brave";
+        browser = "zen";
         term = "alacritty";
         font = "Inter Regular";
         fontPkg = pkgs.inter;
@@ -142,5 +142,7 @@
 
     nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
+    zen-browser.url = "github:MarceColl/zen-browser-flake";
+
   };
-}
+ }
