@@ -265,6 +265,7 @@
 
     networkmanagerapplet
     blueman
+    blueberry
 
     pwvucontrol
     qpwgraph
