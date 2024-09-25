@@ -3,7 +3,12 @@
   xdg.mimeApps = {
     enable = true;
     defaultApplications = {
-      "application/x-compressed" = [ "org.gnome.Nautilus.desktop" ];
+      "application/zip" = [ "xarchiver.desktop" ];
+    };
+    associations = {
+      added = {
+        "application/zip" = [ "xarchiver.desktop" ];  
+      };
     };
   };
 }

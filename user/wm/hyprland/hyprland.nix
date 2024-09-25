@@ -3,6 +3,7 @@
   imports = [
     ../../app/term/alacritty.nix
     ../../app/launcher/tofi.nix
+    ../../app/launcher/fuzzel.nix
     ./waybar.nix
     ./hypr.nix
     ./mime.nix
@@ -32,7 +33,7 @@
       env = GDK_PIXBUF_MODULE_FILE,${pkgs.librsvg}/lib/gdk-pixbuf-2.0/2.10.0/loaders.cache
 
       exec-once = nm-applet
-      exec-once = blueman-applet
+      exec-once = blueberry-tray
       exec-once = swayosd-server 
 
       exec-once = hyprpaper
@@ -265,7 +266,7 @@
     hyprlandPlugins.hyprexpo
 
     networkmanagerapplet
-    blueman
+    libappindicator
     blueberry
 
     pwvucontrol

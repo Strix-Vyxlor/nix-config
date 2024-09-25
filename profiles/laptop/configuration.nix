@@ -18,6 +18,7 @@
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
+    ../../system/security/ssh.nix
 
     ../../system/virt/virt.nix
     ../../system/games/steam.nix
