@@ -1,6 +1,8 @@
-{ pkgs, userSettings, ... }:
 {
-
+  pkgs,
+  userSettings,
+  ...
+}: {
   imports = [
     (./. + ("/" + userSettings.shell) + ".nix")
   ];
@@ -25,7 +27,7 @@
       display = {
         separator = "    ";
         constants = [
-            "─────────────────"
+          "─────────────────"
         ];
         key = {
           type = "icon";

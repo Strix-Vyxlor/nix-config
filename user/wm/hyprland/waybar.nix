@@ -1,5 +1,9 @@
-{ config, pkgs, userSettings, ... }:
 {
+  config,
+  pkgs,
+  userSettings,
+  ...
+}: {
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
@@ -18,9 +22,9 @@
         margin = "7 7 3 7";
         spacing = 2;
 
-        modules-left = [ "group/power" "group/battery" "group/backlight" "group/cpu" "group/memory" "group/pulseaudio" ];
-        modules-center = [ "hyprland/workspaces" ];
-        modules-right = [ "group/time" "idle_inhibitor" "tray" ];
+        modules-left = ["group/power" "group/battery" "group/backlight" "group/cpu" "group/memory" "group/pulseaudio"];
+        modules-center = ["hyprland/workspaces"];
+        modules-right = ["group/time" "idle_inhibitor" "tray"];
 
         "custom/os" = {
           "format" = " {} ";
@@ -30,39 +34,39 @@
           "tooltip" = false;
         };
         "group/power" = {
-            "orientation" = "horizontal";
-            "drawer" = {
-                "transition-duration" = 500;
-                "children-class" = "not-power";
-                "transition-left-to-right" = true;
-            };
-            "modules" = [
-                "custom/os"
-                "custom/lock"
-                "custom/quit"
-                "custom/power"
-                "custom/reboot"
-            ];
+          "orientation" = "horizontal";
+          "drawer" = {
+            "transition-duration" = 500;
+            "children-class" = "not-power";
+            "transition-left-to-right" = true;
+          };
+          "modules" = [
+            "custom/os"
+            "custom/lock"
+            "custom/quit"
+            "custom/power"
+            "custom/reboot"
+          ];
         };
         "custom/quit" = {
-            "format" = "󰍃";
-            "tooltip" = false;
-            "on-click" = "hyprctl dispatch exit";
+          "format" = "󰍃";
+          "tooltip" = false;
+          "on-click" = "hyprctl dispatch exit";
         };
         "custom/lock" = {
-            "format" = "󰍁";
-            "tooltip" = false;
-            "on-click" = "hyprlock";
+          "format" = "󰍁";
+          "tooltip" = false;
+          "on-click" = "hyprlock";
         };
         "custom/reboot" = {
-            "format" = "󰜉";
-            "tooltip" = false;
-            "on-click" = "reboot";
+          "format" = "󰜉";
+          "tooltip" = false;
+          "on-click" = "reboot";
         };
         "custom/power" = {
-            "format" = "󰐥";
-            "tooltip" = false;
-            "on-click" = "shutdown now";
+          "format" = "󰐥";
+          "tooltip" = false;
+          "on-click" = "shutdown now";
         };
         "hyprland/workspaces" = {
           "format" = "{icon}";
@@ -124,43 +128,43 @@
             "transition-duration" = 500;
             "transition-left-to-right" = false;
           };
-          "modules" = [ "clock#time" "clock#date" ];
+          "modules" = ["clock#time" "clock#date"];
         };
 
-        cpu = { "format" = "󰍛"; };
-        "cpu#text" = { "format" = "{usage}%"; };
+        cpu = {"format" = "󰍛";};
+        "cpu#text" = {"format" = "{usage}%";};
         "group/cpu" = {
           "orientation" = "horizontal";
           "drawer" = {
             "transition-duration" = 500;
             "transition-left-to-right" = true;
           };
-          "modules" = [ "cpu" "cpu#text" ];
+          "modules" = ["cpu" "cpu#text"];
         };
 
-        memory = { "format" = ""; };
-        "memory#text" = { "format" = "{}%"; };
+        memory = {"format" = "";};
+        "memory#text" = {"format" = "{}%";};
         "group/memory" = {
           "orientation" = "horizontal";
           "drawer" = {
             "transition-duration" = 500;
             "transition-left-to-right" = true;
           };
-          "modules" = [ "memory" "memory#text" ];
+          "modules" = ["memory" "memory#text"];
         };
 
         backlight = {
           "format" = "{icon}";
-          "format-icons" = [ "" "" "" "" "" "" "" "" "" ];
+          "format-icons" = ["" "" "" "" "" "" "" "" ""];
         };
-        "backlight#text" = { "format" = "{percent}%"; };
+        "backlight#text" = {"format" = "{percent}%";};
         "group/backlight" = {
           "orientation" = "horizontal";
           "drawer" = {
             "transition-duration" = 500;
             "transition-left-to-right" = true;
           };
-          "modules" = [ "backlight" "backlight#text" ];
+          "modules" = ["backlight" "backlight#text"];
         };
 
         battery = {
@@ -174,7 +178,7 @@
           "format-charging" = "󰂄";
           "format-plugged" = "󰂄";
           "format-full" = "󰁹";
-          "format-icons" = [ "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹" ];
+          "format-icons" = ["󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰂂" "󰁹"];
           "interval" = 10;
         };
         "battery#text" = {
@@ -192,7 +196,7 @@
             "transition-duration" = 500;
             "transition-left-to-right" = true;
           };
-          "modules" = [ "battery" "battery#text" ];
+          "modules" = ["battery" "battery#text"];
         };
         pulseaudio = {
           "scroll-step" = 1;
@@ -209,7 +213,7 @@
             "phone" = "";
             "portable" = "";
             "car" = "";
-            "default" = [ "" "" "" ];
+            "default" = ["" "" ""];
           };
           "on-click" = "hyprctl dispatch togglespecialworkspace scratch_pwvucontrol; if hyprctl clients | grep pwvucontrol; then echo 'scratch_ranger respawn not needed'; else pwvucontrol; fi";
         };
@@ -229,232 +233,320 @@
             "transition-duration" = 500;
             "transition-left-to-right" = true;
           };
-          "modules" = [ "pulseaudio" "pulseaudio#text" ];
+          "modules" = ["pulseaudio" "pulseaudio#text"];
         };
       };
     };
-    style = ''
-      * {
-          /* `otf-font-awesome` is required to be installed for icons */
-          font-family: FontAwesome, ''+userSettings.font+'';
+    style =
+      ''
+        * {
+            /* `otf-font-awesome` is required to be installed for icons */
+            font-family: FontAwesome, ''
+      + userSettings.font
+      + ''        ;
 
-          font-size: 20px;
-      }
+                  font-size: 20px;
+              }
 
-      window#waybar {
-          background-color: rgba('' + config.lib.stylix.colors.base00-rgb-r + "," + config.lib.stylix.colors.base00-rgb-g + "," + config.lib.stylix.colors.base00-rgb-b + "," + ''0.55);
-          border-radius: 8px;
-          color: #'' + config.lib.stylix.colors.base07 + '';
-          transition-property: background-color;
-          transition-duration: .2s;
-      }
+              window#waybar {
+                  background-color: rgba(''
+      + config.lib.stylix.colors.base00-rgb-r
+      + ","
+      + config.lib.stylix.colors.base00-rgb-g
+      + ","
+      + config.lib.stylix.colors.base00-rgb-b
+      + ","
+      + ''        0.55);
+                  border-radius: 8px;
+                  color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+                  transition-property: background-color;
+                  transition-duration: .2s;
+              }
 
-      tooltip {
-        color: #'' + config.lib.stylix.colors.base07 + '';
-        background-color: rgba('' + config.lib.stylix.colors.base00-rgb-r + "," + config.lib.stylix.colors.base00-rgb-g + "," + config.lib.stylix.colors.base00-rgb-b + "," + ''0.9);
-        border-style: solid;
-        border-width: 3px;
-        border-radius: 8px;
-        border-color: #'' + config.lib.stylix.colors.base08 + '';
-      }
+              tooltip {
+                color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+                background-color: rgba(''
+      + config.lib.stylix.colors.base00-rgb-r
+      + ","
+      + config.lib.stylix.colors.base00-rgb-g
+      + ","
+      + config.lib.stylix.colors.base00-rgb-b
+      + ","
+      + ''        0.9);
+                border-style: solid;
+                border-width: 3px;
+                border-radius: 8px;
+                border-color: #''
+      + config.lib.stylix.colors.base08
+      + ''        ;
+              }
 
-      tooltip * {
-        color: #'' + config.lib.stylix.colors.base07 + '';
-        background-color: rgba('' + config.lib.stylix.colors.base00-rgb-r + "," + config.lib.stylix.colors.base00-rgb-g + "," + config.lib.stylix.colors.base00-rgb-b + "," + ''0.0);
-      }
+              tooltip * {
+                color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+                background-color: rgba(''
+      + config.lib.stylix.colors.base00-rgb-r
+      + ","
+      + config.lib.stylix.colors.base00-rgb-g
+      + ","
+      + config.lib.stylix.colors.base00-rgb-b
+      + ","
+      + ''        0.0);
+              }
 
-      window > box {
-          border-radius: 8px;
-          opacity: 0.94;
-      }
+              window > box {
+                  border-radius: 8px;
+                  opacity: 0.94;
+              }
 
-      window#waybar.hidden {
-          opacity: 0.2;
-      }
+              window#waybar.hidden {
+                  opacity: 0.2;
+              }
 
-      button {
-          border: none;
-      }
+              button {
+                  border: none;
+              }
 
-      #custom-hyprprofile {
-          color: #'' + config.lib.stylix.colors.base0D + '';
-      }
+              #custom-hyprprofile {
+                  color: #''
+      + config.lib.stylix.colors.base0D
+      + ''        ;
+              }
 
-      /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-      button:hover {
-          background: inherit;
-      }
+              /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+              button:hover {
+                  background: inherit;
+              }
 
-      #workspaces button {
-          padding: 0px 6px;
-          background-color: transparent;
-          color: #'' + config.lib.stylix.colors.base04 + '';
-      }
+              #workspaces button {
+                  padding: 0px 6px;
+                  background-color: transparent;
+                  color: #''
+      + config.lib.stylix.colors.base04
+      + ''        ;
+              }
 
-      #workspaces button:hover {
-          color: #'' + config.lib.stylix.colors.base07 + '';
-      }
+              #workspaces button:hover {
+                  color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+              }
 
-      #workspaces button.active {
-          color: #'' + config.lib.stylix.colors.base08 + '';
-      }
+              #workspaces button.active {
+                  color: #''
+      + config.lib.stylix.colors.base08
+      + ''        ;
+              }
 
-      #workspaces button.focused {
-          color: #'' + config.lib.stylix.colors.base0A + '';
-      }
+              #workspaces button.focused {
+                  color: #''
+      + config.lib.stylix.colors.base0A
+      + ''        ;
+              }
 
-      #workspaces button.visible {
-          color: #'' + config.lib.stylix.colors.base05 + '';
-      }
+              #workspaces button.visible {
+                  color: #''
+      + config.lib.stylix.colors.base05
+      + ''        ;
+              }
 
-      #workspaces button.urgent {
-          color: #'' + config.lib.stylix.colors.base09 + '';
-      }
+              #workspaces button.urgent {
+                  color: #''
+      + config.lib.stylix.colors.base09
+      + ''        ;
+              }
 
-      #battery,
-      #cpu,
-      #memory,
-      #disk,
-      #temperature,
-      #backlight,
-      #network,
-      #pulseaudio,
-      #wireplumber,
-      #custom-media,
-      #tray,
-      #mode,
-      #idle_inhibitor,
-      #scratchpad,
-      #custom-hyprprofileicon,
-      #custom-quit,
-      #custom-lock,
-      #custom-reboot,
-      #custom-power,
-      #mpd {
-          padding: 0 3px;
-          color: #'' + config.lib.stylix.colors.base07 + '';
-          border: none;
-          border-radius: 8px;
-      }
+              #battery,
+              #cpu,
+              #memory,
+              #disk,
+              #temperature,
+              #backlight,
+              #network,
+              #pulseaudio,
+              #wireplumber,
+              #custom-media,
+              #tray,
+              #mode,
+              #idle_inhibitor,
+              #scratchpad,
+              #custom-hyprprofileicon,
+              #custom-quit,
+              #custom-lock,
+              #custom-reboot,
+              #custom-power,
+              #mpd {
+                  padding: 0 3px;
+                  color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+                  border: none;
+                  border-radius: 8px;
+              }
 
-      #custom-hyprprofileicon,
-      #custom-quit,
-      #custom-lock,
-      #custom-reboot,
-      #custom-power,
-      #idle_inhibitor {
-          background-color: transparent;
-          color: #'' + config.lib.stylix.colors.base04 + '';
-      }
+              #custom-hyprprofileicon,
+              #custom-quit,
+              #custom-lock,
+              #custom-reboot,
+              #custom-power,
+              #idle_inhibitor {
+                  background-color: transparent;
+                  color: #''
+      + config.lib.stylix.colors.base04
+      + ''        ;
+              }
 
-      #custom-hyprprofileicon:hover,
-      #custom-quit:hover,
-      #custom-lock:hover,
-      #custom-reboot:hover,
-      #custom-power:hover,
-      #idle_inhibitor:hover {
-          color: #'' + config.lib.stylix.colors.base07 + '';
-      }
+              #custom-hyprprofileicon:hover,
+              #custom-quit:hover,
+              #custom-lock:hover,
+              #custom-reboot:hover,
+              #custom-power:hover,
+              #idle_inhibitor:hover {
+                  color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+              }
 
-      #clock, #tray, #idle_inhibitor {
-          padding: 0 5px;
-      }
+              #clock, #tray, #idle_inhibitor {
+                  padding: 0 5px;
+              }
 
-      #window,
-      #workspaces {
-          margin: 0 6px;
-      }
+              #window,
+              #workspaces {
+                  margin: 0 6px;
+              }
 
-      /* If workspaces is the leftmost module, omit left margin */
-      .modules-left > widget:first-child > #workspaces {
-          margin-left: 0;
-      }
+              /* If workspaces is the leftmost module, omit left margin */
+              .modules-left > widget:first-child > #workspaces {
+                  margin-left: 0;
+              }
 
-      /* If workspaces is the rightmost module, omit right margin */
-      .modules-right > widget:last-child > #workspaces {
-          margin-right: 0;
-      }
+              /* If workspaces is the rightmost module, omit right margin */
+              .modules-right > widget:last-child > #workspaces {
+                  margin-right: 0;
+              }
 
-      #clock {
-          color: #'' + config.lib.stylix.colors.base0D + '';
-      }
+              #clock {
+                  color: #''
+      + config.lib.stylix.colors.base0D
+      + ''        ;
+              }
 
-      #battery {
-          color: #'' + config.lib.stylix.colors.base0B + '';
-      }
+              #battery {
+                  color: #''
+      + config.lib.stylix.colors.base0B
+      + ''        ;
+              }
 
-      #battery.charging, #battery.plugged {
-          color: #'' + config.lib.stylix.colors.base0C + '';
-      }
+              #battery.charging, #battery.plugged {
+                  color: #''
+      + config.lib.stylix.colors.base0C
+      + ''        ;
+              }
 
-      @keyframes blink {
-          to {
-              background-color: #'' + config.lib.stylix.colors.base07 + '';
-              color: #'' + config.lib.stylix.colors.base00 + '';
-          }
-      }
+              @keyframes blink {
+                  to {
+                      background-color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+                      color: #''
+      + config.lib.stylix.colors.base00
+      + ''        ;
+                  }
+              }
 
-      #battery.critical:not(.charging) {
-          background-color: #'' + config.lib.stylix.colors.base08 + '';
-          color: #'' + config.lib.stylix.colors.base07 + '';
-          animation-name: blink;
-          animation-duration: 0.5s;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-          animation-direction: alternate;
-      }
+              #battery.critical:not(.charging) {
+                  background-color: #''
+      + config.lib.stylix.colors.base08
+      + ''        ;
+                  color: #''
+      + config.lib.stylix.colors.base07
+      + ''        ;
+                  animation-name: blink;
+                  animation-duration: 0.5s;
+                  animation-timing-function: linear;
+                  animation-iteration-count: infinite;
+                  animation-direction: alternate;
+              }
 
-      label:focus {
-          background-color: #'' + config.lib.stylix.colors.base00 + '';
-      }
+              label:focus {
+                  background-color: #''
+      + config.lib.stylix.colors.base00
+      + ''        ;
+              }
 
-      #cpu {
-          color: #'' + config.lib.stylix.colors.base0D + '';
-      }
+              #cpu {
+                  color: #''
+      + config.lib.stylix.colors.base0D
+      + ''        ;
+              }
 
-      #memory {
-          color: #'' + config.lib.stylix.colors.base0E + '';
-      }
+              #memory {
+                  color: #''
+      + config.lib.stylix.colors.base0E
+      + ''        ;
+              }
 
-      #disk {
-          color: #'' + config.lib.stylix.colors.base0F + '';
-      }
+              #disk {
+                  color: #''
+      + config.lib.stylix.colors.base0F
+      + ''        ;
+              }
 
-      #backlight {
-          color: #'' + config.lib.stylix.colors.base0A + '';
-      }
+              #backlight {
+                  color: #''
+      + config.lib.stylix.colors.base0A
+      + ''        ;
+              }
 
-      label.numlock {
-          color: #'' + config.lib.stylix.colors.base04 + '';
-      }
+              label.numlock {
+                  color: #''
+      + config.lib.stylix.colors.base04
+      + ''        ;
+              }
 
-      label.numlock.locked {
-          color: #'' + config.lib.stylix.colors.base0F + '';
-      }
+              label.numlock.locked {
+                  color: #''
+      + config.lib.stylix.colors.base0F
+      + ''        ;
+              }
 
-      #pulseaudio {
-          color: #'' + config.lib.stylix.colors.base0C + '';
-      }
+              #pulseaudio {
+                  color: #''
+      + config.lib.stylix.colors.base0C
+      + ''        ;
+              }
 
-      #pulseaudio.muted {
-          color: #'' + config.lib.stylix.colors.base04 + '';
-      }
+              #pulseaudio.muted {
+                  color: #''
+      + config.lib.stylix.colors.base04
+      + ''        ;
+              }
 
-      #tray > .passive {
-          -gtk-icon-effect: dim;
-      }
+              #tray > .passive {
+                  -gtk-icon-effect: dim;
+              }
 
-      #tray > .needs-attention {
-          -gtk-icon-effect: highlight;
-      }
+              #tray > .needs-attention {
+                  -gtk-icon-effect: highlight;
+              }
 
-      #idle_inhibitor {
-          color: #'' + config.lib.stylix.colors.base04 + '';
-      }
+              #idle_inhibitor {
+                  color: #''
+      + config.lib.stylix.colors.base04
+      + ''        ;
+              }
 
-      #idle_inhibitor.activated {
-          color: #'' + config.lib.stylix.colors.base0F + '';
-      }
+              #idle_inhibitor.activated {
+                  color: #''
+      + config.lib.stylix.colors.base0F
+      + ''        ;
+              }
       '';
   };
 }

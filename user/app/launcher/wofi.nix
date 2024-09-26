@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
 {
-
+  pkgs,
+  config,
+  ...
+}: {
   programs.wofi = {
     enable = true;
     settings = {
@@ -11,7 +13,7 @@
       term = "blackbox";
       prompt = "";
       columns = 1;
-      allow-images = true;  
+      allow-images = true;
     };
     style = ''
       @define-color	mauve  #${config.lib.stylix.colors.base0E};
@@ -132,8 +134,8 @@
       #entry:drop(active) {
         background-color: @lavender!important;
       }
-      '';
+    '';
   };
 
-  home.packages = [ pkgs.wofi ];
+  home.packages = [pkgs.wofi];
 }

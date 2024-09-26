@@ -1,12 +1,18 @@
-{ config, lib, pkgs, inputs, userSettings, ... }:
-let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  userSettings,
+  ...
+}: let
   themePath = "../../../themes" + ("/" + userSettings.theme) + "/theme.yaml";
   themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes" + ("/" + userSettings.theme) + "/polarity.txt"));
-  background = "../../../themes" + ("/" + userSettings.theme) + "/background.png"; 
+  background = "../../../themes" + ("/" + userSettings.theme) + "/background.png";
 in {
-  imports = [ 
+  imports = [
     inputs.stylix.homeManagerModules.stylix
-    ( ./. + "../../../themes" + ("/" + userSettings.theme) + /theme.nix)
+    (./. + "../../../themes" + ("/" + userSettings.theme) + /theme.nix)
   ];
 
   stylix.enable = true;
@@ -63,7 +69,10 @@ in {
   };
 
   home.packages = with pkgs; [
-     libsForQt5.qt5ct pkgs.libsForQt5.breeze-qt5 libsForQt5.breeze-icons pkgs.noto-fonts-monochrome-emoji
+    libsForQt5.qt5ct
+    pkgs.libsForQt5.breeze-qt5
+    libsForQt5.breeze-icons
+    pkgs.noto-fonts-monochrome-emoji
   ];
   qt = {
     enable = true;
@@ -72,8 +81,8 @@ in {
     platformTheme.name = "kde";
   };
   fonts.fontconfig.defaultFonts = {
-    monospace = [ userSettings.font ];
-    sansSerif = [ userSettings.font ];
-    serif = [ userSettings.font ];
+    monospace = [userSettings.font];
+    sansSerif = [userSettings.font];
+    serif = [userSettings.font];
   };
-} 
+}

@@ -1,6 +1,9 @@
-{ config, pkgs, userSettings, ... }:
-{ 
-
+{
+  config,
+  pkgs,
+  userSettings,
+  ...
+}: {
   home.username = userSettings.username;
   home.homeDirectory = "/home/" + userSettings.username;
 
@@ -10,16 +13,16 @@
   imports = [
     ../../user/style/stylix.nix
     ../../user/shell/sh.nix
-    ( ./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
+    (./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
     ../../user/app/git/git.nix
     ../../user/app/git/gh.nix
-    ( ./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
-    ( ./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
+    (./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
+    (./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
 
     # ../../user/app/graphics/aseprite.nix
     # ../../user/app/spotify/spicetify.nix
     # ../../user/app/office/onlyoffice.nix
-    # ../../user/app/comms/discord.nix 
+    # ../../user/app/comms/discord.nix
     ../../user/lang/cc/cc.nix
   ];
 
@@ -43,7 +46,6 @@
     executable = false;
   };
 
-
   xdg.enable = true;
   xdg.userDirs = {
     enable = true;
@@ -63,7 +65,7 @@
 
   xdg.mime.enable = true;
   xdg.mimeApps.enable = true;
-  
+
   home.sessionVariables = {
     EDITOR = userSettings.editor;
     TERM = userSettings.term;

@@ -1,6 +1,8 @@
-{ pkgs, config, ... }:
 {
-
+  pkgs,
+  config,
+  ...
+}: {
   programs.oh-my-posh = {
     enable = true;
     enableBashIntegration = false;

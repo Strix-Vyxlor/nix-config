@@ -1,5 +1,8 @@
-{ pkgs, userSettings, ... }:
-let
+{
+  pkgs,
+  userSettings,
+  ...
+}: let
   aliases = {
     ls = "eza --icons";
     ll = "eza --icons -l";
@@ -8,9 +11,8 @@ let
     plaincat = "command cat";
     cat = "bat --plain";
     neofetch = "fastfetch";
-  }; 
-in
-{
+  };
+in {
   imports = [
     (./. + "/prompt/" + ("/" + userSettings.prompt) + ".nix")
   ];
@@ -29,7 +31,7 @@ in
       fi
 
       source "''${ZINIT_HOME}/zinit.zsh"
-    
+
       zinit light zsh-users/zsh-syntax-highlighting
       zinit light zsh-users/zsh-completions
       zinit light zsh-users/zsh-autosuggestions
@@ -47,7 +49,7 @@ in
       setopt hist_save_no_dups
       setopt hist_ignore_dups
       setopt hist_find_no_dups
-      
+
       eval "''$(fzf --zsh)"
       eval "''$(zoxide init --cmd cd zsh)"
     '';
@@ -69,6 +71,6 @@ in
     zoxide
     btop
     zinit
-    fzf 
+    fzf
   ];
 }

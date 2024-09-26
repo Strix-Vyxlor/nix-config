@@ -1,6 +1,9 @@
-{ pkgs, lib, userSettings, ... }:
-
 {
+  pkgs,
+  lib,
+  userSettings,
+  ...
+}: {
   home.packages = with pkgs; [
     alacritty
   ];
@@ -13,7 +16,7 @@
       opacity = lib.mkForce 0.75;
     };
     font = {
-      normal = { family = lib.mkForce "ZedMono Nerd Font"; };
+      normal = {family = lib.mkForce "ZedMono Nerd Font";};
       size = 12;
     };
     cursor = {

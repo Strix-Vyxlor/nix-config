@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ../../app/term/blackbox.nix
     ../../app/launcher/wofi.nix
@@ -21,20 +25,21 @@
         vitals.extensionUuid
       ];
     };
-  }; 
+  };
 
-  home.packages = (with pkgs; [ 
-    xdg-utils 
-    dconf-editor
-    wl-clipboard
-    adwaita-icon-theme
-    gnome-tweaks
-  ]) ++ (with pkgs.gnomeExtensions; [
-        blur-my-shell
-        caffeine
-        hide-keyboard-layout
-        quick-settings-tweaker
-        vitals
+  home.packages =
+    (with pkgs; [
+      xdg-utils
+      dconf-editor
+      wl-clipboard
+      adwaita-icon-theme
+      gnome-tweaks
+    ])
+    ++ (with pkgs.gnomeExtensions; [
+      blur-my-shell
+      caffeine
+      hide-keyboard-layout
+      quick-settings-tweaker
+      vitals
     ]);
 }
-

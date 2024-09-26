@@ -1,5 +1,8 @@
-{ config, pkgs, ... }:
 {
+  config,
+  pkgs,
+  ...
+}: {
   home.packages = with pkgs; [
     blackbox-terminal
   ];
@@ -13,7 +16,7 @@
         "foreground-color": "#${config.lib.stylix.colors.base05}",
         "background-color": "#${config.lib.stylix.colors.base00}",
         "palette": [
-          "#${config.lib.stylix.colors.base00}", 
+          "#${config.lib.stylix.colors.base00}",
           "#${config.lib.stylix.colors.base08}",
           "#${config.lib.stylix.colors.base0B}",
           "#${config.lib.stylix.colors.base0A}",
@@ -22,7 +25,7 @@
           "#${config.lib.stylix.colors.base0C}",
           "#${config.lib.stylix.colors.base07}",
 
-          "#${config.lib.stylix.colors.base03}", 
+          "#${config.lib.stylix.colors.base03}",
           "#${config.lib.stylix.colors.base08}",
           "#${config.lib.stylix.colors.base0B}",
           "#${config.lib.stylix.colors.base0A}",
@@ -30,7 +33,7 @@
           "#${config.lib.stylix.colors.base0E}",
           "#${config.lib.stylix.colors.base0C}",
           "#${config.lib.stylix.colors.base07}"
-        ] 
+        ]
       }
     '';
   };

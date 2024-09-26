@@ -1,7 +1,14 @@
-{ pkgs, lib, zix-pkg, systemSettings, userSettings, inputs, ... }:
 {
+  pkgs,
+  lib,
+  zix-pkg,
+  systemSettings,
+  userSettings,
+  inputs,
+  ...
+}: {
   imports = [
-    inputs.raspberry-pi-nix.nixosModules.raspberry-pi 
+    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
   ];
@@ -47,7 +54,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
+    extraGroups = ["networkmanager" "wheel" "input" "libvirtd"];
     packages = [];
     uid = 1000;
   };
@@ -67,14 +74,13 @@
 
   system.stateVersion = "24.05";
 
-
   hardware = {
     raspberry-pi = {
       config = {
         all = {
           options = {
             # The firmware will start our u-boot binary rather than a
-            # linux kernel 
+            # linux kernel
             arm_64bit = {
               enable = true;
               value = true;
@@ -87,12 +93,11 @@
           dt-overlays = {
             vc4-kms-v3d = {
               enable = true;
-              params = { };
+              params = {};
             };
-          }; 
+          };
         };
       };
     };
   };
 }
-

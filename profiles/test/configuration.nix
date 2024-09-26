@@ -1,5 +1,11 @@
-{ pkgs, lib, zix-pkg, systemSettings, userSettings, ... }:
 {
+  pkgs,
+  lib,
+  zix-pkg,
+  systemSettings,
+  userSettings,
+  ...
+}: {
   imports = [
     ../../system/hardware-configuration.nix
     ../../system/hardware/kernel.nix
@@ -16,7 +22,7 @@
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
   ];
- 
+
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -51,7 +57,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "input" ];
+    extraGroups = ["networkmanager" "wheel" "input"];
     packages = [];
     uid = 1000;
   };

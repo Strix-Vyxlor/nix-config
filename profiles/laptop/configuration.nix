@@ -1,12 +1,18 @@
-{ pkgs, lib, zix-pkg, systemSettings, userSettings, ... }:
 {
+  pkgs,
+  lib,
+  zix-pkg,
+  systemSettings,
+  userSettings,
+  ...
+}: {
   imports = [
     ../../system/hardware-configuration.nix
     ../../system/hardware/kernel.nix
     ../../system/hardware/mesa.nix
     ../../system/hardware/time.nix
     ../../system/hardware/bluetooth.nix
-    
+
     ../../system/hardware/udev.nix
     ../../system/hardware/tailscale.nix
 
@@ -24,7 +30,7 @@
     ../../system/games/steam.nix
     ../../system/games/utils.nix
   ];
- 
+
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -32,11 +38,11 @@
 
   nix.settings = {
     substituters = [
-      "https://hyprland.cachix.org" 
+      "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" 
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
   };
@@ -74,7 +80,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
+    extraGroups = ["networkmanager" "wheel" "input" "libvirtd"];
     packages = [];
     uid = 1000;
   };

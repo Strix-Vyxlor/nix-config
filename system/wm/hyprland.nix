@@ -1,11 +1,15 @@
-{ inputs, pkgs, lib, ... }:
 {
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
   # Import wayland config
   imports = [
-              ./pipewire.nix
-              ./dbus.nix
-              ../hardware/power.nix
-            ];
+    ./pipewire.nix
+    ./dbus.nix
+    ../hardware/power.nix
+  ];
 
   # Security
   security.pam.services = {
@@ -35,10 +39,10 @@
     };
   };
   environment = {
-    plasma5.excludePackages = [ pkgs.kdePackages.systemsettings ];
-    plasma6.excludePackages = [ pkgs.kdePackages.systemsettings ];
+    plasma5.excludePackages = [pkgs.kdePackages.systemsettings];
+    plasma6.excludePackages = [pkgs.kdePackages.systemsettings];
   };
-  services.xserver.excludePackages = [ pkgs.xterm ];
+  services.xserver.excludePackages = [pkgs.xterm];
 
   services.displayManager.ly = {
     enable = true;
@@ -46,7 +50,7 @@
       clock = "%I:%M:%S %p\n%A %d %B";
       clear_password = true;
       cmatrix_fg = "0x05";
-      animation = "matrix"; 
+      animation = "matrix";
     };
   };
 

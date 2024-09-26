@@ -1,5 +1,9 @@
-{ pkgs, userSettings, config, ... }:
 {
+  pkgs,
+  userSettings,
+  config,
+  ...
+}: {
   programs.tofi = {
     enable = true;
     settings = {
@@ -22,7 +26,7 @@
       input-background-padding = "5, 0";
 
       selection-color = "#${config.lib.stylix.colors.base0E}";
-      selection-background = "#${config.lib.stylix.colors.base02}"; 
+      selection-background = "#${config.lib.stylix.colors.base02}";
       selection-background-padding = "2, 5";
       selection-background-corner-radius = 15;
 
@@ -37,7 +41,6 @@
       border-color = "#${config.lib.stylix.colors.base0D}";
       outline-width = 0;
       background-color = "#${config.lib.stylix.colors.base00}";
-
     };
   };
 }

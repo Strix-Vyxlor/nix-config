@@ -1,5 +1,4 @@
-{ lib, ... }:
-{
+{lib, ...}: {
   dconf.settings = with lib.hm.gvariant; {
     "org/gnome/desktop/wm/keybindings" = {
       close = ["<Super>q"];
@@ -33,9 +32,9 @@
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      next = [ "Cancel" ];
-      play = [ "Go" ];
-      previous = [ "Messenger" ];
+      next = ["Cancel"];
+      play = ["Go"];
+      previous = ["Messenger"];
     };
 
     # custom keymaps
@@ -99,11 +98,11 @@
       sigma = mkInt32 10;
       opacity = mkInt32 200;
       brightness = mkDouble 1.0;
-      blacklist = [ 
+      blacklist = [
         "Plank"
         "com.desktop.ding"
-        "Conky" 
-        "Brave-browser" 
+        "Conky"
+        "Brave-browser"
         "org.gnome.Boxes"
       ];
     };
@@ -126,8 +125,8 @@
       notifications-enabled = false;
       volume-mixer-enabled = false;
       user-removed-buttons = [
-        "PowerProfilesToggle" 
-        "KeyboardBrightnessToggle" 
+        "PowerProfilesToggle"
+        "KeyboardBrightnessToggle"
         "NightLightToggle"
       ];
     };

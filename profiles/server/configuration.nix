@@ -1,15 +1,24 @@
-{ lib, pkgs, zix-pkg, systemSettings, userSettings, ... }:
 {
+  lib,
+  pkgs,
+  zix-pkg,
+  systemSettings,
+  userSettings,
+  ...
+}: {
   imports = [
     ../../system/hardware-configuration.nix
     ../../system/hardware/time.nix
     ../../system/hardware/kernel.nix
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
+    ../../system/security/ssh.nix
+
+    ../../system/virt/docker.nix
 
     ../../system/style/stylix.nix
   ];
-  
+
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -22,6 +31,7 @@
     canTouchEfiVariables = true;
     efiSysMountPoint = "/boot";
   };
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
   boot.plymouth.enable = true;
 
   networking.hostName = systemSettings.hostname;
@@ -44,7 +54,7 @@
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
-    extraGroups = [ "networkmanager" "wheel" "input" "libvirtd" ];
+    extraGroups = ["networkmanager" "wheel" "input" "libvirtd"];
     packages = [];
     uid = 1000;
   };

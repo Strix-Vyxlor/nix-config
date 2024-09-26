@@ -1,5 +1,9 @@
-{ pkgs, config, userSettings, ...}:
-let
+{
+  pkgs,
+  config,
+  userSettings,
+  ...
+}: let
   aliases = {
     ls = "eza --icons";
     ll = "eza --icons -l";
@@ -8,9 +12,8 @@ let
     plaincat = "command cat";
     cat = "bat --plain";
     neofetch = "fastfetch";
-  }; 
-in
-{
+  };
+in {
   imports = [
     (./. + "/prompt/" + ("/" + userSettings.prompt) + ".nix")
   ];
@@ -21,10 +24,10 @@ in
     shellInit = ''
       set fish_greeting
       set -U __done_notification_command "notify-send --app-name \$title \$message"
-      
+
     '';
-    shellInitLast = '' 
-      
+    shellInitLast = ''
+
       set -U FZF_COMPLETE 2
       zoxide init --cmd cd fish | source
     '';
@@ -66,6 +69,6 @@ in
     fd
     zoxide
     btop
-    fzf 
+    fzf
   ];
 }

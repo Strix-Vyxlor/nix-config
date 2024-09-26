@@ -1,7 +1,6 @@
-{ pkgs, ...}:
-{
+{pkgs, ...}: {
   programs.steam = {
-    enable = true; 
+    enable = true;
     protontricks.enable = true;
     gamescopeSession = {
       enable = true;

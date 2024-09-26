@@ -1,5 +1,9 @@
-{ pkgs, userSettings, config, ...}:
-let
+{
+  pkgs,
+  userSettings,
+  config,
+  ...
+}: let
   aliases = {
     ls = "eza --icons";
     ll = "eza --icons -l";
@@ -9,14 +13,13 @@ let
     cat = "bat --plain";
     neofetch = "fastfetch";
   };
-in
-{
+in {
   imports = [
     (./. + "/prompt/" + ("/" + userSettings.prompt) + ".nix")
   ];
 
   programs.nushell = {
-    enable = true; 
+    enable = true;
     shellAliases = aliases;
     extraConfig = ''
 
@@ -100,7 +103,7 @@ in
 
         color_config: $base16_theme
       }
-        
+
       source ~/.config/nushell/zoxide.nu
     '';
     extraEnv = ''
@@ -122,6 +125,6 @@ in
     bat
     zoxide
     btop
-    fzf 
+    fzf
   ];
 }

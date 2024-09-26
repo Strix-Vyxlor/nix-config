@@ -1,4 +1,3 @@
-{ pkgs, ...}:
-{
-  home.packages = [ pkgs.rawtherapee ];
+{pkgs, ...}: {
+  home.packages = [pkgs.rawtherapee];
 }

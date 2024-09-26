@@ -1,13 +1,16 @@
-{ pkgs, inputs, ... }:
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   imports = [
     ./pipewire.nix
     ./dbus.nix
   ];
- 
+
   stylix.targets.gnome.enable = true;
 
-  services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon gnome2.GConf ];
+  services.udev.packages = with pkgs; [gnome.gnome-settings-daemon gnome2.GConf];
 
   services.printing.enable = true;
   services.xserver = {
@@ -26,24 +29,26 @@
     ];
   };
 
-  services.xserver.excludePackages = [ pkgs.xterm ];
+  services.xserver.excludePackages = [pkgs.xterm];
   services.xserver.desktopManager.xterm.enable = false;
 
   documentation.nixos.enable = false;
 
-  environment.gnome.excludePackages = (with pkgs; [
-    gnome-photos
-    gnome-tour
-    gedit
-    epiphany
-    cheese
-    geary
-    evince
-    totem
-    gnome-tour
-    gnome-connections
-    gnome-calendar
-  ]) ++ (with pkgs.gnome; [ 
+  environment.gnome.excludePackages =
+    (with pkgs; [
+      gnome-photos
+      gnome-tour
+      gedit
+      epiphany
+      cheese
+      geary
+      evince
+      totem
+      gnome-tour
+      gnome-connections
+      gnome-calendar
+    ])
+    ++ (with pkgs.gnome; [
       gnome-music
       gnome-characters
       tali # poker game
@@ -56,6 +61,5 @@
       gnome-maps
       gnome-logs
       gnome-backgrounds
-  ]);
-
+    ]);
 }

@@ -1,110 +1,107 @@
 {
-  description = "Strix Vyxlor nix config."; 
+  description = "Strix Vyxlor nix config.";
 
-  outputs = inputs@{ self, ... }:
-    let
-      systemSettings = {
-        system = "x86_64-linux";
-        profile = "laptop";
-        kernel = pkgs.linuxPackages_latest;
-        timezone = "Europe/Brussels";
-        locale = "en_US.UTF-8";
-        hostname = "nixos";
-      };
-
-      userSettings = {
-        username = "strix";
-        name = "Strix Vyxlor";
-        email = "strix.vyxlor@gmail.com";
-        configDir = "~/.nix-config";
-
-        # theming
-        wm = "hyprland";
-        browser = "zen";
-        term = "alacritty";
-        font = "Inter Regular";
-        fontPkg = pkgs.inter;
-        theme = "catppuccin-mocha-peach";
-
-        # terminal
-        shell = "fish";
-        prompt = "oh-my-posh";
-        zix = "default";
-        editor = "nvim";
-      };
-
-      pkgs = import inputs.nixpkgs {
-        system = systemSettings.system;
-        config = {
-          allowUnFree = true;
-        };
-        overlays = [ 
-          (import inputs.rust-overlay)
-          inputs.neovim.overlays.${systemSettings.system}.neovim
-        ];
-      };
-
-      lib = inputs.nixpkgs.lib;
-      home-manager = inputs.home-manager-unstable;
-
-      zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
-    in
-    {
-
-      homeConfigurations = {
-        default = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs; 
-          modules = [
-            (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
-          ];
-          extraSpecialArgs = {
-            inherit systemSettings;
-            inherit userSettings;
-            inherit inputs;
-          };
-        };
-      };
-
-      nixosConfigurations = {
-        default = lib.nixosSystem {
-          system = systemSettings.system;
-          modules = [
-            (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
-          ];
-          specialArgs = {
-            inherit zix-pkg;
-            inherit systemSettings;
-            inherit userSettings;
-            inherit inputs;
-          };
-        };
-
-        rpi = lib.nixosSystem {
-          system = "aarch64-linux";
-          modules = [ ./profiles/rpi/sd-image.nix ];
-          specialArgs = {
-            inherit zix-pkg;
-            inherit systemSettings;
-            inherit userSettings;
-            inherit inputs;
-          };
-        };
-      };
-    
-      nixOnDroidConfigurations = {
-        inherit pkgs;
-        default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
-          inherit pkgs;
-          modules = [ ./profiles/nix-on-droid/configuration.nix ];
-          extraSpecialArgs = {
-            inherit zix-pkg;
-            inherit systemSettings;
-            inherit userSettings;
-            inherit inputs;
-          };
-        };
-      }; 
+  outputs = inputs @ {self, ...}: let
+    systemSettings = {
+      system = "x86_64-linux";
+      profile = "laptop";
+      kernel = pkgs.linuxPackages_latest;
+      timezone = "Europe/Brussels";
+      locale = "en_US.UTF-8";
+      hostname = "nixos";
     };
+
+    userSettings = {
+      username = "strix";
+      name = "Strix Vyxlor";
+      email = "strix.vyxlor@gmail.com";
+      configDir = "~/.nix-config";
+
+      # theming
+      wm = "hyprland";
+      browser = "zen";
+      term = "alacritty";
+      font = "Inter Regular";
+      fontPkg = pkgs.inter;
+      theme = "catppuccin-mocha-peach";
+
+      # terminal
+      shell = "fish";
+      prompt = "oh-my-posh";
+      zix = "default";
+      editor = "nvim";
+    };
+
+    pkgs = import inputs.nixpkgs {
+      system = systemSettings.system;
+      config = {
+        allowUnFree = true;
+      };
+      overlays = [
+        (import inputs.rust-overlay)
+        inputs.neovim.overlays.${systemSettings.system}.neovim
+      ];
+    };
+
+    lib = inputs.nixpkgs.lib;
+    home-manager = inputs.home-manager-unstable;
+
+    zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
+  in {
+    homeConfigurations = {
+      default = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
+        ];
+        extraSpecialArgs = {
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs;
+        };
+      };
+    };
+
+    nixosConfigurations = {
+      default = lib.nixosSystem {
+        system = systemSettings.system;
+        modules = [
+          (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+        ];
+        specialArgs = {
+          inherit zix-pkg;
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs;
+        };
+      };
+
+      rpi = lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [./profiles/rpi/sd-image.nix];
+        specialArgs = {
+          inherit zix-pkg;
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs;
+        };
+      };
+    };
+
+    nixOnDroidConfigurations = {
+      inherit pkgs;
+      default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
+        inherit pkgs;
+        modules = [./profiles/nix-on-droid/configuration.nix];
+        extraSpecialArgs = {
+          inherit zix-pkg;
+          inherit systemSettings;
+          inherit userSettings;
+          inherit inputs;
+        };
+      };
+    };
+  };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -138,11 +135,10 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
-    }; 
+    };
 
     nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
     zen-browser.url = "github:MarceColl/zen-browser-flake";
-
   };
- }
+}

@@ -1,4 +1,3 @@
-{ pkgs, ... }:
-{
-  home.packages = [ pkgs.blockbench ]; 
+{pkgs, ...}: {
+  home.packages = [pkgs.blockbench];
 }

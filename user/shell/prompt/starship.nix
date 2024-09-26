@@ -1,5 +1,8 @@
-{ pkgs, userSettings, ... }:
 {
+  pkgs,
+  userSettings,
+  ...
+}: {
   programs.starship = {
     enable = true;
     enableBashIntegration = false;

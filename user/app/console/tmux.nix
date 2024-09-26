@@ -1,6 +1,13 @@
-{ pkgs, userSettings, config, ... }:
-let
-  shell_pkg = if (userSettings.shell == "nu") then pkgs.nushell else  pkgs."${userSettings.shell}";
+{
+  pkgs,
+  userSettings,
+  config,
+  ...
+}: let
+  shell_pkg =
+    if (userSettings.shell == "nu")
+    then pkgs.nushell
+    else pkgs."${userSettings.shell}";
 in {
   home.packages = with pkgs; [
     tmux
@@ -8,7 +15,7 @@ in {
 
   programs.tmux = {
     enable = true;
-    
+
     shell = "${shell_pkg}/bin/${userSettings.shell}";
     newSession = true;
     mouse = true;
@@ -32,7 +39,7 @@ in {
           set -g @tmux_power_left_arrow_icon      ''
           set -g @tmux_power_upload_speed_icon    '󰕒'
           set -g @tmux_power_download_speed_icon  '󰇚'
-          set -g @tmux_power_prefix_highlight_pos 'R' 
+          set -g @tmux_power_prefix_highlight_pos 'R'
         '';
       }
       {
@@ -49,51 +56,51 @@ in {
     ];
 
     extraConfig = ''
-     set-option -ga terminal-overrides ",xterm*:Tc"
-     set -g default-terminal "alacritty" 
+      set-option -ga terminal-overrides ",xterm*:Tc"
+      set -g default-terminal "alacritty"
 
-     unbind C-b
-     set -g prefix C-Space
-     bind C-Space send-prefix 
+      unbind C-b
+      set -g prefix C-Space
+      bind C-Space send-prefix
 
 
-      # Smart pane switching with awareness of Vim splits.
-      # See: https://github.com/christoomey/vim-tmux-navigator
-      is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-          | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'"
-      bind-key -n 'C-Left' if-shell "$is_vim" 'send-keys C-Left'  'select-pane -L'
-      bind-key -n 'C-Down' if-shell "$is_vim" 'send-keys C-Down'  'select-pane -D'
-      bind-key -n 'C-Up' if-shell "$is_vim" 'send-keys C-Up'  'select-pane -U'
-      bind-key -n 'C-Right' if-shell "$is_vim" 'send-keys C-Right'  'select-pane -R'
-      tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-      if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-          "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-      if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-          "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
+       # Smart pane switching with awareness of Vim splits.
+       # See: https://github.com/christoomey/vim-tmux-navigator
+       is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
+           | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|l?n?vim?x?|fzf)(diff)?$'"
+       bind-key -n 'C-Left' if-shell "$is_vim" 'send-keys C-Left'  'select-pane -L'
+       bind-key -n 'C-Down' if-shell "$is_vim" 'send-keys C-Down'  'select-pane -D'
+       bind-key -n 'C-Up' if-shell "$is_vim" 'send-keys C-Up'  'select-pane -U'
+       bind-key -n 'C-Right' if-shell "$is_vim" 'send-keys C-Right'  'select-pane -R'
+       tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
+       if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
+           "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
+       if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
+           "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
 
-      bind-key -T copy-mode-vi 'C-Left' select-pane -L
-      bind-key -T copy-mode-vi 'C-Down' select-pane -D
-      bind-key -T copy-mode-vi 'C-Up' select-pane -U
-      bind-key -T copy-mode-vi 'C-Right' select-pane -R
-      bind-key -T copy-mode-vi 'C-\' select-pane -l
+       bind-key -T copy-mode-vi 'C-Left' select-pane -L
+       bind-key -T copy-mode-vi 'C-Down' select-pane -D
+       bind-key -T copy-mode-vi 'C-Up' select-pane -U
+       bind-key -T copy-mode-vi 'C-Right' select-pane -R
+       bind-key -T copy-mode-vi 'C-\' select-pane -l
 
-      bind -n C-PageDown previous-window
-      bind -n C-PageUp next-window
+       bind -n C-PageDown previous-window
+       bind -n C-PageUp next-window
 
-      unbind '"'
-      unbind %
-      bind h split-window -v -c "#{pane_current_path}"
-      bind v split-window -h -c "#{pane_current_path}" 
-      
-      unbind n
-      unbind p
-      bind n new-window -c "#{pane_current_path}" 
+       unbind '"'
+       unbind %
+       bind h split-window -v -c "#{pane_current_path}"
+       bind v split-window -h -c "#{pane_current_path}"
 
-      unbind q
-      bind q confirm-before -p "kill tmux? (y/n)" "kill-session"
+       unbind n
+       unbind p
+       bind n new-window -c "#{pane_current_path}"
 
-      bind R command-prompt -p "New session name: " "rename-session '%1'"
-      bind r command-prompt -p "New window name: " "rename-window '%1'"
+       unbind q
+       bind q confirm-before -p "kill tmux? (y/n)" "kill-session"
+
+       bind R command-prompt -p "New session name: " "rename-session '%1'"
+       bind r command-prompt -p "New window name: " "rename-window '%1'"
     '';
   };
 }

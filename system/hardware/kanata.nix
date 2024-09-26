@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.kanata = {
     enable = true;
     keyboards."default" = {
@@ -68,7 +67,7 @@
 
         (deflayer base
           tab       a z e r t y u i o p
-          @esc-ctrl  q s d f g h j k l m 
+          @esc-ctrl  q s d f g h j k l m
           lsft OEM_10 w x c v b n OEM_COMMA OEM_PERIOD OEM_2 OEM_PLUS rsft
           lctrl @sym                                              @num caps
         )
@@ -108,5 +107,5 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.kanata ];
+  environment.systemPackages = [pkgs.kanata];
 }

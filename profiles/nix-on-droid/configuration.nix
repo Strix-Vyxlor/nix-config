@@ -1,6 +1,13 @@
-{config, lib, pkgs, zix-pkg, systemSettings, userSettings, inputs, ... }:
 {
-  
+  config,
+  lib,
+  pkgs,
+  zix-pkg,
+  systemSettings,
+  userSettings,
+  inputs,
+  ...
+}: {
   # Simply install just the packages
   environment.packages = with pkgs; [
     # User-facing stuff that you really really want to have
@@ -59,11 +66,11 @@
 
   terminal = {
     colors = {
-      background = "#1e1e2e";  
+      background = "#1e1e2e";
       foreground = "#cdd6f4";
       cursor = "#cdd6f4";
       color0 = "#1e1e2e";
-      color1 = "#f38ba8"; 
+      color1 = "#f38ba8";
       color2 = "#a6e3a1";
       color3 = "#f9e2af";
       color4 = "#fab387";
@@ -80,7 +87,6 @@
       color15 = "#b4befe";
     };
     font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/ZedMonoNerdFont-Regular.ttf";
-
   };
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
