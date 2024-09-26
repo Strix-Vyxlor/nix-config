@@ -14,6 +14,8 @@
     ../../system/security/gpg.nix
     ../../system/security/ssh.nix
 
+    ../../system/wm/cockpit.nix
+
     ../../system/virt/docker.nix
 
     ../../system/style/stylix.nix
