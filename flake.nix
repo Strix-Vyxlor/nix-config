@@ -4,6 +4,8 @@
   outputs = inputs @ {self, ...}: let
     systemSettings = {
       system = "x86_64-linux";
+      nixpkgs = "nixpkgs";
+      home-manager = "home-manager-unstable";
       profile = "laptop";
       kernel = pkgs.linuxPackages_latest;
       timezone = "Europe/Brussels";
@@ -32,7 +34,7 @@
       editor = "nvim";
     };
 
-    pkgs = import inputs.nixpkgs {
+    pkgs = import inputs.${systemSettings.nixpkgs} {
       system = systemSettings.system;
       config = {
         allowUnFree = true;
@@ -44,7 +46,7 @@
     };
 
     lib = inputs.nixpkgs.lib;
-    home-manager = inputs.home-manager-unstable;
+    home-manager = inputs.${systemSettings.home-manager};
 
     zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
   in {
@@ -105,9 +107,14 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
     nix-on-droid = {
