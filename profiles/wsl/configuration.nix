@@ -13,7 +13,6 @@
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
     ../../system/security/ssh.nix
-    ../../system/hardware/tailscale.nix
 
     ../../system/wm/cockpit.nix
 
