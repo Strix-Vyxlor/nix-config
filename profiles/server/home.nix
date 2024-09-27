@@ -20,6 +20,19 @@
     ../../user/app/console/tmux.nix
   ];
 
+  home.file.".config/zix/zix.conf" = {
+    text = ''
+      {
+        "flake": true,
+        "path": ".nix-config",
+        "hostname": "default",
+        "nix-on-droid": false,
+        "root-command": "doas",
+      }
+    '';
+    executable = false;
+  };
+
   home.packages = with pkgs; [
     git
   ];
