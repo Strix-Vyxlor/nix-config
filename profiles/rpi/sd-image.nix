@@ -16,6 +16,7 @@
 
   raspberry-pi-nix.board = "bcm2712";
   raspberry-pi-nix.uboot.enable = false;
+  raspberry-pi-nix.libcamera-overlay.enable = false;
 
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
