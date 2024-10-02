@@ -7,7 +7,7 @@
       nixpkgs = "nixpkgs";
       home-manager = "home-manager-unstable";
       profile = "laptop";
-      kernel = pkgs.linuxPackages_latest;
+      kernel = pkgs.linuxPackages_testing;
       timezone = "Europe/Brussels";
       locale = "en_US.UTF-8";
       hostname = "nixos";

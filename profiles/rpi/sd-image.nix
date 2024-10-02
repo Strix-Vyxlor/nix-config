@@ -66,6 +66,8 @@
     git
     home-manager
     wpa_supplicant
+    bluez
+    bluez-tools
   ];
 
   fonts.fontDir.enable = true;
