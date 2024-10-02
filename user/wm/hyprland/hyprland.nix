@@ -205,6 +205,7 @@
 
         monitor = eDP-1, 1920x1200, 0x0x, 1
         monitor = HDMI-A-1, 1920x1080, -1920x0, 1
+        monitor = DP-2, 1600x900, -3520x0, 1
 
         plugin {
           hyprexpo {
@@ -318,6 +319,7 @@
     pwvucontrol
     qpwgraph
     xdg-utils
+    vlc
   ];
 
   services.playerctld.enable = true;

@@ -43,6 +43,7 @@
     ffmpeg
     userSettings.fontPkg
     nerdfonts
+    gyroflow
   ];
 
   home.file.".config/zix/zix.conf" = {
