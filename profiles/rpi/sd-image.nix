@@ -19,7 +19,7 @@
   raspberry-pi-nix.kernel-version = "v6_10_8";
   raspberry-pi-nix.libcamera-overlay.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
-  raspberry-pi-nix.sd-image.firmwareSize = 512;
+  sdImage.firmwareSize = 512;
 
   nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
