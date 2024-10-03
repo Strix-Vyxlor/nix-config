@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.file.".config/Vencord/themes/stylix.css".source = pkgs.fetchurl {
     url = "https://catppuccin.github.io/discord/dist/catppuccin-mocha.theme.css";
-    hash = "sha256-madm8UuK6rkmnYMpWpEOMghADZvui1xMix6R9YaCO3k=";
+    hash = "sha256-GatMfm/IbH77iAxtd8COLnyRKCtpuRam4kMBoiu0o0M=";
   };
 
   gtk.cursorTheme = {
