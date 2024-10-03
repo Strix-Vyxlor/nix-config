@@ -103,6 +103,12 @@
               params = {};
             };
           };
+          base-dt-params = {
+            pciex1_gen = {
+              enable = true;
+              value = "3";
+            };
+          };
         };
       };
     };
