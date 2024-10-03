@@ -21,6 +21,7 @@
 
   raspberry-pi-nix.board = "bcm2712";
   raspberry-pi-nix.uboot.enable = false;
+  raspberry-pi-nix.kernel-version = "v6_10_8";
   raspberry-pi-nix.libcamera-overlay.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
 
