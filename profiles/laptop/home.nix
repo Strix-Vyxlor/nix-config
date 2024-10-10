@@ -46,15 +46,11 @@
     gyroflow
   ];
 
-  home.file.".config/zix/zix.conf" = {
+  home.file.".config/zix/conf.toml" = {
     text = ''
-      {
-        "flake": true,
-        "path": ".nix-config",
-        "hostname": "default",
-        "nix-on-droid": false,
-        "root-command": "doas",
-      }
+      flake_path = ".nix-config"
+      hostname = "default"
+      root_command = "doas"
     '';
     executable = false;
   };
