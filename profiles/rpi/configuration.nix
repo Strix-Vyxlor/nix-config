@@ -17,6 +17,8 @@
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
+
+    ../../system/virt/podman.nix
   ];
 
   raspberry-pi-nix.board = "bcm2712";

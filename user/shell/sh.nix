@@ -111,6 +111,7 @@
     htop
     unzip
     gzip
+    file
     gnutar
   ];
 }
