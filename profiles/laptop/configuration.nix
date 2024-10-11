@@ -27,6 +27,7 @@
     ../../system/security/ssh.nix
 
     ../../system/virt/virt.nix
+    ../../system/virt/podman.nix
     ../../system/games/steam.nix
     ../../system/games/utils.nix
   ];
