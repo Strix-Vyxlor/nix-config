@@ -146,6 +146,6 @@
 
     nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
-    zen-browser.url = "github:MarceColl/zen-browser-flake";
+    zen-browser.url = "github:ch4og/zen-browser-flake";
   };
 }

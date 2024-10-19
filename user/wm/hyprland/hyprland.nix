@@ -315,6 +315,7 @@
 
     networkmanagerapplet
     blueberry
+    libappindicator
 
     pwvucontrol
     qpwgraph

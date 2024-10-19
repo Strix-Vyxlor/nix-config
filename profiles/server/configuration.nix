@@ -14,6 +14,7 @@
     ../../system/security/gpg.nix
     ../../system/security/ssh.nix
     ../../system/hardware/tailscale.nix
+    ../../system/hardware/nvidia-390.nix
 
     ../../system/wm/cockpit.nix
 
@@ -26,7 +27,7 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
-  nix.settings.trusted-users = [ "root" "@wheel" ];
+  nix.settings.trusted-users = ["root" "@wheel"];
 
   nixpkgs.config.allowUnfree = true;
 
