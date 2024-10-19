@@ -37,7 +37,7 @@
     pkgs = import inputs.${systemSettings.nixpkgs} {
       system = systemSettings.system;
       config = {
-        allowUnFree = true;
+        allowUnfree = true;
       };
       overlays = [
         (import inputs.rust-overlay)
