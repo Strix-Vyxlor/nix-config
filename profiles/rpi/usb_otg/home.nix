@@ -16,20 +16,12 @@
     (./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
     ../../user/app/git/git.nix
     ../../user/app/git/gh.nix
-    (./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
-    (./. + "../../../user/app/browser" + ("/" + userSettings.browser) + ".nix")
-
     ../../user/lang/cc/cc.nix
-
-    ../../user/app/console/cava.nix
     ../../user/app/console/tmux.nix
   ];
 
   home.packages = with pkgs; [
     git
-    ffmpeg
-    userSettings.fontPkg
-    nerdfonts
   ];
 
   home.file.".config/zix/conf.toml" = {
