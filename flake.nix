@@ -55,7 +55,7 @@
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/" + systemSettings.subprofile + "/home.nix")
+          (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/home.nix")
         ];
         extraSpecialArgs = {
           inherit systemSettings;
@@ -69,7 +69,7 @@
       default = lib.nixosSystem {
         system = systemSettings.system;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/" + systemSettings.subprofile + "/configuration.nix")
+          (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/configuration.nix")
         ];
         specialArgs = {
           inherit zix-pkg;
