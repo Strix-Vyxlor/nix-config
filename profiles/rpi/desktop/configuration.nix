@@ -4,66 +4,46 @@
   zix-pkg,
   systemSettings,
   userSettings,
+  inputs,
   ...
 }: {
   imports = [
-    ../../system/hardware-configuration.nix
-    ../../system/hardware/kernel.nix
+    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
     ../../system/hardware/mesa.nix
     ../../system/hardware/time.nix
     ../../system/hardware/bluetooth.nix
-
-    ../../system/hardware/udev.nix
-    ../../system/hardware/tailscale.nix
-
-    # ../../system/hardware/fingerprint.nix
-    #../../system/hardware/kanata.nix
-
     ../../system/style/stylix.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
-    ../../system/security/ssh.nix
 
-    ../../system/virt/virt.nix
     ../../system/virt/podman.nix
-    ../../system/games/steam.nix
-    ../../system/games/utils.nix
   ];
+
+  raspberry-pi-nix.board = "bcm2712";
+  raspberry-pi-nix.uboot.enable = false;
+  raspberry-pi-nix.kernel-version = "v6_10_12";
+  raspberry-pi-nix.libcamera-overlay.enable = false;
+  boot.initrd.systemd.tpm2.enable = false;
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
-
   nix.settings = {
     substituters = [
-      "https://hyprland.cachix.org"
       "https://nix-community.cachix.org"
     ];
     trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
     ];
-    trusted-users = ["root" "@wheel"];
   };
-
   nixpkgs.config.allowUnfree = true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot";
-  };
   boot.plymouth.enable = true;
-  boot.binfmt.emulatedSystems = [
-    "aarch64-linux"
-    # ....
-  ];
 
   networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
-  services.avahi.enable = true;
 
   time.timeZone = systemSettings.timezone;
   i18n.defaultLocale = systemSettings.locale;
@@ -101,4 +81,37 @@
   console.keyMap = "be-latin1";
 
   system.stateVersion = "24.05";
+
+  hardware = {
+    raspberry-pi = {
+      config = {
+        all = {
+          options = {
+            # The firmware will start our u-boot binary rather than a
+            # linux kernel
+            arm_64bit = {
+              enable = true;
+              value = true;
+            };
+            disable_overscan = {
+              enable = true;
+              value = true;
+            };
+          };
+          dt-overlays = {
+            vc4-kms-v3d = {
+              enable = true;
+              params = {};
+            };
+          };
+          base-dt-params = {
+            pciex1_gen = {
+              enable = true;
+              value = "3";
+            };
+          };
+        };
+      };
+    };
+  };
 }

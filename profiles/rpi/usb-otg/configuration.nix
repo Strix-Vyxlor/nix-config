@@ -4,6 +4,7 @@
   zix-pkg,
   systemSettings,
   userSettings,
+  config,
   inputs,
   ...
 }: {
@@ -13,12 +14,9 @@
     ../../system/hardware/time.nix
     ../../system/hardware/bluetooth.nix
     ../../system/style/stylix.nix
-    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
-
-    ../../system/virt/podman.nix
   ];
 
   raspberry-pi-nix.board = "bcm2712";
@@ -27,7 +25,6 @@
   raspberry-pi-nix.libcamera-overlay.enable = false;
   boot.initrd.systemd.tpm2.enable = false;
 
-  nix.package = pkgs.nixFlakes;
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
@@ -45,6 +42,23 @@
 
   networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
+  services.avahi.enable = true;
+  networking.dhcpcd.denyInterfaces = ["usb0"];
+  services.dnsmasq.enable = true;
+  environment.etc."dnsmasq.d/usb0".text = ''
+    interface=usb0
+    dhcp-range=10.55.0.2,10.55.0.6,1h
+    dhcp-option=3
+    leasefile-ro
+  '';
+  environment.etc."network/interfaces.d/usb0".text = ''
+    auto usb0
+    allow-hotplug usb0
+    iface usb0 inet static
+      address 10.55.0.1
+      netmask 255.255.255.248
+  '';
+  config.boot.kernelParams = config.boot.kernelParams + ["modules-load=dwc2,g_ether"];
 
   time.timeZone = systemSettings.timezone;
   i18n.defaultLocale = systemSettings.locale;
@@ -103,6 +117,10 @@
             vc4-kms-v3d = {
               enable = true;
               params = {};
+            };
+            dwc2 = {
+              enable = true;
+              params = {dr_mode = "peripheral";};
             };
           };
           base-dt-params = {
