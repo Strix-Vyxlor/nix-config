@@ -7,6 +7,7 @@
       nixpkgs = "nixpkgs";
       home-manager = "home-manager-unstable";
       profile = "laptop";
+      subprofile = "";
       kernel = pkgs.linuxPackages_testing;
       timezone = "Europe/Brussels";
       locale = "en_US.UTF-8";
@@ -54,7 +55,7 @@
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
+          (./. + "/profiles" + ("/" + systemSettings.profile) + "/" + systemSettings.subprofile + "/home.nix")
         ];
         extraSpecialArgs = {
           inherit systemSettings;
@@ -68,7 +69,7 @@
       default = lib.nixosSystem {
         system = systemSettings.system;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+          (./. + "/profiles" + ("/" + systemSettings.profile) + "/" + systemSettings.subprofile + "/configuration.nix")
         ];
         specialArgs = {
           inherit zix-pkg;
