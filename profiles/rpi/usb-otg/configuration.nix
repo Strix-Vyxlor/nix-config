@@ -4,7 +4,6 @@
   zix-pkg,
   systemSettings,
   userSettings,
-  config,
   inputs,
   ...
 }: {
@@ -58,7 +57,7 @@
       address 10.55.0.1
       netmask 255.255.255.248
   '';
-  config.boot.kernelParams = config.boot.kernelParams + ["modules-load=dwc2,g_ether"];
+  boot.kernelParams = ["modules-load=dwc2,g_ether"];
 
   time.timeZone = systemSettings.timezone;
   i18n.defaultLocale = systemSettings.locale;
