@@ -16,6 +16,7 @@
 
     ../../system/security/doas.nix
     ../../system/security/gpg.nix
+    ../../system/security/ssh.nix
   ];
 
   raspberry-pi-nix.board = "bcm2712";
