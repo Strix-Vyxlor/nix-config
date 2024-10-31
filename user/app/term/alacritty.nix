@@ -9,7 +9,7 @@
   ];
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
-    shell = "${userSettings.shell}";
+    terminal.shell = "${userSettings.shell}";
     window = {
       decorations = "None";
       blur = true;
