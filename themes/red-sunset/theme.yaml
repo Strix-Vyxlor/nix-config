@@ -1,19 +1,19 @@
 scheme: "Red sunset"
 author: "https://github.com/Strix-Vyxlor"
-base00: "1e1e2e" # default background (base)
-base01: "181825" # alternate background (mantle)
-base02: "313244" # selection background (surface0)
-base03: "45475a" # surface1
-base04: "585b70" # alt text (surface2)
-base05: "cdd6f4" # default text (text)
-base06: "f5e0dc" # rosewater
-base07: "b4befe" # lavender
+base00: "1e100d" # default background 
+base01: "271815" # alternate background 
+base02: "301915" # selection background * 
+base03: "473532" # surface1 *
+base04: "bdaba8" # alt text *
+base05: "ffedea" # default text * 
+base06: "e0bfba" # rosewater *
+base07: "f4ba9d" # lavender *
 # accents
-base08: "f38ba8" # warning/red (red)
-base09: "89b4fa" # urgent/orange (blue)
-base0A: "f9e2af" # warning/yellow (yellow)
-base0B: "a6e3a1" # green
-base0C: "94e2d5" # cyan (teal)
-base0D: "fab387" # blue (peach)
-base0E: "cba6f7" # purple (mauve)
-base0F: "f2cdcd" # brown (flamingo)
+base08: "b51e13" # warning/red 
+base09: "cc4a00" # urgent/orange 
+base0A: "f0af1f" # warning/yellow 
+base0B: "f8c947" # green
+base0C: "c1b53d" # cyan *
+base0D: "fb852c" # blue *
+base0E: "531114" # purple *
+base0F: "643130" # brown * 

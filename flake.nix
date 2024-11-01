@@ -26,7 +26,7 @@
       term = "alacritty";
       font = "Inter Regular";
       fontPkg = pkgs.inter;
-      theme = "catppuccin-mocha-peach";
+      theme = "red-sunset";
 
       # terminal
       shell = "fish";
