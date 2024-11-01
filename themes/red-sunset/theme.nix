@@ -18,6 +18,6 @@
 
   gtk.iconTheme = {
     package = pkgs.vimix-icon-theme;
-    name = "Vimix-Black-dark";
+    name = "Vimix-Ruby-dark";
   };
 }
