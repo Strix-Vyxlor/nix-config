@@ -192,6 +192,8 @@
         windowrulev2 = opacity 0.85,class:^(org.gnome.Nautilus)$
         windowrulev2 = tile,class:(REAPER)
 
+        windowrulev2 = tile,class:(Aseprite)
+
         layerrule = blur,alacritty
         blurls = alacritty
 
