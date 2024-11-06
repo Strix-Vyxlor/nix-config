@@ -4,6 +4,7 @@
   zix-pkg,
   systemSettings,
   userSettings,
+  inputs,
   ...
 }: {
   imports = [
@@ -79,6 +80,8 @@
     LC_TIME = systemSettings.locale;
   };
 
+  programs.nix-ld.enable = true;
+
   users.users.${userSettings.username} = {
     isNormalUser = true;
     description = userSettings.name;
@@ -94,6 +97,7 @@
     git
     home-manager
     wpa_supplicant
+    nix-alien
   ];
 
   fonts.fontDir.enable = true;
