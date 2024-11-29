@@ -43,7 +43,6 @@
       overlays = [
         (import inputs.rust-overlay)
         inputs.neovim.overlays.${systemSettings.system}.neovim
-        inputs.nix-alien.overlays.default
       ];
     };
 
@@ -150,6 +149,6 @@
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
     zen-browser.url = "github:ch4og/zen-browser-flake";
 
-    nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-autobahn.url = "github:Lassulus/nix-autobahn";
   };
 }

@@ -35,7 +35,9 @@
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
+    sandbox = true
   '';
+  nix.settings.sandbox = true;
 
   nix.settings = {
     substituters = [
@@ -97,7 +99,7 @@
     git
     home-manager
     wpa_supplicant
-    nix-alien
+    inputs.nix-autobahn.packages.${systemSettings.system}.nix-autobahn
   ];
 
   fonts.fontDir.enable = true;

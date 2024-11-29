@@ -27,7 +27,7 @@
     ../../user/app/comms/discord.nix
     ../../user/lang/cc/cc.nix
 
-    ../../user/app/console/cava.nix
+    #../../user/app/console/cava.nix
     ../../user/app/console/tmux.nix
 
     ../../user/app/games/minecraft.nix
@@ -43,6 +43,9 @@
     ffmpeg
     userSettings.fontPkg
     nerdfonts
+    lmms
+    polyphone
+    musescore
   ];
 
   home.file.".config/zix/conf.toml" = {
