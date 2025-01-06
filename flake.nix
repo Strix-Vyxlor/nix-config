@@ -4,7 +4,7 @@
   outputs = inputs @ {self, ...}: let
     systemSettings = {
       system = "x86_64-linux";
-      nixpkgs = "nixpkgs-stable";
+      nixpkgs = "nixpkgs";
       home-manager = "home-manager";
       profile = "laptop";
       subprofile = "";
@@ -29,7 +29,7 @@
       theme = "red-sunset";
 
       # terminal
-      shell = "fish";
+      shell = "nu";
       prompt = "oh-my-posh";
       zix = "default";
       editor = "nvim";
@@ -107,42 +107,42 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-on-droid = {
       url = "github:nix-community/nix-on-droid/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
       inputs.home-manager.follows = "home-manager-unstable";
     };
 
     zix = {
       url = "github:Strix-Vyxlor/zix/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     neovim = {
       url = "github:Strix-Vyxlor/nvim_config";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     nix-colorizer.url = "github:nutsalhan87/nix-colorizer";

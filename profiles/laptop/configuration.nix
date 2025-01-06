@@ -27,7 +27,6 @@
     ../../system/security/gpg.nix
     ../../system/security/ssh.nix
 
-    ../../system/virt/virt.nix
     ../../system/virt/podman.nix
     ../../system/games/steam.nix
     ../../system/games/utils.nix
@@ -104,7 +103,8 @@
   ];
 
   fonts.fontDir.enable = true;
-  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  #fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+  fonts.packages = [pkgs.nerdfonts];
 
   console.keyMap = "be-latin1";
 
