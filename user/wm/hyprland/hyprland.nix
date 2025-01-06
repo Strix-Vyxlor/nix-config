@@ -6,6 +6,7 @@
   ...
 }: {
   imports = [
+    (./. + "../../../app/term" + ("/" + userSettings.term) + ".nix")
     ../../app/term/alacritty.nix
     ../../app/launcher/tofi.nix
     ../../app/launcher/fuzzel.nix
@@ -19,7 +20,7 @@
     settings = {};
     plugins = with pkgs.hyprlandPlugins; [
       hyprgrass
-      hyprexpo
+      #hyprexpo
     ];
     extraConfig =
       ''

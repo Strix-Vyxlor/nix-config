@@ -67,6 +67,7 @@
   networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
   services.avahi.enable = true;
+  services.flatpak.enable = true;
 
   time.timeZone = systemSettings.timezone;
   i18n.defaultLocale = systemSettings.locale;
@@ -103,6 +104,7 @@
   ];
 
   fonts.fontDir.enable = true;
+  fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
   console.keyMap = "be-latin1";
 

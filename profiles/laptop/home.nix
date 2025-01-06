@@ -12,6 +12,7 @@
 
   imports = [
     ../../user/style/stylix.nix
+    ../../themes/nerd-fonts.nix
     ../../user/shell/sh.nix
     (./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
     ../../user/app/git/git.nix
@@ -42,7 +43,6 @@
     git
     ffmpeg
     userSettings.fontPkg
-    nerdfonts
     lmms
     polyphone
     musescore

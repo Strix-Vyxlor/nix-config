@@ -113,5 +113,6 @@
     gzip
     file
     gnutar
+    axel
   ];
 }

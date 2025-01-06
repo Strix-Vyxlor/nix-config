@@ -4,8 +4,8 @@
   outputs = inputs @ {self, ...}: let
     systemSettings = {
       system = "x86_64-linux";
-      nixpkgs = "nixpkgs";
-      home-manager = "home-manager-unstable";
+      nixpkgs = "nixpkgs-stable";
+      home-manager = "home-manager";
       profile = "laptop";
       subprofile = "";
       kernel = pkgs.linuxPackages_testing;
@@ -23,7 +23,7 @@
       # theming
       wm = "hyprland";
       browser = "zen";
-      term = "alacritty";
+      term = "kitty";
       font = "Inter Regular";
       fontPkg = pkgs.inter;
       theme = "red-sunset";
@@ -108,7 +108,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
