@@ -9,7 +9,7 @@
     (./. + "../../../app/term" + ("/" + userSettings.term) + ".nix")
     ../../app/term/alacritty.nix
     ../../app/launcher/tofi.nix
-    ../../app/launcher/fuzzel.nix
+
     ./waybar.nix
     ./hypr.nix
     ./mime.nix
@@ -260,7 +260,7 @@
               gestures {
                 workspace_swipe = true
                 workspace_swipe_cancel_ratio = 0.15
-              }
+              } 
 
               decoration {
                 rounding = 8
@@ -289,6 +289,7 @@
   home.packages = with pkgs; [
     killall
     nautilus
+    loupe
     usbutils
     udiskie
     udisks
@@ -317,7 +318,7 @@
     hyprlandPlugins.hyprexpo
 
     networkmanagerapplet
-    blueberry
+    overskride
     libappindicator
 
     pwvucontrol

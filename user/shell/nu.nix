@@ -104,6 +104,24 @@ in {
       }
       $env.LS_COLORS = (vivid generate ~/.config/nushell/vivid.yml | str trim)
 
+      def lsblk [...args: string] {
+        if ($args | length) != 0 {
+          if $args.0 == "--help" {
+            ^lsblk --help
+            return;
+        }}
+        let disks = ^lsblk ...$args
+        let header = $disks | head -n 1 | tr -s " " | split row " "
+        let list = $disks | tr -s " " | split row "\n" | each { |row| | split row " " } | skip 1
+        let all = [ $header ] | append $list
+        $all |
+          each { |values|
+            reduce -f {} { |it,acc|
+              $acc | insert $"Field($acc | transpose | length)" $it
+          }
+        } | headers
+      }
+
       source ~/.config/nushell/zoxide.nu
     '';
     extraEnv = ''

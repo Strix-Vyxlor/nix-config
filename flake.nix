@@ -115,7 +115,7 @@
     };
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-on-droid = {
@@ -150,5 +150,8 @@
     zen-browser.url = "github:ch4og/zen-browser-flake";
 
     nix-autobahn.url = "github:Lassulus/nix-autobahn";
+    anyrun = {
+      url = "github:anyrun-org/anyrun";
+    };
   };
 }
