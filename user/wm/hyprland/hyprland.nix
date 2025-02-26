@@ -170,7 +170,7 @@
         bind = SUPERSHIFT, exclam, movetoworkspace, 8
         bind = SUPERSHIFT, ccedilla, movetoworkspace, 9
 
-        bind=SUPER,Z,exec,if hyprctl clients | grep scratch_term; then echo "scratch_term respawn not needed"; else alacritty --class scratch_term; fi
+        bind=SUPER,Z,exec,if hyprctl clients | grep scratch_term; then echo "scratch_term respawn not needed"; else ${userSettings.term} --class scratch_term; fi
         bind=SUPER,Z,togglespecialworkspace,scratch_term
 
         bind = SUPER, S, exec, hyprshot -m region --clipboard-only
@@ -195,8 +195,8 @@
 
         windowrulev2 = tile,class:(Aseprite)
 
-        layerrule = blur,alacritty
-        blurls = alacritty
+        layerrule = blur,kitty
+        blurls = kitty
 
         layerrule = blur,waybar
         layerrule = xray,waybar
@@ -318,7 +318,7 @@
     hyprlandPlugins.hyprexpo
 
     networkmanagerapplet
-    overskride
+    blueberry
     libappindicator
 
     pwvucontrol

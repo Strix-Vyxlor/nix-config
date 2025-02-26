@@ -4,8 +4,7 @@
   outputs = inputs @ {self, ...}: let
     systemSettings = {
       system = "x86_64-linux";
-      nixpkgs = "nixpkgs";
-      home-manager = "home-manager";
+      branch = "stable";
       profile = "laptop";
       subprofile = "";
       kernel = pkgs.linuxPackages_testing;
@@ -35,7 +34,11 @@
       editor = "nvim";
     };
 
-    pkgs = import inputs.${systemSettings.nixpkgs} {
+    home-manager = inputs."home-manager-${systemSettings.branch}";
+    nixpkgs = inputs."nixpkgs-${systemSettings.branch}";
+    stylix = inputs."stylix-${systemSettings.branch}";
+
+    pkgs = import nixpkgs {
       system = systemSettings.system;
       config = {
         allowUnfree = true;
@@ -46,8 +49,7 @@
       ];
     };
 
-    lib = inputs.nixpkgs.lib;
-    home-manager = inputs.${systemSettings.home-manager};
+    lib = nixpkgs.lib;
 
     zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
   in {
@@ -55,7 +57,8 @@
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/home.nix")
+          (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/home.nix")
+          stylix.homeManagerModules.stylix
         ];
         extraSpecialArgs = {
           inherit systemSettings;
@@ -69,7 +72,8 @@
       default = lib.nixosSystem {
         system = systemSettings.system;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + "/configuration.nix")
+          (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/configuration.nix")
+          stylix.nixosModules.stylix
         ];
         specialArgs = {
           inherit zix-pkg;
@@ -108,14 +112,14 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    home-manager = {
+    home-manager-stable = {
       url = "github:nix-community/home-manager/release-24.11";
-      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-on-droid = {
@@ -129,10 +133,15 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    stylix = {
-      url = "github:danth/stylix/release-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
+    stylix-unstable = {
+      url = "github:danth/stylix/master";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    stylix-stable = {
+      url = "github:danth/stylix/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     rust-overlay.url = "github:oxalica/rust-overlay";
 
     neovim = {
@@ -145,13 +154,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    nix-colorizer.url = "github:nutsalhan87/nix-colorizer";
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
-    zen-browser.url = "github:ch4og/zen-browser-flake";
-
-    nix-autobahn.url = "github:Lassulus/nix-autobahn";
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-    };
+    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 }

@@ -71,6 +71,7 @@
 
   networking.hostName = systemSettings.hostname;
   networking.networkmanager.enable = true;
+
   services.avahi.enable = true;
   services.flatpak.enable = true;
 
@@ -105,7 +106,6 @@
     git
     home-manager
     wpa_supplicant
-    inputs.nix-autobahn.packages.${systemSettings.system}.nix-autobahn
   ];
 
   fonts.fontDir.enable = true;

@@ -46,6 +46,7 @@
     lmms
     polyphone
     musescore
+    moonlight-qt
   ];
 
   home.file.".config/zix/conf.toml" = {

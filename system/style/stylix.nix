@@ -9,8 +9,6 @@
   themePolarity = lib.removeSuffix "\n" (builtins.readFile (./. + "../../../themes" + ("/" + userSettings.theme) + "/polarity.txt"));
   background = "../../../themes" + ("/" + userSettings.theme) + "/background.png";
 in {
-  imports = [inputs.stylix.nixosModules.stylix];
-
   stylix.enable = true;
 
   stylix.autoEnable = false;

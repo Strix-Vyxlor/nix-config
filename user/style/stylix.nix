@@ -11,7 +11,6 @@
   background = "../../../themes" + ("/" + userSettings.theme) + "/background.png";
 in {
   imports = [
-    inputs.stylix.homeManagerModules.stylix
     (./. + "../../../themes" + ("/" + userSettings.theme) + /theme.nix)
   ];
 
