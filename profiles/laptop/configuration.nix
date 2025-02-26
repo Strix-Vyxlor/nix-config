@@ -114,7 +114,7 @@
 
   fonts.fontDir.enable = true;
   #fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
-  fonts.packages = [pkgs.nerdfonts];
+  fonts.packages = [pkgs.nerd-fonts.zed-mono pkgs.nerd-fonts.hack];
 
   console.keyMap = "be-latin1";
 

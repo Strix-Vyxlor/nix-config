@@ -27,8 +27,8 @@
     ../../user/app/graphics/rawtherepee.nix
     ../../user/app/spotify/spicetify.nix
     ../../user/app/office/onlyoffice.nix
-    (import ../../user/app/comms/discord.nix {
-      style = false;
+    (import ../../user/app/comms/discord/discord.nix {
+      style = true;
       inherit pkgs;
       inherit config;
       inherit lib;
