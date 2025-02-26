@@ -7,8 +7,8 @@ base02: "5a0e09" # selection background
 base03: "473532" # surface1 
 base04: "bdaba8" # alt text 
 base05: "ffedea" # default text  
-base06: "e0bfba" # rosewater 
-base07: "bf5f00" # lavender 
+base06: "e0bfba" # lichter text 
+base07: "bf5f00" # licht text
 # accents
 base08: "b51e13" # warning/red 
 base09: "cc4a00" # urgent/orange 

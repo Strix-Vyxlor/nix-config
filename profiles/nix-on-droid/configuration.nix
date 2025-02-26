@@ -86,7 +86,7 @@
       color14 = "#94e2d5";
       color15 = "#b4befe";
     };
-    font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/ZedMonoNerdFont-Regular.ttf";
+    font = "${pkgs.nerdfonts.zed-mono}/share/fonts/truetype/NerdFonts/ZedMonoNerdFont-Regular.ttf";
   };
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc

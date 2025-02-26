@@ -4,7 +4,7 @@
   outputs = inputs @ {self, ...}: let
     systemSettings = {
       system = "x86_64-linux";
-      branch = "stable";
+      branch = "unstable";
       profile = "laptop";
       subprofile = "";
       kernel = pkgs.linuxPackages_testing;

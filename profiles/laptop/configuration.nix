@@ -20,7 +20,11 @@
     # ../../system/hardware/fingerprint.nix
     #../../system/hardware/kanata.nix
 
-    ../../system/style/stylix.nix
+    (import ../../system/style/stylix.nix {
+      inherit lib;
+      inherit userSettings;
+      plymouth = true;
+    })
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
     ../../system/security/doas.nix

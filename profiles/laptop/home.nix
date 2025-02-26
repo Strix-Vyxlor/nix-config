@@ -2,6 +2,7 @@
   config,
   pkgs,
   userSettings,
+  lib,
   ...
 }: {
   home.username = userSettings.username;
@@ -12,6 +13,7 @@
 
   imports = [
     ../../user/style/stylix.nix
+    ../../user/style/desktop.nix
     ../../themes/nerd-fonts.nix
     ../../user/shell/sh.nix
     (./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
@@ -25,7 +27,12 @@
     ../../user/app/graphics/rawtherepee.nix
     ../../user/app/spotify/spicetify.nix
     ../../user/app/office/onlyoffice.nix
-    ../../user/app/comms/discord.nix
+    (import ../../user/app/comms/discord.nix {
+      style = false;
+      inherit pkgs;
+      inherit config;
+      inherit lib;
+    })
     ../../user/lang/cc/cc.nix
 
     ../../user/app/console/cava.nix

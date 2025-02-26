@@ -303,7 +303,7 @@
 
     wlr-randr
     wl-clipboard
-    hyprland-protocols
+    #hyprland-protocols
     hyprpicker
     hypridle
     hyprpaper
