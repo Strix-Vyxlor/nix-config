@@ -25,6 +25,7 @@
       inherit userSettings;
       plymouth = true;
     })
+    ../../system/style/desktop.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
     ../../system/security/doas.nix

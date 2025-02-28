@@ -13,6 +13,13 @@
 
   gtk.iconTheme = {
     package = pkgs.vimix-icon-theme;
-    name = "Vimix-Ruby-dark";
+    name = "Vimix-ruby-dark";
+  };
+
+  stylix.iconTheme = {
+    enable = true;
+    package = pkgs.vimix-icon-theme;
+    dark = "Vimix-ruby-dark";
+    light = "Vimix-ruby";
   };
 }
