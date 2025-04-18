@@ -130,7 +130,6 @@
 
     zix = {
       url = "github:Strix-Vyxlor/zix/master";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
     stylix-unstable = {
@@ -156,5 +155,6 @@
 
     raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
+    nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 }

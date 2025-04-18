@@ -47,7 +47,8 @@
         exec-once = blueberry-tray
         exec-once = swayosd-server 
 
-        exec-once = hyprpaper
+        # exec-once = hyprpaper
+        exec-once = swww-daemon
         exec-once = hypridle
         exec-once = waybar
 
@@ -306,7 +307,6 @@
     #hyprland-protocols
     hyprpicker
     hypridle
-    hyprpaper
     hyprnome
     hyprlock
     hyprshot
@@ -372,6 +372,7 @@
     };
   };
 
-  services.hyprpaper.enable = true;
-  stylix.targets.hyprpaper.enable = true;
+  services.swww.enable = true;
+  #services.hyprpaper.enable = true;
+  #stylix.targets.hyprpaper.enable = true;
 }
