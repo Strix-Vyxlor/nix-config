@@ -25,7 +25,7 @@
       term = "kitty";
       font = "Inter Regular";
       fontPkg = pkgs.inter;
-      theme = "red-sunset";
+      theme = "nord";
 
       # terminal
       shell = "nu";
