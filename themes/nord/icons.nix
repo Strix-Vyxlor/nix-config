@@ -12,7 +12,7 @@
   };
 
   gtk.iconTheme = {
-    package = pkgs.papirus-nord.override {accent = "auroramagentab";};
+    package = pkgs.papirus-nord.override {accent = "auroramagenta";};
     name = "Papirus-Dark";
   };
 }

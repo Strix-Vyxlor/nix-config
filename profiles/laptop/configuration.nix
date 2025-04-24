@@ -33,8 +33,8 @@
     ../../system/security/ssh.nix
 
     ../../system/virt/podman.nix
-    ../../system/games/steam.nix
-    ../../system/games/utils.nix
+    ../../system/games/steam/steam.nix
+    ../../system/games/steam/gamescope-session.nix
   ];
 
   nix.extraOptions = ''

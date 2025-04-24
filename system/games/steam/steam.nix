@@ -3,18 +3,12 @@
   userSettings,
   ...
 }: let
-  steamos-session-select = pkgs.writeShellScriptBin "steamos-session-select" ''
-    #!${pkgs.bash}/bin/bash
-    steam -shutdown
-  '';
 in {
   programs.steam = {
     enable = true;
     protontricks.enable = true;
     #extest.enable = true;
     extraPackages = [
-      steamos-session-select
-
       pkgs.mangohud
     ];
     gamescopeSession = {

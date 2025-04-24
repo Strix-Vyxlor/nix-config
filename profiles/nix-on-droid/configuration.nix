@@ -66,31 +66,31 @@
 
   terminal = {
     colors = {
-      background = "#1e1e2e";
-      foreground = "#cdd6f4";
-      cursor = "#cdd6f4";
-      color0 = "#1e1e2e";
-      color1 = "#f38ba8";
-      color2 = "#a6e3a1";
-      color3 = "#f9e2af";
-      color4 = "#fab387";
-      color5 = "#cba6f7";
-      color6 = "#94e2d5";
-      color7 = "#cdd6f4";
-      color8 = "#45475a";
-      color9 = "#f38ba8";
-      color10 = "#a6e3a1";
-      color11 = "#f9e2af";
-      color12 = "#fab387";
-      color13 = "#cba6f7";
-      color14 = "#94e2d5";
-      color15 = "#b4befe";
+      background = "#${config.lib.stylix.colors.base01}";
+      foreground = "#${config.lib.stylix.colors.base05}";
+      cursor = "#${config.lib.stylix.colors.base05}";
+      color0 = "#${config.lib.stylix.colors.base00}";
+      color1 = "#${config.lib.stylix.colors.base01}";
+      color2 = "#${config.lib.stylix.colors.base02}";
+      color3 = "#${config.lib.stylix.colors.base03}";
+      color4 = "#${config.lib.stylix.colors.base04}";
+      color5 = "#${config.lib.stylix.colors.base05}";
+      color6 = "#${config.lib.stylix.colors.base06}";
+      color7 = "#${config.lib.stylix.colors.base07}";
+      color8 = "#${config.lib.stylix.colors.base08}";
+      color9 = "#${config.lib.stylix.colors.base09}";
+      color10 = "#${config.lib.stylix.colors.base0A}";
+      color11 = "#${config.lib.stylix.colors.base0B}";
+      color12 = "#${config.lib.stylix.colors.base0C}";
+      color13 = "#${config.lib.stylix.colors.base0D}";
+      color14 = "#${config.lib.stylix.colors.base0E}";
+      color15 = "#${config.lib.stylix.colors.base0F}";
     };
     font = "${pkgs.nerdfonts.zed-mono}/share/fonts/truetype/NerdFonts/ZedMonoNerdFont-Regular.ttf";
   };
 
   # Backup etc files instead of failing to activate generation if a file already exists in /etc
-  environment.etcBackupExtension = ".bak";
+  environment.etcBackupExtension = ".sbk";
 
   # Read the changelog before changing this value
   system.stateVersion = "24.05";

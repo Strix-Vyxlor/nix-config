@@ -1,5 +1,5 @@
 {
-  inputs,
+  config,
   pkgs,
   lib,
   ...
@@ -48,9 +48,11 @@
     enable = true;
     settings = {
       clock = "%I:%M:%S %p\n%A %d %B";
+      bigclock = "en";
       clear_password = true;
-      cmatrix_fg = "0x05";
+      numlock = "true";
       animation = "matrix";
+      cmatrix_fg = "0x05";
     };
   };
 
