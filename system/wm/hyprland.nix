@@ -48,9 +48,8 @@
     enable = true;
     settings = {
       clock = "%I:%M:%S %p\n%A %d %B";
-      bigclock = "en";
+      bigclock = true;
       clear_password = true;
-      numlock = "true";
       animation = "matrix";
       cmatrix_fg = "0x05";
     };

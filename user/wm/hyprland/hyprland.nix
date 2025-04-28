@@ -25,11 +25,12 @@
     extraConfig =
       ''
         exec-once = dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-        exec-once = hyprctl setcursor ''
+        # exec-once = hyprctl setcursor ''
       + config.gtk.cursorTheme.name
       + " "
       + builtins.toString config.gtk.cursorTheme.size
       + ''
+        exec-once = hyprctl setcursor Nordzy-hyprcursors 24
 
         env = XDG_CURRENT_DESKTOP,Hyprland
         env = XDG_SESSION_TYPE,wayland

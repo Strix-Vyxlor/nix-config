@@ -1,13 +1,48 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   steamos-session-select = pkgs.writeShellScriptBin "steamos-session-select" ''
     #!${pkgs.bash}/bin/bash
     steam -shutdown
   '';
+  jupiter-dock-updater = pkgs.writeTextFile {
+    name = "jupiter-dock-updater";
+    text = ''
+
+    '';
+    executable = true;
+    destination = "/bin/steamos-polkit-helpers/jupiter-dock-updater";
+  };
+  steamos-select-branch = pkgs.writeShellScriptBin "steamos-select-branch" ''
+    #!/bin/sh
+    >&2 echo "stub called with: $*"
+    case "$1" in
+        "-c")
+            # What is our current branch? Pretend to be main
+            echo "main"
+            ;;
+        "-l")
+            # What branches are available? Pretend to only have main
+            echo "main"
+            ;;
+        *)
+            # Switch branch, just do nothing
+            ;;
+    esac
+  '';
 in {
   programs.steam = {
-    extraPackages = [
-      steamos-session-select
-    ];
+    extraPackages =
+      [
+        steamos-session-select
+        jupiter-dock-updater
+        steamos-select-branch
+      ]
+      ++ (with pkgs; [
+        brightnessctl
+      ]);
     gamescopeSession = {
       enable = true;
       env = {

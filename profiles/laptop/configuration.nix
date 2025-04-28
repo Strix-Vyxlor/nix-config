@@ -35,6 +35,7 @@
     ../../system/virt/podman.nix
     ../../system/games/steam/steam.nix
     ../../system/games/steam/gamescope-session.nix
+    ../../system/games/steam/decky-loader.nix
   ];
 
   nix.extraOptions = ''
@@ -112,6 +113,7 @@
     git
     home-manager
     wpa_supplicant
+    brightnessctl
   ];
 
   fonts.fontDir.enable = true;

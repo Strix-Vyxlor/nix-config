@@ -122,19 +122,16 @@ in {
       }
 
       source ~/.config/nushell/zoxide.nu
-      source ~/.config/nushell/carapace.nu
     '';
     extraEnv = ''
       zoxide init --cmd cd nushell | save -f ~/.config/nushell/zoxide.nu
-
-      $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
-      carapace _carapace nushell | save --force ~/.config/nushell/carapace.nu
     '';
   };
 
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+    enableBashIntegration = false;
   };
 
   stylix.targets.btop.enable = true;
@@ -301,6 +298,5 @@ in {
     btop
     fzf
     vivid
-    carapace
   ];
 }

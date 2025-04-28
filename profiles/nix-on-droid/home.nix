@@ -12,6 +12,7 @@
     ../../user/app/git/gh.nix
     (./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
     ../../user/app/console/tmux.nix
+    ../../user/app/console/yazi.nix
     ../../user/style/stylix.nix
   ];
 
@@ -48,7 +49,7 @@
       nix_on_droid = true
       flake_path = ".nix-config"
       hostname = "default"
-      root_command = "doas"
+      root_command = "sudo"
     '';
     executable = false;
   };
