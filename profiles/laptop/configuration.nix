@@ -20,11 +20,6 @@
     # ../../system/hardware/fingerprint.nix
     #../../system/hardware/kanata.nix
 
-    (import ../../system/style/stylix.nix {
-      inherit lib;
-      inherit userSettings;
-      plymouth = true;
-    })
     ../../system/style/desktop.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
@@ -37,6 +32,36 @@
     ../../system/games/steam/gamescope-session.nix
     ../../system/games/steam/decky-loader.nix
   ];
+
+  strixos = {
+    inherit (systemSettings) branch hostName;
+    boot = {
+      loader = "systemd-boot";
+      plymouth = {
+        enable = true;
+        style = true;
+      };
+    };
+    network = {
+      manager = "network-manager";
+      avahi = true;
+    };
+    locale = {
+      inherit (systemSettings) timezone locale;
+      consoleKeymap = "be-latin1";
+    };
+    style = {
+      enable = true;
+      stylix = {
+        enable = true;
+        theme.themeDir = ./. + "../../../themes" + ("/" + userSettings.theme);
+        targets = {
+          console = true;
+          nixos-icons = true;
+        };
+      };
+    };
+  };
 
   nix.extraOptions = ''
     experimental-features = nix-command flakes
@@ -64,39 +89,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi = {
-    canTouchEfiVariables = true;
-    efiSysMountPoint = "/boot";
-  };
-  boot.plymouth.enable = true;
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "riscv64-linux"
     # ....
   ];
-
-  networking.hostName = systemSettings.hostname;
-  networking.networkmanager.enable = true;
-
-  services.avahi.enable = true;
-  services.flatpak.enable = true;
-
-  time.timeZone = systemSettings.timezone;
-  i18n.defaultLocale = systemSettings.locale;
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = systemSettings.locale;
-    LC_IDENTIFICATION = systemSettings.locale;
-    LC_MEASUREMENT = systemSettings.locale;
-    LC_MONETARY = systemSettings.locale;
-    LC_NAME = systemSettings.locale;
-    LC_NUMERIC = systemSettings.locale;
-    LC_PAPER = systemSettings.locale;
-    LC_TELEPHONE = systemSettings.locale;
-    LC_TIME = systemSettings.locale;
-  };
-
-  programs.nix-ld.enable = true;
 
   users.users.${userSettings.username} = {
     isNormalUser = true;
@@ -117,10 +114,7 @@
   ];
 
   fonts.fontDir.enable = true;
-  #fonts.packages = builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
   fonts.packages = [pkgs.nerd-fonts.zed-mono pkgs.nerd-fonts.hack];
 
-  console.keyMap = "be-latin1";
-
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

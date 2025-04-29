@@ -10,7 +10,7 @@
       kernel = pkgs.linuxPackages_testing;
       timezone = "Europe/Brussels";
       locale = "en_US.UTF-8";
-      hostname = "nixos";
+      hostName = "nixos";
     };
 
     userSettings = {
@@ -39,7 +39,7 @@
     stylix = inputs."stylix-${systemSettings.branch}";
 
     pkgs = import nixpkgs {
-      system = systemSettings.system;
+      inherit (systemSettings) system;
       config = {
         allowUnfree = true;
       };
@@ -70,10 +70,11 @@
 
     nixosConfigurations = {
       default = lib.nixosSystem {
-        system = systemSettings.system;
+        inherit (systemSettings) system;
         modules = [
           (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/configuration.nix")
           stylix.nixosModules.stylix
+          self.nixosModules.strixos
         ];
         specialArgs = {
           inherit zix-pkg;
@@ -107,6 +108,11 @@
           inherit inputs;
         };
       };
+    };
+
+    nixosModules = rec {
+      default = strixos;
+      strixos = ./modules/nixos;
     };
   };
 
