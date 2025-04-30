@@ -4,13 +4,6 @@
   lib,
   ...
 }: {
-  # Import wayland config
-  imports = [
-    ./pipewire.nix
-    ./dbus.nix
-    ../hardware/power.nix
-  ];
-
   # Security
   security.pam.services = {
     login.enableGnomeKeyring = true;

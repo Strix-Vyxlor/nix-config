@@ -11,6 +11,10 @@ in {
     ./network
     ./style
     ./locale
+    ./programs
+    ./hardware
+    ./services
+    ./user
   ];
 
   options.strixos = {

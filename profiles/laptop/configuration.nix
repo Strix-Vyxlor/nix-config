@@ -9,25 +9,9 @@
 }: {
   imports = [
     ../../system/hardware-configuration.nix
-    ../../system/hardware/kernel.nix
-    ../../system/hardware/mesa.nix
-    ../../system/hardware/time.nix
-    ../../system/hardware/bluetooth.nix
 
-    ../../system/hardware/udev.nix
-    ../../system/hardware/tailscale.nix
-
-    # ../../system/hardware/fingerprint.nix
-    #../../system/hardware/kanata.nix
-
-    ../../system/style/desktop.nix
     (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
 
-    ../../system/security/doas.nix
-    ../../system/security/gpg.nix
-    ../../system/security/ssh.nix
-
-    ../../system/virt/podman.nix
     ../../system/games/steam/steam.nix
     ../../system/games/steam/gamescope-session.nix
     ../../system/games/steam/decky-loader.nix
@@ -35,6 +19,11 @@
 
   strixos = {
     inherit (systemSettings) branch hostName;
+    user = {
+      username = "strix";
+      name = "Strix Vyxlor";
+      extraGroups = ["input"];
+    };
     boot = {
       loader = "systemd-boot";
       plymouth = {
@@ -50,6 +39,26 @@
       inherit (systemSettings) timezone locale;
       consoleKeymap = "be-latin1";
     };
+    hardware = {
+      kernel = "testing";
+      graphics = true;
+      bluetooth = true;
+      tlp = true;
+
+      platformioCompat = true;
+    };
+    programs = {
+      superuser = "doas";
+      git = true;
+    };
+    services = {
+      timesync = "timesyncd";
+      tailscale = true;
+      ssh.enable = true;
+      pipewire = true;
+      rtkit = true;
+      dbus = true;
+    };
     style = {
       enable = true;
       stylix = {
@@ -63,45 +72,12 @@
     };
   };
 
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-    sandbox = true
-  '';
-  nix.settings.sandbox = true;
-
-  nix.settings = {
-    extra-substituters = [
-      "https://anyrun.cachix.org"
-    ];
-    extra-trusted-public-keys = [
-      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vnO3p346s="
-    ];
-    substituters = [
-      "https://hyprland.cachix.org"
-      "https://nix-community.cachix.org"
-    ];
-    trusted-public-keys = [
-      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-    trusted-users = ["root" "@wheel"];
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "riscv64-linux"
-    # ....
   ];
-
-  users.users.${userSettings.username} = {
-    isNormalUser = true;
-    description = userSettings.name;
-    extraGroups = ["networkmanager" "wheel" "input" "libvirtd"];
-    packages = [];
-    uid = 1000;
-  };
 
   environment.systemPackages = with pkgs; [
     zix-pkg
@@ -116,5 +92,5 @@
   fonts.fontDir.enable = true;
   fonts.packages = [pkgs.nerd-fonts.zed-mono pkgs.nerd-fonts.hack];
 
-  system.stateVersion = "24.11";
+  system.stateVersion = "25.05";
 }

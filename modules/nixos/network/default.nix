@@ -4,8 +4,9 @@
   config,
   ...
 }: let
-  inherit (lib) types mkOption;
+  inherit (lib) types mkOption mkMerge mkIf;
   cfg = config.strixos.network;
+  userCfg = config.strixos.user;
 in {
   options.strixos.network = {
     manager = mkOption {
@@ -26,9 +27,14 @@ in {
     };
   };
 
-  config = {
-    networking.networkmanager.enable = cfg.manager == "network-manager";
+  config = mkMerge [
+    {
+      networking.networkmanager.enable = cfg.manager == "network-manager";
 
-    services.avahi.enable = cfg.avahi;
-  };
+      services.avahi.enable = cfg.avahi;
+    }
+    (mkIf (userCfg.username != null) {
+      users.users.${userCfg.username}.extraGroups = ["networkmanager"];
+    })
+  ];
 }
