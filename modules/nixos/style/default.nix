@@ -4,11 +4,16 @@
   config,
   ...
 }: let
-  inherit (lib) types mkOption mkIf;
+  inherit (lib) types mkOption mkIf mkMerge;
   cfg = config.strixos.style;
   themeCfg = cfg.stylix.theme;
   themeFile = themeCfg.themeDir + "/theme.toml";
-  themeImage = themeCfg.themeDir + "/background.png";
+  themeExtra = themeCfg.themeDir + "/theme.nix";
+  imagePath = themeCfg.themeDir + "/background.png";
+  themeImage =
+    if (builtins.pathExists imagePath)
+    then imagePath
+    else null;
   theme = builtins.fromTOML (builtins.readFile themeFile);
 in {
   imports = [
@@ -41,6 +46,7 @@ in {
               themeDir
               ├─ theme.toml (the theme)
               ├─ background.png (the background picture)
+              ├─ home.nix (extra theme specific styling for home manager)
               └─ theme.nix (extra theme specific styling)
           '';
         };
@@ -84,12 +90,17 @@ in {
 
   config =
     mkIf (cfg.enable && cfg.stylix.enable)
-    {
-      stylix = {
-        enable = true;
-        autoEnable = false;
-        inherit (themeCfg) polarity image;
-        base16Scheme = themeCfg.scheme;
-      };
-    };
+    (mkMerge [
+      {
+        stylix = {
+          enable = true;
+          autoEnable = false;
+          inherit (themeCfg) polarity image;
+          base16Scheme = themeCfg.scheme;
+        };
+      }
+      (mkIf (builtins.pathExists themeExtra) {
+        imports = [themeExtra];
+      })
+    ]);
 }
