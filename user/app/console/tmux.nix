@@ -38,9 +38,6 @@ in {
     ];
 
     extraConfig = ''
-      set-option -ga terminal-overrides ",xterm*:Tc"
-      set -g default-terminal "alacritty"
-
       unbind C-b
       set -g prefix C-Space
       bind C-Space send-prefix

@@ -79,11 +79,16 @@ in {
     (mkIf (cfg.timesync == "ntpd-rs") {
       services.ntpd-rs.enable = true;
     })
-    {
+    (let
+      enableSSH =
+        if (cfg.ssh.enable && !config.strixos.programs.gpg)
+        then throw "enable gpg to use ssh"
+        else true;
+    in {
       services = {
         tailscale.enable = cfg.tailscale;
         openssh = {
-          enable = cfg.ssh.enable && config.strixos.programs.gpg;
+          enable = enableSSH;
           settings = {
             inherit (cfg.ssh) AllowUsers;
             PasswordAuthentication = true;
@@ -104,6 +109,6 @@ in {
       };
       security.rtkit.enable = cfg.rtkit;
       programs.dconf.enable = cfg.dbus;
-    }
+    })
   ];
 }

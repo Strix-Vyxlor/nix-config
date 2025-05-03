@@ -49,7 +49,7 @@
       ];
     };
 
-    lib = nixpkgs.lib;
+    inherit (nixpkgs) lib;
 
     zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
   in {
@@ -59,6 +59,7 @@
         modules = [
           (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/home.nix")
           stylix.homeManagerModules.stylix
+          self.homeManagerModules.strixos
         ];
         extraSpecialArgs = {
           inherit systemSettings;
@@ -113,6 +114,11 @@
     nixosModules = rec {
       default = strixos;
       strixos = ./modules/nixos;
+    };
+
+    homeManagerModules = rec {
+      default = strixos;
+      strixos = {imports = [(import ./modules/home-manager inputs)];};
     };
   };
 

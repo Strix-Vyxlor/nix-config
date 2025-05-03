@@ -10,8 +10,6 @@
   imports = [
     ../../system/hardware-configuration.nix
 
-    (./. + "../../../system/wm" + ("/" + userSettings.wm) + ".nix")
-
     ../../system/games/steam/steam.nix
     ../../system/games/steam/gamescope-session.nix
     ../../system/games/steam/decky-loader.nix
@@ -59,15 +57,25 @@
       rtkit = true;
       dbus = true;
     };
+    desktop = {
+      hyprland = {
+        enable = true;
+        xkb = {
+          layout = "be";
+          variant = "";
+          options = "";
+        };
+        nautilus = true;
+        keyring = "gnome-keyring";
+      };
+      displayManager.displayManager = "ly";
+    };
     style = {
       enable = true;
-      stylix = {
-        enable = true;
-        theme.themeDir = ./. + "../../../themes" + ("/" + userSettings.theme);
-        targets = {
-          console = true;
-          nixos-icons = true;
-        };
+      theme.themeDir = ./. + "../../../themes" + ("/" + userSettings.theme);
+      targets = {
+        console = true;
+        nixos-icons = true;
       };
     };
   };

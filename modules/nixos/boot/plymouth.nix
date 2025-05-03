@@ -44,7 +44,7 @@ in {
     {
       boot.plymouth.enable = true;
     }
-    (mkIf (stylecfg.enable && stylecfg.stylix.enable && cfg.style) {
+    (mkIf (stylecfg.enable && cfg.style) {
       stylix.targets.plymouth = {
         enable = true;
         inherit (cfg) logo;

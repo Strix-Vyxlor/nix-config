@@ -15,6 +15,7 @@ in {
     ./hardware
     ./services
     ./user
+    ./desktop
   ];
 
   options.strixos = {

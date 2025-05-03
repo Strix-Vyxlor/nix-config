@@ -25,7 +25,7 @@ in {
       type = types.bool;
       default = false;
       description = ''
-        enable styling of applications (requires stylix)
+        enable styling of applications
       '';
     };
 
@@ -78,14 +78,12 @@ in {
     };
   };
 
-  config =
-    mkIf cfg.enable
-    {
-      stylix = {
-        enable = true;
-        autoEnable = false;
-        inherit (themeCfg) polarity image;
-        base16Scheme = themeCfg.scheme;
-      };
+  config = mkIf cfg.enable {
+    stylix = {
+      enable = true;
+      autoEnable = false;
+      inherit (themeCfg) polarity image;
+      base16Scheme = themeCfg.scheme;
     };
+  };
 }

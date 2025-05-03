@@ -292,7 +292,6 @@ in {
   home.packages = with pkgs; [
     direnv
     nix-direnv
-    eza
     bat
     zoxide
     btop
