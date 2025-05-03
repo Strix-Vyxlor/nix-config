@@ -45,7 +45,6 @@
       };
       overlays = [
         (import inputs.rust-overlay)
-        inputs.neovim.overlays.${systemSettings.system}.neovim
       ];
     };
 
@@ -60,6 +59,7 @@
           (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/home.nix")
           stylix.homeManagerModules.stylix
           self.homeManagerModules.strixos
+          inputs.neovim.homeManagerModules.strixvim
         ];
         extraSpecialArgs = {
           inherit systemSettings;

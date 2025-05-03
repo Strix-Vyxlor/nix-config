@@ -11,27 +11,8 @@
   imports = [
     ../../user/style/desktop.nix
     ../../themes/nerd-fonts.nix
-    (./. + "../../../user/app/editor" + ("/" + userSettings.editor) + ".nix")
     (./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
 
-    (import ../../user/app/comms/discord/discord.nix {
-      style = true;
-      inherit pkgs;
-      inherit config;
-      inherit lib;
-    })
-    ../../user/lang/cc/cc.nix
-
-    ../../user/app/console/cava.nix
-
-    ../../user/app/games/minecraft.nix
-    ../../user/app/games/heroic.nix
-    ../../user/app/games/utils.nix
-    ../../user/app/games/retroarch.nix
-    ../../user/app/games/dolphin.nix
-    ../../user/app/graphics/blockbench.nix
-
-    ../../user/app/etc/reaper.nix
   ];
 
   strixos = {
@@ -73,6 +54,21 @@
       };
     };
     programs = {
+      games = {
+        minecraft = true;
+        heroic = true;
+        mangohud = true;
+        dolphin = true;
+        retroarch = {
+          enable = true;
+          withCores = cores:
+            with cores; [
+              dolphin
+              picodrive
+              genesis-plus-gx
+            ];
+        };
+      };
       cli = {
         git = {
           enable = true;
@@ -87,7 +83,12 @@
           makeDefault = true;
         };
       };
+      editor.neovim = true;
       graphics.aseprite = true;
+      discord = {
+        enable = true;
+        style = true;
+      };
     };
   };
 

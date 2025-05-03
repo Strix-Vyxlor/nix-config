@@ -9,7 +9,9 @@ inputs: {
 in {
   imports = [
     ./cli
+    ./editor
     (import ./browser inputs)
     ./graphics
+    ./discord.nix
   ];
 }
