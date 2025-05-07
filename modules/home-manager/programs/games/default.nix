@@ -35,7 +35,7 @@ in {
       description = ''
         enable goverlay
       '';
-    }; 
+    };
     dolphin = mkOption {
       type = types.bool;
       default = false;
@@ -52,7 +52,10 @@ in {
         '';
       };
       withCores = mkOption {
-        type = types.nullOr types.function;
+        type = let
+          fromType = types.listOf types.package;
+        in
+          types.nullOr (types.functionTo fromType);
         default = null;
         description = ''
           cores to include retroarch (else all installed)
@@ -78,12 +81,10 @@ in {
       home.packages = [pkgs.dolphin-emu];
     })
     (mkIf cfg.retroarch.enable {
-      home.packages = if 
-        cfg.retroarch.withCores == null 
-        then 
-        [pkgs.retroarch-full] 
-        else 
-        [pkgs.retroarch.withCores cfg.withCores];
+      home.packages =
+        if cfg.retroarch.withCores == null
+        then [pkgs.retroarch-full]
+        else [(pkgs.retroarch.withCores cfg.retroarch.withCores)];
     })
   ];
 }

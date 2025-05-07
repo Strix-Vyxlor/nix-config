@@ -1,4 +1,14 @@
 polarity = "dark"
+[font]
+name = "Inter Regular"
+package = "inter"
+[cursor]
+name = "Nordzy-cursors"
+package = "nordzy-cursors-theme"
+size = 24
+[icons]
+name = "Papirus-Dark"
+package = "papirus-nord.override {accent = \"auroramagenta\";}"
 [colors]
 base00 = "2E3440"
 base01 = "3B4252"

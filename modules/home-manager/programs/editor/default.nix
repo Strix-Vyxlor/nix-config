@@ -1,4 +1,4 @@
-{
+inputs: {
   pkgs,
   lib,
   config,
@@ -8,19 +8,23 @@
   cfg = config.strixos.programs.editor;
   shell = config.lib.strixos.shell.command;
 in {
+  imports = [
+    inputs.strixvim.homeManagerModules.strixvim
+  ];
+
   options.strixos.programs.editor = {
-    neovim = mkOption {
+    strixvim = mkOption {
       type = types.bool;
       default = false;
       description = ''
-        enable neovim (strixvim)
+        enable strixvim (neovim)
       '';
     };
   };
 
   config = mkMerge [
-    (mkIf cfg.neovim {
-      strixvim = {
+    (mkIf cfg.strixvim {
+      programs.strixvim = {
         enable = true;
         env = {
           inherit shell;

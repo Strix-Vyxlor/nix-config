@@ -8,10 +8,11 @@ inputs: {
   cfg = config.strixos.programs;
 in {
   imports = [
-    ./cli
-    ./editor
+    (import ./cli inputs)
+    (import ./editor inputs)
     (import ./browser inputs)
     ./graphics
-    ./discord.nix
+    ./games
+    (import ./media inputs)
   ];
 }

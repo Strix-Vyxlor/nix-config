@@ -1,10 +1,10 @@
-{
+inputs: {
   pkgs,
   lib,
   config,
   ...
 }: let
-  inherit (lib) types mkOption;
+  inherit (lib) types mkOption optionals;
 in {
   imports = [
     ./boot

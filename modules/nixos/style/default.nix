@@ -4,7 +4,7 @@
   config,
   ...
 }: let
-  inherit (lib) types mkOption mkIf mkMerge;
+  inherit (lib) types mkOption optionals mkIf mkMerge;
   cfg = config.strixos.style;
   themeCfg = cfg.theme;
   themeFile = themeCfg.themeDir + "/theme.toml";

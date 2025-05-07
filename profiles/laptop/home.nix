@@ -9,10 +9,8 @@
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ../../user/style/desktop.nix
     ../../themes/nerd-fonts.nix
     (./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
-
   ];
 
   strixos = {
@@ -24,6 +22,9 @@
       enable = true;
       theme.themeDir = ./. + "../../../themes" + ("/" + userSettings.theme);
       targets.btop = true;
+      desktop = {
+        enable = true;
+      };
     };
     xdg = {
       enable = true;
@@ -83,11 +84,19 @@
           makeDefault = true;
         };
       };
-      editor.neovim = true;
+      editor.strixvim = true;
       graphics.aseprite = true;
-      discord = {
-        enable = true;
-        style = true;
+      media = {
+        discord = {
+          enable = true;
+          style = true;
+        };
+        spicetify = {
+          enable = true;
+          customApps = a: with a; [newReleases lyricsPlus];
+          extensions = e: with e; [fullAppDisplay hidePodcasts];
+          style.theme = "hazy";
+        };
       };
     };
   };
@@ -115,13 +124,9 @@
     fzf
   ];
 
-  home.file.".config/zix/conf.toml" = {
-    text = ''
-      flake_path = ".nix-config"
-      hostname = "default"
-      root_command = "doas"
-    '';
-    executable = false;
+  programs.zix = {
+    enable = true;
+    config.root_command = "doas";
   };
 
   home.stateVersion = "25.05";

@@ -1,4 +1,4 @@
-{
+inputs: {
   pkgs,
   lib,
   config,
@@ -8,7 +8,6 @@
   cfg = config.strixos.style;
   themeCfg = cfg.theme;
   themeFile = themeCfg.themeDir + "/theme.toml";
-  themeExtra = themeCfg.themeDir + "/theme.nix";
   imagePath = themeCfg.themeDir + "/background.png";
   themeImage =
     if (builtins.pathExists imagePath)
@@ -18,6 +17,7 @@
 in {
   imports = [
     ./def_apps.nix
+    ./desktop.nix
   ];
 
   options.strixos.style = {

@@ -30,7 +30,6 @@
       # terminal
       shell = "nu";
       prompt = "oh-my-posh";
-      zix = "default";
       editor = "nvim";
     };
 
@@ -45,21 +44,19 @@
       };
       overlays = [
         (import inputs.rust-overlay)
+        inputs.zix.overlays.zix
       ];
     };
 
     inherit (nixpkgs) lib;
-
-    zix-pkg = inputs.zix.packages.${systemSettings.system}.${userSettings.zix};
   in {
     homeConfigurations = {
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
           (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/home.nix")
-          stylix.homeManagerModules.stylix
           self.homeManagerModules.strixos
-          inputs.neovim.homeManagerModules.strixvim
+          stylix.homeManagerModules.stylix
         ];
         extraSpecialArgs = {
           inherit systemSettings;
@@ -74,11 +71,10 @@
         inherit (systemSettings) system;
         modules = [
           (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/configuration.nix")
-          stylix.nixosModules.stylix
           self.nixosModules.strixos
+          stylix.nixosModules.stylix
         ];
         specialArgs = {
-          inherit zix-pkg;
           inherit systemSettings;
           inherit userSettings;
           inherit inputs;
@@ -89,7 +85,6 @@
         system = "aarch64-linux";
         modules = [./profiles/rpi/sd-image.nix];
         specialArgs = {
-          inherit zix-pkg;
           inherit systemSettings;
           inherit userSettings;
           inherit inputs;
@@ -103,7 +98,6 @@
         inherit pkgs;
         modules = [./profiles/nix-on-droid/configuration.nix];
         extraSpecialArgs = {
-          inherit zix-pkg;
           inherit systemSettings;
           inherit userSettings;
           inherit inputs;
@@ -113,7 +107,7 @@
 
     nixosModules = rec {
       default = strixos;
-      strixos = ./modules/nixos;
+      strixos = {imports = [(import ./modules/nixos inputs)];};
     };
 
     homeManagerModules = rec {
@@ -155,8 +149,8 @@
 
     rust-overlay.url = "github:oxalica/rust-overlay";
 
-    neovim = {
-      url = "github:Strix-Vyxlor/nvim_config";
+    strixvim = {
+      url = "github:Strix-Vyxlor/strixvim";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

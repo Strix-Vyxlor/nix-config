@@ -10,7 +10,7 @@ in {
     ./user
     ./shell
     ./xdg
-    ./style
+    (import ./style inputs)
     (import ./programs inputs)
   ];
 

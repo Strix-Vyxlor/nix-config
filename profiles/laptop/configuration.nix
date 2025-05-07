@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  zix-pkg,
   systemSettings,
   userSettings,
   inputs,
@@ -88,7 +87,6 @@
   ];
 
   environment.systemPackages = with pkgs; [
-    zix-pkg
     helix
     wget
     git
