@@ -11,14 +11,14 @@ in {
   options.strixos.style.targets = {
     console = mkOption {
       type = types.bool;
-      default = false;
+      default = true;
       description = ''
         style the linux console;
       '';
     };
     nixos-icons = mkOption {
       type = types.bool;
-      default = false;
+      default = true;
       description = ''
         style the nixos-icons;
       '';

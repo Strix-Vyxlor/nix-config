@@ -49,6 +49,20 @@ in {
         hyprlock pam configuration
       '';
     };
+    pipewire = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        enable pipewire and wireblumper and all submodules
+      '';
+    };
+    dbus = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        why would you disable this
+      '';
+    };
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -69,7 +83,22 @@ in {
         xserver.xkb = cfg.xkb; # NOTE: may need to enable xserver
         gvfs.enable = cfg.nautilus;
         udisks2.enable = cfg.nautilus;
+
+        pipewire = {
+          enable = cfg.pipewire;
+          alsa.enable = true;
+          pulse.enable = true;
+          jack.enable = true;
+          alsa.support32Bit = pkgs.system == "x86_64-linux";
+        };
+        dbus = {
+          enable = cfg.dbus;
+          packages = [pkgs.dconf];
+        };
       };
+
+      security.rtkit.enable = cfg.pipewire;
+      programs.dconf.enable = cfg.dbus;
     }
     (mkIf (cfg.keyring == "gnome-keyring") {
       security.pam.services = {

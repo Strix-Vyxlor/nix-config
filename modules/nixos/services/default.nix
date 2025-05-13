@@ -43,27 +43,6 @@ in {
         '';
       };
     };
-    rtkit = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable realitimekit
-      '';
-    };
-    pipewire = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable pipewire and wireblumper and all submodules (recomends rtkit)
-      '';
-    };
-    dbus = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable dbus and dconf
-      '';
-    };
   };
 
   config = mkMerge [
@@ -95,20 +74,7 @@ in {
             PermitRootLogin = "prohibit-password";
           };
         };
-        pipewire = {
-          enable = cfg.pipewire;
-          alsa.enable = true;
-          pulse.enable = true;
-          jack.enable = true;
-          alsa.support32Bit = pkgs.system == "x86_64-linux";
-        };
-        dbus = {
-          enable = cfg.dbus;
-          packages = [pkgs.dconf];
-        };
       };
-      security.rtkit.enable = cfg.rtkit;
-      programs.dconf.enable = cfg.dbus;
     })
   ];
 }

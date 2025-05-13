@@ -15,13 +15,6 @@ in {
         enable plymouth
       '';
     };
-    style = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        style plymouth (requires stylix)
-      '';
-    };
     logo = mkOption {
       type = with lib.types; either path package;
       defaultText = lib.literalMD "NixOS logo";

@@ -1,9 +1,7 @@
 {
   pkgs,
   lib,
-  systemSettings,
-  userSettings,
-  inputs,
+  branch,
   ...
 }: {
   imports = [
@@ -15,7 +13,8 @@
   ];
 
   strixos = {
-    inherit (systemSettings) branch hostName;
+    inherit branch;
+    hostName = "nixos";
     user = {
       username = "strix";
       name = "Strix Vyxlor";
@@ -23,17 +22,15 @@
     };
     boot = {
       loader = "systemd-boot";
-      plymouth = {
-        enable = true;
-        style = true;
-      };
+      plymouth.enable = true;
     };
     network = {
       manager = "network-manager";
       avahi = true;
     };
     locale = {
-      inherit (systemSettings) timezone locale;
+      timezone = "Europe/Brussels";
+      locale = "en_US.UTF-8";
       consoleKeymap = "be-latin1";
     };
     hardware = {
@@ -52,9 +49,6 @@
       timesync = "timesyncd";
       tailscale = true;
       ssh.enable = true;
-      pipewire = true;
-      rtkit = true;
-      dbus = true;
     };
     desktop = {
       hyprland = {
@@ -93,13 +87,7 @@
         '';
       };
     };
-    style = {
-      theme.themeDir = ../../themes/nord;
-      targets = {
-        console = true;
-        nixos-icons = true;
-      };
-    };
+    style.theme.themeDir = ../../themes/nord;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -116,9 +104,6 @@
     home-manager
     wpa_supplicant
   ];
-
-  fonts.fontDir.enable = true;
-  fonts.packages = [pkgs.nerd-fonts.zed-mono pkgs.nerd-fonts.hack];
 
   system.stateVersion = "25.05";
 }

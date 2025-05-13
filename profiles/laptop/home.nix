@@ -1,17 +1,18 @@
 {
   config,
   pkgs,
-  userSettings,
-  systemSettings,
+  branch,
   lib,
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
 
   strixos = {
-    inherit (systemSettings) branch;
+    inherit branch;
     user = {
-      inherit (userSettings) username name email;
+      username = "strix";
+      name = "Strix Vyxlor";
+      email = "strix.vyxlor@gmail.com";
     };
     style = {
       theme.themeDir = ../../themes/nord;
@@ -114,6 +115,7 @@
           brightness = true;
           battery = true;
         };
+        plugins.hyprexpo = true;
       };
     };
   };
@@ -121,10 +123,7 @@
   home.packages = with pkgs; [
     git
     ffmpeg
-    userSettings.fontPkg
-    lmms
-    polyphone
-    musescore
+
     moonlight-qt
     gawk
     gnugrep

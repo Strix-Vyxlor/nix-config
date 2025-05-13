@@ -2,43 +2,19 @@
   description = "Strix Vyxlor nix config.";
 
   outputs = inputs @ {self, ...}: let
-    systemSettings = {
+    flakeSettings = {
       system = "x86_64-linux";
       branch = "unstable";
       profile = "laptop";
       subprofile = "";
-      kernel = pkgs.linuxPackages_testing;
-      timezone = "Europe/Brussels";
-      locale = "en_US.UTF-8";
-      hostName = "nixos";
     };
 
-    userSettings = {
-      username = "strix";
-      name = "Strix Vyxlor";
-      email = "strix.vyxlor@gmail.com";
-      configDir = "~/.nix-config";
-
-      # theming
-      wm = "hyprland";
-      browser = "zen";
-      term = "kitty";
-      font = "Inter Regular";
-      fontPkg = pkgs.inter;
-      theme = "nord";
-
-      # terminal
-      shell = "nu";
-      prompt = "oh-my-posh";
-      editor = "nvim";
-    };
-
-    home-manager = inputs."home-manager-${systemSettings.branch}";
-    nixpkgs = inputs."nixpkgs-${systemSettings.branch}";
-    stylix = inputs."stylix-${systemSettings.branch}";
+    home-manager = inputs."home-manager-${flakeSettings.branch}";
+    nixpkgs = inputs."nixpkgs-${flakeSettings.branch}";
+    stylix = inputs."stylix-${flakeSettings.branch}";
 
     pkgs = import nixpkgs {
-      inherit (systemSettings) system;
+      inherit (flakeSettings) system;
       config = {
         allowUnfree = true;
       };
@@ -54,40 +30,34 @@
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/home.nix")
+          (./. + "/profiles" + ("/" + flakeSettings.profile) + ("/" + flakeSettings.subprofile) + "/home.nix")
           self.homeManagerModules.strixos
           stylix.homeManagerModules.stylix
         ];
         extraSpecialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+          inherit (flakeSettings) branch;
         };
       };
     };
 
     nixosConfigurations = {
       default = lib.nixosSystem {
-        inherit (systemSettings) system;
+        inherit (flakeSettings) system;
         modules = [
-          (./. + "/profiles" + ("/" + systemSettings.profile) + ("/" + systemSettings.subprofile) + "/configuration.nix")
+          (./. + "/profiles" + ("/" + flakeSettings.profile) + ("/" + flakeSettings.subprofile) + "/configuration.nix")
           self.nixosModules.strixos
           stylix.nixosModules.stylix
         ];
         specialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+          inherit (flakeSettings) branch;
         };
       };
 
-      rpi = lib.nixosSystem {
+      rpi-sd = lib.nixosSystem {
         system = "aarch64-linux";
         modules = [./profiles/rpi/sd-image.nix];
         specialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+          inherit (flakeSettings) branch;
         };
       };
     };
@@ -98,9 +68,7 @@
         inherit pkgs;
         modules = [./profiles/nix-on-droid/configuration.nix];
         extraSpecialArgs = {
-          inherit systemSettings;
-          inherit userSettings;
-          inherit inputs;
+          inherit (flakeSettings) branch;
         };
       };
     };
