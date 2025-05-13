@@ -8,19 +8,13 @@
 }: {
   nixpkgs.config.allowUnfree = true;
 
-  imports = [
-    ../../themes/nerd-fonts.nix
-    (./. + "../../../user/wm" + ("/" + userSettings.wm + "/" + userSettings.wm) + ".nix")
-  ];
-
   strixos = {
     inherit (systemSettings) branch;
     user = {
       inherit (userSettings) username name email;
     };
     style = {
-      enable = true;
-      theme.themeDir = ./. + "../../../themes" + ("/" + userSettings.theme);
+      theme.themeDir = ../../themes/nord;
       targets.btop = true;
       desktop = {
         enable = true;
@@ -34,7 +28,6 @@
     shell = {
       defaultShell = "nushell";
       nushell = {
-        style = true;
         aliases = {
           ll = "ls -l";
           lla = "ls -la";
@@ -46,7 +39,6 @@
       };
       prompt = {
         prompt = "oh-my-posh";
-        style = true;
       };
       integrations = {
         vivid = true;
@@ -87,15 +79,40 @@
       editor.strixvim = true;
       graphics.aseprite = true;
       media = {
-        discord = {
-          enable = true;
-          style = true;
-        };
+        discord = true;
         spicetify = {
           enable = true;
           customApps = a: with a; [newReleases lyricsPlus];
           extensions = e: with e; [fullAppDisplay hidePodcasts];
           style.theme = "hazy";
+        };
+      };
+    };
+    desktop = {
+      hyprland = {
+        enable = true;
+        hyprcursorTheme = "Nordzy-Hyprcursors";
+        keymap = "be";
+        monitors = [
+          "eDP-1,1920x1200,0x0,1"
+          "HDMI-A-1,1920x1080,-1920x0,1"
+        ];
+        extraSettings = {
+          exec-once = [
+            "nm-applet"
+            "blueberry-tray"
+          ];
+          bind = [
+            ",XF86Favorites, exec, spotify"
+            ",XF86HangupPhone, exec, playerctl next"
+            ",XF86NotificationCenter, exec, playerctl previous"
+            ",XF86PickupPhone, exec, playerctl play-pause"
+          ];
+          windowrulev2 = ["tile,class:(Aseprite)"];
+        };
+        apps.waybar = {
+          brightness = true;
+          battery = true;
         };
       };
     };
@@ -122,6 +139,10 @@
     eza
     btop
     fzf
+
+    blueberry
+    networkmanagerapplet
+    qalculate-gtk
   ];
 
   programs.zix = {

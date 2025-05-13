@@ -67,11 +67,34 @@
         nautilus = true;
         keyring = "gnome-keyring";
       };
-      displayManager.displayManager = "ly";
+      displayManager = {
+        displayManager = "regreet";
+        regreet.extraHyprlandConfig = ''
+          exec-once = swayosd-server
+          bind=,XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
+          bind=,XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle
+          bind=,XF86AudioLowerVolume, exec, swayosd-client --output-volume lower
+          bind=,XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise
+          bind=,XF86MonBrightnessUp, exec, swayosd-client --brightness raise
+          bind=,XF86MonBrightnessDown, exec, swayosd-client --brightness lower
+          input {
+            touchpad {
+              disable_while_typing=false
+              natural_scroll=yes
+            }
+            accel_profile=linear
+            kb_layout=be
+            numlock_by_default=true
+            repeat_delay=350
+            repeat_rate=50
+          }
+          monitor=eDP-1,1920x1200,0x0,1
+          monitor=HDMI-A-1,1920x1080,-1920x0,1
+        '';
+      };
     };
     style = {
-      enable = true;
-      theme.themeDir = ./. + "../../../themes" + ("/" + userSettings.theme);
+      theme.themeDir = ../../themes/nord;
       targets = {
         console = true;
         nixos-icons = true;
@@ -92,7 +115,6 @@
     git
     home-manager
     wpa_supplicant
-    brightnessctl
   ];
 
   fonts.fontDir.enable = true;

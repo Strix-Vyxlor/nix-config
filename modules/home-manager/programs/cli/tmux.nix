@@ -72,6 +72,7 @@ in {
       };
     };
   };
+
   config = mkIf cfg.enable (mkMerge [
     {
       programs.tmux = {
@@ -151,7 +152,7 @@ in {
         }
       ];
     })
-    (mkIf (cfg.plugins.tmux-power && config.strixos.style.enable) {
+    (mkIf cfg.plugins.tmux-power {
       programs.tmux.extraConfig = ''
         run-shell /home/${config.strixos.user.username}/.config/tmux/plugins/tmux-power.tmux
       '';

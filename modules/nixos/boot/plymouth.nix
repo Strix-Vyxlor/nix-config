@@ -6,7 +6,6 @@
 }: let
   inherit (lib) types mkOption mkIf mkMerge;
   cfg = config.strixos.boot.plymouth;
-  stylecfg = config.strixos.style;
 in {
   options.strixos.boot.plymouth = {
     enable = mkOption {
@@ -40,16 +39,14 @@ in {
     };
   };
 
-  config = mkIf cfg.enable (mkMerge [
+  config =
+    mkIf cfg.enable
     {
       boot.plymouth.enable = true;
-    }
-    (mkIf (stylecfg.enable && cfg.style) {
       stylix.targets.plymouth = {
         enable = true;
         inherit (cfg) logo;
         logoAnimated = cfg.animate;
       };
-    })
-  ]);
+    };
 }

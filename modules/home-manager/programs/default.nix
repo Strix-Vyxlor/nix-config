@@ -14,5 +14,7 @@ in {
     ./graphics
     ./games
     (import ./media inputs)
+    ./terminal
+    ./launcher
   ];
 }

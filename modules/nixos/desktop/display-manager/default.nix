@@ -7,10 +7,14 @@
   inherit (lib) mkOption types mkIf mkMerge;
   cfg = config.strixos.desktop.displayManager;
 in {
+  imports = [
+    ./regreet.nix
+  ];
   options.strixos.desktop.displayManager = {
     displayManager = mkOption {
       type = types.nullOr (types.enum [
         "ly"
+        "regreet"
       ]);
       default = null;
       description = ''

@@ -16,6 +16,7 @@ in {
     ./services
     ./user
     ./desktop
+    ../overlay.nix
   ];
 
   options.strixos = {

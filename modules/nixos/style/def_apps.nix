@@ -25,7 +25,7 @@ in {
     };
   };
 
-  config = mkIf styleCfg.enable {
+  config = {
     stylix.targets = {
       console.enable = cfg.console;
       nixos-icons.enable = cfg.nixos-icons;

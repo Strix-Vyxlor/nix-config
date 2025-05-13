@@ -7,29 +7,19 @@
   inherit (lib) mkOption types mkIf mkMerge;
   cfg = config.strixos.programs.cli.cava;
 in {
-  options.strixos.programs.cli.cava = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable cava
-      '';
-    };
-    style = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        style cava
-      '';
-    };
+  options.strixos.programs.cli.cava = mkOption {
+    type = types.bool;
+    default = false;
+    description = ''
+      enable cava
+    '';
   };
 
-  config = mkIf cfg.enable (mkMerge [
-    {
-      programs.cava.enable = true;
-    }
-    (mkIf (cfg.style && config.strixos.style.enable) {
-      programs.cava.settings = {
+  config = mkIf cfg {
+    programs.cava = {
+      enable = true;
+
+      settings = {
         color = {
           gradient = 1;
           gradient_color_1 = "'#${config.lib.stylix.colors.base08}'";
@@ -42,6 +32,6 @@ in {
           gradient_color_8 = "'#${config.lib.stylix.colors.base0F}'";
         };
       };
-    })
-  ]);
+    };
+  };
 }

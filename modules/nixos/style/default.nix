@@ -21,14 +21,6 @@ in {
   ];
 
   options.strixos.style = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable styling of applications (requires stylix)
-      '';
-    };
-
     theme = {
       themeDir = mkOption {
         type = types.nullOr types.path;
@@ -78,14 +70,12 @@ in {
     };
   };
 
-  config =
-    mkIf cfg.enable
-    {
-      stylix = {
-        enable = true;
-        autoEnable = false;
-        inherit (themeCfg) polarity image;
-        base16Scheme = themeCfg.scheme;
-      };
+  config = {
+    stylix = {
+      enable = true;
+      autoEnable = false;
+      inherit (themeCfg) polarity image;
+      base16Scheme = themeCfg.scheme;
     };
+  };
 }

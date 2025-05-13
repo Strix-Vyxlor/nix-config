@@ -1,4 +1,4 @@
-inputs: {
+{
   pkgs,
   lib,
   config,
@@ -21,14 +21,6 @@ in {
   ];
 
   options.strixos.style = {
-    enable = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable styling of applications
-      '';
-    };
-
     theme = {
       themeDir = mkOption {
         type = types.nullOr types.path;
@@ -78,7 +70,7 @@ in {
     };
   };
 
-  config = mkIf cfg.enable {
+  config = {
     stylix = {
       enable = true;
       autoEnable = false;

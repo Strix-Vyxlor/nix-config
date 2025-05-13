@@ -58,9 +58,7 @@ in {
         };
       };
 
-      home.sessionVariables = {
-        DEFAULT_BROWSER = "${inputs.zen-browser.packages."${pkgs.system}".default}/bin/zen";
-      };
+      lib.strixos.programs.defaultBrowser = "${inputs.zen-browser.packages."${pkgs.system}".default}/bin/zen";
     })
   ]);
 }

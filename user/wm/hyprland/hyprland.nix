@@ -6,13 +6,8 @@
   ...
 }: {
   imports = [
-    (./. + "../../../app/term" + ("/" + userSettings.term) + ".nix")
-    ../../app/term/alacritty.nix
-    ../../app/launcher/tofi.nix
-
     ./waybar.nix
-    ./hypr.nix
-    ./mime.nix
+    #    ./hypr.nix
   ];
 
   wayland.windowManager.hyprland = {
@@ -49,8 +44,8 @@
         exec-once = swayosd-server 
 
         # exec-once = hyprpaper
-        exec-once = swww-daemon
-        exec-once = hypridle
+        # exec-once = swww-daemon
+        #exec-once = hypridle
         exec-once = waybar
 
         bezier = wind, 0.05, 0.9, 0.1, 1.05
@@ -114,12 +109,12 @@
           inactive_timeout = 30
         }
 
-        bind = SUPER, R, exec, tofi-drun | xargs hyprctl dispatch exec --
+        #bind = SUPER, R, exec, tofi-drun | xargs hyprctl dispatch exec --
         bind = SUPER, Q, killactive
         bind = SUPER, F, exec, nautilus
-        bind = SUPER, B, exec, ${userSettings.browser}
-        bind = SUPER, T, exec, ${userSettings.term}
-        bind = SUPER, N, exec, ${userSettings.term} -e tmux new-session ${userSettings.editor}
+        #bind = SUPER, B, exec, ${userSettings.browser}
+        #bind = SUPER, T, exec, ${userSettings.term}
+        #bind = SUPER, N, exec, ${userSettings.term} -e tmux new-session ${userSettings.editor}
 
         bind = SUPER, H, movefocus, l
         bind = SUPER, J, movefocus, d
@@ -142,15 +137,6 @@
         bind = ,XF86MonBrightnessUp, exec, swayosd-client --brightness raise 
         bind = ,XF86MonBrightnessDown, exec, swayosd-client --brightness lower
 
-        bind = ,XF86AudioNext, exec, playerctl next
-        bind = ,XF86AudioPrev, exec, playerctl previous
-        bind = ,XF86AudioPlay, exec, playerctl play-pause
-        bind = ,XF86AudioPause, exec, playerctl play-pause
-
-        bind = ,Cancel, exec, playerctl next
-        bind = ,XF86Messenger, exec, playerctl previous
-        bind = ,XF86Go, exec, playerctl play-pause
-        bind = ,XF86Favorites, exec, spotify
 
         bind = SUPER, ampersand, focusworkspaceoncurrentmonitor, 1
         bind = SUPER, eacute, focusworkspaceoncurrentmonitor, 2
@@ -213,15 +199,6 @@
         monitor = DP-2, 1600x900, -3520x0, 1
 
         plugin {
-          hyprexpo {
-            columns = 3
-            gap_size = 5
-            bg_col = rgb(''
-      + config.lib.stylix.colors.base00
-      + ''        )
-                  workspace_method = first 1 # [center/first] [workspace] e.g. first 1 or center m+1
-                  enable_gesture = false # laptop touchpad
-                }
                 touch_gestures {
                   sensitivity = 4.0
                   long_press_delay = 260
@@ -295,7 +272,6 @@
     usbutils
     udiskie
     udisks
-    xarchiver
     libva-utils
     libinput-gestures
     gsettings-desktop-schemas
@@ -328,7 +304,7 @@
     vlc
   ];
 
-  services.playerctld.enable = true;
+  #services.playerctld.enable = true;
   services.swayosd.enable = true;
   services.swayosd.topMargin = 0.5;
   services.gnome-keyring.enable = true;
@@ -373,7 +349,7 @@
     };
   };
 
-  services.swww.enable = true;
+  #services.swww.enable = true;
   #services.hyprpaper.enable = true;
   #stylix.targets.hyprpaper.enable = true;
 }

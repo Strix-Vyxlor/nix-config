@@ -10,8 +10,10 @@ in {
     ./user
     ./shell
     ./xdg
-    (import ./style inputs)
+    ./style
     (import ./programs inputs)
+    ./desktop
+    ../overlay.nix
   ];
 
   options.strixos = {

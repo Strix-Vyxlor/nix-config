@@ -5,10 +5,9 @@
   ...
 }: let
   inherit (lib) mkOption types mkIf mkMerge;
-  cfg = config.strixos.desktop;
+  cfg = config.strixos.programs.terminal;
 in {
   imports = [
-    ./hyprland.nix
-    ./display-manager
+    ./kitty.nix
   ];
 }

@@ -25,7 +25,7 @@
         '';
       };
       package = mkOption {
-        type = types.str;
+        type = types.package;
         description = ''
           package name in nixpkgs
         '';
@@ -42,7 +42,7 @@
         '';
       };
       package = mkOption {
-        type = types.str;
+        type = types.package;
         description = ''
           package name in nixpkgs
         '';
@@ -59,7 +59,7 @@
         '';
       };
       package = mkOption {
-        type = types.str;
+        type = types.package;
         description = ''
           package name in nixpkgs
         '';
@@ -72,6 +72,13 @@
       };
     };
   };
+
+  strToPkg = string: let
+    filter = s: builtins.isString s;
+    split = builtins.split "\\." string;
+    parts = builtins.filter filter split;
+  in
+    lib.attrsets.getAttrFromPath parts pkgs;
 in {
   options.strixos.style.desktop = {
     enable = mkOption {
@@ -82,17 +89,32 @@ in {
         (qt, gtk)
       '';
     };
-    font = mkOption {
-      type = fontType;
-      default = {
-        name =
-          if themeCfg.themeDir == null
-          then "Inter Regular"
-          else theme.font.name;
-        package =
-          if themeCfg.themeDir == null
-          then "inter"
-          else theme.font.package;
+    font = {
+      default = mkOption {
+        type = fontType;
+        default = {
+          name =
+            if themeCfg.themeDir == null
+            then "Inter Regular"
+            else theme.font.default.name;
+          package =
+            if themeCfg.themeDir == null
+            then pkgs.inter
+            else strToPkg theme.font.default.package;
+        };
+      };
+      monospace = mkOption {
+        type = fontType;
+        default = {
+          name =
+            if themeCfg.themeDir == null
+            then "Hack"
+            else theme.font.monospace.name;
+          package =
+            if themeCfg.themeDir == null
+            then pkgs.hack-font
+            else strToPkg theme.font.monospace.package;
+        };
       };
     };
     icons = mkOption {
@@ -104,8 +126,8 @@ in {
           else theme.icons.name;
         package =
           if themeCfg.themeDir == null
-          then "papirus-icon-theme"
-          else theme.icons.package;
+          then pkgs.papirus-icon-theme
+          else strToPkg theme.icons.package;
       };
     };
     cursor = mkOption {
@@ -117,8 +139,8 @@ in {
           else theme.cursor.name;
         package =
           if themeCfg.themeDir == null
-          then "vimix-cursors"
-          else theme.cursor.package;
+          then pkgs.vimix-cursors
+          else strToPkg theme.cursor.package;
         size =
           if themeCfg.themeDir == null
           then 24
@@ -127,48 +149,44 @@ in {
     };
   };
 
-  config = mkIf cfg.enable (
-    lib.throwIf (themeImage == null) ''
-      for desktop styling you need to specify an image
-    ''
+  config =
+    mkIf cfg.enable
     {
       stylix = {
         fonts = {
           monospace = {
-            name = cfg.font.name;
-            package = pkgs.${cfg.font.package};
+            name = cfg.font.monospace.name;
+            package = cfg.font.monospace.package;
           };
           serif = {
-            name = cfg.font.name;
-            package = pkgs.${cfg.font.package};
+            name = cfg.font.default.name;
+            package = cfg.font.default.package;
           };
           sansSerif = {
-            name = cfg.font.name;
-            package = pkgs.${cfg.font.package};
+            name = cfg.font.default.name;
+            package = cfg.font.default.package;
           };
         };
         cursor = {
           inherit (cfg.cursor) name size;
-          #          package = pkgs.${cfg.cursor.package};
-          package = pkgs.vimix-cursors;
+          package = cfg.cursor.package;
         };
         iconTheme = {
           enable = true;
-          package = pkgs.${cfg.icons.package};
+          package = cfg.icons.package;
           light = cfg.icons.name;
           dark = cfg.icons.name;
         };
-        target = {
+        targets = {
           gtk.enable = true;
           qt.enable = true;
         };
       };
 
       fonts.fontconfig.defaultFonts = {
-        monospace = [cfg.font.name];
-        sansSerif = [cfg.font.name];
-        serif = [cfg.font.name];
+        monospace = [cfg.font.monospace.name];
+        sansSerif = [cfg.font.default.name];
+        serif = [cfg.font.default.name];
       };
-    }
-  );
+    };
 }

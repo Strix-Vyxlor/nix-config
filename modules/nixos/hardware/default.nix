@@ -22,7 +22,7 @@ in {
     };
     consoleLogLevel = mkOption {
       type = types.int;
-      default = 1;
+      default = 0;
       description = ''
         The kernel console `loglevel`. All Kernel Messages with a log level smaller
         than this setting will be printed to the console.

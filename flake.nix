@@ -114,6 +114,11 @@
       default = strixos;
       strixos = {imports = [(import ./modules/home-manager inputs)];};
     };
+
+    overlays = rec {
+      default = strixos;
+      strixos = import ./overlay.nix;
+    };
   };
 
   inputs = {

@@ -35,7 +35,7 @@ in {
   };
 
   config = mkMerge [
-    (mkIf (cfg.vivid && styleCfg.enable) (mkMerge [
+    (mkIf cfg.vivid (mkMerge [
       {
         home.packages = [pkgs.vivid];
         home.file.".config/strixos/vivid.yml".text = ''

@@ -3,23 +3,23 @@
   userSettings,
   ...
 }: {
-  home.file.".config/hypr/hypridle.conf".text = ''
-    general {
-      lock_cmd = pgrep hyprlock || hyprlock
-      before_sleep_cmd = loginctl lock-session
-      ignore_dbus_inhibit = false
-    }
-
-    listener {
-      timeout = 270 # in seconds
-      on-timeout = hyprctl dispatch dpms off
-      on-resume = hyprctl dispatch dpms on
-    }
-    listener {
-      timeout = 300 # in seconds
-      on-timeout = loginctl lock-session
-    }
-  '';
+  # home.file.".config/hypr/hypridle.conf".text = ''
+  #   general {
+  #     lock_cmd = pgrep hyprlock || hyprlock
+  #     before_sleep_cmd = loginctl lock-session
+  #     ignore_dbus_inhibit = false
+  #   }
+  #
+  #   listener {
+  #     timeout = 270 # in seconds
+  #     on-timeout = hyprctl dispatch dpms off
+  #     on-resume = hyprctl dispatch dpms on
+  #   }
+  #   listener {
+  #     timeout = 300 # in seconds
+  #     on-timeout = loginctl lock-session
+  #   }
+  # '';
 
   home.file.".config/hypr/hyprlock.conf".text =
     ''

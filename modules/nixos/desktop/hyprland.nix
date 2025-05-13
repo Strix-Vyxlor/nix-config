@@ -42,6 +42,13 @@ in {
         keyring manager to use (recomended)
       '';
     };
+    hyprlock = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        hyprlock pam configuration
+      '';
+    };
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -76,6 +83,9 @@ in {
       };
 
       services.gnome.gnome-keyring.enable = true;
+    })
+    (mkIf cfg.hyprlock {
+      security.pam.services.hyprlock = {};
     })
   ]);
 }

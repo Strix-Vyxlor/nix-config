@@ -19,26 +19,15 @@ in {
         external prompt to use
       '';
     };
-    style = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable styling
-      '';
-    };
   };
 
   config = mkIf (cfg.prompt != null) (mkMerge [
-    (mkIf (cfg.prompt == "oh-my-posh") (mkMerge [
-      {
-        programs.oh-my-posh = {
-          enable = true;
-          enableBashIntegration = defaultShell == "bash";
-          enableNushellIntegration = defaultShell == "nushell";
-        };
-      }
-      (mkIf (cfg.style && styleCfg.enable) {
-        programs.oh-my-posh.settings = builtins.fromJSON ''
+    (mkIf (cfg.prompt == "oh-my-posh") {
+      programs.oh-my-posh = {
+        enable = true;
+        enableBashIntegration = defaultShell == "bash";
+        enableNushellIntegration = defaultShell == "nushell";
+        settings = builtins.fromJSON ''
           {
             "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
             "palette": {
@@ -189,7 +178,7 @@ in {
             "version": 2
           }
         '';
-      })
-    ]))
+      };
+    })
   ]);
 }
