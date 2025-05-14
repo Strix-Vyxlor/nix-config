@@ -27,10 +27,8 @@
     initrd = {
       availableKernelModules = [
         "usbhid"
+        "usbhid"
         "usb_storage"
-        "vc4"
-        "pcie_brcmstb" # required for the pcie bus to work
-        "reset-raspberrypi" # required for vl805 firmware to load
       ];
     };
   };
@@ -48,7 +46,7 @@
       consoleKeymap = "be-latin1";
     };
     hardware = {
-      kernel = "rpi5-lts";
+      kernel = "rpi5";
     };
     programs.git = true;
     services.ssh.enable = true;

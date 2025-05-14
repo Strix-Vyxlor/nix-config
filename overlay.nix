@@ -1,4 +1,7 @@
 final: prev: {
   papirus-nord = prev.papirus-nord.override {accent = "auroramagenta";};
-  linux-rpi5-stable = final.callPackage ./pkgs/linux-rpi5-stable.nix {};
+  linux_rpi5 = final.linux_rpi4.override {
+    rpiVersion = 5;
+    argsOverride.defconfig = "bcm2712_defconfig";
+  };
 }
