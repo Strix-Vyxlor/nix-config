@@ -2,6 +2,7 @@
   pkgs,
   lib,
   branch,
+  ...
 }: {
   strixos = {
     inherit branch;
@@ -16,6 +17,7 @@
     };
     hardware = {
       kernel = "zen";
+      graphics = true;
     };
     programs = {
       superuser = "doas";

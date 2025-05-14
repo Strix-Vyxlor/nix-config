@@ -35,6 +35,7 @@
         zoxide = true;
       };
     };
+    xdg.enable = true;
     programs = {
       cli = {
         git = {
@@ -43,8 +44,9 @@
         };
         tmux.enable = true;
       };
+
+      editor.strixvim = true;
     };
-    editor.strixvim = true;
   };
 
   home.packages = with pkgs; [
