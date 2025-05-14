@@ -32,6 +32,7 @@ in {
 
   config = mkIf (cfg.loader != null) {
     boot.loader = {
+      grub.enable = false;
       systemd-boot.enable = cfg.loader == "systemd-boot";
       efi = {
         canTouchEfiVariables = true;

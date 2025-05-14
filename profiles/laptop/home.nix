@@ -69,6 +69,7 @@
           gh = true;
         };
         tmux.enable = true;
+        cava = true;
       };
       browser = {
         brave.enable = true;

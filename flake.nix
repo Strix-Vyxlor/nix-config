@@ -37,6 +37,18 @@
           inherit (flakeSettings) branch;
         };
       };
+
+      wsl = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./profiles/wsl/home.nix
+          self.homeManagerModules.strixos
+          stylix.homeManagerModules.stylix
+        ];
+        extraSpecialArgs = {
+          inherit (flakeSettings) branch;
+        };
+      };
     };
 
     nixosConfigurations = {
@@ -46,6 +58,19 @@
           (./. + "/profiles" + ("/" + flakeSettings.profile) + ("/" + flakeSettings.subprofile) + "/configuration.nix")
           self.nixosModules.strixos
           stylix.nixosModules.stylix
+        ];
+        specialArgs = {
+          inherit (flakeSettings) branch;
+        };
+      };
+
+      wsl = lib.nixosSystem {
+        inherit (flakeSettings) system;
+        modules = [
+          ./profiles/wsl/configuration.nix
+          self.nixosModules.strixos
+          stylix.nixosModules.stylix
+          inputs.nixos-wsl.nixosModules.default
         ];
         specialArgs = {
           inherit (flakeSettings) branch;
@@ -142,5 +167,6 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 }
