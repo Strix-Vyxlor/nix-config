@@ -9,16 +9,23 @@
   styleCfg = config.strixos.style;
 in {
   options.strixos.style.targets = {
-    console = mkOption {
+    enable = mkOption {
       type = types.bool;
       default = true;
+      description = ''
+        style apps
+      '';
+    };
+    console = mkOption {
+      type = types.bool;
+      default = cfg.enable;
       description = ''
         style the linux console;
       '';
     };
     nixos-icons = mkOption {
       type = types.bool;
-      default = true;
+      default = cfg.enable;
       description = ''
         style the nixos-icons;
       '';

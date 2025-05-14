@@ -24,6 +24,13 @@ in {
         device has a screen with brightness controll
       '';
     };
+    temperature = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        add temperature sensor reading
+      '';
+    };
     timezone = mkOption {
       type = types.str;
       default = "Europe/Brussels";
@@ -50,6 +57,7 @@ in {
             ]
             ++ lib.lists.optionals waybarCfg.battery ["group/battery"]
             ++ lib.lists.optionals waybarCfg.brightness ["group/backlight"]
+            ++ lib.lists.optionals waybarCfg.temperature ["group/temp"]
             ++ [
               "group/cpu"
               "group/memory"
@@ -124,6 +132,26 @@ in {
             "active-only" = false;
             "ignore-workspaces" = ["scratch" "-"];
             "show-special" = false;
+          };
+
+          "group/temp" = {
+            "orientation" = "horizontal";
+            "drawer" = {
+              "transition-duration" = 500;
+              "transition-left-to-right" = true;
+            };
+            "modules" = [
+              "temperature"
+              "temperature#text"
+            ];
+          };
+
+          temperature = {
+            critical-threshold = 80;
+            format = "";
+          };
+          "temperature#text" = {
+            format = "{temperatureC}°C";
           };
 
           "idle_inhibitor" = {
@@ -534,8 +562,14 @@ in {
         + ''          ;
                 }
 
-                label.numlock {
-                    color: #''
+                #temperature {
+                  color: #''
+        + config.lib.stylix.colors.base08
+        + ''
+          }
+
+          label.numlock {
+              color: #''
         + config.lib.stylix.colors.base04
         + ''          ;
                 }

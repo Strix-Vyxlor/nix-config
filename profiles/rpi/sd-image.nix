@@ -1,109 +1,109 @@
 {
   pkgs,
   lib,
-  zix-pkg,
-  systemSettings,
-  userSettings,
-  inputs,
+  config,
+  branch,
+  nixpkgs,
   ...
 }: {
   imports = [
-    inputs.raspberry-pi-nix.nixosModules.raspberry-pi
-    ../../system/security/doas.nix
-    ../../system/security/gpg.nix
+    "${nixpkgs}/nixos/modules/installer/sd-card/sd-image.nix"
   ];
   users.users.root.initialPassword = "root";
-
-  raspberry-pi-nix.board = "bcm2712";
-  raspberry-pi-nix.uboot.enable = false;
-  raspberry-pi-nix.kernel-version = "v6_10_12";
-  raspberry-pi-nix.libcamera-overlay.enable = false;
-  boot.initrd.systemd.tpm2.enable = false;
-  sdImage.firmwareSize = 512;
-
-  nix.package = pkgs.nixFlakes;
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
-  nixpkgs.config.allowUnfree = true;
-
-  nix.settings = {
-    substituters = [
-      "https://nix-community.cachix.org"
+  boot = {
+    loader = {
+      grub.enable = false;
+      initScript.enable = true;
+    };
+    supportedFilesystems = [
+      "btrfs"
+      "cifs"
+      "f2fs"
+      "ntfs"
+      "vfat"
+      "xfs"
     ];
-    trusted-public-keys = [
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
+    kernelParams = ["console=tty1" "init=/sbin/init"];
+    initrd = {
+      availableKernelModules = [
+        "usbhid"
+        "usb_storage"
+        "vc4"
+        "pcie_brcmstb" # required for the pcie bus to work
+        "reset-raspberrypi" # required for vl805 firmware to load
+      ];
+    };
   };
 
-  boot.plymouth.enable = true;
-
-  networking.hostName = systemSettings.hostname;
-  networking.networkmanager.enable = true;
-
-  time.timeZone = systemSettings.timezone;
-  i18n.defaultLocale = systemSettings.locale;
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = systemSettings.locale;
-    LC_IDENTIFICATION = systemSettings.locale;
-    LC_MEASUREMENT = systemSettings.locale;
-    LC_MONETARY = systemSettings.locale;
-    LC_NAME = systemSettings.locale;
-    LC_NUMERIC = systemSettings.locale;
-    LC_PAPER = systemSettings.locale;
-    LC_TELEPHONE = systemSettings.locale;
-    LC_TIME = systemSettings.locale;
+  strixos = {
+    inherit branch;
+    hostName = "strixpi";
+    network = {
+      manager = "network-manager";
+      avahi = true;
+    };
+    locale = {
+      timezone = "Europe/Brussels";
+      locale = "en_US.UTF-8";
+      consoleKeymap = "be-latin1";
+    };
+    hardware = {
+      kernel = "rpi5-lts";
+    };
+    programs.git = true;
+    services.ssh.enable = true;
+    style.targets.enable = false;
   };
 
-  users.users.${userSettings.username} = {
-    isNormalUser = true;
-    description = userSettings.name;
-    extraGroups = ["networkmanager" "wheel" "input" "libvirtd"];
-    packages = [];
-    uid = 1000;
+  sdImage = {
+    populateFirmwareCommands = let
+      configTxt = pkgs.writeText "config.txt" ''
+        [all]
+        arm_64bit=1
+        disable_overscan=1
+        ramdisk=initrd
+        kernel=kernel8.img
+      '';
+      kernel-params = pkgs.writeTextFile {
+        name = "cmdline.txt";
+        text = ''
+          ${lib.strings.concatStringsSep " " config.boot.kernelParams}
+        '';
+      };
+      kernel = "${config.system.build.kernel}/${config.system.boot.loader.kernelFile}";
+      initrd = "${config.system.build.initialRamdisk}/${config.system.boot.loader.initrdFile}";
+    in ''
+      cp ${configTxt} firmware/config.txt
+      cp "${kernel}" firmware/kernel8.img
+      cp "${initrd}" firmware/initrd
+      cp "${kernel-params}" firmware/cmdline.txt
+      cp -r ${pkgs.raspberrypifw}/share/raspberrypi/boot/{start*.elf,*.dtb,bootcode.bin,fixup*.dat,overlays} firmware
+    '';
+    populateRootCommands = ''
+      mkdir -p ./files/sbin
+      content="$(
+        echo "#!${pkgs.bash}/bin/bash"
+        echo "exec ${config.system.build.toplevel}/init"
+      )"
+      echo "$content" > ./files/sbin/init
+      chmod 744 ./files/sbin/init
+    '';
   };
 
   environment.systemPackages = with pkgs; [
-    zix-pkg
     helix
-    wget
-    git
-    home-manager
-    wpa_supplicant
-    bluez
-    bluez-tools
+    curl
+    zip
+    unzip
+    ccrypt
+    cryptsetup
+    parted
+    usbutils
+    pciutils
+    sdparm
+    hdparm
+    nvme-cli
   ];
 
-  fonts.fontDir.enable = true;
-
-  console.keyMap = "be-latin1";
-
-  system.stateVersion = "24.05";
-
-  hardware = {
-    raspberry-pi = {
-      config = {
-        all = {
-          options = {
-            # The firmware will start our u-boot binary rather than a
-            # linux kernel
-            arm_64bit = {
-              enable = true;
-              value = true;
-            };
-            disable_overscan = {
-              enable = true;
-              value = true;
-            };
-          };
-          dt-overlays = {
-            vc4-kms-v3d = {
-              enable = true;
-              params = {};
-            };
-          };
-        };
-      };
-    };
-  };
+  system.stateVersion = "25.05";
 }

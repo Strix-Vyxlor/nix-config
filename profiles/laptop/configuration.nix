@@ -102,7 +102,6 @@
     wget
     git
     home-manager
-    wpa_supplicant
   ];
 
   system.stateVersion = "25.05";

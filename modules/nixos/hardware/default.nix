@@ -14,6 +14,7 @@ in {
         "testing"
         "latest"
         "zen"
+        "rpi5-lts"
       ];
       default = "latest";
       description = ''
@@ -70,6 +71,9 @@ in {
     })
     (mkIf (cfg.kernel == "zen") {
       boot.kernelPackages = pkgs.linuxPackages_zen;
+    })
+    (mkIf (cfg.kernel == "rpi5-lts") {
+      boot.kernelPackages = pkgs.linuxPackagesFor pkgs.linux-rpi5-stable;
     })
     (mkIf cfg.platformioCompat {
       services.udev.packages = [

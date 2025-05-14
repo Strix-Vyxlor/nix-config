@@ -114,6 +114,7 @@
         apps.waybar = {
           brightness = true;
           battery = true;
+          temperature = true;
         };
         plugins.hyprexpo = true;
       };

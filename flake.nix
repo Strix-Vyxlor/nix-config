@@ -20,7 +20,6 @@
       };
       overlays = [
         (import inputs.rust-overlay)
-        inputs.zix.overlays.zix
       ];
     };
 
@@ -53,11 +52,16 @@
         };
       };
 
-      rpi-sd = lib.nixosSystem {
+      rpi5-sd = lib.nixosSystem {
         system = "aarch64-linux";
-        modules = [./profiles/rpi/sd-image.nix];
+        modules = [
+          ./profiles/rpi/sd-image.nix
+          self.nixosModules.strixos
+          stylix.nixosModules.stylix
+        ];
         specialArgs = {
           inherit (flakeSettings) branch;
+          inherit nixpkgs;
         };
       };
     };
@@ -132,8 +136,11 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    raspberry-pi-nix.url = "github:nix-community/raspberry-pi-nix";
     zen-browser.url = "github:0xc000022070/zen-browser-flake";
-    nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 }
