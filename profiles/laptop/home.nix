@@ -148,7 +148,7 @@
 
   programs.zix = {
     enable = true;
-    config.root_command = "doas";
+    config.root_command = "sudo";
   };
 
   home.stateVersion = "25.05";

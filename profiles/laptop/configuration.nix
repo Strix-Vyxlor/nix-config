@@ -42,7 +42,7 @@
       platformioCompat = true;
     };
     programs = {
-      superuser = "doas";
+      superuser = "sudo";
       git = true;
     };
     services = {

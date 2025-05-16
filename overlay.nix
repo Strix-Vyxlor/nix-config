@@ -4,4 +4,7 @@ final: prev: {
     rpiVersion = 5;
     argsOverride.defconfig = "bcm2712_defconfig";
   };
+  # HACK: workaround for module not found error
+  makeModulesClosure = x:
+    prev.makeModulesClosure (x // {allowMissing = true;});
 }

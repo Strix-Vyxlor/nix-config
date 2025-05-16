@@ -23,10 +23,12 @@
       "vfat"
       "xfs"
     ];
-    kernelParams = ["console=tty1" "init=/sbin/init"];
+    kernelParams = [
+      "console=tty1"
+      "rootwait"
+    ];
     initrd = {
       availableKernelModules = [
-        "usbhid"
         "usbhid"
         "usb_storage"
       ];
@@ -59,7 +61,7 @@
         [all]
         arm_64bit=1
         disable_overscan=1
-        ramdisk=initrd
+        initramfs initrd followkernel
         kernel=kernel8.img
       '';
       kernel-params = pkgs.writeTextFile {
@@ -78,14 +80,15 @@
       cp -r ${pkgs.raspberrypifw}/share/raspberrypi/boot/{start*.elf,*.dtb,bootcode.bin,fixup*.dat,overlays} firmware
     '';
     populateRootCommands = ''
-      mkdir -p ./files/sbin
+      mkdir -p ./files
       content="$(
         echo "#!${pkgs.bash}/bin/bash"
         echo "exec ${config.system.build.toplevel}/init"
       )"
-      echo "$content" > ./files/sbin/init
-      chmod 744 ./files/sbin/init
+      echo "$content" > ./files/init
+      chmod 744 ./files/init
     '';
+    firmwareSize = 1024;
   };
 
   environment.systemPackages = with pkgs; [
