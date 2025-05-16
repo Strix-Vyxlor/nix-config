@@ -6,7 +6,6 @@
       system = "x86_64-linux";
       branch = "unstable";
       profile = "laptop";
-      subprofile = "";
     };
 
     home-manager = inputs."home-manager-${flakeSettings.branch}";
@@ -29,7 +28,7 @@
       default = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         modules = [
-          (./. + "/profiles" + ("/" + flakeSettings.profile) + ("/" + flakeSettings.subprofile) + "/home.nix")
+          (./. + "/profiles" + ("/" + flakeSettings.profile) + "/home.nix")
           self.homeManagerModules.strixos
           stylix.homeManagerModules.stylix
         ];
@@ -55,7 +54,7 @@
       default = lib.nixosSystem {
         inherit (flakeSettings) system;
         modules = [
-          (./. + "/profiles" + ("/" + flakeSettings.profile) + ("/" + flakeSettings.subprofile) + "/configuration.nix")
+          (./. + "/profiles" + ("/" + flakeSettings.profile) + "/configuration.nix")
           self.nixosModules.strixos
           stylix.nixosModules.stylix
         ];
