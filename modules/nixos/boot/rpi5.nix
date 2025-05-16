@@ -79,7 +79,6 @@ in {
 
         cp -r ${raspberrypifw}/share/raspberrypi/boot/{start*.elf,*.dtb,bootcode.bin,fixup*.dat,overlays} /boot
       '';
-      deps = ["boot"];
     };
   };
 }
