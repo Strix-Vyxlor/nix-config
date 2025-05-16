@@ -27,7 +27,7 @@
     locale = {
       timezone = "Europe/Brussels";
       locale = "en_US.UTF-8";
-      consoleKeyap = "be-latin1";
+      consoleKeymap = "be-latin1";
     };
     programs = {
       superuser = "doas";
