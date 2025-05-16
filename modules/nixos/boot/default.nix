@@ -30,12 +30,22 @@ in {
         bootloader to use
       '';
     };
+    maxGenerations = mkOption {
+      type = types.nullOr types.int;
+      default = 10;
+      description = ''
+        maximum amountof generations in bootloader
+      '';
+    };
   };
 
   config = mkIf (cfg.loader != null || cfg.loader != "rpi5") {
     boot.loader = {
       grub.enable = false;
-      systemd-boot.enable = cfg.loader == "systemd-boot";
+      systemd-boot = {
+        enable = cfg.loader == "systemd-boot";
+        configurationLimit = cfg.maxGenerations;
+      };
       efi = {
         canTouchEfiVariables = true;
         efiSysMountPoint = cfg.efiMountPoint;

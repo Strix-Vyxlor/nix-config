@@ -44,11 +44,25 @@
     programs = {
       superuser = "sudo";
       git = true;
+      retroarch = {
+        enable = true;
+        withCores = cores:
+          with cores; [
+            dolphin
+            picodrive
+            genesis-plus-gx
+          ];
+        gamescopeSession = {
+          enable = true;
+        };
+      };
     };
     services = {
       timesync = "timesyncd";
       tailscale = true;
-      ssh.enable = true;
+      ssh = {
+        enable = true;
+      };
     };
     desktop = {
       hyprland = {

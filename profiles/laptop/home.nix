@@ -53,15 +53,6 @@
         heroic = true;
         mangohud = true;
         dolphin = true;
-        retroarch = {
-          enable = true;
-          withCores = cores:
-            with cores; [
-              dolphin
-              picodrive
-              genesis-plus-gx
-            ];
-        };
       };
       cli = {
         git = {

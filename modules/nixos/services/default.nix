@@ -42,6 +42,13 @@ in {
           users allow to use ssh
         '';
       };
+      rootPassword = mkOption {
+        type = types.bool;
+        default = false;
+        description = ''
+          allow root login with password
+        '';
+      };
     };
   };
 
@@ -71,7 +78,10 @@ in {
           settings = {
             inherit (cfg.ssh) AllowUsers;
             PasswordAuthentication = true;
-            PermitRootLogin = "prohibit-password";
+            PermitRootLogin =
+              if cfg.ssh.rootPassword
+              then "yes"
+              else "prohibit-password";
           };
         };
       };

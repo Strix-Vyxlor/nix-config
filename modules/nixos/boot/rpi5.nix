@@ -46,6 +46,7 @@ in {
         cfg.rpiParamsPre
         ++ [
           "console=tty1"
+          "init=/sbin/init"
           "rootwait"
         ]
         ++ cfg.rpiParamsPost;
@@ -71,7 +72,6 @@ in {
       in ''
         echo "Populating /boot firmware files..."
 
-        mkdir -p /boot
         cp ${configTxt} /boot/config.txt
         cp "${kernel}" /boot/kernel8.img
         cp "${initrd}" /boot/initrd

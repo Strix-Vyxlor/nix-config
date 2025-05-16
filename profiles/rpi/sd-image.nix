@@ -51,7 +51,10 @@
       kernel = "rpi5";
     };
     programs.git = true;
-    services.ssh.enable = true;
+    services.ssh = {
+      enable = true;
+      rootPassword = true;
+    };
     style.targets.enable = false;
   };
 
