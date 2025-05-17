@@ -4,19 +4,13 @@
   branch,
   ...
 }: let
-  es-de-cage = let
-    exports = builtins.attrValues (
-      builtins.mapAttrs (n: v: "export ${n}=${v}") cfg.cageSession.env
-    );
-  in
-    pkgs.writeShellScriptBin "es-de-cage" ''
-      if [ ! -d ${cfg.homeDir}/ROMs ]; then
-        es-de --home ${cfg.homeDir} --create-system-dirs
-      fi
+  es-de-cage = pkgs.writeShellScriptBin "es-de-cage" ''
+    if [ ! -d /home/gamer/ROMs ]; then
+      es-de --home /home/gamer --create-system-dirs
+    fi
 
-      ${builtins.concatStringsSep "\n" exports}
-      ${pkgs.cage}/bin/cage ${builtins.toString cfg.cageSession.args} -- es-de --home ${cfg.homeDir} ${builtins.toString cfg.cageSession.retroarchArgs}
-    '';
+    ${pkgs.cage}/bin/cage -s -- es-de --home /home/gamer
+  '';
 in {
   imports = [
     ../../../system/hardware-configuration.nix
@@ -25,7 +19,7 @@ in {
     inherit branch;
     hostName = "retropi";
     user = {
-      username = "Gamer";
+      username = "gamer";
     };
     boot = {
       loader = "rpi5";

@@ -19,7 +19,7 @@
       fi
 
       ${builtins.concatStringsSep "\n" exports}
-      gamescope ${builtins.toString cfg.gamescopeSession.args} -- es-de --home ${cfg.homeDir} ${builtins.toString cfg.gamescopeSession.retroarchArgs}
+      gamescope ${builtins.toString cfg.gamescopeSession.args} -- es-de --home ${cfg.homeDir} ${builtins.toString cfg.gamescopeSession.emulationstationArgs}
     '';
 
   gamescopeSessionFile =
@@ -45,7 +45,7 @@
       fi
 
       ${builtins.concatStringsSep "\n" exports}
-      ${pkgs.cage}/bin/cage ${builtins.toString cfg.cageSession.args} -- es-de --home ${cfg.homeDir} ${builtins.toString cfg.cageSession.retroarchArgs}
+      ${pkgs.cage}/bin/cage ${builtins.toString cfg.cageSession.args} -- es-de --home ${cfg.homeDir} ${builtins.toString cfg.cageSession.emulationstationArgs}
     '';
 
   cageSessionFile =
