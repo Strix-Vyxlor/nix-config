@@ -16,6 +16,9 @@
     };
     boot = {
       loader = "rpi5";
+      rpiConfig = ''
+        dtoverlay=vc4-kms-v3d
+      '';
       plymouth.enable = true;
     };
     hardware = {
