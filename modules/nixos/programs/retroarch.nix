@@ -89,7 +89,9 @@ in {
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = [retroarchPkg];
+    environment.systemPackages =
+      [retroarchPkg]
+      ++ lib.lists.optionals cfg.gamescopeSession.enable [retroarch-gamescope];
 
     programs.gamescope.enable = lib.mkDefault cfg.gamescopeSession.enable;
     services.displayManager.sessionPackages = lib.mkIf cfg.gamescopeSession.enable [

@@ -96,6 +96,7 @@
     bat
     eza
     fzf
+    btop
     blueberry
     networkmanagerapplet
   ];
