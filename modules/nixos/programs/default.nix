@@ -11,6 +11,7 @@ in {
   imports = [
     ./nix.nix
     ./retroarch.nix
+    ./emulationstation.nix
   ];
 
   options.strixos.programs = {
