@@ -47,36 +47,37 @@
           enable = true;
         };
       };
-      desktop = {
-        hyprland = {
-          enable = true;
-          xkb = {
-            layout = "be";
-            variant = "";
-            options = "";
-          };
-          nautilus = true;
-          keyring = "gnome-keyring";
-          hyprlock = false;
+    };
+    desktop = {
+      hyprland = {
+        enable = true;
+        xkb = {
+          layout = "be";
+          variant = "";
+          options = "";
         };
-        displayManager = {
-          displayManager = "regreet";
-          regreet.extraHyprlandConfig = ''
-            input {
-              touchpad {
-                disable_while_typing=false
-                natural_scroll=yes
-              }
-              accel_profile=linear
-              kb_layout=be
-              numlock_by_default=true
-              repeat_delay=350
-              repeat_rate=50
+        nautilus = true;
+        keyring = "gnome-keyring";
+        hyprlock = false;
+      };
+      displayManager = {
+        displayManager = "regreet";
+        regreet.extraHyprlandConfig = ''
+          input {
+            touchpad {
+              disable_while_typing=false
+              natural_scroll=yes
             }
-          '';
-        };
+            accel_profile=linear
+            kb_layout=be
+            numlock_by_default=true
+            repeat_delay=350
+            repeat_rate=50
+          }
+        '';
       };
     };
+
     services = {
       timesync = "chrony";
       ssh.enable = true;
