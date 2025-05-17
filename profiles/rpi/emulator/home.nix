@@ -61,8 +61,9 @@
     dolphin-emu
   ];
 
-  home.file."ROMs/desktop/nemo.desktop".source = "${pkgs.nemo}/share/application/nemo.desktop";
-  home.file."ROMs/desktop/dolphin-emu.desktop".source = "${pkgs.dolphin-emu}/share/application/dolphin-emu.desktop";
+  home.file."ROMs/desktop/nemo.desktop".source = "${pkgs.nemo}/share/applications/nemo.desktop";
+  home.file."ROMs/desktop/dolphin-emu.desktop".source = "${pkgs.dolphin-emu}/share/applications/dolphin-emu.desktop";
+  home.file."ROMs/desktop/alacritty.desktop".source = "${pkgs.alacritty}/share/applications/alacritty.desktop";
 
   xdg.mimeApps = {
     defaultApplications = {

@@ -9,6 +9,8 @@
       es-de --home /home/gamer --create-system-dirs
     fi
 
+    export XKB_DEFAULT_LAYOUT=be
+    export MESA_GL_VERSION_OVERRIDE=3.3
     ${pkgs.cage}/bin/cage -s -- es-de --home /home/gamer
   '';
 in {
@@ -49,6 +51,10 @@ in {
         enable = true;
         cageSession = {
           enable = true;
+          env = {
+            XKB_DEFAULT_LAYOUT = "be";
+            MESA_GL_VERSION_OVERRIDE = "3.3";
+          };
         };
       };
     };
@@ -82,9 +88,12 @@ in {
     };
     dbus = {
       enable = true;
+      packages = [pkgs.dconf];
     };
   };
 
+  programs.dconf.enable = true;
+  programs.xwayland.enable = true;
   services.greetd = {
     enable = true;
     settings = {
@@ -106,6 +115,8 @@ in {
     wget
     git
     home-manager
+    cage
+    alacritty
   ];
 
   system.stateVersion = "25.05";
