@@ -54,15 +54,14 @@ in {
     system.activationScripts.populateFirmware = {
       text = let
         inherit (pkgs) bash lib writeText writeTextFile raspberrypifw;
-        configTxt =
-          writeText "config.txt" ''
+        configTxt = writeText "config.txt" (''
             [all]
             arm_64bit=1
             disable_overscan=1
             initramfs initrd followkernel
             kernel=kernel8.img
           ''
-          + cfg.rpiConfig;
+          + cfg.rpiConfig);
         kernelParams = writeTextFile {
           name = "cmdline.txt";
           text = lib.strings.concatStringsSep " " config.boot.kernelParams;
