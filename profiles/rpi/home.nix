@@ -24,7 +24,7 @@
         ll = "eza -l";
         lla = "eza -la";
         tree = "eza --icons --tree";
-        plaincat = "^cat";
+        plaincat = "command cat";
         cat = "bat --plain";
       };
       integrations = {

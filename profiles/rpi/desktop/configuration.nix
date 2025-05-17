@@ -46,7 +46,7 @@
             picodrive
             genesis-plus-gx
           ];
-        gamescopeSession = {
+        cageSession = {
           enable = true;
         };
       };

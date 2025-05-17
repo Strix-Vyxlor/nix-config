@@ -3,9 +3,9 @@
 
   outputs = inputs @ {self, ...}: let
     flakeSettings = {
-      system = "x86_64-linux";
+      system = "aarch64-linux";
       branch = "unstable";
-      profile = "laptop";
+      profile = "rpi/desktop";
     };
 
     home-manager = inputs."home-manager-${flakeSettings.branch}";
