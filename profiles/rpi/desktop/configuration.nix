@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../../system/hardware-configuration.nix
+    ../../../system/hardware-configuration.nix
   ];
   strixos = {
     inherit branch;
