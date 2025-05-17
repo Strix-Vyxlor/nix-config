@@ -373,7 +373,7 @@ in {
       };
     })
     # NOTE: browser
-    (mkIf ((browserCfg.brave.enable && browserCfg.brave.makeDefault) || (browserCfg.zen-browser.enable && browserCfg.zen-browser.makeDefault)) {
+    (mkIf (config.lib.strixos.programs.defaultBrowser != null) {
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, B, exec, ${config.lib.strixos.programs.defaultBrowser}"];
       };

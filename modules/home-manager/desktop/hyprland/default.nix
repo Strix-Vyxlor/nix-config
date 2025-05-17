@@ -54,9 +54,6 @@ in {
   config = mkIf cfg.enable {
     wayland.windowManager.hyprland = {
       enable = true;
-      plugins = with pkgs.hyprlandPlugins; [
-        hyprexpo
-      ];
       xwayland.enable = true;
       systemd.enable = true;
       settings = mkMerge [

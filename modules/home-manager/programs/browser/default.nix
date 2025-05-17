@@ -7,5 +7,6 @@ inputs: {
   imports = [
     ./brave.nix
     (import ./zen.nix inputs)
+    ./floorp.nix
   ];
 }

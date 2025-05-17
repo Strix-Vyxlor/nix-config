@@ -20,6 +20,8 @@
     };
     xdg = {
       enable = true;
+      userDirs = true;
+      mime = true;
     };
     shell = {
       defaultShell = "nushell";
@@ -51,6 +53,12 @@
         tmux.enable = true;
       };
       editor.strixvim = true;
+      browser = {
+        floorp = {
+          enable = true;
+          makeDefault = true;
+        };
+      };
     };
     desktop = {
       hyprland = {
@@ -65,8 +73,12 @@
             "blueberry-tray"
           ];
         };
-        apps.waybar = {
-          temperature = true;
+        apps = {
+          lock = null;
+
+          waybar = {
+            temperature = true;
+          };
         };
       };
     };
