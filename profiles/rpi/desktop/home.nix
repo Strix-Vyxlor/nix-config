@@ -12,7 +12,7 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.themeDir = ../../themes/nord;
+      theme.themeDir = ../../../themes/nord;
       targets.btop = true;
       desktop = {
         enable = true;

@@ -108,7 +108,6 @@ in {
         gdm.enableGnomeKeyring = true;
         gdm-password.enableGnomeKeyring = true;
         ly.enableGnomeKeyring = true;
-        gnome_keyring.enableGnomeKeyring = true;
       };
 
       services.gnome.gnome-keyring.enable = true;

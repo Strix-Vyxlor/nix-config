@@ -81,7 +81,7 @@
       timesync = "chrony";
       ssh.enable = true;
     };
-    style.theme.themeDir = ../../themes/nord;
+    style.theme.themeDir = ../../../themes/nord;
   };
 
   nixpkgs.config.allowUnfree = true;
