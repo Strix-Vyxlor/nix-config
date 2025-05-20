@@ -15,7 +15,7 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.themeDir = ../../themes/nord;
+      theme.generateWithImage = ../../themes/background/golden-hour-mountain.jpg;
       targets.btop = true;
       desktop = {
         enable = true;
@@ -103,10 +103,14 @@
           ];
           windowrulev2 = ["tile,class:(Aseprite)"];
         };
-        apps.waybar = {
-          brightness = true;
-          battery = true;
-          temperature = true;
+        apps = {
+          osd = "swayosd";
+          notification = "swaync";
+          waybar = {
+            brightness = true;
+            battery = true;
+            temperature = true;
+          };
         };
         plugins.hyprexpo = true;
       };
@@ -135,6 +139,7 @@
     blueberry
     networkmanagerapplet
     qalculate-gtk
+    strix-theme-generator
   ];
 
   programs.zix = {
@@ -142,5 +147,5 @@
     config.root_command = "sudo";
   };
 
-  home.stateVersion = "25.05";
+  home.stateVersion = "24.11";
 }

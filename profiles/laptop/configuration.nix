@@ -18,7 +18,7 @@
     user = {
       username = "strix";
       name = "Strix Vyxlor";
-      extraGroups = ["input"];
+      extraGroups = ["input" "adbusers"];
     };
     boot = {
       loader = "systemd-boot";
@@ -40,6 +40,7 @@
       tlp = true;
 
       platformioCompat = true;
+      androidCompat = true;
     };
     programs = {
       superuser = "sudo";
@@ -101,7 +102,7 @@
         '';
       };
     };
-    style.theme.themeDir = ../../themes/nord;
+    style.theme.generateWithImage = ../../themes/background/golden-hour-mountain.jpg;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -118,5 +119,5 @@
     home-manager
   ];
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "24.11";
 }

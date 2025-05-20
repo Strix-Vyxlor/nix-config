@@ -50,6 +50,13 @@ in {
         enable udev rules for platformio
       '';
     };
+    androidCompat = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        enable support for adb fastboot and heimdall
+      '';
+    };
     tlp = mkOption {
       type = types.bool;
       default = false;
@@ -81,6 +88,12 @@ in {
         pkgs.openocd
       ];
     })
+    (mkIf cfg.androidCompat {
+      services.udev.packages = [
+        pkgs.android-udev-rules
+      ];
+    })
+
     (mkIf cfg.bluetooth {
       environment.systemPackages = [pkgs.bluez pkgs.bluez-tools];
     })

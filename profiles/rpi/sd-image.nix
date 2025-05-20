@@ -9,6 +9,7 @@
   imports = [
     "${nixpkgs}/nixos/modules/installer/sd-card/sd-image.nix"
   ];
+
   users.users.root.initialPassword = "root";
   boot = {
     loader = {

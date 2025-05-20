@@ -196,22 +196,10 @@ in {
             date_format=$(tmux_get @tmux_power_date_format '%F')
             # short for Theme-Colour
             TC=#${config.lib.stylix.colors.base0D}
-
-            G01=#${config.lib.stylix.colors.base01} #232
-            G02=#${config.lib.stylix.colors.base01} #233
-            G03=#${config.lib.stylix.colors.base01} #234
-            G04=#${config.lib.stylix.colors.base00} #235
-            G05=#${config.lib.stylix.colors.base00} #236
-            G06=#${config.lib.stylix.colors.base03} #237
-            G07=#${config.lib.stylix.colors.base03} #238
-            G08=#${config.lib.stylix.colors.base03} #239
-            G09=#${config.lib.stylix.colors.base03} #240
-            G10=#${config.lib.stylix.colors.base03} #241
-            G11=#${config.lib.stylix.colors.base03} #242
-            G12=#${config.lib.stylix.colors.base03} #243
-
-            FG="$G10"
-            BG="$G04"
+            FG=#${config.lib.stylix.colors.base05}
+            BG=#${config.lib.stylix.colors.base00}
+            ALTBG=#${config.lib.stylix.colors.base01}
+            ALTFG=#${config.lib.stylix.colors.base04}
 
             # Status options
             tmux_set status-interval 1
@@ -232,15 +220,15 @@ in {
 
             #     
             # Left side of status bar
-            tmux_set status-left-bg "$G04"
-            tmux_set status-left-fg "$G12"
+            tmux_set status-left-bg "$ALTBG"
+            tmux_set status-left-fg "$ALTFG"
             tmux_set status-left-length 150
             user=$(whoami)
-            LS="#[fg=$G04,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$G06,nobold]$rarrow#[fg=$TC,bg=$G06] $session_icon #S "
+            LS="#[fg=$ALTFG,bg=$TC,bold] $user_icon $user@#h #[fg=$TC,bg=$ALTBG,nobold]$rarrow#[fg=$TC,bg=$ALTBG] $session_icon #S "
             if "$show_upload_speed"; then
-                LS="$LS#[fg=$G06,bg=$G05]$rarrow#[fg=$TC,bg=$G05] $upload_speed_icon #{upload_speed} #[fg=$G05,bg=$BG]$rarrow"
+                LS="$LS#[fg=$ALTFG,bg=$ALTBG]$rarrow#[fg=$TC,bg=$ALTBG] $upload_speed_icon #{upload_speed} #[fg=$ALTFG,bg=$ALTBG]$rarrow"
             else
-                LS="$LS#[fg=$G06,bg=$BG]$rarrow"
+                LS="$LS#[fg=$ALTBG,bg=$BG]$rarrow"
             fi
             if [[ $prefix_highlight_pos == 'L' || $prefix_highlight_pos == 'LR' ]]; then
                 LS="$LS#{prefix_highlight}"
@@ -249,11 +237,11 @@ in {
 
             # Right side of status bar
             tmux_set status-right-bg "$BG"
-            tmux_set status-right-fg "$G12"
+            tmux_set status-right-fg "$ALTFG"
             tmux_set status-right-length 150
-            RS="#[fg=$G06]$larrow#[fg=$TC,bg=$G06] $time_icon $time_format #[fg=$TC,bg=$G06]$larrow#[fg=$G04,bg=$TC] $date_icon $date_format "
+            RS="#[fg=$ALTBG]$larrow#[fg=$TC,bg=$ALTBG] $time_icon $time_format #[fg=$TC,bg=$ALTBG]$larrow#[fg=$ALTFG,bg=$TC] $date_icon $date_format "
             if "$show_download_speed"; then
-                RS="#[fg=$G05,bg=$BG]$larrow#[fg=$TC,bg=$G05] $download_speed_icon #{download_speed} $RS"
+                RS="#[fg=$ALTFG,bg=$BG]$larrow#[fg=$TC,bg=$ALTBG] $download_speed_icon #{download_speed} $RS"
             fi
             if "$show_web_reachable"; then
                 RS=" #{web_reachable_status} $RS"
@@ -264,7 +252,7 @@ in {
             tmux_set status-right "$RS"
 
             # Window status format
-            tmux_set window-status-format         "#[fg=$BG,bg=$G06]$rarrow#[fg=$TC,bg=$G06] #I:#W#F #[fg=$G06,bg=$BG]$rarrow"
+            tmux_set window-status-format         "#[fg=$BG,bg=$ALTBG]$rarrow#[fg=$TC,bg=$ALTBG] #I:#W#F #[fg=$ALTFG,bg=$BG]$rarrow"
             tmux_set window-status-current-format "#[fg=$BG,bg=$TC]$rarrow#[fg=$BG,bg=$TC,bold] #I:#W#F #[fg=$TC,bg=$BG,nobold]$rarrow"
 
             # Window status style
@@ -276,18 +264,18 @@ in {
             tmux_set window-status-separator ""
 
             # Pane border
-            tmux_set pane-border-style "fg=$G07,bg=default"
+            tmux_set pane-border-style "fg=$ALTFG,bg=default"
 
             # Active pane border
             tmux_set pane-active-border-style "fg=$TC,bg=default"
 
             # Pane number indicator
-            tmux_set display-panes-colour "$G07"
+            tmux_set display-panes-colour "$ALTFG"
             tmux_set display-panes-active-colour "$TC"
 
             # Clock mode
             tmux_set clock-mode-colour "$TC"
-            tmux_set clock-mode-style 24
+            tmux_set clock-mode-style 12
 
             # Message
             tmux_set message-style "fg=$TC,bg=$BG"

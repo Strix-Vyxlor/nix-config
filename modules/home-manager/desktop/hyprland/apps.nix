@@ -51,6 +51,7 @@ in {
     notification = mkOption {
       type = nullOrEnum [
         "fnott"
+        "swaync"
       ];
       default = "fnott";
       description = ''
@@ -76,7 +77,7 @@ in {
       '';
     };
     osd = mkOption {
-      type = nullOrEnum ["swayosd"];
+      type = nullOrEnum ["standalone" "swayosd"];
       default = "swayosd";
       description = ''
         osd to use
@@ -99,7 +100,7 @@ in {
   };
 
   config = mkIf cfg.enable (mkMerge [
-    # NOTE: terminal
+    # SECTION: terminal
     {
       wayland.windowManager.hyprland.settings = {
         "$scratch_term" = "class:^(scratch_term)$";
@@ -118,7 +119,7 @@ in {
         blurls = ["kitty"];
       };
     }
-    # launcher
+    #  SECTION: launcher
     (mkIf (cfg.apps.launcher == "tofi") {
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, R, exec, tofi-drun | xargs hyprctl dispatch exec --"];
@@ -147,7 +148,7 @@ in {
       };
     })
 
-    # NOTE: wallpaper
+    # SECTION: wallpaper
     (mkIf (cfg.apps.wallpaper == "hyprpaper") {
       services.hyprpaper.enable = true;
       stylix.targets.hyprpaper.enable = true;
@@ -165,7 +166,7 @@ in {
       };
     })
 
-    # NOTE: notification
+    # SECTION: notification
     (mkIf (cfg.apps.notification == "fnott") {
       services.fnott = {
         enable = true;
@@ -209,7 +210,24 @@ in {
         };
       };
     })
-    # NOTE: idle
+    (mkIf (cfg.apps.notification == "swaync") {
+      services.swaync = {
+        enable = true;
+        settings = {
+        };
+      };
+
+      stylix.targets.swaync.enable = true;
+
+      wayland.windowManager.hyprland.settings = {
+        exec-once = [
+          "swaync-nc"
+        ];
+
+        bind = ["SUPER, N, exec, swaync-client -t -sw"];
+      };
+    })
+    # SECTION: idle
     (mkIf (cfg.apps.idle == "hypridle") {
       services.hypridle = {
         enable = true;
@@ -239,7 +257,7 @@ in {
       };
     })
 
-    # NOTE: lock
+    # SECTION: lock
     (mkIf (cfg.apps.lock == "hyprlock") {
       programs.hyprlock = {
         enable = true;
@@ -341,7 +359,22 @@ in {
         };
       };
     })
-    # NOTE: osd
+    # SECTION: osd
+    (mkIf (cfg.apps.osd == "standalone") {
+      home.packages = with pkgs; [
+        brightnessctl
+      ];
+      wayland.windowManager.hyprland.settings = {
+        bind = [
+          ",XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ",XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+          ",XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ",XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
+          ",XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+          ",XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+        ];
+      };
+    })
     (mkIf (cfg.apps.osd == "swayosd") {
       services.swayosd = {
         enable = true;
@@ -360,7 +393,7 @@ in {
         ];
       };
     })
-    # NOTE: filemanager
+    # SECTION: filemanager
     (mkIf (cfg.apps.filemanager == "nautilus") {
       home.packages = with pkgs; [
         nautilus
@@ -372,7 +405,7 @@ in {
         windowrulev2 = ["opacity 0.85,class:^(org.gnome.Nautilus)$"];
       };
     })
-    # NOTE: browser
+    # SECTION: browser
     (mkIf (config.lib.strixos.programs.defaultBrowser != null) {
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, B, exec, ${config.lib.strixos.programs.defaultBrowser}"];

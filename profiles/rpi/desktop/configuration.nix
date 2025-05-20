@@ -7,6 +7,7 @@
   imports = [
     ../../../system/hardware-configuration.nix
   ];
+
   strixos = {
     inherit branch;
     hostName = "pix";
@@ -98,5 +99,5 @@
     home-manager
   ];
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "24.11";
 }

@@ -7,6 +7,7 @@
   imports = [
     ../../system/hardware-configuration.nix
   ];
+
   strixos = {
     inherit branch;
     hostName = "pix";

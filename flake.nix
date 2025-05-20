@@ -3,11 +3,10 @@
 
   outputs = inputs @ {self, ...}: let
     flakeSettings = {
-      system = "aarch64-linux";
+      system = "x86_64-linux";
       branch = "unstable";
-      profile = "rpi/desktop";
+      profile = "laptop";
     };
-
     home-manager = inputs."home-manager-${flakeSettings.branch}";
     nixpkgs = inputs."nixpkgs-${flakeSettings.branch}";
     stylix = inputs."stylix-${flakeSettings.branch}";
@@ -30,7 +29,7 @@
         modules = [
           (./. + "/profiles" + ("/" + flakeSettings.profile) + "/home.nix")
           self.homeManagerModules.strixos
-          stylix.homeManagerModules.stylix
+          stylix.homeModules.stylix
         ];
         extraSpecialArgs = {
           inherit (flakeSettings) branch;
@@ -42,7 +41,7 @@
         modules = [
           ./profiles/wsl/home.nix
           self.homeManagerModules.strixos
-          stylix.homeManagerModules.stylix
+          stylix.homeModules.stylix
         ];
         extraSpecialArgs = {
           inherit (flakeSettings) branch;
