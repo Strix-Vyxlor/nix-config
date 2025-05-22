@@ -58,7 +58,7 @@ in {
         };
       };
 
-      lib.strixos.programs.defaultBrowser = "${pkgs.floorp}/bin/floorp";
+      lib.strixos.defaultBrowser = "${pkgs.floorp}/bin/floorp";
     })
   ]);
 }

@@ -86,6 +86,13 @@ in {
         '';
       };
     };
+    desktop = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        enable styling of desktop
+      '';
+    };
   };
 
   config = {
@@ -94,6 +101,11 @@ in {
       autoEnable = false;
       inherit (themeCfg) polarity image;
       base16Scheme = themeCfg.scheme;
+      overlays.enable = true;
+      targets = {
+        gtk.enable = cfg.desktop;
+        qt.enable = cfg.desktop;
+      };
     };
   };
 }

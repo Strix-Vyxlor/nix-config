@@ -44,6 +44,7 @@ in {
         settings = {
           default_session = {
             command = "${pkgs.hyprland}/bin/Hyprland --config ${hyprlandConfig}";
+            user = config.strixos.user.username;
           };
         };
       };

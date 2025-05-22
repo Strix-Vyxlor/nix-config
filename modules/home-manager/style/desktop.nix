@@ -6,10 +6,21 @@
 }: let
   inherit (lib) types mkOption mkIf mkMerge;
   cfg = config.strixos.style.desktop;
-
+  themeGenerator = image: (import ../../theme_generator.nix {
+    inherit pkgs;
+    imagePath = image;
+  });
   themeCfg = config.strixos.style.theme;
-  themeFile = themeCfg.themeDir + "/theme.toml";
-  imagePath = themeCfg.themeDir + "/background.png";
+  useDefault = themeCfg.themeDir == null && themeCfg.generateWithImage == null;
+
+  themeFile =
+    if themeCfg.generateWithImage == null
+    then themeCfg.themeDir + "/theme.toml"
+    else (themeGenerator themeCfg.generateWithImage) + "/theme.toml";
+  imagePath =
+    if themeCfg.generateWithImage == null
+    then themeCfg.themeDir + "/background.png"
+    else themeCfg.generateWithImage;
   themeImage =
     if (builtins.pathExists imagePath)
     then imagePath
@@ -94,11 +105,11 @@ in {
         type = fontType;
         default = {
           name =
-            if themeCfg.themeDir == null
+            if useDefault
             then "Inter Regular"
             else theme.font.default.name;
           package =
-            if themeCfg.themeDir == null
+            if useDefault
             then pkgs.inter
             else strToPkg theme.font.default.package;
         };
@@ -107,11 +118,11 @@ in {
         type = fontType;
         default = {
           name =
-            if themeCfg.themeDir == null
+            if useDefault
             then "Hack"
             else theme.font.monospace.name;
           package =
-            if themeCfg.themeDir == null
+            if useDefault
             then pkgs.hack-font
             else strToPkg theme.font.monospace.package;
         };
@@ -121,11 +132,11 @@ in {
       type = iconsType;
       default = {
         name =
-          if themeCfg.themeDir == null
+          if useDefault
           then "Papirus"
           else theme.icons.name;
         package =
-          if themeCfg.themeDir == null
+          if useDefault
           then pkgs.papirus-icon-theme
           else strToPkg theme.icons.package;
       };
@@ -134,15 +145,15 @@ in {
       type = cursorType;
       default = {
         name =
-          if themeCfg.themeDir == null
+          if useDefault
           then "Vimix-cursors"
           else theme.cursor.name;
         package =
-          if themeCfg.themeDir == null
+          if useDefault
           then pkgs.vimix-cursors
           else strToPkg theme.cursor.package;
         size =
-          if themeCfg.themeDir == null
+          if useDefault
           then 24
           else theme.cursor.size;
       };

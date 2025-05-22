@@ -37,7 +37,7 @@ in {
         "x-scheme-handler/unknown" = "brave-browser.desktop";
       };
 
-      lib.strixos.programs.defaultBrowser = "${pkgs.brave}/bin/brave";
+      lib.strixos.defaultBrowser = "${pkgs.brave}/bin/brave";
     })
   ]);
 }

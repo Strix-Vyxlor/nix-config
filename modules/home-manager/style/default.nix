@@ -7,7 +7,6 @@
   inherit (lib) types mkOption mkIf mkMerge;
   cfg = config.strixos.style;
   useDefault = themeCfg.themeDir == null && themeCfg.generateWithImage == null;
-
   themeGenerator = image: (import ../../theme_generator.nix {
     inherit pkgs;
     imagePath = image;
@@ -97,6 +96,7 @@ in {
       autoEnable = false;
       inherit (themeCfg) polarity image;
       base16Scheme = themeCfg.scheme;
+      overlays.enable = true;
     };
   };
 }

@@ -19,6 +19,11 @@
       targets.btop = true;
       desktop = {
         enable = true;
+        cursor = {
+          name = "BreezeX-RoséPine";
+          package = pkgs.rose-pine-cursor;
+          size = 24;
+        };
       };
     };
     xdg = {
@@ -61,6 +66,10 @@
         };
         tmux.enable = true;
         cava = true;
+        yazi = {
+          enable = true;
+          makeDefault = true;
+        };
       };
       browser = {
         brave.enable = true;
@@ -84,13 +93,16 @@
     desktop = {
       hyprland = {
         enable = true;
-        hyprcursorTheme = "Nordzy-Hyprcursors";
+        #hyprcursorTheme = "Nordzy-Hyprcursors";
         keymap = "be";
         monitors = [
           "eDP-1,1920x1200,0x0,1"
           "HDMI-A-1,1920x1080,-1920x0,1"
         ];
         extraSettings = {
+          env = [
+            "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+          ];
           exec-once = [
             "nm-applet"
             "blueberry-tray"
@@ -140,6 +152,7 @@
     networkmanagerapplet
     qalculate-gtk
     strix-theme-generator
+    rose-pine-hyprcursor
   ];
 
   programs.zix = {

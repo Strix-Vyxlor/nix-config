@@ -5,8 +5,7 @@
   ...
 }: {
   imports = [
-    ../../system/hardware-configuration.nix
-
+    ./hardware-configuration.nix
     ../../system/games/steam/steam.nix
     ../../system/games/steam/gamescope-session.nix
     ../../system/games/steam/decky-loader.nix
@@ -19,6 +18,10 @@
       username = "strix";
       name = "Strix Vyxlor";
       extraGroups = ["input" "adbusers"];
+    };
+    style = {
+      theme.generateWithImage = ../../themes/background/golden-hour-mountain.jpg;
+      desktop = true;
     };
     boot = {
       loader = "systemd-boot";
@@ -79,6 +82,7 @@
       displayManager = {
         displayManager = "regreet";
         regreet.extraHyprlandConfig = ''
+          env=HYPRCURSOR_THEME,rose-pine-hyprcursor
           exec-once = swayosd-server
           bind=,XF86AudioMute, exec, swayosd-client --output-volume mute-toggle
           bind=,XF86AudioMicMute, exec, swayosd-client --input-volume mute-toggle
@@ -102,7 +106,6 @@
         '';
       };
     };
-    style.theme.generateWithImage = ../../themes/background/golden-hour-mountain.jpg;
   };
 
   nixpkgs.config.allowUnfree = true;
@@ -114,6 +117,7 @@
 
   environment.systemPackages = with pkgs; [
     helix
+    rose-pine-hyprcursor
     wget
     git
     home-manager

@@ -16,11 +16,19 @@ in {
         style btop
       '';
     };
+    nixos-icons = mkOption {
+      type = types.bool;
+      default = true;
+      description = ''
+        style nixos icons
+      '';
+    };
   };
 
-  config = mkIf styleCfg.enable {
+  config = {
     stylix.targets = {
       btop.enable = cfg.btop;
+      nixos-icons.enable = cfg.nixos-icons;
     };
   };
 }

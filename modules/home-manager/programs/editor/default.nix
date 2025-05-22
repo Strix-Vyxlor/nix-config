@@ -30,6 +30,13 @@ in {
           inherit shell;
         };
       };
+      stylix.targets.yazi.enable = true;
+      home.sessionVariables = {
+        EDITOR = "svim";
+      };
+    })
+    (mkIf (config.lib.strixos.termFileManager != null) {
+      programs.strixvim.env.fileManager = config.lib.strixos.termFileManager;
     })
   ];
 }

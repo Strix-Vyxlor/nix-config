@@ -146,6 +146,8 @@ in {
           };
         };
       };
+
+      wayland.windowManager.hyprland.settings.windowrulev2 = ["opacity 0.85,class:^(xarchiver)$"];
     })
 
     # SECTION: wallpaper
@@ -406,9 +408,9 @@ in {
       };
     })
     # SECTION: browser
-    (mkIf (config.lib.strixos.programs.defaultBrowser != null) {
+    (mkIf (config.lib.strixos.defaultBrowser != null) {
       wayland.windowManager.hyprland.settings = {
-        bind = ["SUPER, B, exec, ${config.lib.strixos.programs.defaultBrowser}"];
+        bind = ["SUPER, B, exec, ${config.lib.strixos.defaultBrowser}"];
       };
     })
   ]);

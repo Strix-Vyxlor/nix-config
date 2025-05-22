@@ -5,6 +5,7 @@ final: prev: {
     argsOverride.defconfig = "bcm2712_defconfig";
   };
   strix-theme-generator = final.callPackage ./pkgs/stg {};
+  rose-pine-hyprcursor = final.callPackage ./pkgs/rose-pine-hyprcursor {};
   # HACK: workaround for module not found error
   makeModulesClosure = x:
     prev.makeModulesClosure (x // {allowMissing = true;});
