@@ -4,7 +4,7 @@
   branch,
   ...
 }: let
-  usb-gadget = pkgs.writeScriptBin "usb-gadget" builtins.readFile ./usb-gadget;
+  usb-gadget = pkgs.writeScriptBin "usb-gadget" (builtins.readFile ./usb-gadget);
 in {
   imports = [
     ./hardware-configuration.nix
