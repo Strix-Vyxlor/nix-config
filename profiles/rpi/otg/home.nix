@@ -61,6 +61,7 @@
     gnutar
     bat
     fzf
+    kitty.terminfo
   ];
 
   programs.zix = {

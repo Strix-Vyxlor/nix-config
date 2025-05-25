@@ -53,15 +53,16 @@ in {
 
   systemd.services.usbgadget = {
     description = "My USB gadget";
-    after = ["network-online.target"];
-    wants = ["network-online.target"];
+    before = ["network-online.target"];
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = "yes";
-      ExecStart = "${usb-gadget}/bin/usb-gadget";
+      ExecStart = "${pkgs.bash}/bin/bash ${usb-gadget}/bin/usb-gadget";
     };
     wantedBy = ["sysinit.target"];
   };
+
+  networking.firewall.enable = false;
 
   networking.bridges.br0.interfaces = [
     "usb0"
@@ -77,19 +78,24 @@ in {
       }
     ];
   };
+  # networking.interfaces = {
+  #   usb0.useDHCP = false;
+  #   usb1.useDHCP = false;
+  # };
 
   zramSwap.enable = true;
 
   services.dnsmasq = {
     enable = true;
+    resolveLocalQueries = false;
     settings = {
-      dhcp-authoritative = null;
-      dhcp-rapid-commit = null;
-      no-ping = null;
-      interface = "br0";
-      dhcp-range = ["10.55.0.2,10.55.0.6,255.255,255.248,1h"];
+      dhcp-authoritative = true;
+      dhcp-rapid-commit = true;
+      no-ping = true;
+      interface = ["br0"];
+      dhcp-range = ["10.55.0.2,10.55.0.6,255.255.255.248,1h"];
       dhcp-option = ["3"];
-      leasefile-ro = null;
+      leasefile-ro = true;
     };
   };
 
