@@ -7,7 +7,7 @@
   usb-gadget = pkgs.writeScriptBin "usb-gadget" builtins.readFile ./usb-gadget;
 in {
   imports = [
-    ./system/hardware-configuration.nix
+    ./hardware-configuration.nix
   ];
 
   strixos = {
