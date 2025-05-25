@@ -50,11 +50,13 @@ in {
       git = true;
       emulationstation = {
         enable = true;
+        package = pkgs.emulationstation-de.overrideAttr (final: prev: {
+          cmakeFlags = prev.cmakeFlags ++ [(lib.cmakeBool "GLES" true)];
+        });
         cageSession = {
           enable = true;
           env = {
             XKB_DEFAULT_LAYOUT = "be";
-            MESA_GL_VERSION_OVERRIDE = "3.3";
           };
         };
       };

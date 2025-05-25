@@ -77,6 +77,14 @@ in {
       '';
     };
 
+    package = mkOption {
+      type = types.package;
+      default = pkgs.emulationstation-de;
+      description = ''
+        the package to use
+      '';
+    };
+
     gamescopeSession = lib.mkOption {
       description = "Run a GameScope driven EmulationStation session from your display-manager";
       default = {};
@@ -152,7 +160,7 @@ in {
 
   config = mkIf cfg.enable (mkMerge [
     {
-      environment.systemPackages = [pkgs.emulationstation-de];
+      environment.systemPackages = [cfg.package];
       strixos.programs.retroarch.enable = true;
     }
     (mkIf cfg.gamescopeSession.enable {
