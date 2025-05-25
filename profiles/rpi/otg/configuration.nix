@@ -63,7 +63,7 @@ in {
     wantedBy = ["sysinit.target"];
   };
 
-  network.bridges.br0.interfaces = [
+  networking.bridges.br0.interfaces = [
     "usb0"
     "usb1"
   ];
