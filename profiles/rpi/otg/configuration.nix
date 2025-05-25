@@ -7,7 +7,7 @@
   usb-gadget = pkgs.writeScriptBin "usb-gadget" builtins.readFile ./usb-gadget;
 in {
   imports = [
-    ../../system/hardware-configuration.nix
+    ./system/hardware-configuration.nix
   ];
 
   strixos = {
@@ -77,6 +77,8 @@ in {
       }
     ];
   };
+
+  zramSwap.enable = true;
 
   services.dnsmasq = {
     enable = true;

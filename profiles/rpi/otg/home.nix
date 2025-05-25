@@ -18,15 +18,23 @@
       enable = true;
     };
     shell = {
-      defaultShell = "bash";
-      bash.aliases = {
-        ll = "ls -l";
-        lla = "ls -la";
-        plaincat = "command cat";
-        cat = "bat --plain";
+      defaultShell = "nushell";
+      nushell = {
+        aliases = {
+          ll = "ls -l";
+          lla = "ls -la";
+          tree = "eza --icons --tree";
+          plaincat = "^cat";
+          cat = "bat --plain";
+          neofetch = "fastfetch";
+        };
+      };
+      prompt = {
+        prompt = "oh-my-posh";
       };
       integrations = {
         vivid = true;
+        direnv = true;
         zoxide = true;
       };
     };
@@ -36,6 +44,7 @@
           enable = true;
           gh = true;
         };
+        tmux.enable = true;
       };
       editor.strixvim = true;
     };
