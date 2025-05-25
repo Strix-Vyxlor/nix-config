@@ -20,10 +20,8 @@
     shell = {
       defaultShell = "bash";
       bash.aliases = {
-        ls = "eza";
-        ll = "eza -l";
-        lla = "eza -la";
-        tree = "eza --icons --tree";
+        ll = "ls -l";
+        lla = "ls -la";
         plaincat = "command cat";
         cat = "bat --plain";
       };
@@ -53,7 +51,6 @@
     file
     gnutar
     bat
-    eza
     fzf
   ];
 
