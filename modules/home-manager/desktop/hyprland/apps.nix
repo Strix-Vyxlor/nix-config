@@ -10,6 +10,14 @@
   browserCfg = config.strixos.programs.browser;
 
   nullOrEnum = list: types.nullOr (types.enum list);
+
+  swaync-css = pkgs.runCommand "swaync-style" {} ''
+    mkdir -p $out
+    ${pkgs.sassc}/bin/sassc ${config.lib.stylix.colors {
+      template = ./confFiles/swaync.scss.mustache;
+      extension = ".scss";
+    }} $out/style.css
+  '';
 in {
   imports = [
     ./waybar.nix
@@ -216,14 +224,18 @@ in {
       services.swaync = {
         enable = true;
         settings = {
+          widgets = [
+            "title"
+            "notifications"
+            "mpris"
+          ];
         };
+        style = builtins.readFile "${swaync-css}/style.css";
       };
-
-      stylix.targets.swaync.enable = true;
 
       wayland.windowManager.hyprland.settings = {
         exec-once = [
-          "swaync-nc"
+          "systemctl restart --user swaync"
         ];
 
         bind = ["SUPER, N, exec, swaync-client -t -sw"];
@@ -339,25 +351,45 @@ in {
             valign = "center";
           };
 
-          label = {
-            text = "Hello, ${config.strixos.user.name};";
-            color =
-              ''rgb(''
-              + config.lib.stylix.colors.base07-rgb-r
-              + '',''
-              + config.lib.stylix.colors.base07-rgb-g
-              + '',''
-              + config.lib.stylix.colors.base07-rgb-b
-              + '')'';
-            font_size = 25;
-            font_family = styleCfg.desktop.font.default.name;
+          label = [
+            {
+              text = "Hello, ${config.strixos.user.name};";
+              color =
+                ''rgb(''
+                + config.lib.stylix.colors.base07-rgb-r
+                + '',''
+                + config.lib.stylix.colors.base07-rgb-g
+                + '',''
+                + config.lib.stylix.colors.base07-rgb-b
+                + '')'';
+              font_size = 25;
+              font_family = styleCfg.desktop.font.default.name;
 
-            rotate = 0; # degrees, counter-clockwise
+              rotate = 0; # degrees, counter-clockwise
 
-            position = "0, 160";
-            halign = "center";
-            valign = "center";
-          };
+              position = "0, 160";
+              halign = "center";
+              valign = "center";
+            }
+            {
+              text = "$TIME";
+              color =
+                ''rgb(''
+                + config.lib.stylix.colors.base07-rgb-r
+                + '',''
+                + config.lib.stylix.colors.base07-rgb-g
+                + '', ''
+                + config.lib.stylix.colors.base07-rgb-b
+                + '')'';
+              font_size = 20;
+              font_family = styleCfg.desktop.font.default.name;
+              rotate = 0;
+
+              position = "0, 80";
+              halign = "center";
+              valign = "center";
+            }
+          ];
         };
       };
     })

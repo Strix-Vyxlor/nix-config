@@ -8,7 +8,7 @@ from .export import write_toml
 def get_args():
     arg = argparse.ArgumentParser(description="generate theme.toml from wallpaper")
 
-    arg.add_argument("image", type=str)
+    arg.add_argument("image", type=str, help="path to image to get colors from")
     arg.add_argument("-f", "--font", default="Inter Regular;inter",
                      help="font name and package name seperated with ; (default: %(default)s")
     arg.add_argument("-m", "--monospace", default="MesloLg NF;nerd-fonts.meslo-lg",

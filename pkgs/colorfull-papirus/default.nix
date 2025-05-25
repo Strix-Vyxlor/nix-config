@@ -1,21 +1,14 @@
-{
-  lib,
-  stdenv,
-  python3Packages,
-  colorz,
-}:
+{python3Packages}:
 python3Packages.buildPythonApplication {
-  pname = "strix-theme-generator";
+  pname = "colorfull-papirus";
   version = "1.0";
 
   buildInputs = with python3Packages; [setuptools wheel];
   propagatedBuildInputs = with python3Packages; [
-    toml
-    colorz
   ];
 
   checkPhase = ''
-    $out/bin/strix-theme-generator --help > /dev/null
+    $out/bin/colorfull-papirus --help > /dev/null
   '';
 
   src = ./.;

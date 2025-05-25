@@ -57,6 +57,11 @@ in {
             format = "%I:%M:%S %p";
           };
         };
+        extraCss = ''
+          .suggested-action {
+            background-color: #${config.lib.stylix.colors.base0D};
+          }
+        '';
       };
 
       stylix.targets.regreet.enable = true;

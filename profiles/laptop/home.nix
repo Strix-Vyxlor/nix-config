@@ -15,12 +15,12 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.generateWithImage = ../../themes/background/golden-hour-mountain.jpg;
+      theme.generateWithImage = ../../themes/background/starry-night.jpg;
       targets.btop = true;
       desktop = {
         enable = true;
         cursor = {
-          name = "BreezeX-RoséPine";
+          name = "BreezeX-RosePine-Linux";
           package = pkgs.rose-pine-cursor;
           size = 24;
         };
@@ -86,7 +86,10 @@
           enable = true;
           customApps = a: with a; [newReleases lyricsPlus];
           extensions = e: with e; [fullAppDisplay hidePodcasts];
-          style.theme = "hazy";
+          style = {
+            enable = true;
+            theme = "sleek";
+          };
         };
       };
     };
@@ -151,7 +154,11 @@
     blueberry
     networkmanagerapplet
     qalculate-gtk
+    loupe
+    vlc
+    onlyoffice-desktopeditors
     strix-theme-generator
+    colorfull-papirus
     rose-pine-hyprcursor
   ];
 

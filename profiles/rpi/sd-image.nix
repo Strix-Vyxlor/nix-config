@@ -23,6 +23,7 @@
       "ntfs"
       "vfat"
       "xfs"
+      "zfs"
     ];
     kernelParams = [
       "console=tty1"
@@ -58,6 +59,8 @@
     };
     style.targets.enable = false;
   };
+
+  networking.hostId = "b24384ca";
 
   sdImage = {
     populateFirmwareCommands = let
@@ -108,6 +111,7 @@
     sdparm
     hdparm
     nvme-cli
+    zfstools
   ];
 
   system.stateVersion = "25.05";

@@ -20,7 +20,7 @@
       extraGroups = ["input" "adbusers"];
     };
     style = {
-      theme.generateWithImage = ../../themes/background/golden-hour-mountain.jpg;
+      theme.generateWithImage = ../../themes/background/starry-night.jpg;
       desktop = true;
     };
     boot = {

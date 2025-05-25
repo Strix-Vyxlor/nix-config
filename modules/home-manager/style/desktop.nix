@@ -13,6 +13,14 @@
   themeCfg = config.strixos.style.theme;
   useDefault = themeCfg.themeDir == null && themeCfg.generateWithImage == null;
 
+  generatedPapirus =
+    (pkgs.papirus-icon-theme.override {color = "adwaita";})
+  .overrideAttrs (final: prev: {
+      installPhase =
+        prev.installPhase
+        + ''${pkgs.colorfull-papirus}/bin/colorfull-papirus $out/share/icons/Papirus "#${config.lib.stylix.colors.base03}" -b "#${config.lib.stylix.colors.base02}" -p "#${config.lib.stylix.colors.base04}"'';
+    });
+
   themeFile =
     if themeCfg.generateWithImage == null
     then themeCfg.themeDir + "/theme.toml"
@@ -138,7 +146,12 @@ in {
         package =
           if useDefault
           then pkgs.papirus-icon-theme
-          else strToPkg theme.icons.package;
+          else
+            (
+              if themeCfg.generateWithImage == null
+              then strToPkg theme.icons.package
+              else generatedPapirus
+            );
       };
     };
     cursor = mkOption {
