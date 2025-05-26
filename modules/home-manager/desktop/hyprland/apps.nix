@@ -36,6 +36,7 @@ in {
     launcher = mkOption {
       type = nullOrEnum [
         "tofi"
+        "wofi"
       ];
       default = "tofi";
       description = ''
@@ -86,7 +87,7 @@ in {
     };
     osd = mkOption {
       type = nullOrEnum ["standalone" "swayosd"];
-      default = "swayosd";
+      default = "standalone";
       description = ''
         osd to use
       '';
@@ -131,6 +132,130 @@ in {
     (mkIf (cfg.apps.launcher == "tofi") {
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, R, exec, tofi-drun | xargs hyprctl dispatch exec --"];
+      };
+    })
+    (mkIf (cfg.apps.launcher == "wofi") {
+      wayland.windowManager.hyprland.settings = {
+        bind = ["SUPER, R, exec, wofi"];
+        layerrule = ["blur,wofi"];
+        blurls = ["wofi"];
+      };
+      programs.wofi = {
+        enable = true;
+        settings = {
+          mode = "drun";
+          width = "500";
+          height = "400";
+          prompt = "Search";
+          allow_images = true;
+        };
+        style = with config.lib.stylix.colors; ''
+          @define-color base01 #${base01};
+          @define-color base0D  #${base0D};
+          @define-color base05  #${base05};
+          @keyframes fadeIn {
+              0% {
+              }
+              100% {
+              }
+          }
+
+          * {
+              all:unset;
+              font-family: "${styleCfg.desktop.font.monospace.name}", monospace;
+              font-size: 18px;
+              outline: none;
+              border: none;
+              text-shadow:none;
+              background-color:transparent;
+          }
+
+          window {
+              all:unset;
+              padding: 20px;
+              border-radius: 15px;
+              background-color: alpha(@base01,.5);
+              border-color: @base0D;
+              border-width: 3px;
+          }
+          #inner-box {
+              margin: 2px;
+              padding: 5px
+              border: none;
+          }
+          #outer-box {
+              border: none;
+          }
+          #scroll {
+              margin: 0px;
+              padding: 30px;
+              border: none;
+          }
+          #input {
+              all:unset;
+              margin-left:20px;
+              margin-right:20px;
+              margin-top:20px;
+              padding: 20px;
+              border: none;
+              outline: none;
+              color: @base05;
+              box-shadow: 1px 1px 5px rgba(0,0,0, .5);
+              border-radius:10;
+              background-color: alpha(@base01,.2);
+          }
+          #input image {
+              border: none;
+              color: @base0D;
+              padding-right:10px;
+          }
+          #input * {
+              border: none;
+              outline: none;
+          }
+
+          #input:focus {
+              outline: none;
+              border: none;
+
+              border-radius:10;
+          }
+          #text {
+              margin: 5px;
+              border: none;
+              color: @base05;
+              outline: none;
+          }
+          #text {
+              margin: 5px;
+              border: none;
+              color: @base05;
+              outline: none;
+          }
+          #entry {
+              border: none;
+              margin: 5px;
+              padding: 10px;
+          }
+          #entry arrow {
+              border: none;
+              color: @base0D;
+
+          }
+          #entry:selected {
+              box-shadow: 1px 1px 5px rgba(255,255,255, .03);
+              border: none;
+              border-radius: 20px;
+              background-color:transparent;
+          }
+          #entry:selected #text {
+              color: @base0D;
+          }
+          #entry:drop(active) {
+              background-color: @base0D !important;
+          }
+
+        '';
       };
     })
     # archiver
@@ -436,7 +561,7 @@ in {
       ];
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, F, exec, nautilus"];
-        windowrulev2 = ["opacity 0.85,class:^(org.gnome.Nautilus)$"];
+        windowrulev2 = ["opacity 0.80,class:^(org.gnome.Nautilus)$"];
       };
     })
     # SECTION: browser

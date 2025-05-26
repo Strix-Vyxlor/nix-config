@@ -214,7 +214,6 @@ in {
                 if config.stylix.polarity == "dark"
                 then 0.8
                 else 1.25;
-              xray = true;
             };
           };
 

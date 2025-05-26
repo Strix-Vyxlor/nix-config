@@ -99,6 +99,10 @@
   in
     lib.attrsets.getAttrFromPath parts pkgs;
 in {
+  imports = [
+    ./libcosmic.nix
+  ];
+
   options.strixos.style.desktop = {
     enable = mkOption {
       type = types.bool;

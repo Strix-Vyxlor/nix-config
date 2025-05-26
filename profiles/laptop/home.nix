@@ -119,6 +119,7 @@
           windowrulev2 = ["tile,class:(Aseprite)"];
         };
         apps = {
+          launcher = "wofi";
           osd = "swayosd";
           notification = "swaync";
           waybar = {

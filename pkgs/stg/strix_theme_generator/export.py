@@ -2,7 +2,7 @@ import toml
 
 def write_toml(output, font, monospace, cursor, icons, colors, light):
     data = {
-            "polarity": "light" if light else "dark",
+            "polarity": "dark" if light else "light",
             "font": {
                 "default":  font,
                 "monospace": monospace,
