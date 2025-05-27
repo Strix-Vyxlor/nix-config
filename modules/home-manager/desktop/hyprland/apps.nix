@@ -11,16 +11,33 @@
 
   nullOrEnum = list: types.nullOr (types.enum list);
 
-  swaync-css = pkgs.runCommand "swaync-style" {} ''
+  # swaync-css = pkgs.runCommand "swaync-style" {} ''
+  #   mkdir -p $out
+  #   ${pkgs.sassc}/bin/sassc ${config.lib.stylix.colors {
+  #     template = ./confFiles/swaync.scss.mustache;
+  #     extension = ".scss";
+  #   }} $out/style.css
+  # '';
+  swaync-css = pkgs.writeTextFile {
+    name = "swaync-style";
+    text = ''${config.lib.stylix.colors {
+        template = ./confFiles/swaync.css.mustache;
+        extension = ".css";
+      }}'';
+    destination = "/style.css";
+  };
+
+  swayosd-css = pkgs.runCommand "swayosd-style" {} ''
     mkdir -p $out
     ${pkgs.sassc}/bin/sassc ${config.lib.stylix.colors {
-      template = ./confFiles/swaync.scss.mustache;
+      template = ./confFiles/swayosd.scss.mustache;
       extension = ".scss";
     }} $out/style.css
   '';
 in {
   imports = [
-    ./waybar.nix
+    ./waybar
+    ./waybar/alt.nix
   ];
 
   options.strixos.desktop.hyprland.apps = {
@@ -100,7 +117,10 @@ in {
       '';
     };
     statusbar = mkOption {
-      type = nullOrEnum ["waybar"];
+      type = nullOrEnum [
+        "waybar"
+        "waybar-alt"
+      ];
       default = "waybar";
       description = ''
         status bar to use
@@ -137,8 +157,11 @@ in {
     (mkIf (cfg.apps.launcher == "wofi") {
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, R, exec, wofi"];
-        layerrule = ["blur,wofi"];
-        blurls = ["wofi"];
+        layerrule = [
+          "blur,wofi"
+          "ignorezero, wofi"
+          "ignorealpha 0.5, wofi"
+        ];
       };
       programs.wofi = {
         enable = true;
@@ -258,7 +281,7 @@ in {
         '';
       };
     })
-    # archiver
+    # SECTION: archiver
     (mkIf (cfg.apps.archiver == "xarchiver") {
       home.packages = [pkgs.xarchiver];
       xdg.mimeApps = {
@@ -349,6 +372,9 @@ in {
       services.swaync = {
         enable = true;
         settings = {
+          layer = "overlay";
+          control-center-layer = "top";
+          layer-shell = true;
           widgets = [
             "title"
             "notifications"
@@ -364,6 +390,14 @@ in {
         ];
 
         bind = ["SUPER, N, exec, swaync-client -t -sw"];
+        layerrule = [
+          "blur,swaync-control-center"
+          "blur,swaync-notification-window"
+          "ignorezero, swaync-control-center"
+          "ignorezero, swaync-notification-window"
+          "ignorealpha 0.5, swaync-control-center"
+          "ignorealpha 0.5, swaync-notification-window"
+        ];
       };
     })
     # SECTION: idle
@@ -538,6 +572,7 @@ in {
       services.swayosd = {
         enable = true;
         topMargin = 0.5;
+        stylePath = "${swayosd-css}/style.css";
       };
 
       wayland.windowManager.hyprland.settings = {
@@ -549,6 +584,11 @@ in {
           ",XF86AudioRaiseVolume, exec, swayosd-client --output-volume raise"
           ",XF86MonBrightnessUp, exec, swayosd-client --brightness raise"
           ",XF86MonBrightnessDown, exec, swayosd-client --brightness lower"
+        ];
+        layerrule = [
+          "blur,swayosd"
+          "ignorezero, swayosd"
+          "ignorealpha 0.5, swayosd"
         ];
       };
     })

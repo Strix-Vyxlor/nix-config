@@ -31,6 +31,14 @@ in {
         add temperature sensor reading
       '';
     };
+    bluetooth = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        bluetooth widget
+      '';
+    };
+
     timezone = mkOption {
       type = types.str;
       default = "Europe/Brussels";
@@ -40,7 +48,7 @@ in {
     };
   };
 
-  config = mkIf (cfg.apps.statusbar == "waybar") {
+  config = mkIf (cfg.enable && (cfg.apps.statusbar == "waybar")) {
     programs.waybar = {
       enable = true;
       settings = {
@@ -626,12 +634,8 @@ in {
       layerrule = [
         "blur,waybar"
         "xray,waybar"
-        "blur,gtk-layer-shell"
-        "xray,gtk-layer-shell"
-      ];
-      blurls = [
-        "waybar"
-        "gtk-layer-shell"
+        "ignorezero, waybar"
+        "ignorealpha 0.5, waybar"
       ];
       windowrulev2 = [
         "opacity 0.80,$pwvucontrol"

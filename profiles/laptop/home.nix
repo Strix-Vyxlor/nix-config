@@ -106,10 +106,6 @@
           env = [
             "HYPRCURSOR_THEME,rose-pine-hyprcursor"
           ];
-          exec-once = [
-            "nm-applet"
-            "blueberry-tray"
-          ];
           bind = [
             ",XF86Favorites, exec, spotify"
             ",XF86HangupPhone, exec, playerctl next"
@@ -122,10 +118,12 @@
           launcher = "wofi";
           osd = "swayosd";
           notification = "swaync";
+          statusbar = "waybar-alt";
           waybar = {
             brightness = true;
             battery = true;
             temperature = true;
+            bluetooth = true;
           };
         };
         plugins.hyprexpo = true;
@@ -153,7 +151,6 @@
     fzf
 
     blueberry
-    networkmanagerapplet
     qalculate-gtk
     loupe
     vlc
