@@ -75,6 +75,18 @@
         };
       };
 
+      iso = lib.nixosSystem {
+        inherit (flakeSettings) system;
+        modules = [
+          self.nixosModules.strixos
+          stylix.nixosModules.stylix
+          ./profiles/iso/configuration.nix
+        ];
+        specialArgs = {
+          inherit (flakeSettings) branch;
+        };
+      };
+
       rpi5-sd = lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
