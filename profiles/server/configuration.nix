@@ -46,6 +46,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    kitty.terminfo
     helix
     wget
     git
