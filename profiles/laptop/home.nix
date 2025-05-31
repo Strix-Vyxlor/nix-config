@@ -133,6 +133,7 @@
 
   home.packages = with pkgs; [
     git
+    tea
     ffmpeg
 
     moonlight-qt
