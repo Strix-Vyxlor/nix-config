@@ -4,8 +4,8 @@
   outputs = inputs @ {self, ...}: let
     flakeSettings = {
       system = "x86_64-linux";
-      branch = "unstable";
-      profile = "laptop";
+      branch = "stable";
+      profile = "server";
     };
     home-manager = inputs."home-manager-${flakeSettings.branch}";
     nixpkgs = inputs."nixpkgs-${flakeSettings.branch}";
@@ -130,14 +130,14 @@
 
   inputs = {
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
 
     home-manager-unstable = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     home-manager-stable = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
     };
 
     nix-on-droid = {
@@ -155,7 +155,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     stylix-stable = {
-      url = "github:danth/stylix/release-24.11";
+      url = "github:danth/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs-stable";
     };
 
