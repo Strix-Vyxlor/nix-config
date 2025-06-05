@@ -24,6 +24,10 @@
           package = pkgs.rose-pine-cursor;
           size = 24;
         };
+        cosmic = {
+          alpha = 0.4;
+          primaryAlpha = 0.6;
+        };
       };
     };
     xdg = {
@@ -119,6 +123,7 @@
           osd = "swayosd";
           notification = "swaync";
           statusbar = "waybar-alt";
+          filemanager = "cosmic";
           waybar = {
             brightness = true;
             battery = true;

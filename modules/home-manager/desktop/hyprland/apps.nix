@@ -110,7 +110,7 @@ in {
       '';
     };
     filemanager = mkOption {
-      type = nullOrEnum ["nautilus"];
+      type = nullOrEnum ["nautilus" "cosmic"];
       default = "nautilus";
       description = ''
         filemanager to use
@@ -602,6 +602,17 @@ in {
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, F, exec, nautilus"];
         windowrulev2 = ["opacity 0.80,class:^(org.gnome.Nautilus)$"];
+      };
+    })
+    (mkIf (cfg.apps.filemanager == "cosmic") {
+      home.packages = with pkgs; [
+        cosmic-files
+        udiskie
+        udisks
+      ];
+
+      wayland.windowManager.hyprland.settings = {
+        bind = ["SUPER, F, exec, cosmic-files"];
       };
     })
     # SECTION: browser

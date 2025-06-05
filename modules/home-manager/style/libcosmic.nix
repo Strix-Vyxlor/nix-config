@@ -4,6 +4,7 @@
   config,
   ...
 }: let
+  inherit (lib) mkIf types mkOption;
   cfg = config.strixos.style.desktop;
   themeCfg = config.strixos.style.theme;
   normalize = color: let
@@ -12,7 +13,23 @@
   in
     builtins.toString norm;
 in {
-  config = {
+  options.strixos.style.desktop.cosmic = {
+    alpha = mkOption {
+      type = types.float;
+      default = 1.0;
+      description = ''
+        normalized alpha of the background color (0-1)
+      '';
+    };
+    primaryAlpha = mkOption {
+      type = types.float;
+      default = 1.0;
+      description = ''
+        normalized alpha of the primary container color (0-1)
+      '';
+    };
+  };
+  config = mkIf cfg.enable {
     home.file = {
       ".config/cosmic/com.system76.CosmicTk/v1/icon_theme".text = ''"${cfg.icons.name}"'';
       ".config/cosmic/com.system76.CosmicTk/v1/interface_font".text = ''
@@ -194,7 +211,7 @@ in {
                 red: ${normalize base00-rgb-r},
                 green: ${normalize base00-rgb-g},
                 blue: ${normalize base00-rgb-b},
-                alpha: 1.0,
+                alpha: ${builtins.toString cfg.cosmic.alpha},
             ),
             component: (
                 base: (
@@ -297,7 +314,7 @@ in {
                 red: ${normalize base01-rgb-r},
                 green: ${normalize base01-rgb-g},
                 blue: ${normalize base01-rgb-b},
-                alpha: 1.0,
+                alpha: ${builtins.toString cfg.cosmic.primaryAlpha},
             ),
             component: (
                 base: (
