@@ -88,7 +88,7 @@
           extensions = e: with e; [fullAppDisplay hidePodcasts];
           style = {
             enable = true;
-            theme = "sleek";
+            theme = "defaultDynamic";
           };
         };
       };
@@ -160,6 +160,19 @@
     colorfull-papirus
     rose-pine-hyprcursor
   ];
+
+  xdg.mimeApps = {
+    defaultApplications = {
+      "application/pdf" = "onlyoffice-desktopeditors.desktop";
+      "image/jpeg" = "org.gnome.Loupe.desktop";
+      "image/png" = "org.gnome.Loupe.desktop";
+    };
+    associations.added = {
+      "application/pdf" = "onlyoffice-desktopeditors.desktop";
+      "image/jpeg" = "org.gnome.Loupe.desktop";
+      "image/png" = "org.gnome.Loupe.desktop";
+    };
+  };
 
   programs.zix = {
     enable = true;

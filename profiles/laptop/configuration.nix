@@ -108,6 +108,11 @@
     };
   };
 
+  services.ollama = {
+    enable = true;
+    acceleration = "rocm";
+  };
+
   nixpkgs.config.allowUnfree = true;
 
   boot.binfmt.emulatedSystems = [
