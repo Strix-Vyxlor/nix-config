@@ -113,7 +113,10 @@ in {
               "transition-to-left" = true;
               "click-to-reveal" = true;
             };
-            "modules" = ["custom/expand" "cpu" "memory" "temperature" "custom/endpoint"];
+            "modules" =
+              ["custom/expand" "cpu" "memory" "temperature"]
+              ++ lib.lists.optionals waybarCfg.wakeLock ["idle_inhibitor"]
+              ++ ["custom/endpoint"];
           };
           "cpu" = {
             "format" = "󰻠";
@@ -125,6 +128,13 @@ in {
           "temperature" = {
             "critical-threshold" = 80;
             "format" = "";
+          };
+          "idle_inhibitor" = {
+            "format" = "{icon}";
+            "format-icons" = {
+              "activated" = "󱙱";
+              "deactivated" = "󰌾";
+            };
           };
           "tray" = {
             "icon-size" = 14;
@@ -300,7 +310,7 @@ in {
             text-shadow: 0px 0px 2px rgba(0, 0, 0, .7);
             transition: all .3s ease;
         }
-        #custom-expand:hover,#custom-quit:hover, #custom-reboot:hover, #custom-power:hover{
+        #custom-expand:hover,#custom-quit:hover, #custom-reboot:hover, #custom-power:hover, #idle_inhibitor:hover{
             color:rgba(255,255,255,.2);
             text-shadow: 0px 0px 2px rgba(255, 255, 255, .5);
         }
@@ -311,6 +321,17 @@ in {
             color:#${base04};
 
         }
+
+        #idle_inhibitor {
+          padding: 0px 5px 0px 0px;
+          transition: all .3s ease;
+          color: #${base04};
+        }
+
+        #idle_inhibitor.activated {
+          color: #${base0D};
+        }
+
         #custom-endpoint{
             color:alpha(#${base03},.6);
             padding: 0px 5px 0px 0px;

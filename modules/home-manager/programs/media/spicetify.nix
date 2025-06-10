@@ -83,48 +83,46 @@ in {
         uses form of a: [a.extension]
       '';
     };
-    style = {
-      enable = mkOption {
-        type = types.bool;
-        default = false;
-        description = ''
-          enable custom theme for spicetify
-        '';
-      };
-      theme = mkOption {
-        type = types.enum [
-          "default"
-          "blossom"
-          "burntSienna"
-          "dreary"
-          "dribbblish"
-          "flow"
-          "matte"
-          "nightlight"
-          "onepunch"
-          "sleek"
-          "starryNight"
-          "turntable"
-          "ziro"
-          "text"
-          "cattpuccin"
-          "comfy"
-          "dracula"
-          "nord"
-          "fluent"
-          "defaultDynamic"
-          "retroBlur"
-          "omni"
-          "bloom"
-          "lucid"
-          "orchis"
-          "hazy"
-        ];
-        default = "default";
-        description = ''
-          the theme to use
-        '';
-      };
+    style = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        enable custom theme for spicetify
+      '';
+    };
+    theme = mkOption {
+      type = types.enum [
+        "default"
+        "blossom"
+        "burntSienna"
+        "dreary"
+        "dribbblish"
+        "flow"
+        "matte"
+        "nightlight"
+        "onepunch"
+        "sleek"
+        "starryNight"
+        "turntable"
+        "ziro"
+        "text"
+        "cattpuccin"
+        "comfy"
+        "dracula"
+        "nord"
+        "fluent"
+        "defaultDynamic"
+        "retroBlur"
+        "omni"
+        "bloom"
+        "lucid"
+        "orchis"
+        "hazy"
+      ];
+      default = "default";
+      description = ''
+        the theme to use
+      '';
     };
   };
 
@@ -132,12 +130,12 @@ in {
     {
       programs.spicetify = {
         enable = true;
-        theme = spicePkgs.themes.${cfg.style.theme};
+        theme = spicePkgs.themes.${cfg.theme};
         enabledCustomApps = cfg.customApps spicePkgs.apps;
         enabledExtensions = cfg.extensions spicePkgs.extensions;
       };
     }
-    (mkIf cfg.style.enable {
+    (mkIf cfg.style {
       programs.spicetify = {
         colorScheme = "custom";
         customColorScheme = {

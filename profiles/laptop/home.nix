@@ -90,10 +90,8 @@
           enable = true;
           customApps = a: with a; [newReleases lyricsPlus];
           extensions = e: with e; [fullAppDisplay hidePodcasts];
-          style = {
-            enable = true;
-            theme = "defaultDynamic";
-          };
+          theme = "hazy";
+          style = true;
         };
       };
     };
@@ -129,6 +127,7 @@
             battery = true;
             temperature = true;
             bluetooth = true;
+            wakeLock = true;
           };
         };
         plugins.hyprexpo = true;
@@ -142,6 +141,8 @@
     ffmpeg
 
     moonlight-qt
+    (bottles.override {removeWarningPopup = true;})
+
     gawk
     gnugrep
     gnused

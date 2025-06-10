@@ -46,6 +46,14 @@ in {
         timezone to use
       '';
     };
+
+    wakeLock = mkOption {
+      type = types.bool;
+      default = false;
+      description = ''
+        add wake lock button
+      '';
+    };
   };
 
   config = mkIf (cfg.enable && (cfg.apps.statusbar == "waybar")) {
@@ -72,11 +80,16 @@ in {
               "group/pulseaudio"
             ];
           modules-center = ["hyprland/workspaces"];
-          modules-right = [
-            "group/time"
-            "idle_inhibitor"
-            "tray"
-          ];
+          modules-right =
+            [
+              "group/time"
+            ]
+            ++ lib.lists.optionals waybarCfg.wakeLock [
+              "idle_inhibitor"
+            ]
+            ++ [
+              "tray"
+            ];
 
           "custom/os" = {
             "format" = " {} ";
