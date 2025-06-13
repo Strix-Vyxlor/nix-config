@@ -149,10 +149,15 @@
     moonlight-qt
     (bottles.override {removeWarningPopup = true;})
 
+    # gamedev
     godot
-    godot-export-templates-bin
     gdtoolkit_4
     inkscape
+    android-tools
+    androidenv.androidPkgs.androidsdk
+    androidenv.androidPkgs.emulator
+    androidenv.androidPkgs.ndk-bundle
+    jdk
 
     gawk
     gnugrep
@@ -177,6 +182,13 @@
     colorfull-papirus
     rose-pine-hyprcursor
   ];
+
+  nixpkgs.config.android_sdk.accept_license = true;
+  home.file.".local/share/godot/export_templates/${builtins.replaceStrings ["-"] ["."] pkgs.godot-export-templates-bin.version}".source = pkgs.godot-export-templates-bin;
+  home.file.".local/libexec/android-sdk" = {
+    source = "${pkgs.androidenv.androidPkgs.androidsdk}/libexec/android-sdk";
+    recursive = true;
+  };
 
   xdg.mimeApps = {
     defaultApplications = {
