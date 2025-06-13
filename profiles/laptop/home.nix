@@ -115,6 +115,12 @@
             ",XF86PickupPhone, exec, playerctl play-pause"
           ];
           windowrulev2 = ["tile,class:(Aseprite)"];
+          device = [
+            {
+              name = "compx-2.4g-wireless-receiver";
+              sensitivity = -0.1;
+            }
+          ];
         };
         apps = {
           launcher = "wofi";
@@ -142,6 +148,11 @@
 
     moonlight-qt
     (bottles.override {removeWarningPopup = true;})
+
+    godot
+    godot-export-templates-bin
+    gdtoolkit_4
+    inkscape
 
     gawk
     gnugrep
