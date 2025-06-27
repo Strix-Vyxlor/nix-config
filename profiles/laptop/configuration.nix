@@ -113,6 +113,8 @@
     acceleration = "rocm";
   };
 
+  programs.mosh.enable = true;
+
   nixpkgs.config.allowUnfree = true;
 
   boot.binfmt.emulatedSystems = [
