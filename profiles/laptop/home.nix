@@ -114,7 +114,9 @@
             ",XF86NotificationCenter, exec, playerctl previous"
             ",XF86PickupPhone, exec, playerctl play-pause"
           ];
-          windowrulev2 = ["tile,class:(Aseprite)"];
+          windowrule = [
+            "tile,class:Aseprite"
+          ];
           device = [
             {
               name = "compx-2.4g-wireless-receiver";
@@ -157,7 +159,8 @@
     androidenv.androidPkgs.androidsdk
     androidenv.androidPkgs.emulator
     androidenv.androidPkgs.ndk-bundle
-    jdk
+    jdk17
+    cmake
 
     gawk
     gnugrep
@@ -184,11 +187,11 @@
   ];
 
   nixpkgs.config.android_sdk.accept_license = true;
-  home.file.".local/share/godot/export_templates/${builtins.replaceStrings ["-"] ["."] pkgs.godot-export-templates-bin.version}".source = pkgs.godot-export-templates-bin;
-  home.file.".local/libexec/android-sdk" = {
-    source = "${pkgs.androidenv.androidPkgs.androidsdk}/libexec/android-sdk";
-    recursive = true;
-  };
+  home.file.".local/share/godot/nix.json".text = builtins.toJSON (with pkgs; {
+    export_templates = "${godot-export-templates-bin}/share/godot/export_templates/4.4.1.stable/";
+    android-sdk = "${androidenv.androidPkgs.androidsdk}/libexec/android-sdk/";
+    openjdk = jdk17;
+  });
 
   xdg.mimeApps = {
     defaultApplications = {
