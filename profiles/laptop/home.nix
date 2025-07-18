@@ -58,7 +58,7 @@
     };
     programs = {
       games = {
-        minecraft = true;
+        #minecraft = true;
         heroic = true;
         mangohud = true;
         dolphin = true;
@@ -155,12 +155,6 @@
     godot
     gdtoolkit_4
     inkscape
-    android-tools
-    androidenv.androidPkgs.androidsdk
-    androidenv.androidPkgs.emulator
-    androidenv.androidPkgs.ndk-bundle
-    jdk17
-    cmake
 
     gawk
     gnugrep
@@ -187,11 +181,6 @@
   ];
 
   nixpkgs.config.android_sdk.accept_license = true;
-  home.file.".local/share/godot/nix.json".text = builtins.toJSON (with pkgs; {
-    export_templates = "${godot-export-templates-bin}/share/godot/export_templates/4.4.1.stable/";
-    android-sdk = "${androidenv.androidPkgs.androidsdk}/libexec/android-sdk/";
-    openjdk = jdk17;
-  });
 
   xdg.mimeApps = {
     defaultApplications = {
