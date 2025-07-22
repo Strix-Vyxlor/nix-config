@@ -45,9 +45,9 @@
 
   services.k3s = {
     enable = true;
-    # extraFlags = [
-    #   "--service-node-port-range 2000-32767"
-    # ];
+    extraFlags = [
+      "--service-node-port-range 20000-32767"
+    ];
   };
 
   hardware.nvidia = {
