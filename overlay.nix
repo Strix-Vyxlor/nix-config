@@ -8,6 +8,7 @@ final: prev: {
   strix-theme-generator = final.callPackage ./pkgs/stg {};
   colorfull-papirus = final.callPackage ./pkgs/colorfull-papirus {};
   rose-pine-hyprcursor = final.callPackage ./pkgs/rose-pine-hyprcursor {};
+  decky-loader = final.callPackage ./pkgs/decky-loader {};
   # HACK: workaround for module not found error
   makeModulesClosure = x:
     prev.makeModulesClosure (x // {allowMissing = true;});

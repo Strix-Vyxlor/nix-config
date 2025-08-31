@@ -33,28 +33,6 @@
     (_: {
       passthru.providedSessions = ["retroarch"];
     });
-
-  retroarch-cage = let
-    exports = builtins.attrValues (
-      builtins.mapAttrs (n: v: "export ${n}=${v}") cfg.cageSession.env
-    );
-  in
-    pkgs.writeShellScriptBin "retroarch-cage" ''
-      ${builtins.concatStringsSep "\n" exports}
-      ${pkgs.cage}/bin/cage ${builtins.toString cfg.cageSession.args} -- retroarch ${builtins.toString cfg.cageSession.retroarchArgs}
-    '';
-
-  cageSessionFile =
-    (pkgs.writeTextDir "share/wayland-sessions/retroarch-cage.desktop" ''
-      [Desktop Entry]
-      Name=Retroarch (Cage)
-      Comment=Frondend for libretro
-      Exec=${retroarch-cage}/bin/retroarch-cage
-      Type=Application
-    '').overrideAttrs
-    (_: {
-      passthru.providedSessions = ["retroarch-cage"];
-    });
 in {
   options.strixos.programs.retroarch = {
     enable = mkOption {
@@ -108,40 +86,6 @@ in {
         };
       };
     };
-
-    cageSession = lib.mkOption {
-      description = "Run Retroarch in Cage";
-      default = {};
-      type = lib.types.submodule {
-        options = {
-          enable = lib.mkEnableOption "Cage Session";
-          args = mkOption {
-            type = types.listOf types.str;
-            default = [];
-            description = ''
-              Arguments to be passed to cage for the session.
-            '';
-          };
-
-          env = mkOption {
-            type = types.attrsOf types.str;
-            default = {};
-            description = ''
-              Environmental variables to be passed to cage for the session.
-            '';
-          };
-
-          retroarchArgs = mkOption {
-            type = types.listOf types.str;
-            default = [
-            ];
-            description = ''
-              Arguments to be passed to Retroarch for the session.
-            '';
-          };
-        };
-      };
-    };
   };
 
   config = mkIf cfg.enable (mkMerge [
@@ -154,11 +98,6 @@ in {
       programs.gamescope.enable = lib.mkDefault true;
       services.displayManager.sessionPackages = [
         gamescopeSessionFile
-      ];
-    })
-    (mkIf cfg.cageSession.enable {
-      services.displayManager.sessionPackages = [
-        cageSessionFile
       ];
     })
   ]);

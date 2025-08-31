@@ -69,7 +69,6 @@ in {
     {
       environment = {
         variables.XDG_RUNTIME_DIR = "/run/user/$UID";
-        plasma5.excludePackages = [pkgs.kdePackages.systemsettings];
         plasma6.excludePackages = [pkgs.kdePackages.systemsettings];
       };
 

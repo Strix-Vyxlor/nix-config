@@ -101,7 +101,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd ${es-de-cage}/bin/es-de-cage";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --cmd ${es-de-cage}/bin/es-de-cage";
         user = "gamer";
       };
       initial_session = {

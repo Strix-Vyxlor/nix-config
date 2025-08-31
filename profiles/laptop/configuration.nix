@@ -6,10 +6,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ../../system/games/steam/steam.nix
-    ../../system/games/steam/gamescope-session.nix
-    ../../system/games/steam/decky-loader.nix
   ];
+  environment.variables.AMD_VULKAN_ICD = "RADV";
 
   strixos = {
     inherit branch;
@@ -50,14 +48,18 @@
       git = true;
       retroarch = {
         enable = true;
-        withCores = cores:
-          with cores; [
-            dolphin
-            picodrive
-            genesis-plus-gx
-          ];
         gamescopeSession = {
           enable = true;
+        };
+      };
+      steam = {
+        enable = true;
+        deckyLoader.enable = true;
+        gamescopeSession = {
+          enable = true;
+          extraEnv = {
+            XKB_DEFAULT_LAYOUT = "be";
+          };
         };
       };
     };

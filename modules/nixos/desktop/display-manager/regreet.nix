@@ -8,7 +8,7 @@
   cfg = config.strixos.desktop.displayManager;
 
   hyprlandConfig = pkgs.writeText "hyprland-regreet" (''
-      exec-once = ${pkgs.greetd.regreet}/bin/regreet; hyprctl dispatch exit
+      exec-once = ${pkgs.regreet}/bin/regreet; hyprctl dispatch exit
       misc {
           disable_hyprland_logo = true
           disable_splash_rendering = true

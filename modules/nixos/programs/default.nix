@@ -10,6 +10,7 @@
 in {
   imports = [
     ./nix.nix
+    ./steam.nix
     ./retroarch.nix
     ./emulationstation.nix
   ];
