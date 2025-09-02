@@ -151,9 +151,6 @@
     moonlight-qt
     (bottles.override {removeWarningPopup = true;})
 
-    # gamedev
-    godot
-    gdtoolkit_4
     inkscape
 
     gawk
