@@ -15,10 +15,10 @@
     user = {
       username = "strix";
       name = "Strix Vyxlor";
-      extraGroups = ["input" "adbusers"];
+      extraGroups = ["input" "adbusers" "dialout"];
     };
     style = {
-      theme.generateWithImage = ../../themes/background/starry-night.jpg;
+      theme.generateWithImage = ../../themes/background/room_gaming/stil.png;
       desktop = true;
     };
     boot = {

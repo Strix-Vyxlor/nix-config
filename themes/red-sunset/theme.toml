@@ -13,7 +13,7 @@ size = 24
 name = "Papirus-Dark"
 package = "papirus-icon-theme"
 [colors]
-base00 = "#1a0608" # Default Background
+base00 = "1a0608" # Default Background
 base01 = "3B4252" # Lighter Background
 base02 = "434C5E" # Selection Background
 base03 = "4c566a" # Comments, Invisibles, Line Highlighting
@@ -22,11 +22,11 @@ base05 = "E5E9F0" # Default Foreground
 base06 = "ECEFF4" # Light Foreground
 base07 = "8FBCBB" # Light Background
 base08 = "BF616A" # red
-base09 = "#e04a13" # orange
-base0A = "#f29839" # yellow
+base09 = "e04a13" # orange
+base0A = "f29839" # yellow
 base0B = "A3BE8C" # green
 base0C = "88C0D0" # cyan
 base0D = "B48EAD" # blue/accent
 base0E = "5E81AC" # purple
-base0F = "#dc2f42" # brown
+base0F = "dc2f42" # brown
 

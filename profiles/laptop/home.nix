@@ -15,7 +15,7 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.generateWithImage = ../../themes/background/starry-night.jpg;
+      theme.generateWithImage = ../../themes/background/room_gaming/stil.png;
       targets.btop = true;
       desktop = {
         enable = true;
@@ -127,6 +127,7 @@
         apps = {
           launcher = "wofi";
           osd = "swayosd";
+          wallpaper = "swww";
           notification = "swaync";
           statusbar = "waybar-alt";
           filemanager = "cosmic";
@@ -166,6 +167,7 @@
     eza
     btop
     fzf
+    fastfetch
 
     blueberry
     qalculate-gtk

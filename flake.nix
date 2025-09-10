@@ -106,7 +106,11 @@
       inherit pkgs;
       default = inputs.nix-on-droid.lib.nixOnDroidConfiguration {
         inherit pkgs;
-        modules = [./profiles/nix-on-droid/configuration.nix];
+        modules = [
+          ./profiles/nix-on-droid/configuration.nix
+          self.nixOnDroidModules.strixos
+          stylix.nixOnDroidModules.stylix
+        ];
         extraSpecialArgs = {
           inherit (flakeSettings) branch;
         };
@@ -121,6 +125,11 @@
     homeManagerModules = rec {
       default = strixos;
       strixos = {imports = [(import ./modules/home-manager inputs)];};
+    };
+
+    nixOnDroidModules = rec {
+      default = strixos;
+      strixos = {imports = [(import ./modules/nix-on-droid inputs)];};
     };
 
     overlays = rec {
