@@ -50,18 +50,6 @@
     ];
   };
 
-  hardware.nvidia = {
-    open = false;
-    nvidiaSettings = false;
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
-  };
-
-  hardware.nvidia-container-toolkit = {
-    enable = true;
-  };
-
-  services.xserver.videoDrivers = ["nvidia"];
-
   services.samba = {
     enable = true;
     openFirewall = true;

@@ -148,6 +148,7 @@
     git
     tea
     ffmpeg
+    reaper
 
     moonlight-qt
     (bottles.override {removeWarningPopup = true;})
