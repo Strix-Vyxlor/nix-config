@@ -123,6 +123,9 @@
               sensitivity = -0.1;
             }
           ];
+          debug = {
+            full_cm_proto = true;
+          };
         };
         apps = {
           launcher = "wofi";

@@ -199,11 +199,6 @@ in {
             };
           };
 
-          gestures = {
-            workspace_swipe = true;
-            workspace_swipe_cancel_ratio = 0.15;
-          };
-
           decoration = {
             rounding = 8;
             blur = {
@@ -218,6 +213,9 @@ in {
           };
 
           monitor = cfg.monitors;
+          gesture = [
+            "3, horizontal, workspace"
+          ];
         }
         cfg.extraSettings
       ];

@@ -114,6 +114,7 @@
     enable = true;
     acceleration = "rocm";
   };
+  services.upower.enable = true;
 
   programs.mosh.enable = true;
 
