@@ -30,6 +30,7 @@
         modules = [
           (./. + "/profiles" + ("/" + flakeSettings.profile) + "/home.nix")
           self.homeManagerModules.strixos
+          inputs.strix-shell.homeManagerModules.strix-shell
           stylix.homeModules.stylix
         ];
         extraSpecialArgs = {
@@ -173,6 +174,11 @@
 
     strixvim = {
       url = "github:Strix-Vyxlor/strixvim";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
+    strix-shell = {
+      url = "github:Strix-Vyxlor/strix-shell";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 

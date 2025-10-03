@@ -132,7 +132,7 @@
           osd = "swayosd";
           wallpaper = "swww";
           notification = "swaync";
-          statusbar = "waybar-alt";
+          statusbar = "strix-shell-laptop";
           filemanager = "cosmic";
           waybar = {
             brightness = true;
@@ -152,6 +152,7 @@
     tea
     ffmpeg
     reaper
+    musescore
 
     moonlight-qt
     (bottles.override {removeWarningPopup = true;})

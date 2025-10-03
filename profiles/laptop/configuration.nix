@@ -7,7 +7,6 @@
   imports = [
     ./hardware-configuration.nix
   ];
-  environment.variables.AMD_VULKAN_ICD = "RADV";
 
   strixos = {
     inherit branch;
@@ -110,12 +109,23 @@
     };
   };
 
-  services.ollama = {
-    enable = true;
-    acceleration = "rocm";
+  boot.kernelParams = ["resume=UUID=3803af9e-60f0-48cc-b626-9602e774eba7" "mem_sleep_default=deep"];
+  powerManagement.enable = true;
+  hardware.amdgpu.opencl.enable = true;
+  services.logind.settings.Login = {
+    HandlePowerKey = "ignore";
+    HandleLidSwitch = "suspend-then-hibernate";
+    HandleLidSwitchExternalPower = "suspend";
   };
-  services.upower.enable = true;
 
+  systemd.sleep.extraConfig = ''
+    HibernateDelaySec=1800
+    SuspendState=mem
+  '';
+
+  environment.variables.AMD_VULKAN_ICD = "RADV";
+
+  services.upower.enable = true;
   programs.mosh.enable = true;
 
   nixpkgs.config.allowUnfree = true;

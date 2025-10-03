@@ -120,6 +120,7 @@ in {
       type = nullOrEnum [
         "waybar"
         "waybar-alt"
+        "strix-shell-laptop"
       ];
       default = "waybar";
       description = ''
@@ -619,6 +620,16 @@ in {
     (mkIf (config.lib.strixos.defaultBrowser != null) {
       wayland.windowManager.hyprland.settings = {
         bind = ["SUPER, B, exec, ${config.lib.strixos.defaultBrowser}"];
+      };
+    })
+    # SECTION: status-bar
+    (mkIf (cfg.apps.statusbar == "strix-shell-laptop") {
+      programs.strix-shell.laptop = {
+        enable = true;
+        inherit (config.lib.stylix) colors;
+      };
+      wayland.windowManager.hyprland.settings = {
+        exec-once = ["strix-shell-laptop"];
       };
     })
   ]);
