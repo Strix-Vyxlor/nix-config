@@ -135,6 +135,27 @@
     "riscv64-linux"
   ];
 
+  nix.buildMachines = [
+    {
+      hostName = "strix-server";
+      systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
+      protocol = "ssh-ng";
+      maxJobs = 2;
+      speedFactor = 2;
+      supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
+      mandatoryFeatures = [];
+    }
+    {
+      hostName = "strix-desktop";
+      systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
+      protocol = "ssh-ng";
+      maxJobs = 2;
+      speedFactor = 2;
+      supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
+      mandatoryFeatures = [];
+    }
+  ];
+
   environment.systemPackages = with pkgs; [
     helix
     rose-pine-hyprcursor

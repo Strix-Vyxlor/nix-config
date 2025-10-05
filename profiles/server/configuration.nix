@@ -99,6 +99,11 @@
     home-manager
   ];
 
+  boot.binfmt.emulatedSystems = [
+    "aarch64-linux"
+    "riscv64-linux"
+  ];
+
   environment.variables = {
     KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
   };
