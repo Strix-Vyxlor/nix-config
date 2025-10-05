@@ -65,7 +65,7 @@
   programs.zix = {
     enable = true;
     config = {
-      root_command = "doas";
+      root_command = "sudo";
       hostname = "wsl";
     };
   };

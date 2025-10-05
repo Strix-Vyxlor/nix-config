@@ -20,7 +20,7 @@
       graphics = true;
     };
     programs = {
-      superuser = "doas";
+      superuser = "sudo";
       git = true;
     };
     services.timesync = "timesyncd";
