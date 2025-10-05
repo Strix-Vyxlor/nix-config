@@ -34,7 +34,7 @@
 
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
-    "risv64-linux"
+    "riscv64-linux"
   ];
 
   services.openssh.ports = [2002];
