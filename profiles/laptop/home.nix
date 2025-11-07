@@ -15,7 +15,7 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.generateWithImage = ../../themes/background/room_gaming/stil.png;
+      theme.generateWithImage = ../../themes/background/ruiend_temple.jpg;
       targets.btop = true;
       desktop = {
         enable = true;
@@ -58,7 +58,7 @@
     };
     programs = {
       games = {
-        #minecraft = true;
+        minecraft = true;
         heroic = true;
         mangohud = true;
         dolphin = true;
@@ -191,11 +191,13 @@
       "application/pdf" = "onlyoffice-desktopeditors.desktop";
       "image/jpeg" = "org.gnome.Loupe.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
+      "image/gif" = "org.gnome.Loupe.desktop";
     };
     associations.added = {
       "application/pdf" = "onlyoffice-desktopeditors.desktop";
       "image/jpeg" = "org.gnome.Loupe.desktop";
       "image/png" = "org.gnome.Loupe.desktop";
+      "image/gif" = "org.gnome.Loupe.desktop";
     };
   };
 

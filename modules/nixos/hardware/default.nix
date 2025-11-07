@@ -50,13 +50,6 @@ in {
         enable udev rules for platformio
       '';
     };
-    androidCompat = mkOption {
-      type = types.bool;
-      default = false;
-      description = ''
-        enable support for adb fastboot and heimdall
-      '';
-    };
     tlp = mkOption {
       type = types.bool;
       default = false;
@@ -86,11 +79,6 @@ in {
       services.udev.packages = [
         pkgs.platformio-core
         pkgs.openocd
-      ];
-    })
-    (mkIf cfg.androidCompat {
-      services.udev.packages = [
-        pkgs.android-udev-rules
       ];
     })
 

@@ -42,9 +42,11 @@ in {
     programs = {
       git = {
         inherit (cfg) enable;
-        userName = name;
-        userEmail = email;
-        extraConfig.init.defaultBrach = "master";
+        settings.user = {
+          inherit name;
+          inherit email;
+          init.defaultBrach = "master";
+        };
       };
       gh = {
         enable = cfg.gh;

@@ -17,7 +17,7 @@
       extraGroups = ["input" "adbusers" "dialout"];
     };
     style = {
-      theme.generateWithImage = ../../themes/background/room_gaming/stil.png;
+      theme.generateWithImage = ../../themes/background/ruiend_temple.jpg;
       desktop = true;
     };
     boot = {
@@ -40,7 +40,6 @@
       tlp = true;
 
       platformioCompat = true;
-      androidCompat = true;
     };
     programs = {
       superuser = "sudo";
@@ -129,32 +128,37 @@
   programs.mosh.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = ["mbedtls-2.28.10"];
 
   boot.binfmt.emulatedSystems = [
     "aarch64-linux"
     "riscv64-linux"
   ];
 
-  nix.buildMachines = [
-    {
-      hostName = "strix-server";
-      systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
-      protocol = "ssh-ng";
-      maxJobs = 2;
-      speedFactor = 2;
-      supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
-      mandatoryFeatures = [];
-    }
-    {
-      hostName = "strix-desktop";
-      systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
-      protocol = "ssh-ng";
-      maxJobs = 2;
-      speedFactor = 2;
-      supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
-      mandatoryFeatures = [];
-    }
-  ];
+  # nix.buildMachines = [
+  #   {
+  #     hostName = "strix-server";
+  #     systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
+  #     protocol = "ssh";
+  #     sshUser = "root";
+  #     maxJobs = 2;
+  #     speedFactor = 2;
+  #     supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
+  #     mandatoryFeatures = [];
+  #   }
+  #   {
+  #     hostName = "strix-desktop-builder";
+  #     systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
+  #     protocol = "ssh";
+  #     sshUser = "root";
+  #     maxJobs = 2;
+  #     speedFactor = 1;
+  #     supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
+  #     mandatoryFeatures = [];
+  #   }
+  # ];
+  #
+  # nix.distributedBuilds = true;
 
   environment.systemPackages = with pkgs; [
     helix
