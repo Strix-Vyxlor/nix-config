@@ -1,10 +1,5 @@
-{
-  pkgs,
-  branch,
-  ...
-}: {
+{pkgs, ...}: {
   strixos = {
-    inherit branch;
     user = {
       username = "strix";
       name = "Strix Vyxlor";

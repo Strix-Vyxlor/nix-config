@@ -1,11 +1,9 @@
 {
   pkgs,
   lib,
-  branch,
   ...
 }: {
   strixos = {
-    inherit branch;
     hostName = "Strix-Desktop";
     user = {
       username = "strix";

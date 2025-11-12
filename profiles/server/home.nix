@@ -1,12 +1,10 @@
 {
   config,
   pkgs,
-  branch,
   lib,
   ...
 }: {
   strixos = {
-    inherit branch;
     user = {
       username = "strix";
       name = "Strix Vyxlor";

@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  branch,
   lib,
   ...
 }: {

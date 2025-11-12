@@ -1,7 +1,6 @@
 {
   pkgs,
   config,
-  branch,
   ...
 }: {
   imports = [
@@ -12,7 +11,6 @@
   nixpkgs.config.nvidia.acceptLicense = true;
 
   strixos = {
-    inherit branch;
     hostName = "strix-server";
     user = {
       username = "strix";
