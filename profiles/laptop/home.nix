@@ -8,7 +8,6 @@
   nixpkgs.config.allowUnfree = true;
 
   strixos = {
-    inherit branch;
     user = {
       username = "strix";
       name = "Strix Vyxlor";

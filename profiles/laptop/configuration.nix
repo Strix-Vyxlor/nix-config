@@ -9,7 +9,6 @@
   ];
 
   strixos = {
-    inherit branch;
     hostName = "nixos";
     user = {
       username = "strix";
