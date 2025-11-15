@@ -52,6 +52,7 @@
         inherit (flakeSettings) system;
         modules = [
           ./profiles/wsl/configuration.nix
+          inputs.nixos-wsl.nixosModules.default
           strixos.nixosModules.strixos
         ];
       };
