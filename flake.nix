@@ -52,7 +52,6 @@
         inherit (flakeSettings) system;
         modules = [
           ./profiles/wsl/configuration.nix
-          self.nixosModules.strixos
           strixos.nixosModules.strixos
         ];
       };
@@ -66,6 +65,14 @@
         specialArgs = {
           inherit nixpkgs;
         };
+      };
+
+      visionfive2-octoprint = lib.nixosSystem {
+        system = "riscv64-linux";
+        modules = [
+          strixos.nixosModules.strixos
+          ./images/visionfive2/octoprint/configuration.nix
+        ];
       };
     };
 

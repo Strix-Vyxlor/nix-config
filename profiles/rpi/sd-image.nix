@@ -2,7 +2,6 @@
   pkgs,
   lib,
   config,
-  branch,
   nixpkgs,
   ...
 }: {
@@ -38,7 +37,6 @@
   };
 
   strixos = {
-    inherit branch;
     hostName = "strixpi";
     network = {
       manager = "network-manager";
