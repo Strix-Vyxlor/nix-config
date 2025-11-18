@@ -15,7 +15,7 @@
       extraGroups = ["input" "adbusers" "dialout"];
     };
     style = {
-      theme.generateWithImage = ../../themes/background/ruiend_temple.jpg;
+      theme.generateWithImage = ../../themes/background/waterfall_temple.jpg;
       desktop = true;
     };
     boot = {
@@ -114,6 +114,14 @@
     HandleLidSwitch = "suspend-then-hibernate";
     HandleLidSwitchExternalPower = "suspend";
   };
+
+  networking.hosts = {"192.168.124.152" = ["pihole.strix"];};
+  networking.nameservers = [
+    "192.168.124.152"
+    "100.70.241.44"
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
 
   systemd.sleep.extraConfig = ''
     HibernateDelaySec=1800

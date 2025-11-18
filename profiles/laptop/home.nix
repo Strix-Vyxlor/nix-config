@@ -13,7 +13,7 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.generateWithImage = ../../themes/background/ruiend_temple.jpg;
+      theme.generateWithImage = ../../themes/background/waterfall_temple.jpg;
       targets.btop = true;
       desktop = {
         enable = true;

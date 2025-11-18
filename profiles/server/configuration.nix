@@ -87,6 +87,11 @@
 
   networking.firewall.enable = true;
   networking.firewall.allowPing = true;
+  networking.nameservers = [
+    "127.0.0.1"
+    "1.1.1.1"
+    "8.8.8.8"
+  ];
 
   environment.systemPackages = with pkgs; [
     kubernetes-helm
