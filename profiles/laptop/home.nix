@@ -157,6 +157,8 @@
 
     inkscape
 
+    prusa-slicer
+
     gawk
     gnugrep
     gnused
@@ -171,6 +173,7 @@
     btop
     fzf
     fastfetch
+    tldr
 
     blueberry
     qalculate-gtk

@@ -1249,11 +1249,11 @@
         "zix": "zix"
       },
       "locked": {
-        "lastModified": 1762953506,
-        "narHash": "sha256-U7LWwcAht9tfmH6ylztilq/u/86iPbo50cz0n9wiTz0=",
+        "lastModified": 1763740121,
+        "narHash": "sha256-VIFp6eCSfecGd+PFQltk6zncAY3RrSH1HevANDirUn8=",
         "owner": "Strix-Vyxlor",
         "repo": "strixos",
-        "rev": "3ab049e6dd063ef465aee228e56b72cca5527100",
+        "rev": "da3bb8131d4f6f6c6459a1add90d1dc26affc508",
         "type": "github"
       },
       "original": {
@@ -1278,11 +1278,11 @@
         "zix": "zix_2"
       },
       "locked": {
-        "lastModified": 1762953428,
-        "narHash": "sha256-GGWF4+F970+xigEqqEH6GsN5EDW3WA3hTtyfV0AouwU=",
+        "lastModified": 1763740086,
+        "narHash": "sha256-FxpK2o/yp9O5EMJNru7FDPECOBh+04RAS+w0vOgLJGg=",
         "owner": "Strix-Vyxlor",
         "repo": "strixos",
-        "rev": "b482998a2388e6dc98c77af15d767ba8e5d43d47",
+        "rev": "d5a3985e6e3c4891f5e5ab1ec4061e8597a51892",
         "type": "github"
       },
       "original": {
@@ -1360,11 +1360,11 @@
         "tinted-zed": "tinted-zed"
       },
       "locked": {
-        "lastModified": 1762295027,
-        "narHash": "sha256-5z5cGrp9F8g8iyQrM8WkB6pAwP4AaicljKZ15gx+X9Y=",
+        "lastModified": 1763740035,
+        "narHash": "sha256-h33/8bTP5ww1oKwrXgK2fuJPsNlWPzdG4jsvUlr6qqM=",
         "owner": "danth",
         "repo": "stylix",
-        "rev": "91b9a270523361268ba6a8772152fde31103869f",
+        "rev": "206e6ee4d11adcc80d8cbe612e14e08641474fc8",
         "type": "github"
       },
       "original": {

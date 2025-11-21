@@ -115,12 +115,12 @@
     HandleLidSwitchExternalPower = "suspend";
   };
 
-  networking.hosts = {"192.168.124.152" = ["pihole.strix"];};
+  #networking.hosts = {"192.168.124.152" = ["pihole.strix"];};
   networking.nameservers = [
-    "192.168.124.152"
-    "100.70.241.44"
     "1.1.1.1"
     "8.8.8.8"
+    "192.168.124.152"
+    "100.70.241.44"
   ];
 
   systemd.sleep.extraConfig = ''
