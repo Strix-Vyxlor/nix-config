@@ -1281,11 +1281,11 @@
         "zix": "zix_2"
       },
       "locked": {
-        "lastModified": 1764359372,
-        "narHash": "sha256-03dtDiUjT0lCkARSQMXcdXAYtoQx1hsprB4f5c+yvhU=",
+        "lastModified": 1766152264,
+        "narHash": "sha256-BCP5vH9+sDLlOlU5JKt61Z+A49VBLSuglq8KO1b5NA0=",
         "owner": "Strix-Vyxlor",
         "repo": "strixos",
-        "rev": "551b7b36e16c6ecc23d7d5074d0be21c48edbc87",
+        "rev": "c960d0969b627f9622a336dab13c3ffef8effdf1",
         "type": "github"
       },
       "original": {
