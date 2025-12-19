@@ -19,7 +19,7 @@
       desktop = true;
     };
     boot = {
-      loader = "systemd-boot";
+      loader = null;
       plymouth.enable = true;
     };
     network = {
@@ -91,6 +91,16 @@
           }
         '';
       };
+    };
+  };
+
+  boot.loader = {
+    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      devices = ["nodev"];
+      efiSupport = true;
+      useOSProber = true;
     };
   };
 
