@@ -13,7 +13,7 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.generateWithImage = ../../themes/background/waterfall_temple.jpg;
+      theme.generateWithImage = ../../themes/background/orange_city/stil.png;
       targets.btop = true;
       desktop = {
         enable = true;
@@ -74,7 +74,6 @@
         };
       };
       browser = {
-        brave.enable = true;
         zen-browser = {
           enable = true;
           makeDefault = true;
@@ -98,19 +97,13 @@
         enable = true;
         #hyprcursorTheme = "Nordzy-Hyprcursors";
         keymap = "be";
-        monitors = [
-          "eDP-1,1920x1200,0x0,1"
-          "HDMI-A-1,1920x1080,-1920x0,1"
-        ];
+        # monitors = [
+        #   "eDP-1,1920x1200,0x0,1"
+        #   "HDMI-A-1,1920x1080,-1920x0,1"
+        # ];
         extraSettings = {
           env = [
             "HYPRCURSOR_THEME,rose-pine-hyprcursor"
-          ];
-          bind = [
-            ",XF86Favorites, exec, spotify"
-            ",XF86HangupPhone, exec, playerctl next"
-            ",XF86NotificationCenter, exec, playerctl previous"
-            ",XF86PickupPhone, exec, playerctl play-pause"
           ];
           windowrule = [
             "tile,class:Aseprite"
@@ -149,15 +142,8 @@
     git
     tea
     ffmpeg
-    reaper
-    musescore
 
-    moonlight-qt
     (bottles.override {removeWarningPopup = true;})
-
-    inkscape
-
-    prusa-slicer
 
     gawk
     gnugrep
