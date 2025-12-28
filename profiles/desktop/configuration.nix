@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   ...
 }: {
   imports = [
@@ -107,6 +108,16 @@
 
   hardware.amdgpu.opencl.enable = true;
 
+  services.hardware.openrgb = {
+    startupProfile = "default";
+    enable = true;
+    motherboard = "amd";
+    package =
+      pkgs.openrgb-with-all-plugins;
+  };
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [hid-tmff2];
+
   networking.hosts = {"100.70.241.44" = ["pihole.strix"];};
   networking.nameservers = [
     "192.168.124.152"
@@ -124,6 +135,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    openrgb-with-all-plugins
     helix
     rose-pine-hyprcursor
     wget

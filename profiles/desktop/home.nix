@@ -142,6 +142,8 @@
     git
     tea
     ffmpeg
+    qpwgraph
+    cura-appimage
 
     (bottles.override {removeWarningPopup = true;})
 
