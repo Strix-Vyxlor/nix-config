@@ -143,7 +143,7 @@
     tea
     ffmpeg
     qpwgraph
-    cura-appimage
+    alpaca
 
     (bottles.override {removeWarningPopup = true;})
 

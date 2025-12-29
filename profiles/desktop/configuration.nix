@@ -134,6 +134,11 @@
     "riscv64-linux"
   ];
 
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-rocm;
+  };
+
   environment.systemPackages = with pkgs; [
     openrgb-with-all-plugins
     helix
