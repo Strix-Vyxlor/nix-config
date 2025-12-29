@@ -32,7 +32,7 @@
       consoleKeymap = "be-latin1";
     };
     hardware = {
-      kernel = "testing";
+      kernel = "latest";
       graphics = true;
       bluetooth = true;
       tlp = true;
