@@ -3,7 +3,27 @@
   lib,
   config,
   ...
-}: {
+}: let
+  openrgb = pkgs.openrgb.overrideAttrs (old: {
+    version = "1.0rc2";
+    src = pkgs.fetchFromGitLab {
+      owner = "CalcProgrammer1";
+      repo = "OpenRGB";
+      rev = "release_candidate_1.0rc2";
+      sha256 = "sha256-vdIA9i1ewcrfX5U7FkcRR+ISdH5uRi9fz9YU5IkPKJQ=";
+    };
+
+    patches = [./OpenRGB_fix_systemd_path.patch];
+
+    # The postPatch in nixpkgs is meant for v0.9 of OpenRGB, but the upstream is
+    # more like a 1.1-ish thing, and the udev rules script changed.
+    postPatch = ''
+      patchShebangs scripts/build-udev-rules.sh
+      substituteInPlace scripts/build-udev-rules.sh \
+        --replace-fail /usr/bin/env "${pkgs.coreutils}/bin/env"
+    '';
+  });
+in {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -106,6 +126,12 @@
     };
   };
 
+  boot = {
+    kernelModules = ["amdgpu-i2c"];
+  };
+
+  hardware.i2c.enable = true;
+
   hardware.amdgpu.opencl.enable = true;
 
   services.hardware.openrgb = {
@@ -113,7 +139,7 @@
     enable = true;
     motherboard = "amd";
     package =
-      pkgs.openrgb-with-all-plugins;
+      openrgb;
   };
 
   boot.extraModulePackages = with config.boot.kernelPackages; [hid-tmff2];
@@ -140,13 +166,14 @@
   };
 
   environment.systemPackages = with pkgs; [
-    openrgb-with-all-plugins
+    openrgb
     helix
     rose-pine-hyprcursor
     wget
     git
     home-manager
     wl-clipboard
+    cage
   ];
 
   system.stateVersion = "25.11";

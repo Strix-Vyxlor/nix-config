@@ -97,10 +97,9 @@
         enable = true;
         #hyprcursorTheme = "Nordzy-Hyprcursors";
         keymap = "be";
-        # monitors = [
-        #   "eDP-1,1920x1200,0x0,1"
-        #   "HDMI-A-1,1920x1080,-1920x0,1"
-        # ];
+        monitors = [
+          "DP-1,1920x1080@100,0x0,1"
+        ];
         extraSettings = {
           env = [
             "HYPRCURSOR_THEME,rose-pine-hyprcursor"
@@ -144,6 +143,7 @@
     ffmpeg
     qpwgraph
     alpaca
+    prusa-slicer
 
     (bottles.override {removeWarningPopup = true;})
 
