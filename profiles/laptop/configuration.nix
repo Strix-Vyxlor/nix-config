@@ -50,7 +50,7 @@
       };
       steam = {
         enable = true;
-        deckyLoader.enable = true;
+        decky-loader.enable = true;
         gamescopeSession = {
           enable = true;
           extraEnv = {

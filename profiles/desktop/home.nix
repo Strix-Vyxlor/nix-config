@@ -80,7 +80,7 @@
         };
       };
       editor.strixvim = true;
-      graphics.aseprite = true;
+      #graphics.aseprite = true;
       media = {
         discord = true;
         spicetify = {
@@ -142,7 +142,6 @@
     tea
     ffmpeg
     qpwgraph
-    alpaca
     prusa-slicer
 
     (bottles.override {removeWarningPopup = true;})

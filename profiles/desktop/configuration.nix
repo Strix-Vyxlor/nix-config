@@ -40,7 +40,7 @@ in {
       desktop = true;
     };
     boot = {
-      loader = null;
+      loader = "grub";
       plymouth.enable = true;
     };
     network = {
@@ -61,11 +61,11 @@ in {
       superuser = "sudo";
       git = true;
       retroarch = {
-        enable = true;
+        enable = false;
       };
       steam = {
         enable = true;
-        deckyLoader.enable = true;
+        decky-loader.enable = true;
         gamescopeSession = {
           enable = true;
           extraEnv = {
@@ -115,23 +115,11 @@ in {
     };
   };
 
-  boot.loader = {
-    systemd-boot.enable = false;
-    efi.canTouchEfiVariables = true;
-    grub = {
-      enable = true;
-      devices = ["nodev"];
-      efiSupport = true;
-      useOSProber = true;
-    };
-  };
-
   boot = {
     kernelModules = ["amdgpu-i2c"];
   };
 
   hardware.i2c.enable = true;
-
   hardware.amdgpu.opencl.enable = true;
 
   services.hardware.openrgb = {
@@ -167,6 +155,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     openrgb
+    grub2_efi
     helix
     rose-pine-hyprcursor
     wget
