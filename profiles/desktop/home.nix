@@ -105,7 +105,7 @@
             "HYPRCURSOR_THEME,rose-pine-hyprcursor"
           ];
           windowrule = [
-            "tile,class:Aseprite"
+            "tile on,match:class Aseprite"
           ];
           device = [
             {

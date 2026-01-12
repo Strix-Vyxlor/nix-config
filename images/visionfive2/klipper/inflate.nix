@@ -1,7 +1,7 @@
 {
   boot.initrd.systemd.repart = {
     enable = true;
-    device = "/dev/nvmeon1";
+    device = "/dev/nvme0n1";
   };
 
   systemd.repart.partitions = {

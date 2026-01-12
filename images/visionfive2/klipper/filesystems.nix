@@ -2,7 +2,7 @@
   fileSystems = {
     "/" = {
       fsType = "tmpfs";
-      options = ["size=100m"];
+      options = ["size=1000m"];
     };
     "/boot" = {
       device = "/dev/disk/by-partlabel/boot";
@@ -13,7 +13,7 @@
       fsType = "squashfs";
     };
     "/home" = {
-      device = "/dev/disk/by-partlabel/boot";
+      device = "/dev/disk/by-partlabel/home";
       fsType = "ext4";
     };
     "/var" = {

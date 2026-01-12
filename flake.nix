@@ -19,6 +19,8 @@
       };
     };
 
+    lib-stable = inputs.nixpkgs-stable.lib;
+
     inherit (nixpkgs) lib;
   in {
     homeConfigurations = {
@@ -68,11 +70,11 @@
         };
       };
 
-      visionfive2-octoprint = lib.nixosSystem {
+      visionfive2-klipper = lib-stable.nixosSystem {
         system = "riscv64-linux";
         modules = [
-          strixos.nixosModules.strixos
-          ./images/visionfive2/octoprint/configuration.nix
+          inputs.strixos-stable.nixosModules.strixos
+          ./images/visionfive2/klipper/configuration.nix
         ];
       };
     };
@@ -87,11 +89,15 @@
         ];
       };
     };
+
+    packages."x86_64-linux" = {
+      visionfive2-klipper-image = self.nixosConfigurations.visionfive2-klipper.config.system.build.image;
+    };
   };
 
   inputs = {
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.11";
 
     strixos-unstable = {
       url = "github:Strix-Vyxlor/strixos/unstable";

@@ -153,6 +153,15 @@ in {
     package = pkgs.ollama-rocm;
   };
 
+  nix.settings = {
+    substituters = [
+      "https://cache.ztier.in" # only nixos-unstable
+    ];
+    trusted-public-keys = [
+      "cache.ztier.link-1:3P5j2ZB9dNgFFFVkCQWT3mh0E+S3rIWtZvoql64UaXM="
+    ];
+  };
+
   environment.systemPackages = with pkgs; [
     openrgb
     grub2_efi

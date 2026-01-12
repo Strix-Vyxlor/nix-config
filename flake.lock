@@ -842,16 +842,16 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1767051569,
-        "narHash": "sha256-0MnuWoN+n1UYaGBIpqpPs9I9ZHW4kynits4mrnh1Pk4=",
+        "lastModified": 1767480499,
+        "narHash": "sha256-8IQQUorUGiSmFaPnLSo2+T+rjHtiNWc+OAzeHck7N48=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "40ee5e1944bebdd128f9fbada44faefddfde29bd",
+        "rev": "30a3c519afcf3f99e2c6df3b359aec5692054d92",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-25.05",
+        "ref": "nixos-25.11",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -1281,11 +1281,11 @@
         "zix": "zix_2"
       },
       "locked": {
-        "lastModified": 1767354538,
-        "narHash": "sha256-WfQhfJgN+zSVhXxI7R/ygH5gnVBASgpQZ2+BM/OkcL0=",
+        "lastModified": 1767517640,
+        "narHash": "sha256-xtnyjICUGjf8LgadCxia6TnOmxoIcjLmITHN+cKCx/Q=",
         "owner": "Strix-Vyxlor",
         "repo": "strixos",
-        "rev": "bd12b0d0c3de62d43b11a731027ba0c2cc4a86d0",
+        "rev": "4df927860b0c60b9433f83e6406d7f8979dd0a08",
         "type": "github"
       },
       "original": {
