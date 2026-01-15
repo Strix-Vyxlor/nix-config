@@ -15,7 +15,7 @@
       extraGroups = ["input" "adbusers" "dialout"];
     };
     style = {
-      theme.generateWithImage = ../../themes/background/waterfall_temple.jpg;
+      theme.generateWithImage = ../../themes/background/cyber_city.jpg;
       desktop = true;
     };
     boot = {
@@ -32,7 +32,7 @@
       consoleKeymap = "be-latin1";
     };
     hardware = {
-      kernel = "latest";
+      kernel = "testing";
       graphics = true;
       bluetooth = true;
       tlp = true;

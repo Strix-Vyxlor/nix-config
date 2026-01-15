@@ -13,7 +13,7 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.generateWithImage = ../../themes/background/waterfall_temple.jpg;
+      theme.generateWithImage = ../../themes/background/cyber_city.jpg;
       targets.btop = true;
       desktop = {
         enable = true;
@@ -113,7 +113,7 @@
             ",XF86PickupPhone, exec, playerctl play-pause"
           ];
           windowrule = [
-            "tile,class:Aseprite"
+            "tile on,match:class Aseprite"
           ];
           device = [
             {
@@ -157,7 +157,7 @@
 
     inkscape
 
-    prusa-slicer
+    orca-slicer
 
     gawk
     gnugrep

@@ -5,7 +5,7 @@
     flakeSettings = {
       system = "x86_64-linux";
       branch = "unstable";
-      profile = "desktop";
+      profile = "laptop";
     };
 
     home-manager = inputs."home-manager-${flakeSettings.branch}";
