@@ -130,7 +130,7 @@
           osd = "swayosd";
           wallpaper = "swww";
           notification = "swaync";
-          statusbar = "strix-shell-laptop";
+          statusbar = "strix-shell";
           filemanager = "cosmic";
           waybar = {
             brightness = true;
@@ -142,6 +142,29 @@
         };
         plugins.hyprexpo = true;
       };
+    };
+  };
+
+  programs.strix-shell.config = {
+    BarType = "horizontal";
+    HorizontalBar = {
+      Widgets = {
+        Left = [
+          "PopoverPower"
+          "Clock"
+          "Tray"
+        ];
+        Center = [
+          "HyprlandWorkspace"
+        ];
+        Right = [
+          "Inhibitor"
+          "Network"
+          "Battery"
+        ];
+      };
+      PopoverPower.label = "";
+      HyprlandWorkspace.preload = 5;
     };
   };
 
@@ -158,6 +181,25 @@
     inkscape
 
     orca-slicer
+    (freecad.overrideAttrs (final: prev: {
+      pname = "freecad-dev";
+      version = "weekly-2026.02.04";
+      src = pkgs.fetchFromGitHub {
+        owner = "FreeCAD";
+        repo = "FreeCAD";
+        tag = final.version;
+        hash = "sha256-sbPUN1pAJfBNsnHxXWdXAIxBKKubJ17/InTB+9jC68g=";
+        fetchSubmodules = true;
+      };
+
+      patches = [
+        (fetchpatch {
+          url = "https://raw.githubusercontent.com/NixOS/nixpkgs/refs/heads/nixos-unstable/pkgs/by-name/fr/freecad/0001-NIXOS-don-t-ignore-PYTHONPATH.patch";
+          hash = "sha256-PTSowNsb7f981DvZMUzZyREngHh3l8qqrokYO7Q5YtY=";
+        })
+      ];
+      postPatch = '''';
+    }))
 
     gawk
     gnugrep

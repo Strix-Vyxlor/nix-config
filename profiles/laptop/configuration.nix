@@ -180,6 +180,7 @@
     home-manager
     wl-clipboard
     waydroid-nftables
+    alsa-utils
   ];
 
   system.stateVersion = "25.11";
