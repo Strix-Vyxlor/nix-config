@@ -122,7 +122,7 @@
           osd = "swayosd";
           wallpaper = "swww";
           notification = "swaync";
-          statusbar = "strix-shell-laptop";
+          statusbar = "strix-shell";
           filemanager = "cosmic";
           waybar = {
             brightness = true;
@@ -142,10 +142,11 @@
     tea
     ffmpeg
     qpwgraph
-    prusa-slicer
+    orca-slicer
 
     (bottles.override {removeWarningPopup = true;})
 
+    gyroflow
     gawk
     gnugrep
     gnused
