@@ -29,6 +29,7 @@
         modules = [
           (./. + "/profiles" + ("/" + flakeSettings.profile) + "/home.nix")
           strixos.homeManagerModules.strixos
+          inputs.matugen.nixosModules.default
         ];
       };
 
@@ -47,6 +48,7 @@
         modules = [
           (./. + "/profiles" + ("/" + flakeSettings.profile) + "/configuration.nix")
           strixos.nixosModules.strixos
+          inputs.matugen.nixosModules.default
         ];
       };
 
@@ -127,5 +129,8 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
+    matugen = {
+      url = "github:/InioX/Matugen";
+    };
   };
 }

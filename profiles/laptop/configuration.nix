@@ -1,12 +1,29 @@
 {
   pkgs,
   lib,
+  config,
   ...
-}: {
+}: let
+  background = ../../themes/background/commingheremoreoftenlatly/jake-comingheremoreoftenlately.jpg;
+in {
   imports = [
     ./hardware-configuration.nix
   ];
-
+  programs.matugen = {
+    enable = true;
+    wallpaper = background;
+    source_color = "#a91a16";
+    type = "scheme-tonal-spot";
+    jsonFormat = "strip";
+    variant = "dark";
+    lightness_dark = -0.05;
+    templates = {
+      base16 = {
+        input_path = "${./.}/themes/base16.in.yaml";
+        output_path = "~/base16.yaml";
+      };
+    };
+  };
   strixos = {
     hostName = "nixos";
     user = {
@@ -15,11 +32,15 @@
       extraGroups = ["input" "adbusers" "dialout"];
     };
     style = {
-      theme.generateWithImage = ../../themes/background/cyber_city.jpg;
+      theme = {
+        scheme = "${config.programs.matugen.theme.files}/base16.yaml";
+        polarity = "dark";
+        image = background;
+      };
       desktop = true;
     };
     boot = {
-      loader = "systemd-boot";
+      loader = null;
       plymouth.enable = true;
     };
     network = {
@@ -106,6 +127,69 @@
     };
   };
 
+  boot.loader = {
+    limine = {
+      enable = true;
+      maxGenerations = 10;
+      efiSupport = true;
+      extraEntries = ''
+        /Windows
+          protocol: efi
+          path: boot():///EFI/Microsoft/Boot/bootmgfw.efi
+      '';
+      style = {
+        wallpapers = [background];
+        wallpaperStyle = "centered";
+        backdrop = config.programs.matugen.theme.colors.background.default;
+        interface = {
+          helpHidden = true;
+          branding = "StrixOs";
+          brandingColor = 2;
+        };
+        graphicalTerminal = {
+          palette =
+            config.programs.matugen.theme.colors.background.default
+            + ";"
+            + config.programs.matugen.theme.colors.error.default
+            + ";"
+            + config.programs.matugen.theme.colors.primary.default
+            + ";"
+            + config.programs.matugen.theme.colors.secondary.default
+            + ";"
+            + config.programs.matugen.theme.colors.tertiary.default
+            + ";"
+            + config.programs.matugen.theme.colors.primary_container.default
+            + ";"
+            + config.programs.matugen.theme.colors.secondary_container.default
+            + ";"
+            + config.programs.matugen.theme.colors.surface_container.default;
+          brightPalette =
+            config.programs.matugen.theme.colors.background.default
+            + ";"
+            + config.programs.matugen.theme.colors.error.default
+            + ";"
+            + config.programs.matugen.theme.colors.primary.default
+            + ";"
+            + config.programs.matugen.theme.colors.secondary.default
+            + ";"
+            + config.programs.matugen.theme.colors.tertiary.default
+            + ";"
+            + config.programs.matugen.theme.colors.primary_container.default
+            + ";"
+            + config.programs.matugen.theme.colors.secondary_container.default
+            + ";"
+            + config.programs.matugen.theme.colors.surface_container.default;
+          foreground = config.programs.matugen.theme.colors.on_background.default;
+          background = "40" + config.programs.matugen.theme.colors.background.default;
+          brightForeground = config.programs.matugen.theme.colors.on_surface.default;
+          brightBackground = config.programs.matugen.theme.colors.surface_container.default;
+          margin = 350;
+        };
+      };
+    };
+    systemd-boot.enable = false;
+  };
+
   boot.kernelParams = ["resume=UUID=3803af9e-60f0-48cc-b626-9602e774eba7" "mem_sleep_default=deep"];
   powerManagement.enable = true;
   hardware.amdgpu.opencl.enable = true;
@@ -127,9 +211,6 @@
   '';
 
   environment.variables.AMD_VULKAN_ICD = "RADV";
-  virtualisation.waydroid.enable = true;
-  virtualisation.waydroid.package = pkgs.waydroid-nftables;
-  networking.nftables.enable = true;
 
   services.upower.enable = true;
   programs.mosh.enable = true;
@@ -142,30 +223,32 @@
     "riscv64-linux"
   ];
 
-  # nix.buildMachines = [
-  #   {
-  #     hostName = "strix-server";
-  #     systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
-  #     protocol = "ssh";
-  #     sshUser = "root";
-  #     maxJobs = 2;
-  #     speedFactor = 2;
-  #     supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
-  #     mandatoryFeatures = [];
-  #   }
-  #   {
-  #     hostName = "strix-desktop-builder";
-  #     systems = ["x86_64-linux" "aarch64-linux" "riscv64-linux"];
-  #     protocol = "ssh";
-  #     sshUser = "root";
-  #     maxJobs = 2;
-  #     speedFactor = 1;
-  #     supportedFeatures = ["benchmark" "big-parallel" "kvm" "nixos-test"];
-  #     mandatoryFeatures = [];
-  #   }
-  # ];
-  #
-  # nix.distributedBuilds = true;
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = pkgs.pkgs.libfprint-2-tod1-goodix-550a;
+    };
+  };
+  security.pam.services = {
+    sudo.fprintAuth = false;
+    login.fprintAuth = false;
+    greetd.fprintAuth = false;
+    su.fprintAuth = false;
+    sshd.fprintAuth = false;
+    polkit-1.fprintAuth = false;
+    other.fprintAuth = false;
+    strixdm = {
+      name = "strixdm";
+      unixAuth = true;
+      fprintAuth = false;
+    };
+    strixdm-fprint = {
+      name = "strixdm-fprint";
+      unixAuth = false;
+      fprintAuth = true;
+    };
+  };
 
   programs.obs-studio = {
     enable = true;

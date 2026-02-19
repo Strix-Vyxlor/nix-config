@@ -3,8 +3,35 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  background = ../../themes/background/commingheremoreoftenlatly/jake-comingheremoreoftenlately.jpg;
+in {
   nixpkgs.config.allowUnfree = true;
+
+  imports = [
+    (import ./style/hyprlock.nix background)
+    ./style/strix-shell.nix
+  ];
+
+  programs.matugen = {
+    enable = true;
+    wallpaper = background;
+    source_color = "#a91a16";
+    type = "scheme-tonal-spot";
+    jsonFormat = "strip";
+    variant = "dark";
+    lightness_dark = -0.05;
+    templates = {
+      base16 = {
+        input_path = "${./.}/themes/base16.in.yaml";
+        output_path = "~/base16.yaml";
+      };
+      strix-shell = {
+        input_path = "${./.}/themes/strix-shell.in.scss";
+        output_path = "~/strix-shell.scss";
+      };
+    };
+  };
 
   strixos = {
     user = {
@@ -13,7 +40,11 @@
       email = "strix.vyxlor@gmail.com";
     };
     style = {
-      theme.generateWithImage = ../../themes/background/cyber_city.jpg;
+      theme = {
+        scheme = "${config.programs.matugen.theme.files}/base16.yaml";
+        polarity = "dark";
+        image = background;
+      };
       targets.btop = true;
       desktop = {
         enable = true;
@@ -96,6 +127,7 @@
     desktop = {
       hyprland = {
         enable = true;
+        style = false;
         #hyprcursorTheme = "Nordzy-Hyprcursors";
         keymap = "be";
         monitors = [
@@ -124,6 +156,55 @@
           debug = {
             full_cm_proto = true;
           };
+          general = {
+            border_size = 5;
+            gaps_in = 5;
+            gaps_out = 5;
+            "col.active_border" =
+              ''0xff''
+              + config.programs.matugen.theme.colors.primary.default
+              + " "
+              + ''0xff''
+              + config.programs.matugen.theme.colors.primary_container.default
+              + " "
+              + ''0xff''
+              + config.programs.matugen.theme.colors.secondary.default
+              + " "
+              + ''0xff''
+              + config.programs.matugen.theme.colors.secondary_container.default
+              + " "
+              + ''0xff''
+              + config.programs.matugen.theme.colors.tertiary.default
+              + " "
+              + ''0xff''
+              + config.programs.matugen.theme.colors.tertiary_container.default
+              + " 270deg";
+            "col.inactive_border" =
+              ''0xaa''
+              + config.programs.matugen.theme.colors.background.default
+              + " "
+              + ''0xaa''
+              + config.programs.matugen.theme.colors.surface.default
+              + " "
+              + ''0xaa''
+              + config.programs.matugen.theme.colors.surface_container.default
+              + " "
+              + ''0xaa''
+              + config.programs.matugen.theme.colors.shadow.default
+              + " 270deg";
+          };
+          decoration = {
+            rounding = 8;
+            blur = {
+              size = 5;
+              passes = 2;
+              contrast = 1.17;
+              brightness =
+                if config.stylix.polarity == "dark"
+                then 0.8
+                else 1.25;
+            };
+          };
         };
         apps = {
           launcher = "wofi";
@@ -145,29 +226,6 @@
     };
   };
 
-  programs.strix-shell.config = {
-    BarType = "horizontal";
-    HorizontalBar = {
-      Widgets = {
-        Left = [
-          "PopoverPower"
-          "Clock"
-          "Tray"
-        ];
-        Center = [
-          "HyprlandWorkspace"
-        ];
-        Right = [
-          "Inhibitor"
-          "Network"
-          "Battery"
-        ];
-      };
-      PopoverPower.label = "";
-      HyprlandWorkspace.preload = 5;
-    };
-  };
-
   home.packages = with pkgs; [
     git
     tea
@@ -183,12 +241,12 @@
     orca-slicer
     (freecad.overrideAttrs (final: prev: {
       pname = "freecad-dev";
-      version = "weekly-2026.02.04";
+      version = "weekly-2026.02.11";
       src = pkgs.fetchFromGitHub {
         owner = "FreeCAD";
         repo = "FreeCAD";
         tag = final.version;
-        hash = "sha256-sbPUN1pAJfBNsnHxXWdXAIxBKKubJ17/InTB+9jC68g=";
+        hash = "sha256-sFMi793D1+1PQbBtQzfslS7UZ2Dob6+Z1bo7bUAVmFA=";
         fetchSubmodules = true;
       };
 
@@ -219,6 +277,7 @@
     wikiman
 
     blueberry
+    hyprshutdown
     qalculate-gtk
     loupe
     vlc

@@ -1,0 +1,177 @@
+@use 'sass:color';
+
+$background: {{ colors.background.default.hex }};
+$foreground: {{ colors.on_background.default.hex }};
+
+* {
+ font-family: MesloLGS NF; 
+}
+
+tooltip {
+  background-color: $background;
+  color: $foreground;
+}
+
+.HorizontalBar {
+  background: transparent;
+}
+
+.HorizontalBarContainer {
+  padding: 0px 3px;
+  margin: 5px;
+  background-color: $background;
+  color: $foreground;
+  border-radius: 10px;
+}
+
+.PowerButton, .PowerButton:hover {
+  padding: 0px 2px 0px 5px;
+  font-size: 20px;
+  color: $foreground;
+  background-color: transparent;
+}
+
+.HyprlandWorkspace {
+  background-color: transparent;
+  padding: 0px 5px 0px 2px;
+  font-size: 14px;
+}
+
+.HyprlandWorkspace button {
+  background-color: transparent;
+  padding: 0px;
+  margin: 0px;
+  color: {{ colors.primary_container.default.hex }};
+}
+
+.HyprlandWorkspace button.Focused {
+  color: {{ colors.primary.default.hex }};
+  font-size: 15px;
+}
+
+.HyprlandWorkspace button.Inactive {
+  color: {{ colors.surface_container.default.hex }};
+}
+
+.HyprlandWorkspace button:hover {
+  filter: brightness(60%);
+  transition: all 0.5s ease;
+}
+
+.Clock {
+  background-color: transparent;
+  color: $foreground;
+  padding: 0px 5px;
+}
+
+.Tray {
+  padding: 0px px 0px 5px;
+  background-color: transparent;
+}
+
+.Tray button {
+  padding: 0px 0px;
+  margin: 0px 2px;
+  background-color: transparent;
+}
+
+.Tray button:hover {
+  filter: brightness(60%);
+  transition: all 0.5s ease;
+}
+
+.Inhibitor {
+  padding: 0px 1px 0px 6px;
+  background-color: transparent;
+}
+
+.InhibitorInActive {
+  padding: 0px 1px 0px 4px;
+  color: $foreground;
+}
+
+.InhibitorActive {
+  padding: 0px 2px 0px 3px;
+  color: {{ colors.primary.default.hex }};
+}
+
+.Network {
+  padding: 0px 2px 0px 0px;
+  color: $foreground;
+  background-color: transparent;
+}
+
+.Battery {
+  padding: 0px 5px 0px 5px;
+  color: $foreground;
+  background-color: transparent;
+}
+
+.BatteryCharging {
+  color: {{ colors.primary.default.hex }};
+  padding: 0px 5px 0px 5px;
+}
+
+.BatteryLow {
+  color: {{ colors.tertiary.default.hex }};
+  padding: 0px 5px 0px 5px;
+}
+
+.BatteryCritical {
+  color: {{ colors.error.default.hex }};
+  padding: 0px 5px 0px 5px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    color: {{ colors.error.default.hex }} 
+  }
+  50% {
+    color: color.adjust({{ colors.error.default.hex }}, $lightness: -20%)
+  }
+  100% {
+    color: {{ colors.error.default.hex }}
+  }
+}
+
+.PopoverPowerMenu.background contents {
+  margin: 3px;
+  padding: 0px;
+  background-color: $background;
+}
+
+.PopoverPowerMenu grid {
+  margin: 0px;
+  padding: 5px;
+  background-color: transparent;
+  border-radius: 3px;
+}
+
+.PopoverPowerButton {
+  margin: 2px;
+  padding: 2px 5px; 
+  border-radius: 4px;
+}
+
+.ShutdownButton {
+  background-color: {{ colors.primary.default.hex }};
+  color: {{ colors.on_primary.default.hex }};
+}
+
+.RebootButton {
+  background-color: {{ colors.primary_container.default.hex }};
+  color: {{ colors.on_primary_container.default.hex }};
+}
+
+.LogoutButton {
+  background-color: {{ colors.secondary.default.hex }};
+  color: {{ colors.on_secondary.default.hex }};
+}
+
+.HibernateButton {
+  background-color: {{ colors.secondary_container.default.hex }};
+  color: {{ colors.on_secondary_container.default.hex }};
+}
+
+
