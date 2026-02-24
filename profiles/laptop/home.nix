@@ -143,6 +143,7 @@ in {
             ",XF86HangupPhone, exec, playerctl next"
             ",XF86NotificationCenter, exec, playerctl previous"
             ",XF86PickupPhone, exec, playerctl play-pause"
+            ",Print, exec, hyprshot -m region --clipboard-only"
           ];
           windowrule = [
             "tile on,match:class Aseprite"
@@ -278,6 +279,7 @@ in {
 
     blueberry
     hyprshutdown
+    hyprshot
     qalculate-gtk
     loupe
     vlc

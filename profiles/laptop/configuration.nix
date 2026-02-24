@@ -139,7 +139,7 @@ in {
       '';
       style = {
         wallpapers = [background];
-        wallpaperStyle = "centered";
+        wallpaperStyle = "stretched";
         backdrop = config.programs.matugen.theme.colors.background.default;
         interface = {
           helpHidden = true;
