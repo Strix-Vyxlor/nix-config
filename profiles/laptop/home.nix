@@ -5,6 +5,7 @@
   ...
 }: let
   background = ../../themes/background/commingheremoreoftenlatly/jake-comingheremoreoftenlately.jpg;
+  stripPrefix = inp: (builtins.substring 1 8 inp);
 in {
   nixpkgs.config.allowUnfree = true;
 
@@ -130,6 +131,7 @@ in {
         style = false;
         #hyprcursorTheme = "Nordzy-Hyprcursors";
         keymap = "be";
+
         monitors = [
           "eDP-1,1920x1200,0x0,1"
           "HDMI-A-1,1920x1080,-1920x0,1"
@@ -137,6 +139,9 @@ in {
         extraSettings = {
           env = [
             "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+          ];
+          exec-once = [
+            "hyprlock"
           ];
           bind = [
             ",XF86Favorites, exec, spotify"
@@ -163,35 +168,35 @@ in {
             gaps_out = 5;
             "col.active_border" =
               ''0xff''
-              + config.programs.matugen.theme.colors.primary.default
+              + stripPrefix config.programs.matugen.theme.colors.primary.default.color
               + " "
               + ''0xff''
-              + config.programs.matugen.theme.colors.primary_container.default
+              + stripPrefix config.programs.matugen.theme.colors.primary_container.default.color
               + " "
               + ''0xff''
-              + config.programs.matugen.theme.colors.secondary.default
+              + stripPrefix config.programs.matugen.theme.colors.secondary.default.color
               + " "
               + ''0xff''
-              + config.programs.matugen.theme.colors.secondary_container.default
+              + stripPrefix config.programs.matugen.theme.colors.secondary_container.default.color
               + " "
               + ''0xff''
-              + config.programs.matugen.theme.colors.tertiary.default
+              + stripPrefix config.programs.matugen.theme.colors.tertiary.default.color
               + " "
               + ''0xff''
-              + config.programs.matugen.theme.colors.tertiary_container.default
+              + stripPrefix config.programs.matugen.theme.colors.tertiary_container.default.color
               + " 270deg";
             "col.inactive_border" =
               ''0xaa''
-              + config.programs.matugen.theme.colors.background.default
+              + stripPrefix config.programs.matugen.theme.colors.background.default.color
               + " "
               + ''0xaa''
-              + config.programs.matugen.theme.colors.surface.default
+              + stripPrefix config.programs.matugen.theme.colors.surface.default.color
               + " "
               + ''0xaa''
-              + config.programs.matugen.theme.colors.surface_container.default
+              + stripPrefix config.programs.matugen.theme.colors.surface_container.default.color
               + " "
               + ''0xaa''
-              + config.programs.matugen.theme.colors.shadow.default
+              + stripPrefix config.programs.matugen.theme.colors.shadow.default.color
               + " 270deg";
           };
           decoration = {

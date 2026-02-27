@@ -5,6 +5,7 @@
   ...
 }: let
   background = ../../themes/background/commingheremoreoftenlatly/jake-comingheremoreoftenlately.jpg;
+  stripPrefix = inp: (builtins.substring 1 8 inp);
 in {
   imports = [
     ./hardware-configuration.nix
@@ -127,6 +128,11 @@ in {
     };
   };
 
+  services.greetd.settings.initial_session = {
+    command = "start-hyprland";
+    user = "strix";
+  };
+
   boot.loader = {
     limine = {
       enable = true;
@@ -140,7 +146,7 @@ in {
       style = {
         wallpapers = [background];
         wallpaperStyle = "stretched";
-        backdrop = config.programs.matugen.theme.colors.background.default;
+        backdrop = config.programs.matugen.theme.colors.background.default.color;
         interface = {
           helpHidden = true;
           branding = "StrixOs";
@@ -148,41 +154,41 @@ in {
         };
         graphicalTerminal = {
           palette =
-            config.programs.matugen.theme.colors.background.default
+            stripPrefix config.programs.matugen.theme.colors.background.default.color
             + ";"
-            + config.programs.matugen.theme.colors.error.default
+            + stripPrefix config.programs.matugen.theme.colors.error.default.color
             + ";"
-            + config.programs.matugen.theme.colors.primary.default
+            + stripPrefix config.programs.matugen.theme.colors.primary.default.color
             + ";"
-            + config.programs.matugen.theme.colors.secondary.default
+            + stripPrefix config.programs.matugen.theme.colors.secondary.default.color
             + ";"
-            + config.programs.matugen.theme.colors.tertiary.default
+            + stripPrefix config.programs.matugen.theme.colors.tertiary.default.color
             + ";"
-            + config.programs.matugen.theme.colors.primary_container.default
+            + stripPrefix config.programs.matugen.theme.colors.primary_container.default.color
             + ";"
-            + config.programs.matugen.theme.colors.secondary_container.default
+            + stripPrefix config.programs.matugen.theme.colors.secondary_container.default.color
             + ";"
-            + config.programs.matugen.theme.colors.surface_container.default;
+            + stripPrefix config.programs.matugen.theme.colors.surface_container.default.color;
           brightPalette =
-            config.programs.matugen.theme.colors.background.default
+            stripPrefix config.programs.matugen.theme.colors.background.default.color
             + ";"
-            + config.programs.matugen.theme.colors.error.default
+            + stripPrefix config.programs.matugen.theme.colors.error.default.color
             + ";"
-            + config.programs.matugen.theme.colors.primary.default
+            + stripPrefix config.programs.matugen.theme.colors.primary.default.color
             + ";"
-            + config.programs.matugen.theme.colors.secondary.default
+            + stripPrefix config.programs.matugen.theme.colors.secondary.default.color
             + ";"
-            + config.programs.matugen.theme.colors.tertiary.default
+            + stripPrefix config.programs.matugen.theme.colors.tertiary.default.color
             + ";"
-            + config.programs.matugen.theme.colors.primary_container.default
+            + stripPrefix config.programs.matugen.theme.colors.primary_container.default.color
             + ";"
-            + config.programs.matugen.theme.colors.secondary_container.default
+            + stripPrefix config.programs.matugen.theme.colors.secondary_container.default.color
             + ";"
-            + config.programs.matugen.theme.colors.surface_container.default;
-          foreground = config.programs.matugen.theme.colors.on_background.default;
-          background = "40" + config.programs.matugen.theme.colors.background.default;
-          brightForeground = config.programs.matugen.theme.colors.on_surface.default;
-          brightBackground = config.programs.matugen.theme.colors.surface_container.default;
+            + stripPrefix config.programs.matugen.theme.colors.surface_container.default.color;
+          foreground = stripPrefix config.programs.matugen.theme.colors.on_background.default.color;
+          background = "40" + stripPrefix config.programs.matugen.theme.colors.background.default.color;
+          brightForeground = stripPrefix config.programs.matugen.theme.colors.on_surface.default.color;
+          brightBackground = stripPrefix config.programs.matugen.theme.colors.surface_container.default.color;
           margin = 350;
         };
       };
@@ -238,6 +244,7 @@ in {
     sshd.fprintAuth = false;
     polkit-1.fprintAuth = false;
     other.fprintAuth = false;
+    hyprlock.fprintAuth = false;
     strixdm = {
       name = "strixdm";
       unixAuth = true;
