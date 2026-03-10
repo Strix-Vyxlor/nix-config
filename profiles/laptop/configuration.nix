@@ -211,10 +211,10 @@ in {
     "100.70.241.44"
   ];
 
-  systemd.sleep.extraConfig = ''
-    HibernateDelaySec=1800
-    SuspendState=mem
-  '';
+  systemd.sleep.settings.Sleep = {
+    HibernateDelaySec = 1800;
+    SuspendState = "mem";
+  };
 
   environment.variables.AMD_VULKAN_ICD = "RADV";
 
@@ -269,7 +269,6 @@ in {
     git
     home-manager
     wl-clipboard
-    waydroid-nftables
     alsa-utils
   ];
 

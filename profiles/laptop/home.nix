@@ -34,6 +34,8 @@ in {
     };
   };
 
+  xdg.configFile."matugen/colors.json".source = "${config.programs.matugen.theme.files}/theme.json";
+
   strixos = {
     user = {
       username = "strix";
@@ -227,7 +229,7 @@ in {
             wakeLock = true;
           };
         };
-        plugins.hyprexpo = true;
+        plugins.hyprexpo = false;
       };
     };
   };
@@ -282,12 +284,14 @@ in {
     tldr
     wikiman
 
+    lollypop
+
     blueberry
     hyprshutdown
     hyprshot
     qalculate-gtk
     loupe
-    vlc
+    mpv
     onlyoffice-desktopeditors
     strix-theme-generator
     colorfull-papirus

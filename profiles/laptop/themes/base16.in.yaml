@@ -20,4 +20,3 @@ base0C: "{{ colors.tertiary.default.hex }}" # Support / Regex
 base0D: "{{ colors.primary.default.hex }}" # Functions / Methods
 base0E: "{{ colors.primary_container.default.hex }}" # Keywords / Storage
 base0F: "{{ colors.error_container.default.hex }}" # Deprecated / Special
-se0F: "{{colors.error_container.default.hex}}"
