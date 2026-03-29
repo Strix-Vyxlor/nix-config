@@ -154,41 +154,41 @@ in {
         };
         graphicalTerminal = {
           palette =
-            stripPrefix config.programs.matugen.theme.colors.background.default.color
+            config.programs.matugen.theme.colors.background.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.error.default.color
+            + config.programs.matugen.theme.colors.error.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.primary.default.color
+            + config.programs.matugen.theme.colors.primary.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.secondary.default.color
+            + config.programs.matugen.theme.colors.secondary.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.tertiary.default.color
+            + config.programs.matugen.theme.colors.tertiary.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.primary_container.default.color
+            + config.programs.matugen.theme.colors.primary_container.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.secondary_container.default.color
+            + config.programs.matugen.theme.colors.secondary_container.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.surface_container.default.color;
+            + config.programs.matugen.theme.colors.surface_container.default.color;
           brightPalette =
-            stripPrefix config.programs.matugen.theme.colors.background.default.color
+            config.programs.matugen.theme.colors.background.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.error.default.color
+            + config.programs.matugen.theme.colors.error.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.primary.default.color
+            + config.programs.matugen.theme.colors.primary.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.secondary.default.color
+            + config.programs.matugen.theme.colors.secondary.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.tertiary.default.color
+            + config.programs.matugen.theme.colors.tertiary.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.primary_container.default.color
+            + config.programs.matugen.theme.colors.primary_container.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.secondary_container.default.color
+            + config.programs.matugen.theme.colors.secondary_container.default.color
             + ";"
-            + stripPrefix config.programs.matugen.theme.colors.surface_container.default.color;
-          foreground = stripPrefix config.programs.matugen.theme.colors.on_background.default.color;
-          background = "40" + stripPrefix config.programs.matugen.theme.colors.background.default.color;
-          brightForeground = stripPrefix config.programs.matugen.theme.colors.on_surface.default.color;
-          brightBackground = stripPrefix config.programs.matugen.theme.colors.surface_container.default.color;
+            + config.programs.matugen.theme.colors.surface_container.default.color;
+          foreground = config.programs.matugen.theme.colors.on_background.default.color;
+          background = "40" + config.programs.matugen.theme.colors.background.default.color;
+          brightForeground = config.programs.matugen.theme.colors.on_surface.default.color;
+          brightBackground = config.programs.matugen.theme.colors.surface_container.default.color;
           margin = 350;
         };
       };
@@ -260,6 +260,21 @@ in {
   programs.obs-studio = {
     enable = true;
     enableVirtualCamera = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [
+      cnijfilter2
+      epson-escpr2
+      epson-escpr
+    ];
+  };
+
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
   };
 
   environment.systemPackages = with pkgs; [

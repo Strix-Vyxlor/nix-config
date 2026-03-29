@@ -170,35 +170,35 @@ in {
             gaps_out = 5;
             "col.active_border" =
               ''0xff''
-              + stripPrefix config.programs.matugen.theme.colors.primary.default.color
+              + config.programs.matugen.theme.colors.primary.default.color
               + " "
               + ''0xff''
-              + stripPrefix config.programs.matugen.theme.colors.primary_container.default.color
+              + config.programs.matugen.theme.colors.primary_container.default.color
               + " "
               + ''0xff''
-              + stripPrefix config.programs.matugen.theme.colors.secondary.default.color
+              + config.programs.matugen.theme.colors.secondary.default.color
               + " "
               + ''0xff''
-              + stripPrefix config.programs.matugen.theme.colors.secondary_container.default.color
+              + config.programs.matugen.theme.colors.secondary_container.default.color
               + " "
               + ''0xff''
-              + stripPrefix config.programs.matugen.theme.colors.tertiary.default.color
+              + config.programs.matugen.theme.colors.tertiary.default.color
               + " "
               + ''0xff''
-              + stripPrefix config.programs.matugen.theme.colors.tertiary_container.default.color
+              + config.programs.matugen.theme.colors.tertiary_container.default.color
               + " 270deg";
             "col.inactive_border" =
               ''0xaa''
-              + stripPrefix config.programs.matugen.theme.colors.background.default.color
+              + config.programs.matugen.theme.colors.background.default.color
               + " "
               + ''0xaa''
-              + stripPrefix config.programs.matugen.theme.colors.surface.default.color
+              + config.programs.matugen.theme.colors.surface.default.color
               + " "
               + ''0xaa''
-              + stripPrefix config.programs.matugen.theme.colors.surface_container.default.color
+              + config.programs.matugen.theme.colors.surface_container.default.color
               + " "
               + ''0xaa''
-              + stripPrefix config.programs.matugen.theme.colors.shadow.default.color
+              + config.programs.matugen.theme.colors.shadow.default.color
               + " 270deg";
           };
           decoration = {
@@ -286,7 +286,7 @@ in {
 
     lollypop
 
-    blueberry
+    bluetuith
     hyprshutdown
     hyprshot
     qalculate-gtk

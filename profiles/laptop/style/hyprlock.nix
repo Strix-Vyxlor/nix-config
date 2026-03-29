@@ -17,8 +17,8 @@ background: {
   hexToRgba = hex: let
     # Ensure exactly 8 characters (RGBA)
     padded =
-      if builtins.stringLength hex == 9
-      then builtins.substring 1 8 hex
+      if builtins.stringLength hex == 8
+      then hex
       else throw "Hex string must be 8 characters (RGBA) ${hex}";
 
     r = hexToInt (builtins.substring 0 2 padded);
@@ -54,7 +54,7 @@ in {
         dots_size = 0.33;
         dots_spacing = 0.2;
         dots_center = true;
-        outer_color = hexToRgba "#00000000";
+        outer_color = hexToRgba "00000000";
         inner_color = hexToRgba "${config.programs.matugen.theme.colors.surface_container.default.color}38";
         font_color = hexToRgba "${config.programs.matugen.theme.colors.on_surface.default.color}ff";
         font_family = "JetBrains Mono Medium";
@@ -127,6 +127,6 @@ in {
   fonts.fontconfig.enable = true;
 
   home.packages = with pkgs; [
-    #jetbrains-mono
+    jetbrains-mono
   ];
 }
